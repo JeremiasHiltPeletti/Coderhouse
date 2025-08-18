@@ -1,0 +1,573 @@
+:root {
+  --color-primario: rgb(199, 148, 7);
+  --color-secundario: rgb(114, 113, 113);
+  --card-bg: #f3f3f3;
+  --card-shadow: rgba(0, 0, 0, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--color-secundario);
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.menu img {
+  width: 130px;
+  height: auto;
+  border-radius: 30px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.menu ul {
+  display: flex;
+  gap: 40px;
+  list-style-type: none;
+  font-size: 18.5px;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.18s;
+}
+
+.menu ul li a:hover {
+  color: var(--color-primario);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  padding: 0 16px;
+}
+
+#miFormulario {
+  margin-top: 12px;
+  gap: 12px;
+  align-items: center;
+}
+
+#miFormulario input {
+  border-radius: 25px;
+  border: 2px solid var(--color-primario);
+  padding: 8px 12px;
+  font-size: 16px;
+}
+
+#miFormulario button {
+  background-color: var(--color-primario);
+  border: none;
+  border-radius: 25px;
+  padding: 9px 14px;
+  color: white;
+  cursor: pointer;
+}
+
+.texto-modificado {
+  color: var(--color-primario);
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#mensaje-error {
+  color: red;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 20px;
+  min-height: 20px;
+}
+
+.precios {
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+#tabla-precios {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.precio-col {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px var(--card-shadow);
+  overflow: hidden;
+  width: 100%;
+  max-width: 380px;
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.precio-col:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.precio-col-header {
+  background-color: #333;
+  padding: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.precio-col:nth-child(2) .precio-col-header {
+  background-color: var(--color-primario);
+}
+
+.precio-col-header h3 {
+  color: #f3f3f3;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.precio-col-header p {
+  text-align: center;
+  color: #f3f3f3;
+  font-size: 14px;
+}
+
+.precio-col-features {
+  padding: 0 20px 20px 20px;
+  flex-grow: 1;
+}
+
+.precio-col-features p {
+  padding: 20px 0;
+  margin: 0;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+.precio-col-features p:first-child {
+  border-top: none;
+}
+
+.precio-col-comprar button {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  color: #f3f3f3;
+  font-size: 20px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  cursor: pointer;
+  background-color: var(--color-primario);
+  margin: 0 auto 20px;
+  border-radius: 10px;
+  border: 2px solid var(--color-primario);
+}
+
+.precio-col-comprar button:hover {
+  color: var(--color-primario);
+  background-color: #f3f3f3;
+}
+
+#cartel-popup,
+#form-pago {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+}
+
+#cartel {
+  width: 300px;
+  border: 3px solid var(--color-primario);
+  padding: 20px;
+  text-align: center;
+  background-color: #f0f0f0;
+  box-shadow: 5px 5px 10px #888888;
+}
+
+#cartel h1 {
+  color: #dd9933;
+}
+#cartel p {
+  color: #555555;
+}
+
+#cartel .botones {
+  display: flex;
+  justify-content: space-evenly;
+}
+#cartel button {
+  background-color: var(--color-primario);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#cerrar-pago {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+#form-pago form {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 30px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#form-pago h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--color-primario);
+}
+#form-pago label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+#form-pago input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+#form-pago input:focus {
+  border-color: var(--color-primario);
+}
+#form-pago button {
+  padding: 10px;
+  font-size: 15px;
+  background: var(--color-primario);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#mensaje-pago {
+  text-align: center;
+  font-weight: 600;
+  min-height: 24px;
+}
+
+#mi-cuenta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  gap: 20px;
+}
+
+#mi-cuenta h2 {
+  font-size: 32px;
+  color: var(--color-primario);
+  text-align: center;
+  margin-bottom: 20px;
+}
+#bienvenida-usuario {
+  font-size: 24px;
+  color: var(--color-secundario);
+  font-weight: 600;
+}
+#plan-seleccionado {
+  margin-top: 20px;
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px var(--card-shadow);
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+#plan-seleccionado h3 {
+  font-size: 24px;
+  color: var(--color-primario);
+  margin-bottom: 10px;
+}
+#plan-seleccionado p {
+  font-size: 18px;
+  color: var(--color-secundario);
+}
+
+.sobre-nosotros {
+  display: flex;
+  gap: 80px;
+  max-width: 1130px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.sobre-nosotros img {
+  width: 500px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.titulo-y-texto-sobre-nosotros {
+  max-width: 500px;
+}
+
+.titulo-sobre-nosotros {
+  font-size: 35px;
+  margin-bottom: 20px;
+  color: var(--color-primario);
+}
+
+.titulo-y-texto-sobre-nosotros p {
+  line-height: 1.5rem;
+  font-size: 16px;
+  color: var(--color-secundario);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+#contact {
+  background-color: var(--card-bg);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px var(--card-shadow);
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#contact h3 {
+  font-size: 28px;
+  color: var(--color-primario);
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+#contact h4 {
+  font-size: 16px;
+  color: var(--color-secundario);
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+#contact fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+#contact input,
+#contact textarea {
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: 2px solid var(--color-primario);
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  border-color: var(--color-secundario);
+}
+
+#contact textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#contact button {
+  background-color: var(--color-primario);
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+#contact button:hover {
+  background-color: white;
+  color: var(--color-primario);
+  border: 2px solid var(--color-primario);
+}
+
+@media screen and (max-width: 1024px) {
+  .sobre-nosotros img,
+  .titulo-y-texto-sobre-nosotros {
+    max-width: 400px;
+    width: 100%;
+  }
+  .titulo-sobre-nosotros {
+    font-size: 28px;
+  }
+  .titulo-y-texto-sobre-nosotros p {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sobre-nosotros {
+    flex-direction: column;
+    gap: 25px;
+    padding: 0 15px;
+  }
+
+  #bienvenida-usuario {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+  #plan-seleccionado h3 {
+    font-size: 20px;
+  }
+  #plan-seleccionado p {
+    font-size: 16px;
+  }
+  #form-pago form {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .menu ul {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    flex-direction: column;
+    background-color: var(--color-secundario);
+    padding: 10px 20px;
+    border-radius: 8px;
+    gap: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  .menu ul.show {
+    display: flex;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sobre-nosotros img {
+    width: 100%;
+    height: auto;
+  }
+  .titulo-sobre-nosotros {
+    font-size: 20px;
+  }
+  .titulo-y-texto-sobre-nosotros p {
+    font-size: 13px;
+    line-height: 1.4rem;
+  }
+
+  .menu ul {
+    right: 10px;
+    top: 55px;
+    gap: 12px;
+    padding: 8px 15px;
+  }
+  .menu img {
+    width: 100px;
+  }
+
+  #bienvenida-usuario {
+    font-size: 20px;
+  }
+  #plan-seleccionado h3 {
+    font-size: 18px;
+  }
+  #plan-seleccionado p {
+    font-size: 14px;
+  }
+  #form-pago form {
+    width: 95%;
+    padding: 12px;
+  }
+
+  #contact h3 {
+    font-size: 20px;
+  }
+  #contact h4 {
+    font-size: 12px;
+  }
+  #contact input,
+  #contact textarea {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+  #contact button {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+}
