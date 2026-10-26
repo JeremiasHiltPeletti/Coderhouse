@@ -1,5 +1,6 @@
 // Centinela WP — panel central.
 // Lo carga server.js (punto de entrada). Ejecutar: npm start (ver README).
+// Este archivo vive en lib/; "here" apunta a la carpeta del panel.
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
@@ -18,7 +19,7 @@ process.on("uncaughtException", (err) => {
 });
 
 // Carga .env sin dependencias (antes de importar módulos que leen process.env).
-const here = path.dirname(fileURLToPath(import.meta.url));
+const here = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const envFile = path.join(here, ".env");
 if (fs.existsSync(envFile)) {
   for (const line of fs.readFileSync(envFile, "utf8").split(/\r?\n/)) {
@@ -27,12 +28,12 @@ if (fs.existsSync(envFile)) {
   }
 }
 
-const { store, save, saveNow, encrypt, newId, DEFAULT_SITE_SETTINGS, HOSTED, DATA_DIR } = await import("./lib/store.js");
-const { WpClient, WpError, discover, normalizeUrl } = await import("./lib/wp.js");
-const { startJob, listJobs, getJob, bus, runningJobFor } = await import("./lib/jobs.js");
-const { checkSite, applyUpdates, fullBackup, manualRestore, recoverInflight, settingsOf, pendingItems, BACKUP_DIR } = await import("./lib/pipeline.js");
-const { sourcesConfigured } = await import("./lib/research.js");
-const { zipFolder } = await import("./lib/zip.js");
+const { store, save, saveNow, encrypt, newId, DEFAULT_SITE_SETTINGS, HOSTED, DATA_DIR } = await import("./store.js");
+const { WpClient, WpError, discover, normalizeUrl } = await import("./wp.js");
+const { startJob, listJobs, getJob, bus, runningJobFor } = await import("./jobs.js");
+const { checkSite, applyUpdates, fullBackup, manualRestore, recoverInflight, settingsOf, pendingItems, BACKUP_DIR } = await import("./pipeline.js");
+const { sourcesConfigured } = await import("./research.js");
+const { zipFolder } = await import("./zip.js");
 
 const PORT = Number(process.env.PORT || 4747);
 // En tu PC escucha solo en localhost. En el hosting, el proxy del proveedor necesita llegar a la app.

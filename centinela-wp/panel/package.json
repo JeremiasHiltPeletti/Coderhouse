@@ -3,15 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "description": "Panel central para actualizar sitios WordPress de forma segura: analiza riesgos, respalda, actualiza, verifica y restaura.",
-  "type": "module",
   "main": "server.js",
   "engines": {
     "node": ">=22.2"
   },
   "scripts": {
     "start": "node server.js",
-    "build": "node --check server.js && node --check main.js",
-    "check": "node --check server.js && node --check main.js && for f in lib/*.js public/*.js scripts/*.js; do node --check \"$f\" || exit 1; done",
+    "build": "node --check server.js && node --check lib/app.js",
+    "check": "node --check server.js && for f in lib/*.js public/*.js scripts/*.js; do node --check \"$f\" || exit 1; done",
     "test": "node --test test/*.test.js",
     "package:hostinger": "node scripts/package-hostinger.js"
   },

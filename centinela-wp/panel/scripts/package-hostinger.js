@@ -10,7 +10,7 @@ const panel = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const stage = fs.mkdtempSync(path.join(os.tmpdir(), "centinela-pkg-"));
 const copy = (from, to = from) => fs.cpSync(path.join(panel, from), path.join(stage, to), { recursive: true });
 
-for (const item of ["server.js", "main.js", "package.json", "package-lock.json", ".env.example", "lib", "public", "scripts"]) copy(item);
+for (const item of ["server.js", "package.json", "package-lock.json", ".env.example", "lib", "public", "scripts"]) copy(item);
 fs.cpSync(path.join(panel, "..", "connector", "centinela-connector"), path.join(stage, "connector", "centinela-connector"), { recursive: true });
 
 const out = path.join(panel, "..", "dist", "centinela-panel-hostinger.zip");

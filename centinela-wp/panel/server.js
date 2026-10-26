@@ -1,7 +1,9 @@
-// Punto de entrada de Centinela WP.
-// Algunos hostings (LiteSpeed/Hostinger) cargan la app con require(), que no admite módulos
-// con "await" a nivel principal. Por eso este archivo no lo usa y carga la app real con import().
-import("./main.js").catch((err) => {
+// Punto de entrada de Centinela WP (CommonJS a propósito).
+// Hostinger/LiteSpeed carga la app con require(); este archivo es compatible con cualquier
+// cargador y arranca la app real (lib/app.js, módulo ES) con import() dinámico.
+"use strict";
+console.log("Centinela WP: cargando (entrada CommonJS v3)…");
+import("./lib/app.js").catch((err) => {
   console.error("ERROR al iniciar Centinela WP:", err);
   process.exit(1);
 });
