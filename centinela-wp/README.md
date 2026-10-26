@@ -52,6 +52,10 @@ Los datos quedan en `panel/data/` (credenciales cifradas con AES-256-GCM, inform
 
 > Por seguridad el panel escucha solo en `127.0.0.1`. Si lo exponés a internet, ponelo detrás de HTTPS (Caddy, Nginx) y definí `PANEL_PUBLIC_URL`.
 
+### ¿Sin tener la PC prendida? Hostinger
+
+Para que el panel funcione solo, en tu hosting Hostinger Business, seguí **[HOSTINGER.md](HOSTINGER.md)**. El paquete listo para subir está en `dist/centinela-panel-hostinger.zip`; se regenera con `npm run package:hostinger`.
+
 ## 2. Conectar un sitio
 
 1. En el panel: **Sitios → Descargar conector** e instalalo en WordPress (*Plugins → Añadir nuevo → Subir plugin*), luego activalo.

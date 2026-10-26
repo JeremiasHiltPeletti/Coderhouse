@@ -10,8 +10,9 @@
   },
   "scripts": {
     "start": "node server.js",
-    "check": "node --check server.js && for f in lib/*.js public/*.js; do node --check \"$f\" || exit 1; done",
-    "test": "node --test test/*.test.js"
+    "check": "node --check server.js && for f in lib/*.js public/*.js scripts/*.js; do node --check \"$f\" || exit 1; done",
+    "test": "node --test test/*.test.js",
+    "package:hostinger": "node scripts/package-hostinger.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.3.0"

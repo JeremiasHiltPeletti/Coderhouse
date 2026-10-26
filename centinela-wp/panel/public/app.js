@@ -143,17 +143,12 @@ function modal({ title, body, actions = [], onOpen }) {
 // ---------------------------------------------------------------------------
 function connectEvents() {
   const es = new EventSource("/api/events");
-  let refreshTimer = null;
   es.onmessage = (e) => {
     const ev = JSON.parse(e.data);
     if (ev.type === "job") {
       state.jobs.set(ev.job.id, ev.job);
       if (state.dockJob === ev.job.id) renderDock();
-      if (ev.job.status !== "running") {
-        if (state.dockJob === ev.job.id) toast(ev.job.status === "done" ? `${ev.job.title}: terminado.` : `${ev.job.title}: con errores.`, ev.job.status === "done" ? "ok" : "error");
-        clearTimeout(refreshTimer);
-        refreshTimer = setTimeout(() => route(true), 400);
-      }
+      if (ev.job.status !== "running") jobFinished(ev.job);
     } else if (ev.type === "log") {
       const job = state.jobs.get(ev.jobId);
       if (job) {
@@ -164,10 +159,37 @@ function connectEvents() {
   };
 }
 
+const finishedJobs = new Set();
+let refreshTimer = null;
+function jobFinished(job) {
+  if (finishedJobs.has(job.id)) return;
+  finishedJobs.add(job.id);
+  if (state.dockJob === job.id) toast(job.status === "done" ? `${job.title}: terminado.` : `${job.title}: con errores.`, job.status === "done" ? "ok" : "error");
+  clearTimeout(refreshTimer);
+  refreshTimer = setTimeout(() => route(true), 400);
+}
+
+// Respaldo por consulta periódica: algunos proxies de hosting retienen los eventos en vivo.
+let pollTimer = null;
+function pollDock() {
+  clearInterval(pollTimer);
+  pollTimer = setInterval(async () => {
+    const current = state.jobs.get(state.dockJob);
+    if (!current || current.status !== "running") return clearInterval(pollTimer);
+    const fresh = await api("GET", `/api/jobs/${current.id}`).catch(() => null);
+    if (!fresh) return;
+    const changed = fresh.log.length !== current.log.length || fresh.status !== current.status || fresh.progress?.percent !== current.progress?.percent;
+    state.jobs.set(fresh.id, fresh);
+    if (changed && state.dockJob === fresh.id) renderDock();
+    if (fresh.status !== "running") jobFinished(fresh);
+  }, 4000);
+}
+
 function openDock(job) {
   state.jobs.set(job.id, job);
   state.dockJob = job.id;
   renderDock();
+  pollDock();
 }
 
 function renderDock() {
@@ -323,8 +345,18 @@ async function route(soft = false) {
 // Acceso
 // ---------------------------------------------------------------------------
 async function renderLogin(needsSetup) {
-  if (needsSetup === undefined) needsSetup = (await api("GET", "/api/session").catch(() => ({}))).needsSetup;
+  const session = await api("GET", "/api/session").catch(() => ({}));
+  if (needsSetup === undefined) needsSetup = session.needsSetup;
   lastRoute = "";
+  if (needsSetup && !session.setupAllowed) {
+    $("#root").innerHTML = `
+      <div class="auth"><div class="card">
+        <div class="brand"><span class="brand-mark">${icon("shield")}</span>Centinela WP</div>
+        <h1 style="font-size:1.35rem;margin-bottom:10px">Falta configurar la contraseña</h1>
+        <p class="muted">Por seguridad, en un servidor la contraseña del panel no se crea desde el navegador. Definí la variable de entorno <code>PANEL_PASSWORD</code> en la configuración de la app (en Hostinger: <em>Variables de entorno</em>) y volvé a cargar esta página.</p>
+      </div></div>`;
+    return;
+  }
   $("#root").innerHTML = `
     <div class="auth"><form class="card" id="login-form" novalidate>
       <div class="brand"><span class="brand-mark">${icon("shield")}</span>Centinela WP</div>

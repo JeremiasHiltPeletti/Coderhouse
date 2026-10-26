@@ -2,10 +2,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import os from "node:os";
 import { fileURLToPath } from "node:url";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-export const DATA_DIR = process.env.CENTINELA_DATA_DIR || path.join(here, "..", "data");
+// En un hosting gestionado (Hostinger) cada despliegue crea una carpeta nueva (…/hbuilds/…):
+// los datos van a una carpeta fija del usuario para que sobrevivan a los redespliegues.
+export const HOSTED = process.env.CENTINELA_HOSTED === "1" || here.includes(`${path.sep}hbuilds${path.sep}`);
+export const DATA_DIR = process.env.CENTINELA_DATA_DIR || (HOSTED ? path.join(os.homedir(), "centinela-data") : path.join(here, "..", "data"));
 const DB_FILE = path.join(DATA_DIR, "db.json");
 
 fs.mkdirSync(DATA_DIR, { recursive: true, mode: 0o700 });
@@ -72,6 +76,13 @@ export function saveNow() {
 }
 
 process.on("exit", () => timer && flush());
+// El hosting detiene la app con SIGTERM cuando no recibe visitas: se guardan los cambios pendientes.
+for (const signal of ["SIGTERM", "SIGINT"]) {
+  process.once(signal, () => {
+    if (timer) flush();
+    process.exit(0);
+  });
+}
 
 export const store = {
   get data() {

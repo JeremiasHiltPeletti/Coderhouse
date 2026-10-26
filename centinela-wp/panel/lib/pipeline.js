@@ -5,7 +5,7 @@
 //   → verificar (páginas, API, debug.log) → si algo se rompió: restaurar y detener el lote.
 import fs from "node:fs";
 import path from "node:path";
-import { store, save, newId, DATA_DIR, DEFAULT_SITE_SETTINGS } from "./store.js";
+import { store, save, saveNow, newId, DATA_DIR, DEFAULT_SITE_SETTINGS } from "./store.js";
 import { WpClient } from "./wp.js";
 import { gatherEvidence, compareVersions } from "./research.js";
 import { advise } from "./advisor.js";
@@ -222,6 +222,10 @@ export async function applyUpdates(site, keys, job, { override = false } = {}) {
     }
 
     // b) Actualizar
+    // Se anota en disco ANTES de tocar el sitio: si el panel se reinicia a mitad
+    // (p. ej. el hosting detiene la app), al volver revisa el sitio y restaura si hace falta.
+    site.inflight = { key: itemKey(item), name: item.name, from: item.current, to: item.next, backupId: backup.id, baseline, startedAt: new Date().toISOString() };
+    saveNow();
     job.setProgress(base + span * 0.45, `Actualizando ${item.name}`);
     job.info(`Actualizando ${item.name} ${item.current} → ${item.next}…`);
     let updateError = null;
@@ -240,6 +244,7 @@ export async function applyUpdates(site, keys, job, { override = false } = {}) {
         result.outcome = "skipped";
         result.details.push(err.message);
         job.warn(`${item.name}: ${err.message}`);
+        clearInflight(site);
         continue;
       }
       updateError = err.message;
@@ -264,6 +269,7 @@ export async function applyUpdates(site, keys, job, { override = false } = {}) {
       job.ok(`✔ ${item.name} actualizado a ${item.next} y el sitio funciona bien.${verdict.warnings.length ? ` Avisos: ${verdict.warnings.join(" · ")}` : ""}`);
       baseline = verdict.after || baseline;
       logOffset = verdict.logSize ?? logOffset;
+      clearInflight(site);
       continue;
     }
 
@@ -285,6 +291,7 @@ export async function applyUpdates(site, keys, job, { override = false } = {}) {
     }
     // Marca la versión como problemática para no reintentarla automáticamente.
     site.problemVersions = { ...(site.problemVersions || {}), [`${itemKey(item)}@${item.next}`]: new Date().toISOString() };
+    clearInflight(site);
     stop = true;
   }
 
@@ -301,6 +308,56 @@ export async function applyUpdates(site, keys, job, { override = false } = {}) {
   const updated = results.filter((r) => r.outcome === "updated").length;
   const status = results.some((r) => r.outcome === "failed") ? "failed" : results.some((r) => r.outcome === "rolled_back") ? "rolled_back" : "ok";
   return store.addReport(makeReport(site, "apply", results, `${updated} de ${results.length} actualizadas`, status)).id;
+}
+
+function clearInflight(site) {
+  delete site.inflight;
+  saveNow();
+}
+
+/**
+ * Recuperación tras un reinicio del panel en medio de una actualización.
+ * Verifica el sitio contra la foto previa y, si quedó roto, restaura la copia.
+ */
+export async function recoverInflight(site, job) {
+  const pending = site.inflight;
+  if (!pending) return null;
+  const client = new WpClient(site);
+  const settings = settingsOf(site);
+  job.warn(`El panel se reinició mientras actualizaba ${pending.name} (${pending.from} → ${pending.to}). Verificando el sitio…`);
+  let verdict = await verify(site, client, pending.baseline, 0);
+  if (!verdict.ok) {
+    await sleep(10000);
+    verdict = await verify(site, client, pending.baseline, 0);
+  }
+  const item = { name: pending.name, key: pending.key, from: pending.from, to: pending.to };
+  let outcome;
+  const details = [];
+  if (verdict.ok) {
+    outcome = "updated";
+    job.ok(`El sitio funciona correctamente. ${pending.name} quedó actualizado.`);
+    details.push("Verificado tras el reinicio del panel.");
+  } else {
+    details.push(...verdict.problems.map((p) => `Problema detectado: ${p}`));
+    job.fail(`El sitio tiene problemas: ${verdict.problems.slice(0, 3).join(" · ")}. Restaurando la copia ${pending.backupId}…`);
+    const restored = await rollback(site, client, pending.backupId, job, settings.restoreDb);
+    details.push(...restored.details);
+    const check = compare(pending.baseline, await snapshot(site));
+    outcome = restored.ok && check.ok ? "rolled_back" : "failed";
+    if (outcome === "rolled_back") job.ok("Sitio restaurado al estado anterior.");
+    else job.fail("ATENCIÓN: la restauración no dejó el sitio sano. Usá la copia descargada para restaurar manualmente.");
+    site.problemVersions = { ...(site.problemVersions || {}), [`${pending.key}@${pending.to}`]: new Date().toISOString() };
+  }
+  clearInflight(site);
+  try {
+    site.inventory = await client.inventory(true);
+    site.lastCheck = new Date().toISOString();
+    save();
+  } catch {
+    /* sin inventario */
+  }
+  const status = outcome === "updated" ? "ok" : outcome;
+  return store.addReport(makeReport(site, "apply", [{ ...item, outcome, details, summary: "Recuperación tras reinicio del panel" }], "Recuperación tras reinicio", status)).id;
 }
 
 async function verify(site, client, baseline, logOffset) {
@@ -364,7 +421,17 @@ export async function runBackup(client, site, job, opts, onProgress) {
   job.ok(`Copia descargada y verificada en el panel (data/backups/${site.id}/${manifest.id}).`);
   site.backups = [{ ...manifest, local: true }, ...(site.backups || []).filter((b) => b.id !== manifest.id)].slice(0, 50);
   save();
+  pruneLocalBackups(site);
   return manifest;
+}
+
+/** Conserva en el panel solo las N copias más recientes por sitio (PANEL_KEEP_BACKUPS, por defecto 10). */
+export function pruneLocalBackups(site) {
+  const keep = Math.max(1, Number(process.env.PANEL_KEEP_BACKUPS) || 10);
+  const dir = path.join(BACKUP_DIR, site.id);
+  if (!fs.existsSync(dir)) return;
+  const ids = fs.readdirSync(dir).filter((d) => /^[a-z0-9-]{8,64}$/.test(d)).sort().reverse();
+  for (const old of ids.slice(keep)) fs.rmSync(path.join(dir, old), { recursive: true, force: true });
 }
 
 export async function rollback(site, client, backupId, job, restoreDb = true) {

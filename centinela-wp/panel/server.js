@@ -16,24 +16,48 @@ if (fs.existsSync(envFile)) {
   }
 }
 
-const { store, save, encrypt, newId, DEFAULT_SITE_SETTINGS } = await import("./lib/store.js");
+const { store, save, saveNow, encrypt, newId, DEFAULT_SITE_SETTINGS, HOSTED, DATA_DIR } = await import("./lib/store.js");
 const { WpClient, WpError, discover, normalizeUrl } = await import("./lib/wp.js");
 const { startJob, listJobs, getJob, bus, runningJobFor } = await import("./lib/jobs.js");
-const { checkSite, applyUpdates, fullBackup, manualRestore, settingsOf, pendingItems, BACKUP_DIR } = await import("./lib/pipeline.js");
+const { checkSite, applyUpdates, fullBackup, manualRestore, recoverInflight, settingsOf, pendingItems, BACKUP_DIR } = await import("./lib/pipeline.js");
 const { sourcesConfigured } = await import("./lib/research.js");
 const { zipFolder } = await import("./lib/zip.js");
 
 const PORT = Number(process.env.PORT || 4747);
-const HOST = process.env.HOST || "127.0.0.1";
+// En tu PC escucha solo en localhost. En el hosting, el proxy del proveedor necesita llegar a la app.
+const HOST = process.env.HOST || (HOSTED ? undefined : "127.0.0.1");
 const PUBLIC_URL = (process.env.PANEL_PUBLIC_URL || "").replace(/\/+$/, "");
 const PUBLIC_DIR = path.join(here, "public");
-const CONNECTOR_DIR = path.join(here, "..", "connector", "centinela-connector");
+// El paquete para hosting incluye el conector junto al panel; en el repositorio está un nivel arriba.
+const CONNECTOR_DIR = [path.join(here, "connector", "centinela-connector"), path.join(here, "..", "connector", "centinela-connector")].find((d) => fs.existsSync(d));
+const CRON_TOKEN = process.env.CRON_TOKEN || "";
 
 // ---------------------------------------------------------------------------
 // Autenticación del panel
 // ---------------------------------------------------------------------------
-const sessions = new Map();
+// Sesiones guardadas (como hash) en db.json: sobreviven a los reinicios del hosting.
 const SESSION_TTL = 12 * 3600e3;
+store.data.auth.sessions ||= {};
+const tokenHash = (t) => crypto.createHash("sha256").update(String(t)).digest("hex");
+const sessions = {
+  get: (t) => {
+    const expires = store.data.auth.sessions[tokenHash(t)];
+    return expires ? { expires } : undefined;
+  },
+  set: (t, s) => {
+    const now = Date.now();
+    for (const [k, exp] of Object.entries(store.data.auth.sessions)) if (exp < now) delete store.data.auth.sessions[k];
+    store.data.auth.sessions[tokenHash(t)] = s.expires;
+    saveNow();
+  },
+  touch: (t, expires) => {
+    store.data.auth.sessions[tokenHash(t)] = expires;
+  },
+  delete: (t) => {
+    delete store.data.auth.sessions[tokenHash(t)];
+    save();
+  },
+};
 const loginAttempts = new Map();
 
 function hashPassword(password, salt = crypto.randomBytes(16).toString("hex")) {
@@ -44,10 +68,18 @@ function checkPassword(password, stored) {
   const test = crypto.scryptSync(password, salt, 64);
   return crypto.timingSafeEqual(test, Buffer.from(hash, "hex"));
 }
-if (!store.data.auth.passwordHash && process.env.PANEL_PASSWORD) {
+// PANEL_PASSWORD manda: si cambia en la configuración, se actualiza al arrancar.
+if (process.env.PANEL_PASSWORD && !(store.data.auth.passwordHash && checkPassword(process.env.PANEL_PASSWORD, store.data.auth.passwordHash))) {
   store.data.auth.passwordHash = hashPassword(process.env.PANEL_PASSWORD);
+  store.data.auth.sessions = {};
   save();
 }
+
+function clientIp(req) {
+  if (HOSTED) return String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || req.socket.remoteAddress;
+  return req.socket.remoteAddress;
+}
+const isLoopback = (req) => !HOSTED && ["127.0.0.1", "::1", "::ffff:127.0.0.1"].includes(req.socket.remoteAddress);
 
 function parseCookies(req) {
   return Object.fromEntries((req.headers.cookie || "").split(";").map((c) => c.trim().split("=").map(decodeURIComponent)).filter((p) => p[0]));
@@ -56,13 +88,13 @@ function sessionOf(req) {
   const token = parseCookies(req).cw_session;
   const s = token && sessions.get(token);
   if (!s || s.expires < Date.now()) return null;
-  s.expires = Date.now() + SESSION_TTL;
+  sessions.touch(token, Date.now() + SESSION_TTL);
   return s;
 }
 function createSession(res) {
   const token = crypto.randomBytes(32).toString("hex");
   sessions.set(token, { expires: Date.now() + SESSION_TTL });
-  const secure = PUBLIC_URL.startsWith("https://") ? "; Secure" : "";
+  const secure = PUBLIC_URL.startsWith("https://") || HOSTED ? "; Secure" : "";
   res.setHeader("Set-Cookie", `cw_session=${token}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${SESSION_TTL / 1000}${secure}`);
 }
 
@@ -221,13 +253,16 @@ const route = (method, pattern, handler, { auth = true } = {}) => {
   routes.push({ method, re, keys, handler, auth });
 };
 
-route("GET", "/api/session", (req) => ({ authenticated: Boolean(sessionOf(req)), needsSetup: !store.data.auth.passwordHash }), { auth: false });
+route("GET", "/api/session", (req) => ({ authenticated: Boolean(sessionOf(req)), needsSetup: !store.data.auth.passwordHash, setupAllowed: isLoopback(req) }), { auth: false });
 
 route(
   "POST",
   "/api/setup",
   async (req, res) => {
     if (store.data.auth.passwordHash) throw new HttpError(409, "El panel ya tiene contraseña.");
+    // Crear la contraseña desde el navegador solo se permite en tu propia PC: en internet,
+    // el primero que entrara podría quedarse con el panel.
+    if (!isLoopback(req)) throw new HttpError(403, "Definí la variable PANEL_PASSWORD en la configuración del hosting y reiniciá la app.");
     const { password } = await readJson(req);
     if (!password || password.length < 10) throw new HttpError(400, "Usá al menos 10 caracteres.");
     store.data.auth.passwordHash = hashPassword(password);
@@ -242,7 +277,7 @@ route(
   "POST",
   "/api/login",
   async (req, res) => {
-    const ip = req.socket.remoteAddress;
+    const ip = clientIp(req);
     const attempts = (loginAttempts.get(ip) || []).filter((t) => t > Date.now() - 60e3);
     if (attempts.length >= 5) throw new HttpError(429, "Demasiados intentos. Esperá un minuto.");
     const { password } = await readJson(req);
@@ -449,7 +484,7 @@ route("GET", "/api/jobs", () => listJobs());
 route("GET", "/api/jobs/:id", (req, res, { id }) => getJob(id) || Promise.reject(new HttpError(404, "Tarea no encontrada")));
 
 route("GET", "/api/events", (req, res) => {
-  res.writeHead(200, { "Content-Type": "text/event-stream", "Cache-Control": "no-store", Connection: "keep-alive" });
+  res.writeHead(200, { "Content-Type": "text/event-stream", "Cache-Control": "no-store", Connection: "keep-alive", "X-Accel-Buffering": "no" });
   res.write("retry: 3000\n\n");
   const onEvent = (e) => res.write(`data: ${JSON.stringify(e)}\n\n`);
   bus.on("event", onEvent);
@@ -461,6 +496,7 @@ route("GET", "/api/events", (req, res) => {
 });
 
 route("GET", "/download/centinela-connector.zip", (req, res) => {
+  if (!CONNECTOR_DIR) throw new HttpError(404, "El paquete no incluye la carpeta del conector.");
   const zip = zipFolder(CONNECTOR_DIR, "centinela-connector");
   res.writeHead(200, { "Content-Type": "application/zip", "Content-Length": zip.length, "Content-Disposition": 'attachment; filename="centinela-connector.zip"' });
   res.end(zip);
@@ -494,27 +530,57 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-// Programación: revisa los sitios con análisis diario o semanal.
-setInterval(() => {
+// Programación: revisa los sitios con análisis diario o semanal y retoma
+// actualizaciones que quedaron a medias por un reinicio.
+function schedulerTick() {
   const now = Date.now();
+  const started = [];
   for (const site of store.sites()) {
-    const { schedule } = settingsOf(site);
-    if (schedule === "off" || runningJobFor(site.id)) continue;
-    const every = schedule === "daily" ? 864e5 : 7 * 864e5;
-    if (site.lastScheduled && now - new Date(site.lastScheduled).getTime() < every) continue;
-    site.lastScheduled = new Date().toISOString();
-    save();
+    if (runningJobFor(site.id)) continue;
     try {
+      if (site.inflight) {
+        startJob({ siteId: site.id, type: "recover", title: `Recuperación de ${site.name}` }, (job) => recoverInflight(site, job));
+        started.push(`recover:${site.id}`);
+        continue;
+      }
+      const { schedule } = settingsOf(site);
+      if (schedule === "off") continue;
+      const every = schedule === "daily" ? 864e5 : 7 * 864e5;
+      if (site.lastScheduled && now - new Date(site.lastScheduled).getTime() < every - 30 * 60e3) continue;
+      site.lastScheduled = new Date().toISOString();
+      save();
       startJob({ siteId: site.id, type: "check", title: `Revisión programada de ${site.name}` }, (job) => checkSite(site, job));
+      started.push(`check:${site.id}`);
     } catch {
       /* ya hay otra tarea */
     }
   }
-}, 10 * 60e3).unref();
+  store.data.lastTick = new Date().toISOString();
+  save();
+  return started;
+}
+setInterval(schedulerTick, 10 * 60e3).unref();
+setTimeout(schedulerTick, 5000).unref();
+
+// Hostinger detiene la app si no recibe visitas: una tarea cron del hosting llama a esta URL
+// cada 5 minutos para mantenerla despierta y disparar las revisiones programadas.
+route(
+  "GET",
+  "/api/cron",
+  (req, res, _p, url) => {
+    const given = Buffer.from(url.searchParams.get("token") || "");
+    const expected = Buffer.from(CRON_TOKEN);
+    if (CRON_TOKEN.length < 16 || given.length !== expected.length || !crypto.timingSafeEqual(given, expected)) throw new HttpError(403, "Token inválido");
+    return { ok: true, started: schedulerTick(), running: listJobs().filter((j) => j.status === "running").length, at: new Date().toISOString() };
+  },
+  { auth: false }
+);
 
 server.listen(PORT, HOST, () => {
-  console.log(`Centinela WP listo en http://${HOST}:${PORT}`);
-  if (!store.data.auth.passwordHash) console.log("Primera vez: abrí el panel y creá la contraseña de acceso.");
+  console.log(`Centinela WP listo en http://${HOST || "0.0.0.0"}:${PORT}${HOSTED ? " (modo hosting)" : ""} · datos en ${DATA_DIR}`);
+  if (HOSTED && !process.env.PANEL_PASSWORD && !store.data.auth.passwordHash) console.log("FALTA PANEL_PASSWORD: definila en las variables de entorno del hosting.");
+  if (HOSTED && CRON_TOKEN.length < 16) console.log("Aviso: definí CRON_TOKEN (16+ caracteres) y una tarea cron que llame a /api/cron cada 5 minutos.");
+  if (!HOSTED && !store.data.auth.passwordHash) console.log("Primera vez: abrí el panel y creá la contraseña de acceso.");
   const src = sourcesConfigured();
   if (!src.claude) console.log("Aviso: sin ANTHROPIC_API_KEY el análisis usa solo reglas y datos de WordPress.org.");
 });

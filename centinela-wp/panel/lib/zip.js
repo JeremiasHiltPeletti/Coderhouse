@@ -18,14 +18,15 @@ function dosTime(date) {
   return { time, day };
 }
 
-/** Devuelve un Buffer zip con el contenido de srcDir dentro de la carpeta rootName/. */
+/** Devuelve un Buffer zip con el contenido de srcDir dentro de la carpeta rootName/ (o en la raíz si rootName es ""). */
 export function zipFolder(srcDir, rootName) {
   const locals = [];
   const centrals = [];
   let offset = 0;
   const { time, day } = dosTime(new Date());
   for (const file of walk(srcDir).sort()) {
-    const name = Buffer.from(`${rootName}/${path.relative(srcDir, file).split(path.sep).join("/")}`);
+    const rel = path.relative(srcDir, file).split(path.sep).join("/");
+    const name = Buffer.from(rootName ? `${rootName}/${rel}` : rel);
     const data = fs.readFileSync(file);
     const deflated = zlib.deflateRawSync(data, { level: 9 });
     const crc = zlib.crc32(data);
