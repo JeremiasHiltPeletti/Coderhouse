@@ -6,6 +6,17 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 
+console.log(`Iniciando Centinela WP · Node ${process.version} · PORT=${process.env.PORT || "(no definido)"}`);
+const [major, minor] = process.versions.node.split(".").map(Number);
+if (major < 22 || (major === 22 && minor < 2)) {
+  console.error("ERROR: Centinela WP necesita Node.js 22.2 o superior. Cambiá la versión de Node.js en la configuración de la app (22 o 24).");
+  process.exit(1);
+}
+process.on("uncaughtException", (err) => {
+  console.error("ERROR inesperado:", err);
+  process.exit(1);
+});
+
 // Carga .env sin dependencias (antes de importar módulos que leen process.env).
 const here = path.dirname(fileURLToPath(import.meta.url));
 const envFile = path.join(here, ".env");
@@ -576,6 +587,10 @@ route(
   { auth: false }
 );
 
+server.on("error", (err) => {
+  console.error(`ERROR: no se pudo escuchar en el puerto ${PORT}: ${err.message}`);
+  process.exit(1);
+});
 server.listen(PORT, HOST, () => {
   console.log(`Centinela WP listo en http://${HOST || "0.0.0.0"}:${PORT}${HOSTED ? " (modo hosting)" : ""} · datos en ${DATA_DIR}`);
   if (HOSTED && !process.env.PANEL_PASSWORD && !store.data.auth.passwordHash) console.log("FALTA PANEL_PASSWORD: definila en las variables de entorno del hosting.");
