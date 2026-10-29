@@ -1,0 +1,221 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #0b0d14;
+    }
+    #so-cam {
+      position: absolute;
+      inset: 0;
+      transform-origin: 30% 55%;
+    }
+    #so-sky {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #8fc7cf 0%, #d9e3c4 46%, #e9cf95 62%, #c9a066 100%);
+    }
+    #so-land {
+      position: absolute;
+      inset: 0;
+    }
+    .so-slot {
+      position: absolute;
+      border: 4px dashed rgba(255, 255, 255, 0.85);
+      border-radius: 18px;
+      background: rgba(10, 12, 20, 0.42);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 22px 24px;
+      color: #fff;
+      font-family: "Inter";
+    }
+    .so-slot b {
+      font-family: "Archivo Black";
+      font-size: 30px;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+    .so-slot span {
+      font-size: 26px;
+      opacity: 0.85;
+      margin-top: 8px;
+    }
+    #so-gohan {
+      left: 300px;
+      top: 300px;
+      width: 420px;
+      height: 600px;
+    }
+    #so-cell {
+      left: 1200px;
+      top: 280px;
+      width: 440px;
+      height: 620px;
+    }
+    #so-fx {
+      position: absolute;
+      inset: 0;
+    }
+    #so-name {
+      position: absolute;
+      left: 160px;
+      top: 120px;
+      color: #fff;
+      font-family: "Archivo Black";
+      font-size: 84px;
+      letter-spacing: 0.01em;
+      text-shadow: 0 0 24px rgba(255, 216, 74, 0.9), 0 6px 0 #1a1a2a;
+    }
+    #so-name em {
+      font-style: normal;
+      color: #ffd84a;
+    }
+    #so-white {
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="standoff" data-width="1920" data-height="1080">
+    <div id="so-cam">
+      <div id="so-sky"></div>
+      <svg id="so-land" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+        <polygon fill="#b98d5c" points="0,560 140,520 190,430 330,425 380,540 600,560 760,470 820,380 1010,372 1060,520 1300,560 1460,450 1520,360 1720,355 1790,520 1920,540 1920,1080 0,1080" />
+        <polygon fill="#9a6f43" points="0,640 260,610 520,650 860,620 1200,660 1560,615 1920,650 1920,1080 0,1080" />
+        <polygon fill="#7e5733" points="0,780 1920,740 1920,1080 0,1080" />
+        <g stroke="#6a4727" stroke-width="5" fill="none" opacity="0.7">
+          <path d="M120 860 L420 820 L520 900" />
+          <path d="M1300 900 L1560 860 L1800 930" />
+          <path d="M700 990 L980 950" />
+        </g>
+      </svg>
+      <div id="so-gohan" class="so-slot" data-layout-ignore>
+        <b>CLIP A1 · GOHAN SSJ2</b>
+        <span>Plano generado: aura, pelo erizado, mirada fija en Cell</span>
+      </div>
+      <div id="so-cell" class="so-slot" data-layout-ignore>
+        <b>CLIP A2 · CELL PERFECTO</b>
+        <span>Plano generado: sonríe, brazos cruzados</span>
+      </div>
+      <canvas id="so-fx" width="1920" height="1080"></canvas>
+    </div>
+    <h1 id="so-name">GOHAN <em>SSJ2</em></h1>
+    <div id="so-white"></div>
+  </div>
+  <script>
+    (() => {
+      const FPS = 30;
+      const rng = (seed) => () => {
+        seed = (seed + 0x6d2b79f5) | 0;
+        let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+      const canvas = document.querySelector("#so-fx");
+      const ctx = canvas.getContext("2d");
+      const cx = 510;
+      const cy = 610;
+
+      // Aura and lightning are drawn "on twos" (a new drawing every 2 frames), like cel animation.
+      function draw(t, power) {
+        ctx.clearRect(0, 0, 1920, 1080);
+        const frame = Math.floor((t * FPS) / 2);
+        const r = rng(1000 + frame);
+        if (power <= 0) return;
+
+        // Golden aura: flame tongues around an ellipse.
+        ctx.save();
+        ctx.globalCompositeOperation = "lighter";
+        const tongues = 26;
+        for (let i = 0; i < tongues; i++) {
+          const a = (i / tongues) * Math.PI * 2;
+          const w = 250 + 40 * power;
+          const h = 360 + 80 * power;
+          const bx = cx + Math.cos(a) * w;
+          const by = cy + Math.sin(a) * h * 0.95;
+          const len = (90 + r() * 140) * power;
+          ctx.beginPath();
+          ctx.moveTo(bx - 26, by);
+          ctx.quadraticCurveTo(bx + (r() - 0.5) * 60, by - len * 0.6, bx + (r() - 0.5) * 30, by - len);
+          ctx.quadraticCurveTo(bx + 20, by - len * 0.4, bx + 26, by);
+          ctx.closePath();
+          ctx.fillStyle = `rgba(255, ${200 + Math.floor(r() * 40)}, 70, ${0.28 + 0.25 * power})`;
+          ctx.fill();
+        }
+        const g = ctx.createRadialGradient(cx, cy, 60, cx, cy, 460);
+        g.addColorStop(0, `rgba(255,240,170,${0.45 * power})`);
+        g.addColorStop(1, "rgba(255,200,60,0)");
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, 1920, 1080);
+
+        // SSJ2 bio-electric arcs.
+        const arcs = 3 + Math.floor(power * 4);
+        ctx.lineCap = "round";
+        for (let k = 0; k < arcs; k++) {
+          let x = cx + (r() - 0.5) * 420;
+          let y = cy + (r() - 0.5) * 560;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          for (let s = 0; s < 7; s++) {
+            x += (r() - 0.5) * 90;
+            y += (r() - 0.5) * 90;
+            ctx.lineTo(x, y);
+          }
+          ctx.strokeStyle = "rgba(150,220,255,0.55)";
+          ctx.lineWidth = 12;
+          ctx.stroke();
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 3.5;
+          ctx.stroke();
+        }
+        ctx.restore();
+
+        // Rocks lifting off the ground.
+        const rocks = rng(77);
+        for (let i = 0; i < 18; i++) {
+          const rx = 120 + rocks() * 900;
+          const size = 8 + rocks() * 22;
+          const speed = 80 + rocks() * 160;
+          const ry = 960 - ((t * speed + rocks() * 200) % 700) * power;
+          ctx.fillStyle = "#5b3d22";
+          ctx.fillRect(rx, ry, size, size * 0.8);
+        }
+      }
+
+      const state = { t: 0, power: 0 };
+      const tl = gsap.timeline({ paused: true });
+      tl.to(state, {
+        t: 4,
+        duration: 4,
+        ease: "none",
+        onUpdate: () => draw(state.t, state.power),
+      }, 0);
+      // Aura builds, then erupts at 3.2 s.
+      tl.fromTo(state, { power: 0.25 }, { power: 0.6, duration: 1.6, ease: "power2.inOut" }, 0);
+      tl.to(state, { power: 1, duration: 0.4, ease: "power4.out" }, 3.2);
+      // Wide shot, then a hard punch-in on Gohan at 1.6 s.
+      tl.fromTo("#so-cam", { scale: 1, x: 0, y: 0 }, { scale: 1, x: 0, y: 0, duration: 0.01 }, 0);
+      tl.set("#so-cam", { scale: 1.55, x: 260, y: 40 }, 1.6);
+      tl.fromTo(
+        "#so-name",
+        { opacity: 0, filter: "blur(10px)", scale: 1.25 },
+        { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.2, ease: "expo.out" },
+        1.75,
+      );
+      tl.to("#so-name", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power3.in" }, 3.1);
+      // Eruption shake, then flash into white for the cut.
+      tl.fromTo(
+        "#so-cam",
+        { rotation: 0 },
+        { rotation: 1.2, duration: 0.05, yoyo: true, repeat: 7, ease: "none" },
+        3.2,
+      );
+      tl.fromTo("#so-white", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power3.in" }, 3.78);
+      window.__timelines["standoff"] = tl;
+    })();
+  </script>
+</template>

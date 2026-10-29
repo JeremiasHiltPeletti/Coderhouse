@@ -1,0 +1,221 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #0a0a14;
+    }
+    #bm-cam {
+      position: absolute;
+      inset: 0;
+    }
+    #bm-sky {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, #3a2a5a 0%, #141228 55%, #07070c 100%);
+    }
+    #bm-fx {
+      position: absolute;
+      inset: 0;
+    }
+    .bm-slot {
+      position: absolute;
+      top: 330px;
+      width: 380px;
+      height: 460px;
+      border: 4px dashed rgba(255, 255, 255, 0.85);
+      border-radius: 18px;
+      background: rgba(10, 12, 20, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px 22px;
+      color: #fff;
+      font-family: "Inter";
+    }
+    .bm-slot b {
+      font-family: "Archivo Black";
+      font-size: 28px;
+      line-height: 1.1;
+    }
+    .bm-slot span {
+      font-size: 26px;
+      margin-top: 8px;
+    }
+    #bm-heroes {
+      left: 110px;
+    }
+    #bm-cell {
+      left: 1430px;
+    }
+    #bm-white {
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      opacity: 0;
+    }
+    #bm-end {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      background: #07070c;
+      opacity: 0;
+    }
+    #bm-end-title {
+      font-family: "Archivo Black";
+      font-size: 120px;
+      color: #ffd84a;
+      letter-spacing: 0.01em;
+      text-shadow: 0 0 40px rgba(255, 200, 60, 0.6);
+    }
+    #bm-end-kicker {
+      font-family: "Inter";
+      font-size: 36px;
+      color: #fff;
+    }
+  </style>
+  <div
+    id="root"
+    data-composition-id="beam"
+    data-composition-variables='[{"id":"endTitle","type":"string","label":"Título final","default":"LA SAGA DE CELL"},{"id":"endKicker","type":"string","label":"Bajada final","default":"Prueba de concepto · 12 s"}]' data-width="1920" data-height="1080">
+    <div id="bm-cam">
+      <div id="bm-sky"></div>
+      <div id="bm-heroes" class="bm-slot" data-layout-ignore>
+        <b>CLIP C1 · KAMEHAMEHA PADRE E HIJO</b>
+        <span>Plano generado: Goku y Gohan SSJ2 disparan juntos</span>
+      </div>
+      <div id="bm-cell" class="bm-slot" data-layout-ignore>
+        <b>CLIP C2 · CELL RESPONDE</b>
+        <span>Plano generado: Cell dispara su propio Kamehameha</span>
+      </div>
+      <canvas id="bm-fx" width="1920" height="1080"></canvas>
+    </div>
+    <div id="bm-white"></div>
+    <div id="bm-end">
+      <h1 id="bm-end-title" data-var-text="endTitle">LA SAGA DE CELL</h1>
+      <p id="bm-end-kicker" data-var-text="endKicker">Prueba de concepto · 12 s</p>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const FPS = 30;
+      const rng = (seed) => () => {
+        seed = (seed + 0x6d2b79f5) | 0;
+        let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+      const ctx = document.querySelector("#bm-fx").getContext("2d");
+      const Y = 560;
+      const LEFT = 470;
+      const RIGHT = 1450;
+
+      function beam(x0, x1, thick, color, glow, wobbleSeed) {
+        const r = rng(wobbleSeed);
+        const dir = Math.sign(x1 - x0);
+        ctx.save();
+        ctx.globalCompositeOperation = "lighter";
+        for (const [w, c] of [[thick * 2.2, glow], [thick, color], [thick * 0.42, "#ffffff"]]) {
+          ctx.beginPath();
+          const steps = 18;
+          for (let i = 0; i <= steps; i++) {
+            const x = x0 + ((x1 - x0) * i) / steps;
+            const half = (w / 2) * (0.85 + r() * 0.3);
+            const y = Y - half;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          for (let i = steps; i >= 0; i--) {
+            const x = x0 + ((x1 - x0) * i) / steps;
+            const half = (w / 2) * (0.85 + r() * 0.3);
+            ctx.lineTo(x, Y + half);
+          }
+          ctx.closePath();
+          ctx.fillStyle = c;
+          ctx.fill();
+        }
+        // Muzzle bloom.
+        const g = ctx.createRadialGradient(x0, Y, 10, x0, Y, thick * 1.8);
+        g.addColorStop(0, "rgba(255,255,255,0.95)");
+        g.addColorStop(1, "rgba(255,255,255,0)");
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(x0 - dir * 10, Y, thick * 1.8, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // s.reachL/reachR: how far each beam has travelled (0..1); state.meet: collision x.
+      function draw(t, s) {
+        ctx.clearRect(0, 0, 1920, 1080);
+        const frame = Math.floor((t * FPS) / 2);
+        const meet = s.meet;
+        const lx = LEFT + (meet - LEFT) * s.reachL;
+        const rx = RIGHT - (RIGHT - meet) * s.reachR;
+        if (s.reachL > 0) beam(LEFT, lx, 150 * s.power, "rgba(90,190,255,0.95)", "rgba(40,120,255,0.35)", 10 + frame);
+        if (s.reachR > 0) beam(RIGHT, rx, 140, "rgba(150,110,255,0.9)", "rgba(110,60,220,0.35)", 20 + frame);
+        // Collision ball and sparks once both beams touch.
+        if (s.reachL >= 1 && s.reachR >= 1) {
+          const r = rng(30 + frame);
+          const size = 150 + 40 * Math.sin(frame * 1.7) + s.ball * 120;
+          ctx.save();
+          ctx.globalCompositeOperation = "lighter";
+          const g = ctx.createRadialGradient(meet, Y, 10, meet, Y, size * 1.6);
+          g.addColorStop(0, "rgba(255,255,255,1)");
+          g.addColorStop(0.35, "rgba(170,210,255,0.9)");
+          g.addColorStop(1, "rgba(120,80,255,0)");
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(meet, Y, size * 1.6, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 4;
+          for (let i = 0; i < 16; i++) {
+            const a = r() * Math.PI * 2;
+            const d0 = size * 0.8;
+            const d1 = size * (1.4 + r() * 1.4);
+            ctx.beginPath();
+            ctx.moveTo(meet + Math.cos(a) * d0, Y + Math.sin(a) * d0);
+            ctx.lineTo(meet + Math.cos(a) * d1, Y + Math.sin(a) * d1);
+            ctx.stroke();
+          }
+          ctx.restore();
+        }
+      }
+
+      const s = { t: 0, reachL: 0, reachR: 0, meet: 960, ball: 0, power: 1 };
+      const tl = gsap.timeline({ paused: true });
+      tl.to(s, { t: 4, duration: 4, ease: "none", onUpdate: () => draw(s.t, s) }, 0);
+      tl.fromTo(s, { reachL: 0 }, { reachL: 1, duration: 0.3, ease: "power3.in" }, 0.1);
+      tl.fromTo(s, { reachR: 0 }, { reachR: 1, duration: 0.3, ease: "power3.in" }, 0.15);
+      // Struggle: Cell pushes first, then father and son overpower him.
+      tl.fromTo(s, { meet: 960 }, { meet: 820, duration: 0.65, ease: "power2.inOut" }, 0.45);
+      tl.fromTo(s, { ball: 0 }, { ball: 1, duration: 1.2, ease: "power2.in" }, 0.45);
+      tl.to(s, { power: 1.5, duration: 0.2, ease: "expo.out" }, 1.2);
+      tl.to(s, { meet: 1500, duration: 0.55, ease: "power4.in" }, 1.3);
+      tl.fromTo(
+        "#bm-cam",
+        { x: 0 },
+        { keyframes: [{ x: 18 }, { x: -18 }, { x: 12 }, { x: -12 }, { x: 0 }], duration: 0.5, ease: "none" },
+        1.2,
+      );
+      // White-out, then the end card.
+      tl.fromTo("#bm-white", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power3.in" }, 1.72);
+      tl.set("#bm-end", { opacity: 1 }, 1.92);
+      tl.to("#bm-white", { opacity: 0, duration: 0.3, ease: "power2.out" }, 1.92);
+      tl.fromTo(
+        "#bm-end-title",
+        { opacity: 0, filter: "blur(10px)", scale: 1.15 },
+        { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.25, ease: "expo.out" },
+        1.95,
+      );
+      tl.fromTo("#bm-end-kicker", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 1.95);
+      window.__timelines["beam"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,203 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #f4e6c2;
+    }
+    #cl-cam {
+      position: absolute;
+      inset: 0;
+    }
+    #cl-lines {
+      position: absolute;
+      inset: 0;
+    }
+    .cl-slot {
+      position: absolute;
+      border: 4px dashed rgba(20, 20, 30, 0.85);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.55);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 22px 24px;
+      color: #12121c;
+      font-family: "Inter";
+      opacity: 0;
+    }
+    .cl-slot b {
+      font-family: "Archivo Black";
+      font-size: 32px;
+      line-height: 1.1;
+    }
+    .cl-slot span {
+      font-size: 26px;
+      margin-top: 8px;
+    }
+    #cl-b1 {
+      left: 360px;
+      top: 220px;
+      width: 1200px;
+      height: 640px;
+    }
+    #cl-b2 {
+      left: 300px;
+      top: 200px;
+      width: 1320px;
+      height: 680px;
+    }
+    #cl-b3 {
+      left: 420px;
+      top: 240px;
+      width: 1080px;
+      height: 600px;
+    }
+    #cl-impact {
+      position: absolute;
+      inset: 0;
+    }
+    #cl-invert {
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      mix-blend-mode: difference;
+      opacity: 0;
+    }
+    #cl-in {
+      position: absolute;
+      inset: 0;
+      background: #fff;
+    }
+  </style>
+  <div id="root" data-composition-id="clash" data-width="1920" data-height="1080">
+    <div id="cl-cam">
+      <canvas id="cl-lines" width="1920" height="1080"></canvas>
+      <div id="cl-b1" class="cl-slot" data-layout-ignore>
+        <b>CLIP B1 · GOKU SE SUMA</b>
+        <span>Plano generado: Goku y Gohan SSJ2 cargan juntos contra Cell</span>
+      </div>
+      <div id="cl-b2" class="cl-slot" data-layout-ignore>
+        <b>CLIP B2 · INTERCAMBIO DE GOLPES</b>
+        <span>Plano generado: tres impactos, Cell bloquea dos y recibe el tercero</span>
+      </div>
+      <div id="cl-b3" class="cl-slot" data-layout-ignore>
+        <b>CLIP B3 · CELL SALE DESPEDIDO</b>
+        <span>Plano generado: patada de Gohan, Cell atraviesa una roca</span>
+      </div>
+      <canvas id="cl-impact" width="1920" height="1080"></canvas>
+    </div>
+    <div id="cl-invert"></div>
+    <div id="cl-in"></div>
+  </div>
+  <script>
+    (() => {
+      const FPS = 30;
+      const rng = (seed) => () => {
+        seed = (seed + 0x6d2b79f5) | 0;
+        let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+      const lines = document.querySelector("#cl-lines").getContext("2d");
+      const fx = document.querySelector("#cl-impact").getContext("2d");
+      // Impact times (scene seconds) and their centres.
+      const HITS = [
+        { t: 1.2, x: 960, y: 520 },
+        { t: 1.75, x: 860, y: 470 },
+        { t: 2.2, x: 1060, y: 560 },
+        { t: 2.95, x: 1180, y: 520 },
+      ];
+
+      function drawLines(t) {
+        const frame = Math.floor((t * FPS) / 2);
+        const r = rng(500 + frame);
+        lines.fillStyle = "#f4e6c2";
+        lines.fillRect(0, 0, 1920, 1080);
+        // Radial speed lines while charging, horizontal lines after Cell is launched.
+        const horizontal = t >= 2.95;
+        lines.fillStyle = "#1b1b26";
+        for (let i = 0; i < 90; i++) {
+          if (horizontal) {
+            const y = r() * 1080;
+            const len = 300 + r() * 900;
+            const x = r() * 1920 - len / 2;
+            const h = 2 + r() * 7;
+            lines.fillRect(x, y, len, h);
+          } else {
+            const a = r() * Math.PI * 2;
+            const inner = 380 + r() * 220;
+            const w = 0.004 + r() * 0.012;
+            lines.beginPath();
+            lines.moveTo(960 + Math.cos(a) * inner, 540 + Math.sin(a) * inner);
+            lines.lineTo(960 + Math.cos(a - w) * 1500, 540 + Math.sin(a - w) * 1500);
+            lines.lineTo(960 + Math.cos(a + w) * 1500, 540 + Math.sin(a + w) * 1500);
+            lines.closePath();
+            lines.fill();
+          }
+        }
+      }
+
+      function drawImpacts(t) {
+        fx.clearRect(0, 0, 1920, 1080);
+        for (const h of HITS) {
+          const age = t - h.t;
+          if (age < 0 || age > 0.45) continue;
+          const k = age / 0.45;
+          const r = rng(900 + Math.round(h.t * 100));
+          // Shockwave ring.
+          fx.lineWidth = 26 * (1 - k);
+          fx.strokeStyle = `rgba(255,255,255,${1 - k})`;
+          fx.beginPath();
+          fx.ellipse(h.x, h.y, 80 + k * 520, 50 + k * 300, 0, 0, Math.PI * 2);
+          fx.stroke();
+          // Star burst spikes.
+          fx.fillStyle = `rgba(255,236,120,${1 - k})`;
+          for (let i = 0; i < 14; i++) {
+            const a = (i / 14) * Math.PI * 2 + r() * 0.3;
+            const len = (160 + r() * 240) * (0.4 + k);
+            fx.beginPath();
+            fx.moveTo(h.x + Math.cos(a + 0.08) * 40, h.y + Math.sin(a + 0.08) * 40);
+            fx.lineTo(h.x + Math.cos(a) * len, h.y + Math.sin(a) * len);
+            fx.lineTo(h.x + Math.cos(a - 0.08) * 40, h.y + Math.sin(a - 0.08) * 40);
+            fx.closePath();
+            fx.fill();
+          }
+        }
+      }
+
+      const state = { t: 0 };
+      const tl = gsap.timeline({ paused: true });
+      tl.to(state, {
+        t: 4,
+        duration: 4,
+        ease: "none",
+        onUpdate: () => {
+          drawLines(state.t);
+          drawImpacts(state.t);
+        },
+      }, 0);
+      // Arrive from the white flash of the previous scene.
+      tl.fromTo("#cl-in", { opacity: 1 }, { opacity: 0, duration: 0.25, ease: "power2.out" }, 0);
+      // Shot changes: hard cuts on each impact.
+      tl.fromTo("#cl-b1", { opacity: 1, scale: 0.92 }, { opacity: 1, scale: 1.04, duration: 1.2, ease: "power2.in" }, 0);
+      tl.set("#cl-b1", { opacity: 0 }, 1.2);
+      tl.set("#cl-b2", { opacity: 1 }, 1.2);
+      tl.set("#cl-b2", { opacity: 0 }, 2.95);
+      tl.fromTo("#cl-b3", { opacity: 0, x: -160 }, { opacity: 1, x: 120, duration: 1.05, ease: "power3.out" }, 2.95);
+      // Two-frame inverted impact frame plus a camera kick on every hit.
+      for (const h of HITS) {
+        tl.set("#cl-invert", { opacity: 1 }, h.t);
+        tl.set("#cl-invert", { opacity: 0 }, h.t + 0.066);
+        tl.fromTo(
+          "#cl-cam",
+          { x: 0, y: 0 },
+          { keyframes: [{ x: 26, y: -18 }, { x: -20, y: 14 }, { x: 10, y: -6 }, { x: 0, y: 0 }], duration: 0.24, ease: "none" },
+          h.t,
+        );
+      }
+      window.__timelines["clash"] = tl;
+    })();
+  </script>
+</template>
