@@ -582,7 +582,9 @@ route(
   (req, res, _p, url) => {
     const given = Buffer.from(url.searchParams.get("token") || "");
     const expected = Buffer.from(CRON_TOKEN);
-    if (CRON_TOKEN.length < 16 || given.length !== expected.length || !crypto.timingSafeEqual(given, expected)) throw new HttpError(403, "Token inválido");
+    // Mensaje distinto si el panel no tiene un CRON_TOKEN válido (sin revelar cuál es).
+    if (CRON_TOKEN.length < 16) throw new HttpError(503, "El panel no tiene un CRON_TOKEN válido: definilo en las variables de entorno con 16 caracteres o más y redesplegá.");
+    if (given.length !== expected.length || !crypto.timingSafeEqual(given, expected)) throw new HttpError(403, "Token inválido");
     return { ok: true, started: schedulerTick(), running: listJobs().filter((j) => j.status === "running").length, at: new Date().toISOString() };
   },
   { auth: false }
