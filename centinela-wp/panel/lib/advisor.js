@@ -145,12 +145,28 @@ export function apiKeyDiagnosis() {
   return changed ? "ANTHROPIC_API_KEY tenía espacios o comillas de más: se limpiaron automáticamente." : null;
 }
 
+// La SDK envía la clave como "Authorization: Bearer". Algunas claves solo se aceptan en el
+// encabezado clásico "x-api-key": si Anthropic responde 401, se reintenta una vez así.
+let headerMode = "bearer";
+export function xApiKeyFetch(url, init = {}) {
+  const headers = new Headers(init.headers);
+  const auth = headers.get("authorization");
+  if (auth?.startsWith("Bearer ")) {
+    headers.delete("authorization");
+    headers.set("x-api-key", auth.slice(7));
+  }
+  return fetch(url, { ...init, headers });
+}
+
 async function client() {
   if (authFailed) return null;
   const apiKey = cleanApiKey(process.env.ANTHROPIC_API_KEY);
   if (!apiKey && !process.env.ANTHROPIC_AUTH_TOKEN) return null;
   clientPromise ||= import("@anthropic-ai/sdk")
-    .then(({ default: Anthropic }) => (apiKey ? new Anthropic({ apiKey }) : new Anthropic()))
+    .then(({ default: Anthropic }) => {
+      if (!apiKey) return new Anthropic();
+      return headerMode === "x-api-key" ? new Anthropic({ apiKey, fetch: xApiKeyFetch }) : new Anthropic({ apiKey });
+    })
     .catch(() => null);
   return clientPromise;
 }
@@ -310,8 +326,9 @@ export async function advise(item, evidence, inventory, settings, log) {
     engine: "reglas",
   };
 
-  const anthropic = await client();
-  if (anthropic) {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const anthropic = await client();
+    if (!anthropic) break;
     try {
       log?.(`Investigando ${item.name} ${item.next} en foros y avisos de seguridad…`);
       const research = await researchWithClaude(anthropic, item, inventory, evidence, log);
@@ -335,13 +352,21 @@ export async function advise(item, evidence, inventory, settings, log) {
           engine: "claude",
         });
       }
+      break;
     } catch (err) {
+      if (err?.status === 401 && headerMode === "bearer" && cleanApiKey(process.env.ANTHROPIC_API_KEY)) {
+        headerMode = "x-api-key";
+        clientPromise = null;
+        log?.("Claude rechazó la clave en el formato nuevo; se reintenta con el encabezado clásico x-api-key…");
+        continue;
+      }
       if (err?.status === 401) {
         authFailed = true;
         log?.("Claude rechazó la clave (ANTHROPIC_API_KEY inválida o revocada). Se usan las reglas para el resto; corregí la clave y redesplegá.");
       } else {
         log?.(`Análisis con Claude no disponible para ${item.slug}: ${err.message}. Se usan las reglas.`);
       }
+      break;
     }
   }
 
