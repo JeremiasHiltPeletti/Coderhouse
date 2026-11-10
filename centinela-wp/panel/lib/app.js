@@ -33,6 +33,7 @@ const { WpClient, WpError, discover, normalizeUrl } = await import("./wp.js");
 const { startJob, listJobs, getJob, bus, runningJobFor } = await import("./jobs.js");
 const { checkSite, applyUpdates, fullBackup, manualRestore, recoverInflight, settingsOf, pendingItems, BACKUP_DIR } = await import("./pipeline.js");
 const { sourcesConfigured } = await import("./research.js");
+const { apiKeyDiagnosis } = await import("./advisor.js");
 const { zipFolder } = await import("./zip.js");
 
 const PORT = Number(process.env.PORT || 4747);
@@ -600,5 +601,7 @@ server.listen(PORT, HOST, () => {
   if (HOSTED && CRON_TOKEN.length < 16) console.log("Aviso: definí CRON_TOKEN (16+ caracteres) y una tarea cron que llame a /api/cron cada 5 minutos.");
   if (!HOSTED && !store.data.auth.passwordHash) console.log("Primera vez: abrí el panel y creá la contraseña de acceso.");
   const src = sourcesConfigured();
+  const keyIssue = apiKeyDiagnosis();
+  if (keyIssue) console.log(`Aviso: ${keyIssue}`);
   if (!src.claude) console.log("Aviso: sin ANTHROPIC_API_KEY el análisis usa solo reglas y datos de WordPress.org.");
 });

@@ -126,9 +126,31 @@ export function heuristic(item, evidence, inventory, settings) {
 
 // ---------- Capa Claude ----------
 let clientPromise = null;
+let authFailed = false; // si la clave es rechazada, no se insiste en cada actualización
+
+/** Clave sin espacios, saltos de línea ni comillas pegadas por error al copiarla. */
+export function cleanApiKey(raw) {
+  return String(raw || "").replace(/\s+/g, "").replace(/^["']+|["']+$/g, "");
+}
+
+/** Revisa el formato de la clave sin revelarla (para el registro de arranque). */
+export function apiKeyDiagnosis() {
+  const key = cleanApiKey(process.env.ANTHROPIC_API_KEY);
+  if (!key) return null;
+  const changed = key !== process.env.ANTHROPIC_API_KEY;
+  if (key.startsWith("sk-ant-admin")) return "ANTHROPIC_API_KEY es una clave de administración (sk-ant-admin…): no sirve para el análisis. Creá una clave normal en console.anthropic.com → API Keys.";
+  if (!key.startsWith("sk-ant-api")) return `ANTHROPIC_API_KEY no tiene el formato esperado (debería empezar con "sk-ant-api"; empieza con "${key.slice(0, 6)}…").`;
+  if (key.length < 90) return `ANTHROPIC_API_KEY parece incompleta (${key.length} caracteres): copiala de nuevo completa.`;
+  return changed ? "ANTHROPIC_API_KEY tenía espacios o comillas de más: se limpiaron automáticamente." : null;
+}
+
 async function client() {
-  if (!process.env.ANTHROPIC_API_KEY && !process.env.ANTHROPIC_AUTH_TOKEN) return null;
-  clientPromise ||= import("@anthropic-ai/sdk").then(({ default: Anthropic }) => new Anthropic()).catch(() => null);
+  if (authFailed) return null;
+  const apiKey = cleanApiKey(process.env.ANTHROPIC_API_KEY);
+  if (!apiKey && !process.env.ANTHROPIC_AUTH_TOKEN) return null;
+  clientPromise ||= import("@anthropic-ai/sdk")
+    .then(({ default: Anthropic }) => (apiKey ? new Anthropic({ apiKey }) : new Anthropic()))
+    .catch(() => null);
   return clientPromise;
 }
 
@@ -313,7 +335,12 @@ export async function advise(item, evidence, inventory, settings, log) {
         });
       }
     } catch (err) {
-      log?.(`Análisis con Claude no disponible para ${item.slug}: ${err.message}. Se usan las reglas.`);
+      if (err?.status === 401) {
+        authFailed = true;
+        log?.("Claude rechazó la clave (ANTHROPIC_API_KEY inválida o revocada). Se usan las reglas para el resto; corregí la clave y redesplegá.");
+      } else {
+        log?.(`Análisis con Claude no disponible para ${item.slug}: ${err.message}. Se usan las reglas.`);
+      }
     }
   }
 
