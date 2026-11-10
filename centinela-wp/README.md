@@ -42,7 +42,7 @@ Variables de `.env`:
 | Variable | Para qué |
 |---|---|
 | `PANEL_PASSWORD` | Contraseña de acceso (si la dejás vacía, el panel te pide crearla la primera vez). |
-| `ANTHROPIC_API_KEY` | Activa la investigación y explicación con Claude (`CLAUDE_MODEL`, por defecto `claude-opus-5-5`). |
+| `ANTHROPIC_API_KEY` | Activa la investigación y explicación con Claude. La investigación web usa `CLAUDE_RESEARCH_MODEL` (por defecto `claude-sonnet-5-5`, hasta 3 búsquedas por actualización) y la decisión final `CLAUDE_MODEL` (por defecto `claude-opus-5-5`). Lo investigado sobre cada plugin y versión se reutiliza durante `CLAUDE_CACHE_HOURS` (72 h) en todos tus sitios, y la decisión no se repite si el sitio no cambió. |
 | `WPSCAN_API_TOKEN` | Vulnerabilidades por versión (token gratuito en wpscan.com). |
 | `WORDFENCE_API_KEY` | Feed de Wordfence Intelligence. |
 | `PANEL_PUBLIC_URL` | Si publicás el panel con HTTPS, la autorización en WordPress vuelve sola al panel. |

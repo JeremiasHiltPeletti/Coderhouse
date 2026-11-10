@@ -33,7 +33,7 @@ Antes de desplegar (o después, en **Variables de entorno** de la app), cargá e
 | `PANEL_PUBLIC_URL` | `https://panel.tudominio.com` |
 | `CRON_TOKEN` | Una de tus claves largas |
 | `CENTINELA_SECRET` | La otra clave larga (cifra las contraseñas de tus sitios) |
-| `ANTHROPIC_API_KEY` | Opcional: activa el análisis con Claude |
+| `ANTHROPIC_API_KEY` | Opcional: activa el análisis con Claude (clave `sk-ant-api…` o `sk-ant-usr…` de console.anthropic.com) |
 | `WPSCAN_API_TOKEN` | Opcional: vulnerabilidades por versión |
 
 **No definas `PORT` ni `HOST`**: el hosting los maneja.
