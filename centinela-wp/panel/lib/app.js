@@ -7,7 +7,8 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 
-console.log(`Iniciando Centinela WP · Node ${process.version} · PORT=${process.env.PORT || "(no definido)"}`);
+const PANEL_VERSION = JSON.parse(fs.readFileSync(new URL("../package.json", import.meta.url), "utf8")).version;
+console.log(`Iniciando Centinela WP v${PANEL_VERSION} · Node ${process.version} · PORT=${process.env.PORT || "(no definido)"}`);
 const [major, minor] = process.versions.node.split(".").map(Number);
 if (major < 22 || (major === 22 && minor < 2)) {
   console.error("ERROR: Centinela WP necesita Node.js 22.2 o superior. Cambiá la versión de Node.js en la configuración de la app (22 o 24).");
@@ -266,7 +267,7 @@ const route = (method, pattern, handler, { auth = true } = {}) => {
   routes.push({ method, re, keys, handler, auth });
 };
 
-route("GET", "/api/session", (req) => ({ authenticated: Boolean(sessionOf(req)), needsSetup: !store.data.auth.passwordHash, setupAllowed: isLoopback(req) }), { auth: false });
+route("GET", "/api/session", (req) => ({ authenticated: Boolean(sessionOf(req)), needsSetup: !store.data.auth.passwordHash, setupAllowed: isLoopback(req), version: PANEL_VERSION }), { auth: false });
 
 route(
   "POST",

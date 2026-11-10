@@ -273,6 +273,7 @@ function shell() {
         <div class="sidebar-foot">
           <button class="btn btn-ghost" id="theme-btn" style="justify-content:flex-start">${icon("sun")}Cambiar tema</button>
           <button class="btn btn-ghost" id="logout-btn" style="justify-content:flex-start">${icon("logout")}Cerrar sesión</button>
+          <p class="small muted" id="panel-version" style="padding:4px 12px 0"></p>
         </div>
       </aside>
       <main class="main" id="main" tabindex="-1"></main>
@@ -318,6 +319,7 @@ async function route(soft = false) {
   if (!session.authenticated) return renderLogin(session.needsSetup);
 
   shell();
+  if (session.version) $("#panel-version").textContent = `Versión ${session.version}`;
   const main = $("#main");
   const changed = lastRoute !== hash;
   lastRoute = hash;
