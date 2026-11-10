@@ -139,8 +139,9 @@ export function apiKeyDiagnosis() {
   if (!key) return null;
   const changed = key !== process.env.ANTHROPIC_API_KEY;
   if (key.startsWith("sk-ant-admin")) return "ANTHROPIC_API_KEY es una clave de administración (sk-ant-admin…): no sirve para el análisis. Creá una clave normal en console.anthropic.com → API Keys.";
-  if (!key.startsWith("sk-ant-api")) return `ANTHROPIC_API_KEY no tiene el formato esperado (debería empezar con "sk-ant-api"; empieza con "${key.slice(0, 6)}…").`;
-  if (key.length < 90) return `ANTHROPIC_API_KEY parece incompleta (${key.length} caracteres): copiala de nuevo completa.`;
+  // La Consola crea claves "sk-ant-api…" y, en cuentas más nuevas, claves personales "sk-ant-usr…".
+  if (!/^sk-ant-(api|usr)/.test(key)) return `ANTHROPIC_API_KEY no tiene el formato esperado (debería empezar con "sk-ant-api" o "sk-ant-usr"; empieza con "${key.slice(0, 6)}…").`;
+  if (key.length < 40) return `ANTHROPIC_API_KEY parece incompleta (${key.length} caracteres): copiala de nuevo completa.`;
   return changed ? "ANTHROPIC_API_KEY tenía espacios o comillas de más: se limpiaron automáticamente." : null;
 }
 
