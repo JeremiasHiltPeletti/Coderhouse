@@ -29,7 +29,7 @@ if (fs.existsSync(envFile)) {
   }
 }
 
-const { store, save, saveNow, encrypt, newId, DEFAULT_SITE_SETTINGS, HOSTED, DATA_DIR } = await import("./store.js");
+const { store, save, saveNow, encrypt, newId, DEFAULT_SITE_SETTINGS, HOSTED, DATA_DIR, hashPassword, verifyPassword, needsRehash } = await import("./store.js");
 const { WpClient, WpError, discover, normalizeUrl } = await import("./wp.js");
 const { startJob, listJobs, getJob, bus, runningJobFor } = await import("./jobs.js");
 const { checkSite, applyUpdates, fullBackup, manualRestore, recoverInflight, settingsOf, pendingItems, BACKUP_DIR } = await import("./pipeline.js");
@@ -74,15 +74,13 @@ const sessions = {
 };
 const loginAttempts = new Map();
 
-function hashPassword(password, salt = crypto.randomBytes(16).toString("hex")) {
-  return `${salt}:${crypto.scryptSync(password, salt, 64).toString("hex")}`;
-}
-function checkPassword(password, stored) {
-  const [salt, hash] = String(stored).split(":");
-  const test = crypto.scryptSync(password, salt, 64);
-  return crypto.timingSafeEqual(test, Buffer.from(hash, "hex"));
-}
+const checkPassword = verifyPassword;
 // PANEL_PASSWORD manda: si cambia en la configuración, se actualiza al arrancar.
+// Si es la misma pero guardada con parámetros viejos, se vuelve a guardar sin cerrar sesiones.
+if (process.env.PANEL_PASSWORD && store.data.auth.passwordHash && needsRehash(store.data.auth.passwordHash) && checkPassword(process.env.PANEL_PASSWORD, store.data.auth.passwordHash)) {
+  store.data.auth.passwordHash = hashPassword(process.env.PANEL_PASSWORD);
+  save();
+}
 if (process.env.PANEL_PASSWORD && !(store.data.auth.passwordHash && checkPassword(process.env.PANEL_PASSWORD, store.data.auth.passwordHash))) {
   store.data.auth.passwordHash = hashPassword(process.env.PANEL_PASSWORD);
   store.data.auth.sessions = {};
@@ -300,6 +298,10 @@ route(
       throw new HttpError(401, "Contraseña incorrecta.");
     }
     loginAttempts.delete(ip);
+    if (needsRehash(store.data.auth.passwordHash)) {
+      store.data.auth.passwordHash = hashPassword(password);
+      save();
+    }
     createSession(res);
     return { ok: true };
   },

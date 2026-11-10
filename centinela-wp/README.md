@@ -104,7 +104,8 @@ Cada copia tiene un `manifest.json` que describe qué contiene.
   define( 'CENTINELA_BACKUP_DIR', '/home/usuario/centinela-backups' );
   ```
 - El **acceso de rescate** (`rescue.php`) solo acepta peticiones POST firmadas con HMAC-SHA256, con marca de tiempo (5 min) y protección contra repetición; solo ofrece acciones de recuperación. La clave se regenera desde el panel o desde *Herramientas → Centinela WP*. Algunos hostings bloquean la ejecución directa de PHP en `wp-content/plugins`: el panel lo detecta y lo indica como «Rescate no disponible» (las restauraciones por la API siguen funcionando mientras WordPress arranque).
-- El panel guarda las credenciales cifradas, usa sesión `HttpOnly`, protección CSRF por encabezado y limita los intentos de acceso.
+- La contraseña del panel se guarda con **scrypt** (N=2^17, r=8, p=1, el mínimo que recomienda OWASP) y sal aleatoria; las guardadas con parámetros anteriores se actualizan solas al iniciar sesión.
+- Las contraseñas de aplicación y claves de rescate de los sitios se guardan cifradas con AES-256-GCM, con una clave derivada de `CENTINELA_SECRET` mediante scrypt. Las sesiones se guardan como hash SHA-256 de un token aleatorio. Hay protección CSRF por encabezado y límite de intentos de acceso.
 - El contenido de foros y webs se trata como dato: se escapa en la interfaz y se le indica a Claude que no lo siga como instrucciones.
 
 ## 5. Limitaciones conocidas
