@@ -1,80 +1,123 @@
 ---
 name: revision-codigo
-description: Revisión de calidad de código agnóstica de lenguaje y tecnología. Detecta redundancia y duplicación, evalúa si el enfoque elegido es el más adecuado para el requerimiento, verifica buenas prácticas y estándares actuales del ecosistema, y propone (o aplica) versiones mejores y más simples. Usar cuando el usuario pida "revisar código", "code review", "mejorar este código", "refactorizar", "¿se puede hacer mejor?", "eliminar redundancia", "buenas prácticas", o cuando quiera validar lo que escribió antes de commitear. Sirve para cualquier lenguaje (JS/TS, Python, Java, C#, Go, PHP, Rust, SQL, HTML/CSS, shell, IaC, etc.).
-argument-hint: "[archivo | carpeta | diff | rama] [--fix] [--estricto]"
+description: Revisión completa de código para cualquier lenguaje y tecnología. En una sola llamada revisa todo el código del proyecto y reporta qué está mal y qué se puede mejorar, con sugerencias mayores y menores: errores, redundancia, mejor enfoque para lo requerido, seguridad, rendimiento, buenas prácticas y estándares actuales, legibilidad. Usar cuando el usuario pida "revisar código", "code review", "¿qué está mal?", "¿qué se puede mejorar?", "¿se puede hacer mejor?", "buenas prácticas" o "eliminar redundancia".
 ---
 
 # Revisión de código
 
-Objetivo: responder con evidencia a una sola pregunta — **¿lo que se escribió es la mejor forma razonable de resolver lo que se necesita, en este proyecto y con estándares actuales?** Si no lo es, mostrar exactamente cómo hacerlo mejor.
+Objetivo: revisar **todo** el código y responder en un solo reporte **qué está mal y qué se puede mejorar**, incluyendo tanto sugerencias mayores como menores. Cada punto debe tener motivo concreto y alternativa concreta.
 
-No es una revisión de estilo cosmético ni una lista de opiniones. Cada hallazgo debe tener un motivo concreto y una alternativa concreta.
+## 1. Qué revisar
 
-## 1. Determinar el alcance
-
-Según los argumentos:
-
-- **Archivo(s) o carpeta** → revisar esos archivos completos.
-- **Sin argumentos** → revisar los cambios pendientes: `git diff HEAD` (más archivos nuevos sin trackear con `git status --porcelain`). Si no hay cambios, revisar el último commit (`git show HEAD`). Si no hay git, preguntar qué revisar.
-- **Rama o PR** → `git diff <base>...<rama>`.
-- **Código pegado en el chat** → revisar ese fragmento.
-
-Flags:
-- `--fix` → después de reportar, aplicar las mejoras de severidad Alta y Media (ver sección 6).
-- `--estricto` → incluir también hallazgos de severidad Baja y sugerencias opcionales.
+- Si el usuario pegó código en el chat, revisar ese código.
+- Si no, revisar **todo el código fuente del proyecto**: listar los archivos (`git ls-files` o Glob) y leerlos todos.
+- Excluir lo que no es código propio: dependencias (`node_modules`, `vendor`, `venv`), builds (`dist`, `build`, `.next`, `target`), lockfiles, archivos minificados, binarios e imágenes.
+- Si el proyecto es muy grande, priorizar la lógica principal y los cambios recientes (`git log`, `git diff`), y aclarar en el reporte qué quedó fuera.
 
 ## 2. Entender el contexto antes de juzgar
 
-Nunca evaluar el código en el vacío. Antes de opinar:
+1. **Stack real**: lenguaje y versión, framework y runtime, según los manifiestos (`package.json`, `pyproject.toml`, `requirements.txt`, `go.mod`, `Cargo.toml`, `pom.xml`, `*.csproj`, `composer.json`, `Dockerfile`…). No recomendar features que esa versión no soporte.
+2. **Convenciones del proyecto**: linters, formatters, `tsconfig`, `.editorconfig`, `CONTRIBUTING`, `CLAUDE.md`. Mandan sobre las preferencias generales.
+3. **Propósito**: qué tiene que hacer el código (README, nombres, comentarios, tests, commits). "¿Se puede hacer mejor?" se responde respecto de eso.
+4. **Lo que ya existe**: antes de sugerir crear una utilidad, buscar si el proyecto, la librería estándar o el framework ya la tienen.
+5. Ante dudas sobre deprecaciones o estándares recientes, verificar en la documentación oficial antes de afirmar.
 
-1. **Identificar el stack real**: lenguaje y versión, framework, runtime. Buscar manifiestos (`package.json`, `pyproject.toml`, `requirements.txt`, `go.mod`, `Cargo.toml`, `pom.xml`, `build.gradle`, `*.csproj`, `composer.json`, `Gemfile`, `Dockerfile`, etc.). La versión importa: no recomendar features que la versión del proyecto no soporta.
-2. **Leer la configuración de calidad existente**: linters, formatters, `tsconfig`, `.editorconfig`, `ruff`/`eslint`/`prettier`/`golangci`, `CONTRIBUTING`, `CLAUDE.md`. Las convenciones del proyecto mandan sobre las preferencias generales.
-3. **Entender el requerimiento**: qué tiene que hacer el código (commit message, nombre de la rama, issue, comentarios, tests, o preguntar si es ambiguo). La pregunta "¿se puede hacer mejor?" sólo tiene sentido respecto de lo que se necesita.
-4. **Buscar lo que ya existe**: antes de marcar algo como "debería ser una función/utilidad", buscar (Grep/Glob) si el proyecto o sus dependencias ya lo resuelven. Reimplementar algo existente es redundancia.
-5. Si hay dudas sobre el estándar actual de una herramienta o API (deprecaciones, versiones recientes), verificarlo en la documentación oficial antes de afirmarlo.
+## 3. Qué buscar
 
-## 3. Ejes de revisión
+Recorrer el código con todos estos ejes:
 
-Recorrer el código con estos ejes, en este orden de prioridad. El detalle y ejemplos por eje está en `references/checklist.md`; consultarlo cuando haga falta profundizar o ante un lenguaje específico.
+**Errores y corrección**
+- Casos borde: vacíos, `null`/`undefined`/`None`, cero, negativos, fechas y zonas horarias.
+- Errores no manejados o silenciados (`catch {}`, `except: pass`).
+- Asincronía: promesas sin `await`, `forEach` con `async`, condiciones de carrera.
+- Recursos sin liberar: archivos, conexiones, listeners, timers.
+- Lógica: condiciones invertidas, off-by-one, `==` vs `===`, mutación inesperada de datos, selectores o rutas que no existen.
 
-1. **Corrección** — ¿hace lo que debe? Casos borde, null/undefined, errores no manejados, condiciones de carrera, off-by-one, async sin await, recursos sin cerrar. Un código elegante pero incorrecto es el peor resultado.
-2. **Enfoque / diseño** — ¿es la estrategia adecuada para el problema? ¿Hay una forma estructuralmente más simple (otra estructura de datos, una función estándar de la librería, un patrón nativo del framework, una consulta en vez de un loop)? ¿Está sobre-ingenierizado (abstracciones especulativas, capas sin uso) o sub-diseñado (todo en una función gigante)?
-3. **Redundancia** — código duplicado o casi duplicado, lógica repetida que debería extraerse, reimplementación de lo que ya da la librería estándar / el framework / el propio proyecto, código muerto, variables o imports sin uso, condiciones redundantes, cálculos repetidos, comentarios que repiten el código.
-4. **Seguridad** — inyección (SQL, comandos, XSS), secretos hardcodeados, validación de entrada, autenticación/autorización, deserialización insegura, dependencias vulnerables o abandonadas.
-5. **Rendimiento** — sólo cuando importa de verdad: complejidad innecesaria (O(n²) evitable), consultas N+1, trabajo repetido dentro de loops, re-renders evitables, carga de datos de más. No micro-optimizar a costa de legibilidad.
-6. **Buenas prácticas y estándares actuales** — idioms modernos del lenguaje y versión usados, APIs deprecadas, convenciones del ecosistema, tipado, manejo de errores idiomático, accesibilidad y semántica (en frontend), configuración por entorno, principios SOLID/DRY/KISS/YAGNI aplicados con criterio.
-7. **Legibilidad y mantenibilidad** — nombres claros, funciones con una responsabilidad, anidamiento excesivo (usar early return), números mágicos, consistencia con el resto del código.
-8. **Testabilidad** — ¿se puede testear? ¿Faltan tests para la lógica nueva o los casos borde?
+**Enfoque y diseño**
+- ¿Hay una solución nativa más simple (librería estándar, feature del framework, propiedad CSS, constraint de base de datos)?
+- ¿Otra estructura de datos lo simplifica (Set, Map/dict)?
+- ¿Se hace en la capa correcta (filtrar en la DB y no en memoria, validar en el borde)?
+- ¿Sobre-ingeniería (abstracciones sin uso, YAGNI) o sub-diseño (funciones gigantes, responsabilidades mezcladas)?
 
-## 4. Reglas para los hallazgos
+**Redundancia**
+- Código duplicado o casi duplicado que debería extraerse a una función, componente o clase.
+- Reimplementar lo que ya dan el lenguaje, el framework o el proyecto.
+- Dependencias innecesarias (ej. jQuery, moment o lodash cuando lo nativo alcanza).
+- Código muerto: funciones, variables, imports, CSS, archivos sin uso, código comentado.
+- Condiciones redundantes (`if (x) return true; else return false;`, `else` tras `return`).
+- Cálculos repetidos, estado derivado duplicado, comentarios que sólo repiten el código.
 
-- **Evidencia, no opinión**: cada hallazgo cita `archivo:línea` y explica el problema concreto (qué falla, qué cuesta, qué riesgo trae).
-- **Siempre con alternativa**: mostrar el código mejorado (antes → después), no sólo "esto se podría mejorar".
-- **Justificar el "mejor"**: decir por qué la alternativa es superior (más simple, más segura, menos código, estándar del ecosistema, evita un bug). Si es sólo preferencia de estilo, no es un hallazgo.
-- **Respetar el proyecto**: no proponer cambiar de librería/framework/arquitectura salvo que el enfoque actual sea claramente inadecuado para el requerimiento; en ese caso, explicar el costo del cambio.
-- **No inflar la lista**: preferir pocos hallazgos importantes y verificados a muchos triviales. Lo que un formatter/linter arregla solo se menciona una vez como "configurar X", no línea por línea.
-- **Verificar antes de reportar**: releer el código alrededor; confirmar que el "duplicado" no tiene diferencias sutiles, que la "variable sin uso" no se usa en otro archivo, que la API "deprecada" lo está en la versión del proyecto.
-- **Reconocer lo que está bien**: si el código es correcto y adecuado, decirlo. "No encontré mejoras significativas" es una respuesta válida.
+**Seguridad**
+- Inyección: SQL, comandos, XSS (`innerHTML`, `eval`). Rutas armadas con entrada del usuario.
+- Secretos o tokens en el código.
+- Validación de entrada y autorización del lado del servidor.
+- Hash de contraseñas inseguro y `Math.random()` para tokens.
+- Cookies y CORS mal configurados.
+- Dependencias vulnerables o abandonadas.
 
-Severidades:
-- **Alta** — bug, vulnerabilidad, pérdida de datos, o enfoque que no cumple el requerimiento.
-- **Media** — redundancia real, enfoque claramente mejorable, práctica desactualizada/deprecada, problema de rendimiento con impacto, falta de manejo de errores.
-- **Baja** — legibilidad, nombres, pequeñas simplificaciones. (Sólo se reportan con `--estricto` o si son muy pocas.)
+**Rendimiento** (sólo cuando tiene impacto real)
+- Loops anidados evitables y consultas N+1.
+- Trabajo repetido dentro de loops.
+- I/O secuencial que podría ser concurrente.
+- Frontend: imágenes pesadas o sin dimensiones/lazy-loading, scripts bloqueantes, re-renders innecesarios.
+
+**Buenas prácticas y estándares actuales**
+- Idioms modernos de la versión usada y APIs no deprecadas.
+- Tipado donde el ecosistema lo espera.
+- `const` e inmutabilidad por defecto.
+- Configuración por entorno, no hardcodeada.
+- Manejo de errores idiomático.
+- Principios DRY, KISS, YAGNI y responsabilidad única, aplicados con criterio.
+- Ejemplos por tecnología:
+  - **JS/TS**: no `var`, ES modules, `async/await`, `?.` y `??`, `fetch`, `addEventListener` en vez de handlers inline, delegación de eventos, `strict`.
+  - **HTML/CSS**:
+    - HTML semántico (`header`, `nav`, `main`, `button` y no `div` clickeable).
+    - `alt` en imágenes, `label` en formularios, contraste y foco visible.
+    - `lang` y meta viewport.
+    - Layout con Flexbox/Grid, variables CSS y unidades relativas (`rem`, `clamp()`).
+    - Mobile-first, sin `!important` ni estilos inline repetidos.
+  - **Python**: type hints, f-strings, `pathlib`, `dataclasses`, context managers, `logging`.
+  - **Java/C#/Kotlin**: records, nullability/`Optional`, try-with-resources/`using`, inyección de dependencias.
+  - **Go**: errores envueltos con `%w`, `context`, `defer`.
+  - **SQL**: consultas parametrizadas, índices, sin `SELECT *`, transacciones.
+  - **Shell**: `set -euo pipefail`, variables entre comillas.
+  - **Docker/CI**: versiones fijadas, multi-stage, usuario no root, secretos fuera de la imagen.
+
+**Legibilidad y mantenibilidad**
+- Nombres que expresan intención (no `aux`, `data2`, `temp`).
+- Funciones cortas, early return en vez de anidamiento profundo.
+- Sin números ni strings mágicos.
+- Consistencia de estilo, idioma y estructura de carpetas.
+
+**Tests**
+- Si la lógica importante tiene tests, si cubre casos borde y errores, y si es testeable.
+
+## 4. Reglas
+
+- **Evidencia**: cada punto cita `archivo:línea` y explica el problema concreto (qué falla, qué riesgo trae o qué cuesta).
+- **Alternativa siempre**: mostrar el código propuesto (antes → después), no sólo "se podría mejorar".
+- **Justificar el "mejor"**: más simple, más seguro, menos código, estándar actual, evita un bug.
+- **Verificar antes de reportar**: confirmar que el "duplicado" no tiene diferencias sutiles, que lo "sin uso" no se usa en otro archivo, que lo "deprecado" lo está en la versión del proyecto.
+- **Respetar el proyecto**: no proponer cambiar de framework o arquitectura salvo que el enfoque actual sea claramente inadecuado; en ese caso, explicar el costo.
+- **Agrupar lo repetido**: si el mismo problema aparece en muchos lugares, reportarlo una vez listando todas las ubicaciones.
+- **Incluir mayores y menores**: no omitir sugerencias menores, pero sí separarlas de las importantes.
+- **Sólo reportar**: no modificar archivos durante la revisión; al final, ofrecer aplicar los cambios.
 
 ## 5. Formato del reporte
 
-Responder en el idioma del usuario, con esta estructura:
+Responder en el idioma del usuario:
 
 ~~~markdown
 ## Resumen
-<2–4 líneas: qué se revisó, stack detectado, veredicto general (¿es la mejor forma de resolverlo?) y cantidad de hallazgos por severidad.>
+<Qué se revisó (archivos), stack detectado, veredicto general y cantidad de puntos: X críticos, Y mayores, Z menores.>
 
-## Hallazgos
+## 🔴 Críticos — lo que está mal
+<Bugs, vulnerabilidades, cosas que no funcionan o no cumplen lo requerido.>
 
-### [Alta] <título corto>
+### 1. <título corto>
 **Dónde:** `ruta/archivo.ext:42`
 **Problema:** <qué está mal y por qué importa>
-**Mejor enfoque:**
+**Solución:**
 ```<lenguaje>
 // antes
 ...
@@ -83,22 +126,20 @@ Responder en el idioma del usuario, con esta estructura:
 ```
 **Por qué es mejor:** <razón concreta>
 
-### [Media] ...
+## 🟠 Mayores — mejoras importantes
+<Redundancia real, mejor enfoque, prácticas desactualizadas, rendimiento, mantenibilidad. Mismo formato.>
+
+## 🟡 Menores — detalles y pulido
+<Nombres, pequeñas simplificaciones, consistencia, accesibilidad menor. Formato breve: `archivo:línea` — problema → sugerencia (con código si ayuda).>
 
 ## Enfoque general
-<Sólo si aplica: si toda la solución podría plantearse de otra manera más simple/robusta, describirla brevemente con un esquema de código.>
+<Sólo si toda la solución podría plantearse de otra forma más simple o robusta: describirla con un esquema de código.>
 
 ## Lo que está bien
 <Puntos fuertes concretos, breve.>
 
 ## Próximos pasos
-<Lista priorizada de acciones. Si no se usó --fix, ofrecer aplicarlas.>
+<Lista priorizada. Preguntar si se quieren aplicar los cambios.>
 ~~~
 
-## 6. Aplicar cambios (`--fix` o si el usuario lo pide)
-
-1. Aplicar primero los de severidad Alta, luego Media. Las Bajas sólo si el usuario lo pide.
-2. Cambios mínimos y enfocados: no reformatear archivos enteros ni mezclar refactors no relacionados.
-3. Mantener el comportamiento observable salvo que el hallazgo sea justamente un bug.
-4. Después de editar, ejecutar las verificaciones que el proyecto tenga (tests, linter, type-check, build). Buscarlas en `package.json` scripts, `Makefile`, CI (`.github/workflows`), etc. Reportar el resultado real; si algo falla, decirlo y corregirlo o explicarlo.
-5. Cerrar con un resumen de qué se cambió y qué quedó pendiente.
+Si una sección no tiene puntos, poner "Sin observaciones." en lugar de inventar problemas.
