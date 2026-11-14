@@ -55,3 +55,4 @@ html.locked{overflow:hidden}
 body.sticky-on .proto{bottom:84px}
 @media (min-width:1000px){body.sticky-on .proto{bottom:12px}}
 .hdr .search{text-decoration:none}
+.prob>*,.polgrid>*,.colhead>*,.nlgrid>*{min-width:0}

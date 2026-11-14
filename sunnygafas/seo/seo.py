@@ -1,0 +1,127 @@
+# Tabla SEO de Sunnygafas: valida largos (title ≤ 60, meta ≤ 155) y genera el fragmento HTML y un CSV para Rank Math.
+import csv, html, pathlib, sys
+here = pathlib.Path(__file__).resolve().parent
+
+PAGES = [
+ # (plantilla, URL, H1, title, meta, H2s, schema, index)
+ ('Home', '/', 'Gafas de sol avaladas por óptico',
+  'Sunnygafas · Anteojos y gafas de sol con UV400',
+  'Anteojos de sol, polarizados y armazones con UV400 avalados por óptico. 25% off con transferencia, 3 cuotas sin interés y envíos a todo el país.',
+  'El probador · Comprá por categoría · Recién llegadas · De Básica a Élite · ¿Polarizadas o comunes?', 'Organization, WebSite (SearchAction)', 'index'),
+ ('Categoría', '/gafas-de-sol/', 'Gafas de sol',
+  'Anteojos de sol con UV400 desde $27.000 | Sunnygafas',
+  'Gafas de sol con filtro UV400 y estuche de regalo. Cuatro colecciones de $27.000 a $67.000, 25% off con transferencia y envíos a todo el país.',
+  'Cómo elegir tus gafas de sol · Colecciones', 'CollectionPage, BreadcrumbList, ItemList', 'index'),
+ ('Categoría', '/gafas-polarizadas/', 'Gafas polarizadas',
+  'Anteojos de sol polarizados con UV400 | Sunnygafas',
+  'Anteojos polarizados que cortan el reflejo del agua y el asfalto. UV400, estuche de regalo y 25% off con transferencia. Desde $80.000.',
+  '¿Cuándo conviene una polarizada? · Polarizadas para manejar', 'CollectionPage, BreadcrumbList, ItemList', 'index'),
+ ('Categoría', '/armazones/', 'Armazones para receta',
+  'Armazones para anteojos de receta | Sunnygafas',
+  'Armazones para tus lentes de receta, desde $27.000. Llevalos a tu óptica. 25% off con transferencia y 3 cuotas sin interés.',
+  'Cómo elegir el armazón · Medidas del armazón', 'CollectionPage, BreadcrumbList, ItemList', 'index'),
+ ('Categoría', '/clip-on/', 'Clip-on 2 en 1',
+  'Anteojos clip-on 2 en 1: receta y sol | Sunnygafas',
+  'Armazón para tus lentes de receta con clip de sol que se pone encima. Modelos de $80.000 a $130.000, 25% off con transferencia.',
+  'Qué es un clip-on · Cómo se usa', 'CollectionPage, BreadcrumbList, ItemList', 'index'),
+ ('Categoría', '/accesorios/cadenas/', 'Cadenas para anteojos',
+  'Cadenas para anteojos desde $6.000 | Sunnygafas',
+  'Cadenas metálicas y de acrílico para colgar tus anteojos. Desde $6.000, con 25% off pagando con transferencia.',
+  'Metálicas o de acrílico', 'CollectionPage, BreadcrumbList, ItemList', 'index'),
+ ('Colección (atributo)', '/coleccion/basica/', 'Colección Básica',
+  'Colección Básica: gafas de sol a $27.000 | Sunnygafas',
+  'Todas las gafas de la colección Básica a $27.000 de lista, o $20.250 con transferencia. UV400 y estuche de regalo.',
+  '—', 'CollectionPage, BreadcrumbList', 'noindex, follow'),
+ ('Producto', '/producto/glow/', 'Glow · Negro',
+  'Glow: gafas de sol ovaladas con UV400 | Sunnygafas',
+  'Glow · Negro, colección Básica. Filtro UV400, avaladas por óptico y con estuche de regalo. $20.250 con transferencia o 3 cuotas sin interés.',
+  'Sobre Glow · Qué trae la caja · Especificaciones · ¿Me va a quedar bien? · Envíos, pagos, cambios y cuidado · Completá el look', 'Product + Offer, BreadcrumbList', 'index'),
+ ('Producto (plantilla)', '/producto/{modelo}/', '{Modelo} · {Color}',
+  '{Modelo}: {tipo} {forma} con UV400 | Sunnygafas',
+  '{Modelo} · {Color}, {colección}. Filtro UV400, avaladas por óptico y con estuche de regalo. {precio transf.} con transferencia o 3 cuotas sin interés.',
+  'Igual que Glow', 'Product + Offer, BreadcrumbList', 'index'),
+ ('Institucional', '/quienes-somos/', 'Gafas con aval de óptico, desde [ciudad] a todo el país',
+  'Quiénes somos | Sunnygafas',
+  'Sunnygafas vende gafas de sol con aval de óptico desde [ciudad] a todo el país. Quién avala los modelos y cómo trabajamos.',
+  'Cómo llega un modelo a tu casa · Quién avala las gafas · Dónde encontrarnos', 'AboutPage, Organization', 'index'),
+ ('Ayuda', '/ayuda/', 'Ayuda',
+  'Ayuda: envíos, pagos, cambios y medidas | Sunnygafas',
+  'Respuestas sobre envíos por Correo Argentino, 25% off con transferencia, cuotas, cambios, cuidado de tus gafas y guía de medidas.',
+  'Envíos · Pagos · Cambios y devoluciones · Cuidado · Protección · Venta mayorista · Guía de medidas', 'FAQPage, BreadcrumbList', 'index'),
+ ('Contacto', '/contacto/', 'Contacto',
+  'Contacto y venta mayorista | Sunnygafas',
+  'Escribinos por WhatsApp, Instagram o email. Ópticas y locales: pedí tu cuenta mayorista para acceder a la lista de precios.',
+  'Dejanos tu mensaje · Venta mayorista', 'ContactPage, Organization (contactPoint)', 'index'),
+ ('Blog (índice)', '/blog/', 'Blog',
+  'Blog: cómo elegir y cuidar tus anteojos | Sunnygafas',
+  'Guías cortas para elegir, medir y cuidar tus anteojos de sol, revisadas por óptico: UV400, polarizados, formas de cara y medidas.',
+  '—', 'Blog, BreadcrumbList', 'index'),
+ ('Legal', '/boton-de-arrepentimiento/', 'Botón de arrepentimiento',
+  'Botón de arrepentimiento | Sunnygafas',
+  'Cancelá tu compra online dentro de los 10 días corridos de recibirla, sin costo ni explicación (Ley 24.240, art. 34).',
+  '¿Qué pasa después?', 'WebPage', 'index'),
+ ('Legal', '/terminos-y-condiciones/', 'Términos y condiciones',
+  'Términos y condiciones | Sunnygafas',
+  'Condiciones de compra en Sunnygafas: precios, medios de pago, envíos, cambios, devoluciones y derecho de arrepentimiento.',
+  'Secciones numeradas del texto legal', 'WebPage', 'index'),
+ ('Legal', '/politica-de-privacidad/', 'Política de privacidad',
+  'Política de privacidad | Sunnygafas',
+  'Qué datos pedimos, para qué los usamos, con quién los compartimos y cómo ejercer tus derechos (Ley 25.326).',
+  'Secciones numeradas del texto legal', 'WebPage', 'index'),
+ ('Sistema', '/carrito/ · /checkout/ · /mi-cuenta/', '—', '—', '—', '—', '—', 'noindex'),
+ ('Sistema', '404', 'No encontramos esta página', 'Página no encontrada | Sunnygafas', '—', 'Recién llegadas', '—', 'noindex'),
+]
+
+POSTS = [
+ ('/blog/que-es-uv400/', 'qué significa uv400', 'Informativa',
+  'Qué significa UV400 y cómo saber si tus gafas protegen',
+  'Qué significa UV400 en anteojos de sol | Sunnygafas',
+  'UV400 bloquea los rayos UVA y UVB hasta 400 nm. Por qué el color del lente no protege y cómo saber si tus anteojos tienen el filtro.',
+  'Qué filtra exactamente · Lo oscuro no es lo que protege · Cómo saber si tus gafas tienen UV400 · ¿Y las polarizadas? · En Sunnygafas'),
+ ('/blog/polarizadas-o-comunes/', 'lentes polarizados vs normales', 'Comparativa',
+  '¿Polarizadas o comunes? Cuál te conviene',
+  'Anteojos polarizados o comunes: cuál conviene | Sunnygafas',
+  'Las dos filtran UV400. Cuándo vale la pena un lente polarizado para manejar, la playa o la pesca, y cuándo alcanza con uno común.',
+  'Qué hace la polarización · Para manejar · Para la playa y el agua · Pantallas y polarizados · Cuál elegir'),
+ ('/blog/anteojos-segun-forma-de-cara/', 'anteojos de sol según forma de cara', 'Informativa / comercial',
+  'Qué anteojos de sol te quedan según tu cara',
+  'Anteojos de sol según la forma de tu cara | Sunnygafas',
+  'Redondas, cuadradas, cat eye o aviador: cómo saber qué forma de anteojos te queda según tu cara, sin probártelos. Guía con ejemplos.',
+  'Cómo saber tu forma de cara · Cara redonda · Cara cuadrada · Cara ovalada · Cara corazón · Probalas por tamaño'),
+ ('/blog/medidas-de-anteojos/', 'medidas de anteojos 52 18 140', 'Informativa',
+  'Cómo leer los números de la varilla: 52□18-140',
+  'Medidas de anteojos: qué significa 52□18-140 | Sunnygafas',
+  'Los tres números de la varilla son el ancho del lente, el puente y la varilla. Cómo leerlos y usarlos para elegir anteojos online.',
+  'Dónde están los números · Qué significa cada uno · Ancho total · Cómo comparar con tus anteojos'),
+ ('/blog/como-limpiar-anteojos/', 'cómo limpiar anteojos de sol', 'Informativa',
+  'Cómo limpiar tus anteojos sin rayarlos',
+  'Cómo limpiar anteojos de sol sin rayarlos | Sunnygafas',
+  'Qué usar y qué evitar para limpiar tus anteojos de sol, cómo guardarlos y por qué no dejarlos en el auto. Guía rápida.',
+  'Lo que sí · Lo que no · Cómo guardarlas · Cuándo cambiar el estuche'),
+ ('/blog/que-son-los-clip-on/', 'anteojos clip on qué son', 'Informativa / comercial',
+  'Clip-on 2 en 1: qué son y para quién sirven',
+  'Anteojos clip-on: qué son y cómo funcionan | Sunnygafas',
+  'Un armazón para tus lentes de receta con un clip de sol que se pone encima. Ventajas, cómo se usa y cómo elegir el tuyo.',
+  'Qué es un clip-on · Cómo se pone · Ventajas frente a dos anteojos · Cómo elegir el tuyo'),
+]
+
+errs = []
+def chk(label, t, m):
+    if t not in ('—',) and '{' not in t and len(t) > 60: errs.append(f'title {len(t)}: {label}')
+    if m not in ('—',) and '{' not in m and len(m) > 155: errs.append(f'meta {len(m)}: {label}')
+for p in PAGES: chk(p[1], p[3], p[4])
+for p in POSTS: chk(p[0], p[4], p[5])
+if errs:
+    print('\n'.join(errs)); sys.exit(1)
+
+e = html.escape
+def n(s): return '' if s in ('—',) or '{' in s else f' <small>{len(s)}</small>'
+rows = ''.join(f'<tr><td>{e(a)}</td><td><code>{e(b)}</code></td><td>{e(c)}</td><td>{e(d)}{n(d)}</td><td>{e(m)}{n(m)}</td><td>{e(h)}</td><td>{e(s)}</td><td>{e(i)}</td></tr>' for a,b,c,d,m,h,s,i in PAGES)
+prow = ''.join(f'<tr><td><code>{e(u)}</code></td><td>{e(k)}</td><td>{e(it)}</td><td>{e(h1)}</td><td>{e(t)}{n(t)}</td><td>{e(m)}{n(m)}</td><td>{e(h2)}</td></tr>' for u,k,it,h1,t,m,h2 in POSTS)
+(here / 'seo-pages.html').write_text(rows)
+(here / 'seo-posts.html').write_text(prow)
+with open(here / 'rank-math-seo.csv', 'w', newline='') as f:
+    w = csv.writer(f); w.writerow(['plantilla', 'url', 'h1', 'title', 'meta_description', 'h2', 'schema', 'robots'])
+    for p in PAGES: w.writerow(p)
+    for u,k,it,h1,t,m,h2 in POSTS: w.writerow(['Artículo', u, h1, t, m, h2, 'BlogPosting, BreadcrumbList', 'index'])
+print('ok', len(PAGES), 'páginas,', len(POSTS), 'artículos')

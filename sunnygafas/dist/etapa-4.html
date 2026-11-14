@@ -1,0 +1,371 @@
+<meta charset="utf-8">
+<title>Sunnygafas · Etapa 4</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/sunny.css">
+<link rel="stylesheet" href="assets/proto.css">
+<style>
+/* Documento de entrega: pantallas en capturas, librería de componentes en vivo y tablas de implementación. */
+:root{--desk:#E7E3DC;--desk-ink:#1E1A16;--desk-muted:#6B5F53;--desk-rule:#D6CFC4;--card:#FFFFFF;color-scheme:light}
+body{background:var(--desk);color:var(--desk-ink);font:400 16px/24px "Hanken Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 80px;margin:0}
+.doc{max-width:1240px;margin:0 auto}
+.doc h1,.doc h2,.doc h3{font-family:"Gloock",Georgia,serif;font-weight:400;margin:0;text-wrap:balance}
+.doc-head{padding-block:48px 24px;display:grid;gap:20px}
+.doc-brand{display:flex;align-items:center;gap:12px}.doc-brand img{height:32px;width:auto}.doc-brand span{font-family:"Gloock",Georgia,serif;font-size:22px}
+.doc-head h1{font-size:clamp(36px,5vw,56px);line-height:1.05}
+.doc-lede{font-size:18px;line-height:28px;color:var(--desk-muted);max-width:72ch}
+.toc{display:flex;flex-wrap:wrap;gap:8px}
+.toc a{height:40px;padding:0 16px;border-radius:999px;background:var(--card);display:inline-flex;align-items:center;text-decoration:none;font-weight:600;font-size:14px;color:var(--desk-ink)}
+.part{margin-top:80px;display:grid;gap:16px}
+.part>header h2{font-size:40px;line-height:44px}
+.part>header p{color:var(--desk-muted);max-width:72ch;margin-top:8px}
+.card{background:var(--card);border-radius:12px;padding:24px;display:grid;gap:12px;align-content:start;min-width:0}
+.card h3{font-size:22px;line-height:28px}
+.card p,.card li{font-size:15px;line-height:23px;color:var(--desk-muted)}
+.card ul,.card ol{margin:0;padding-left:20px;display:grid;gap:6px}
+.card strong{color:var(--desk-ink)}
+.card code,.tw code{font-size:12.5px;background:#EEE9E2;padding:1px 5px;border-radius:4px;color:var(--desk-ink);overflow-wrap:anywhere}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:16px}
+.lib-sec>*,.cols>*{min-width:0}
+.wide{grid-column:1/-1}
+.tw{overflow-x:auto;background:var(--card);border-radius:12px}
+.tw table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:20px;min-width:980px}
+.tw th,.tw td{text-align:left;padding:10px 12px;border-bottom:1px solid #EEE8DF;vertical-align:top;color:var(--desk-muted)}
+.tw thead th{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--desk-ink);background:#FAF8F5;position:sticky;top:0}
+.tw td:first-child{color:var(--desk-ink);font-weight:600}
+.tw small{display:inline-block;margin-left:4px;font-size:11px;font-weight:700;color:#2E6F3A;background:#E3F0E5;border-radius:4px;padding:0 4px}
+.shots{display:grid;gap:24px}
+.shot{background:var(--card);border-radius:16px;padding:20px;display:grid;gap:16px}
+.shot header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
+.shot h3{font-size:26px;line-height:30px}
+.shot .mode{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--desk-muted)}
+.shot .pair{display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px;align-items:start}
+.shot figure{margin:0;display:grid;gap:6px}
+.shot figcaption{font-size:12px;color:var(--desk-muted)}
+.shot .imgbox{max-height:640px;overflow:auto;border-radius:10px;border:1px solid #EEE8DF;background:#F7F5F1}
+.shot img{display:block;width:100%;height:auto}
+.shot .note{font-size:14px;line-height:21px;color:var(--desk-muted)}
+.shot .note b{color:var(--desk-ink)}
+@media (max-width:760px){.shot .pair{grid-template-columns:minmax(0,1fr)}}
+.lib{background:var(--card);border-radius:16px;overflow:hidden}
+.lib .scr{background:var(--white)}
+.lib-sec{padding:24px;border-bottom:1px solid #EEE8DF;display:grid;gap:16px}
+.lib-sec:last-child{border-bottom:0}
+.lib-sec>h3{font:700 13px/18px "Hanken Grotesk",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--desk-muted)}
+.row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.st{display:grid;gap:6px;justify-items:start;min-width:0}
+.st>span:last-child{font-size:12px;color:var(--desk-muted)}
+.st.w{width:min(280px,100%)}
+.btn.hov{background:var(--oro-strong);color:var(--white)}
+.btn.foc{outline:2px solid var(--ink);outline-offset:2px}
+.btn-secondary.hov{border-color:var(--ink);background:var(--white);color:var(--ink)}
+.field.foc input{outline:2px solid var(--ink);outline-offset:1px}
+.field.okk input{border-color:var(--success)}
+.field.okk .help{color:var(--success);display:flex;gap:6px}
+.field.dis input{background:var(--piedra);color:var(--ink-muted);border-color:var(--line-soft)}
+.ask{columns:2 340px;gap:40px}
+.ask h4{font:700 13px/18px "Hanken Grotesk",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--desk-ink);margin:16px 0 6px;break-after:avoid}
+.ask ol{margin:0 0 8px;padding-left:20px}
+.ask li{break-inside:avoid;margin-bottom:6px;font-size:15px;line-height:22px;color:var(--desk-muted)}
+.score{display:inline-grid;place-items:center;min-width:30px;height:24px;border-radius:999px;font-weight:800;font-size:13px;background:#D9EBE8;color:#1D5A60}
+.score.s3{background:#F2F0EC;color:#1E1A16}
+.pass{color:#2E6F3A;font-weight:700}
+.btnlink{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-radius:12px;background:var(--desk-ink);color:#FFFAF2;text-decoration:none;font-weight:600;justify-self:start}
+</style>
+
+<div class="doc">
+<header class="doc-head">
+  <div class="doc-brand"><img src="assets/isotipo-sunnygafas.png" alt="" width="40" height="32"><span>Sunnygafas</span></div>
+  <h1>Etapa 4: institucionales, blog, SEO e implementación</h1>
+  <p class="doc-lede">Las pantallas nuevas ya están dentro del prototipo navegable y se pueden recorrer. Acá están en mobile y desktop, junto con la librería de componentes con sus estados, la tabla SEO, la arquitectura de atributos, las notas de implementación por pantalla y la lista final de datos para pedirle a la clienta.</p>
+  <a class="btnlink" href="https://claude.ai/artifact/XZCrS4puYPYWZzfrqsc43N" target="_blank" rel="noopener">Abrir el prototipo navegable</a>
+  <nav class="toc" aria-label="Partes"><a href="#pantallas">Pantallas</a><a href="#componentes">Componentes y estados</a><a href="#seo">Tabla SEO</a><a href="#atributos">Atributos de WooCommerce</a><a href="#implementacion">Implementación</a><a href="#qc">Control de calidad</a><a href="#datos">Datos a pedir</a></nav>
+</header>
+
+<!-- PANTALLAS -->
+<section class="part" id="pantallas" aria-labelledby="pt-h">
+  <header><h2 id="pt-h">Pantallas</h2><p>Capturas del prototipo a 390 y 1440 px, con scroll dentro de cada imagen. Todo el texto es copy final; los datos que faltan van entre corchetes.</p></header>
+  <div class="shots">
+    <article class="shot"><header><h3>Quiénes somos</h3><span class="mode">Persuade · página de marca</span></header><div class="pair">
+<figure><div class="imgbox"><img src="assets/etapa4/m-nosotros.webp" alt="Quiénes somos en mobile" loading="lazy"></div><figcaption>390 px</figcaption></figure>
+<figure><div class="imgbox"><img src="assets/etapa4/d-nosotros.webp" alt="Quiénes somos en desktop" loading="lazy"></div><figcaption>1440 px</figcaption></figure></div><p class="note">Arena-50 con banda <b>ink</b> (quién avala las gafas, con los rayos) y banda <b>mar</b> (dónde encontrarnos). La historia queda en placeholder: no se inventa.</p></article><article class="shot"><header><h3>Ayuda y preguntas frecuentes</h3><span class="mode">Read</span></header><div class="pair">
+<figure><div class="imgbox"><img src="assets/etapa4/m-ayuda.webp" alt="Ayuda y preguntas frecuentes en mobile" loading="lazy"></div><figcaption>390 px</figcaption></figure>
+<figure><div class="imgbox"><img src="assets/etapa4/d-ayuda.webp" alt="Ayuda y preguntas frecuentes en desktop" loading="lazy"></div><figcaption>1440 px</figcaption></figure></div><p class="note">Navegación de temas fija (chips en mobile, lateral en desktop), acordeones con las respuestas reales y guía de medidas con el dibujo acotado.</p></article><article class="shot"><header><h3>Contacto y venta mayorista</h3><span class="mode">Operate</span></header><div class="pair">
+<figure><div class="imgbox"><img src="assets/etapa4/m-contacto.webp" alt="Contacto y venta mayorista en mobile" loading="lazy"></div><figcaption>390 px</figcaption></figure>
+<figure><div class="imgbox"><img src="assets/etapa4/d-contacto.webp" alt="Contacto y venta mayorista en desktop" loading="lazy"></div><figcaption>1440 px</figcaption></figure></div><p class="note">WhatsApp primero. Formulario de contacto con motivo y número de pedido; solicitud mayorista con validación de CUIT y confirmación en el lugar.</p></article><article class="shot"><header><h3>Blog</h3><span class="mode">Read</span></header><div class="pair">
+<figure><div class="imgbox"><img src="assets/etapa4/m-blog.webp" alt="Blog en mobile" loading="lazy"></div><figcaption>390 px</figcaption></figure>
+<figure><div class="imgbox"><img src="assets/etapa4/d-blog.webp" alt="Blog en desktop" loading="lazy"></div><figcaption>1440 px</figcaption></figure></div><p class="note">Artículo destacado y grilla con filtro por tema. Cada card dice tema y minutos de lectura.</p></article><article class="shot"><header><h3>Artículo: Qué significa UV400</h3><span class="mode">Read</span></header><div class="pair">
+<figure><div class="imgbox"><img src="assets/etapa4/m-articulo-que-es-uv400.webp" alt="Artículo: Qué significa UV400 en mobile" loading="lazy"></div><figcaption>390 px</figcaption></figure>
+<figure><div class="imgbox"><img src="assets/etapa4/d-articulo-que-es-uv400.webp" alt="Artículo: Qué significa UV400 en desktop" loading="lazy"></div><figcaption>1440 px</figcaption></figure></div><p class="note">Texto completo a 18/30 px y 68ch, índice fijo en desktop, callout gris, productos al pie y "Seguí leyendo".</p></article><article class="shot"><header><h3>Botón de arrepentimiento</h3><span class="mode">Operate</span></header><div class="pair">
+<figure><div class="imgbox"><img src="assets/etapa4/m-arrepentimiento.webp" alt="Botón de arrepentimiento en mobile" loading="lazy"></div><figcaption>390 px</figcaption></figure>
+<figure><div class="imgbox"><img src="assets/etapa4/d-arrepentimiento.webp" alt="Botón de arrepentimiento en desktop" loading="lazy"></div><figcaption>1440 px</figcaption></figure></div><p class="note">Formulario de tres datos, sin pedir motivo. Al enviar muestra el código de trámite (Res. 424/2020).</p></article><article class="shot"><header><h3>Términos y condiciones</h3><span class="mode">Read</span></header><div class="pair">
+<figure><div class="imgbox"><img src="assets/etapa4/m-legal-terminos.webp" alt="Términos y condiciones en mobile" loading="lazy"></div><figcaption>390 px</figcaption></figure>
+<figure><div class="imgbox"><img src="assets/etapa4/d-legal-terminos.webp" alt="Términos y condiciones en desktop" loading="lazy"></div><figcaption>1440 px</figcaption></figure></div><p class="note">Diseño de lectura y estructura de secciones. El texto lo redacta un abogado.</p></article><article class="shot"><header><h3>Página 404</h3><span class="mode">Persuade</span></header><div class="pair">
+<figure><div class="imgbox"><img src="assets/etapa4/m-404.webp" alt="Página 404 en mobile" loading="lazy"></div><figcaption>390 px</figcaption></figure>
+<figure><div class="imgbox"><img src="assets/etapa4/d-404.webp" alt="Página 404 en desktop" loading="lazy"></div><figcaption>1440 px</figcaption></figure></div><p class="note">Rayos como único dorado, buscador, categorías y recién llegadas para no perder la visita.</p></article><article class="shot"><header><h3>Listado: Clip-on 2 en 1</h3><span class="mode">Operate</span></header><div class="pair">
+<figure><div class="imgbox"><img src="assets/etapa4/m-listado-clip-on.webp" alt="Listado: Clip-on 2 en 1 en mobile" loading="lazy"></div><figcaption>390 px</figcaption></figure>
+<figure><div class="imgbox"><img src="assets/etapa4/d-listado-clip-on.webp" alt="Listado: Clip-on 2 en 1 en desktop" loading="lazy"></div><figcaption>1440 px</figcaption></figure></div><p class="note">Categoría nueva con los 9 modelos reales, de $80.000 a $130.000.</p></article>
+  </div>
+</section>
+
+<!-- COMPONENTES -->
+<section class="part" id="componentes" aria-labelledby="cp-h">
+  <header><h2 id="cp-h">Componentes y estados</h2><p>Librería en vivo con el mismo CSS del prototipo. Es la referencia para los estilos globales de Elementor (Site Settings) y para el CSS adicional.</p></header>
+  <div class="lib"><div class="scr" style="container-type:normal">
+    <div class="lib-sec"><h3>Botones</h3><div class="row">
+      <div class="st"><a class="btn btn-primary">Agregar al carrito</a><span>Primario</span></div>
+      <div class="st"><a class="btn btn-primary hov">Agregar al carrito</a><span>Hover · oro-strong</span></div>
+      <div class="st"><a class="btn btn-primary foc">Agregar al carrito</a><span>Foco · anillo 2px ink</span></div>
+      <div class="st"><button class="btn btn-primary" disabled>Agregar al carrito</button><span>Deshabilitado</span></div>
+      <div class="st"><button class="btn btn-primary" disabled style="opacity:1;background:var(--oro-strong);color:#fff">Agregando…</button><span>Cargando</span></div>
+      <div class="st"><button class="btn" style="background:var(--success);color:#fff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>&nbsp;Agregado</button><span>Éxito, con texto</span></div>
+    </div><div class="row">
+      <div class="st"><a class="btn btn-secondary">Ver gafas polarizadas</a><span>Secundario</span></div>
+      <div class="st"><a class="btn btn-secondary hov">Ver gafas polarizadas</a><span>Hover · borde ink</span></div>
+      <div class="st"><a class="btn btn-wa">Consultar por WhatsApp</a><span>WhatsApp · siempre debajo del primario</span></div>
+      <div class="st"><a class="link" href="#componentes">Ver política de cambios</a><span>Link</span></div>
+    </div></div>
+    <div class="lib-sec"><h3>Campos</h3><div class="row">
+      <div class="st w"><div class="field"><label for="x1">Email</label><input id="x1" placeholder="tunombre@gmail.com"><p class="help">Te mandamos la confirmación.</p></div><span>Normal</span></div>
+      <div class="st w"><div class="field foc"><label for="x2">Email</label><input id="x2" value="martina.gomez@"><p class="help">Te mandamos la confirmación.</p></div><span>Foco</span></div>
+      <div class="st w"><div class="field err"><label for="x3">Email</label><input id="x3" value="martina.gomez" aria-invalid="true"><p class="help"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>Revisá el email: le falta el dominio, por ejemplo @gmail.com.</p></div><span>Error: reemplaza la ayuda</span></div>
+      <div class="st w"><div class="field okk"><label for="x4">Email</label><input id="x4" value="martina.gomez@gmail.com"><p class="help"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>Listo, te anotamos.</p></div><span>Éxito</span></div>
+      <div class="st w"><div class="field dis"><label for="x5">Código postal</label><input id="x5" value="5000" disabled><p class="help">Lo tomamos del cotizador.</p></div><span>Deshabilitado</span></div>
+      <div class="st w"><div class="field"><label for="x6">Provincia</label><select id="x6"><option>Córdoba</option></select></div><span>Select</span></div>
+    </div></div>
+    <div class="lib-sec"><h3>Selección</h3><div class="row">
+      <div class="st"><label class="check"><input type="checkbox" checked>Cat eye<small>3</small></label><label class="check"><input type="checkbox">Aviador<small>3</small></label><span>Checkbox de filtro con conteo</span></div>
+      <div class="st"><label class="toggle" style="width:260px"><span>Solo polarizadas</span><input type="checkbox" role="switch" checked></label><label class="toggle" style="width:260px"><span>Solo polarizadas</span><input type="checkbox" role="switch"></label><span>Switch</span></div>
+      <div class="st w" style="width:min(320px,100%)"><label class="opt"><input type="radio" name="o" checked><b>Transferencia o efectivo</b><span class="amt">$20.250</span><small>Te mostramos los datos al confirmar.</small></label><label class="opt"><input type="radio" name="o"><b>Tarjeta</b><span class="amt">$27.000</span><small>Hasta 3 cuotas sin interés.</small></label><span>Opción de checkout: seleccionada y normal</span></div>
+      <div class="st"><div class="row" style="gap:8px"><button class="chip" aria-pressed="true">Redondas</button><button class="chip" aria-pressed="false">Cuadradas</button></div><span>Chips: activo y normal</span></div>
+      <div class="st"><div class="active" style="padding:0"><button class="achip">Negro<svg class="ico" style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M18 6 6 18M6 6l12 12"/></svg></button><button class="clear">Borrar todo</button></div><span>Filtro activo</span></div>
+    </div></div>
+    <div class="lib-sec"><h3>Swatches, badges y estados</h3><div class="row">
+      <div class="st"><div class="sw big"><a class="swa on"><i style="background:linear-gradient(135deg,#5A3618 0 30%,#B98552 30% 55%,#3A2414 55%)"></i></a><a class="swa"><i style="background:#1E1A16"></i></a><span class="oos"><a class="swa"><i style="background:#B8763A"></i></a></span></div><span>Seleccionado · normal · sin stock (tachado + texto)</span></div>
+      <div class="st"><div class="row" style="gap:6px"><span class="badge b-disc">−25%</span><span class="badge b-pol">Polarizada</span><span class="badge b-new">Nuevo</span><span class="badge b-col">Colección Élite</span><span class="badge b-off">Sin stock</span></div><span>Badges (máx. 2 por card)</span></div>
+      <div class="st"><div class="row" style="gap:6px"><span class="status st-wait">Esperando transferencia</span><span class="status st-prep">Preparando</span><span class="status st-ship">Despachado</span><span class="status st-done"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>Entregado</span></div><span>Estados de pedido</span></div>
+      <div class="st"><div class="stepper" role="group"><button disabled>−</button><output>1</output><button>+</button></div><span>Stepper en 1</span></div>
+    </div></div>
+    <div class="lib-sec"><h3>Mensajes</h3><div class="row">
+      <div class="st w" style="width:min(360px,100%)"><div class="okbox"><span class="circ"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg></span><div><p style="font-weight:700">Recibimos tu mensaje</p><p class="small muted">Te respondemos por email.</p></div></div><span>Confirmación en el lugar</span></div>
+      <div class="st w" style="width:min(360px,100%)"><div class="tnote" style="border-color:var(--error)"><div><b style="color:var(--error)">Mercado Pago rechazó el pago</b><p class="muted small">Probá con otra tarjeta o pagá por transferencia.</p></div></div><span>Error de sistema</span></div>
+      <div class="st w" style="width:min(360px,100%)"><div class="callout"><b>En corto:</b> fijate que diga UV400.</div><span>Callout de artículo (sin borde de color)</span></div>
+      <div class="st w" style="width:min(360px,100%)"><div class="freebar" style="border-radius:12px"><span>Te faltan <b>$[x]</b> para el envío gratis</span><div class="trk"><i style="width:60%"></i></div></div><span>Barra de envío gratis</span></div>
+    </div></div>
+  </div></div>
+</section>
+
+<!-- SEO -->
+<section class="part" id="seo" aria-labelledby="seo-h">
+  <header><h2 id="seo-h">Tabla SEO</h2><p>Titles de 60 caracteres o menos y metas de 155 o menos: el número verde es el largo validado. El archivo <code>seo/rank-math-seo.csv</code> en el repo tiene lo mismo para cargarlo en Rank Math.</p></header>
+  <div class="card"><h3>Una decisión de palabras que conviene validar antes de publicar</h3><p>En Argentina se busca más <strong>"anteojos de sol"</strong> y <strong>"lentes de sol"</strong> que "gafas de sol". La marca dice "gafas", y la interfaz lo mantiene. La propuesta es usar "anteojos" en titles, metas y artículos, y dejar "gafas" en H1 y copy. Validalo con Google Keyword Planner o Search Console. Si "anteojos" gana claramente, conviene cambiar los slugs <em>antes</em> del lanzamiento (por ejemplo, <code>/anteojos-de-sol/</code>), porque después cuesta redirecciones.</p></div>
+  <div class="tw"><table>
+    <thead><tr><th>Plantilla</th><th>URL</th><th>H1</th><th>Title</th><th>Meta description</th><th>Estructura H2</th><th>Schema</th><th>Robots</th></tr></thead>
+    <tbody><tr><td>Home</td><td><code>/</code></td><td>Gafas de sol avaladas por óptico</td><td>Sunnygafas · Anteojos y gafas de sol con UV400 <small>46</small></td><td>Anteojos de sol, polarizados y armazones con UV400 avalados por óptico. 25% off con transferencia, 3 cuotas sin interés y envíos a todo el país. <small>144</small></td><td>El probador · Comprá por categoría · Recién llegadas · De Básica a Élite · ¿Polarizadas o comunes?</td><td>Organization, WebSite (SearchAction)</td><td>index</td></tr><tr><td>Categoría</td><td><code>/gafas-de-sol/</code></td><td>Gafas de sol</td><td>Anteojos de sol con UV400 desde $27.000 | Sunnygafas <small>52</small></td><td>Gafas de sol con filtro UV400 y estuche de regalo. Cuatro colecciones de $27.000 a $67.000, 25% off con transferencia y envíos a todo el país. <small>142</small></td><td>Cómo elegir tus gafas de sol · Colecciones</td><td>CollectionPage, BreadcrumbList, ItemList</td><td>index</td></tr><tr><td>Categoría</td><td><code>/gafas-polarizadas/</code></td><td>Gafas polarizadas</td><td>Anteojos de sol polarizados con UV400 | Sunnygafas <small>50</small></td><td>Anteojos polarizados que cortan el reflejo del agua y el asfalto. UV400, estuche de regalo y 25% off con transferencia. Desde $80.000. <small>134</small></td><td>¿Cuándo conviene una polarizada? · Polarizadas para manejar</td><td>CollectionPage, BreadcrumbList, ItemList</td><td>index</td></tr><tr><td>Categoría</td><td><code>/armazones/</code></td><td>Armazones para receta</td><td>Armazones para anteojos de receta | Sunnygafas <small>46</small></td><td>Armazones para tus lentes de receta, desde $27.000. Llevalos a tu óptica. 25% off con transferencia y 3 cuotas sin interés. <small>123</small></td><td>Cómo elegir el armazón · Medidas del armazón</td><td>CollectionPage, BreadcrumbList, ItemList</td><td>index</td></tr><tr><td>Categoría</td><td><code>/clip-on/</code></td><td>Clip-on 2 en 1</td><td>Anteojos clip-on 2 en 1: receta y sol | Sunnygafas <small>50</small></td><td>Armazón para tus lentes de receta con clip de sol que se pone encima. Modelos de $80.000 a $130.000, 25% off con transferencia. <small>127</small></td><td>Qué es un clip-on · Cómo se usa</td><td>CollectionPage, BreadcrumbList, ItemList</td><td>index</td></tr><tr><td>Categoría</td><td><code>/accesorios/cadenas/</code></td><td>Cadenas para anteojos</td><td>Cadenas para anteojos desde $6.000 | Sunnygafas <small>47</small></td><td>Cadenas metálicas y de acrílico para colgar tus anteojos. Desde $6.000, con 25% off pagando con transferencia. <small>110</small></td><td>Metálicas o de acrílico</td><td>CollectionPage, BreadcrumbList, ItemList</td><td>index</td></tr><tr><td>Colección (atributo)</td><td><code>/coleccion/basica/</code></td><td>Colección Básica</td><td>Colección Básica: gafas de sol a $27.000 | Sunnygafas <small>53</small></td><td>Todas las gafas de la colección Básica a $27.000 de lista, o $20.250 con transferencia. UV400 y estuche de regalo. <small>114</small></td><td>—</td><td>CollectionPage, BreadcrumbList</td><td>noindex, follow</td></tr><tr><td>Producto</td><td><code>/producto/glow/</code></td><td>Glow · Negro</td><td>Glow: gafas de sol ovaladas con UV400 | Sunnygafas <small>50</small></td><td>Glow · Negro, colección Básica. Filtro UV400, avaladas por óptico y con estuche de regalo. $20.250 con transferencia o 3 cuotas sin interés. <small>140</small></td><td>Sobre Glow · Qué trae la caja · Especificaciones · ¿Me va a quedar bien? · Envíos, pagos, cambios y cuidado · Completá el look</td><td>Product + Offer, BreadcrumbList</td><td>index</td></tr><tr><td>Producto (plantilla)</td><td><code>/producto/{modelo}/</code></td><td>{Modelo} · {Color}</td><td>{Modelo}: {tipo} {forma} con UV400 | Sunnygafas</td><td>{Modelo} · {Color}, {colección}. Filtro UV400, avaladas por óptico y con estuche de regalo. {precio transf.} con transferencia o 3 cuotas sin interés.</td><td>Igual que Glow</td><td>Product + Offer, BreadcrumbList</td><td>index</td></tr><tr><td>Institucional</td><td><code>/quienes-somos/</code></td><td>Gafas con aval de óptico, desde [ciudad] a todo el país</td><td>Quiénes somos | Sunnygafas <small>26</small></td><td>Sunnygafas vende gafas de sol con aval de óptico desde [ciudad] a todo el país. Quién avala los modelos y cómo trabajamos. <small>122</small></td><td>Cómo llega un modelo a tu casa · Quién avala las gafas · Dónde encontrarnos</td><td>AboutPage, Organization</td><td>index</td></tr><tr><td>Ayuda</td><td><code>/ayuda/</code></td><td>Ayuda</td><td>Ayuda: envíos, pagos, cambios y medidas | Sunnygafas <small>52</small></td><td>Respuestas sobre envíos por Correo Argentino, 25% off con transferencia, cuotas, cambios, cuidado de tus gafas y guía de medidas. <small>129</small></td><td>Envíos · Pagos · Cambios y devoluciones · Cuidado · Protección · Venta mayorista · Guía de medidas</td><td>FAQPage, BreadcrumbList</td><td>index</td></tr><tr><td>Contacto</td><td><code>/contacto/</code></td><td>Contacto</td><td>Contacto y venta mayorista | Sunnygafas <small>39</small></td><td>Escribinos por WhatsApp, Instagram o email. Ópticas y locales: pedí tu cuenta mayorista para acceder a la lista de precios. <small>123</small></td><td>Dejanos tu mensaje · Venta mayorista</td><td>ContactPage, Organization (contactPoint)</td><td>index</td></tr><tr><td>Blog (índice)</td><td><code>/blog/</code></td><td>Blog</td><td>Blog: cómo elegir y cuidar tus anteojos | Sunnygafas <small>52</small></td><td>Guías cortas para elegir, medir y cuidar tus anteojos de sol, revisadas por óptico: UV400, polarizados, formas de cara y medidas. <small>129</small></td><td>—</td><td>Blog, BreadcrumbList</td><td>index</td></tr><tr><td>Legal</td><td><code>/boton-de-arrepentimiento/</code></td><td>Botón de arrepentimiento</td><td>Botón de arrepentimiento | Sunnygafas <small>37</small></td><td>Cancelá tu compra online dentro de los 10 días corridos de recibirla, sin costo ni explicación (Ley 24.240, art. 34). <small>117</small></td><td>¿Qué pasa después?</td><td>WebPage</td><td>index</td></tr><tr><td>Legal</td><td><code>/terminos-y-condiciones/</code></td><td>Términos y condiciones</td><td>Términos y condiciones | Sunnygafas <small>35</small></td><td>Condiciones de compra en Sunnygafas: precios, medios de pago, envíos, cambios, devoluciones y derecho de arrepentimiento. <small>121</small></td><td>Secciones numeradas del texto legal</td><td>WebPage</td><td>index</td></tr><tr><td>Legal</td><td><code>/politica-de-privacidad/</code></td><td>Política de privacidad</td><td>Política de privacidad | Sunnygafas <small>35</small></td><td>Qué datos pedimos, para qué los usamos, con quién los compartimos y cómo ejercer tus derechos (Ley 25.326). <small>107</small></td><td>Secciones numeradas del texto legal</td><td>WebPage</td><td>index</td></tr><tr><td>Sistema</td><td><code>/carrito/ · /checkout/ · /mi-cuenta/</code></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>noindex</td></tr><tr><td>Sistema</td><td><code>404</code></td><td>No encontramos esta página</td><td>Página no encontrada | Sunnygafas <small>33</small></td><td>—</td><td>Recién llegadas</td><td>—</td><td>noindex</td></tr></tbody>
+  </table></div>
+  <div class="cols">
+    <div class="card"><h3>Schema por plantilla (Rank Math)</h3><ul>
+      <li><strong>Organization</strong> (global): nombre, logo SVG, <code>sameAs</code> Instagram, <code>contactPoint</code> WhatsApp y email, sin dirección física.</li>
+      <li><strong>WebSite</strong> con <code>SearchAction</code> hacia <code>/?s=</code>.</li>
+      <li><strong>Product + Offer</strong>: <code>AggregateOffer</code> si las variaciones tienen el mismo precio. <code>price</code> = precio de lista (el que paga con tarjeta); el 25% va en la descripción, no como precio, para que coincida con el checkout. <code>availability</code> por variación, <code>shippingDetails</code> y <code>hasMerchantReturnPolicy</code> cuando estén los datos.</li>
+      <li><strong>Review / AggregateRating</strong>: solo con reseñas reales.</li>
+      <li><strong>BreadcrumbList</strong>: en todas menos home. La categoría principal de cada producto se fija en Rank Math.</li>
+      <li><strong>FAQPage</strong> en Ayuda. Google ya casi no muestra FAQ en resultados, pero ordena el contenido y lo leen los buscadores con IA.</li>
+      <li><strong>BlogPosting</strong> con autor y fecha de actualización; "revisado por" el óptico en el contenido.</li>
+    </ul></div>
+    <div class="card"><h3>Reglas técnicas</h3><ul>
+      <li>Variaciones: una sola URL por modelo (<code>/producto/glow/</code>). El color va como parámetro y el canonical apunta al padre.</li>
+      <li>Filtros AJAX: solo se indexan las combinaciones de un atributo con demanda (por ejemplo, <code>/gafas-de-sol/forma-cat-eye/</code>). El resto, noindex.</li>
+      <li>Paginación con <code>/page/2/</code> y enlaces rastreables debajo del botón "Ver más".</li>
+      <li>Redirecciones 301 de las URLs de Empretienda (<code>/gafas-de-sol/coleccion-basica/glow-black</code> → <code>/producto/glow/</code>). Plugin de redirecciones o el módulo de Rank Math.</li>
+      <li>Alt de fotos: "Modelo · Color, vista". Nombres de archivo: <code>glow-negro-34.webp</code>.</li>
+    </ul></div>
+  </div>
+  <h3 style="font-family:Gloock,serif;font-weight:400;font-size:28px;margin-top:16px">Blog: 6 artículos con intención de búsqueda real</h3>
+  <div class="tw"><table>
+    <thead><tr><th>URL</th><th>Búsqueda objetivo</th><th>Intención</th><th>H1</th><th>Title</th><th>Meta</th><th>H2</th></tr></thead>
+    <tbody><tr><td><code>/blog/que-es-uv400/</code></td><td>qué significa uv400</td><td>Informativa</td><td>Qué significa UV400 y cómo saber si tus gafas protegen</td><td>Qué significa UV400 en anteojos de sol | Sunnygafas <small>51</small></td><td>UV400 bloquea los rayos UVA y UVB hasta 400 nm. Por qué el color del lente no protege y cómo saber si tus anteojos tienen el filtro. <small>132</small></td><td>Qué filtra exactamente · Lo oscuro no es lo que protege · Cómo saber si tus gafas tienen UV400 · ¿Y las polarizadas? · En Sunnygafas</td></tr><tr><td><code>/blog/polarizadas-o-comunes/</code></td><td>lentes polarizados vs normales</td><td>Comparativa</td><td>¿Polarizadas o comunes? Cuál te conviene</td><td>Anteojos polarizados o comunes: cuál conviene | Sunnygafas <small>58</small></td><td>Las dos filtran UV400. Cuándo vale la pena un lente polarizado para manejar, la playa o la pesca, y cuándo alcanza con uno común. <small>129</small></td><td>Qué hace la polarización · Para manejar · Para la playa y el agua · Pantallas y polarizados · Cuál elegir</td></tr><tr><td><code>/blog/anteojos-segun-forma-de-cara/</code></td><td>anteojos de sol según forma de cara</td><td>Informativa / comercial</td><td>Qué anteojos de sol te quedan según tu cara</td><td>Anteojos de sol según la forma de tu cara | Sunnygafas <small>54</small></td><td>Redondas, cuadradas, cat eye o aviador: cómo saber qué forma de anteojos te queda según tu cara, sin probártelos. Guía con ejemplos. <small>132</small></td><td>Cómo saber tu forma de cara · Cara redonda · Cara cuadrada · Cara ovalada · Cara corazón · Probalas por tamaño</td></tr><tr><td><code>/blog/medidas-de-anteojos/</code></td><td>medidas de anteojos 52 18 140</td><td>Informativa</td><td>Cómo leer los números de la varilla: 52□18-140</td><td>Medidas de anteojos: qué significa 52□18-140 | Sunnygafas <small>57</small></td><td>Los tres números de la varilla son el ancho del lente, el puente y la varilla. Cómo leerlos y usarlos para elegir anteojos online. <small>130</small></td><td>Dónde están los números · Qué significa cada uno · Ancho total · Cómo comparar con tus anteojos</td></tr><tr><td><code>/blog/como-limpiar-anteojos/</code></td><td>cómo limpiar anteojos de sol</td><td>Informativa</td><td>Cómo limpiar tus anteojos sin rayarlos</td><td>Cómo limpiar anteojos de sol sin rayarlos | Sunnygafas <small>54</small></td><td>Qué usar y qué evitar para limpiar tus anteojos de sol, cómo guardarlos y por qué no dejarlos en el auto. Guía rápida. <small>118</small></td><td>Lo que sí · Lo que no · Cómo guardarlas · Cuándo cambiar el estuche</td></tr><tr><td><code>/blog/que-son-los-clip-on/</code></td><td>anteojos clip on qué son</td><td>Informativa / comercial</td><td>Clip-on 2 en 1: qué son y para quién sirven</td><td>Anteojos clip-on: qué son y cómo funcionan | Sunnygafas <small>55</small></td><td>Un armazón para tus lentes de receta con un clip de sol que se pone encima. Ventajas, cómo se usa y cómo elegir el tuyo. <small>120</small></td><td>Qué es un clip-on · Cómo se pone · Ventajas frente a dos anteojos · Cómo elegir el tuyo</td></tr></tbody>
+  </table></div>
+</section>
+
+<!-- ATRIBUTOS -->
+<section class="part" id="atributos" aria-labelledby="at-h">
+  <header><h2 id="at-h">Arquitectura de WooCommerce</h2><p>Pensada para pasar de los ~90 modelos actuales a cientos sin rediseñar menú, filtros ni URLs.</p></header>
+  <div class="cols">
+    <div class="card"><h3>Categorías: qué es el producto</h3><ul>
+      <li><code>/gafas-de-sol/</code></li>
+      <li><code>/gafas-polarizadas/</code>: las polarizadas van acá como categoría principal <em>y</em> en Gafas de sol como secundaria.</li>
+      <li><code>/armazones/</code></li>
+      <li><code>/clip-on/</code></li>
+      <li><code>/accesorios/</code> › <code>/accesorios/cadenas/</code></li>
+      <li><strong>Sale no es categoría:</strong> es una página con los productos en oferta (shortcode <code>[products on_sale="true"]</code>), y solo existe si hay ofertas reales.</li>
+    </ul><p>Las categorías responden a búsquedas reales ("anteojos polarizados", "armazones para receta") y por eso tienen URL indexable, intro y texto SEO.</p></div>
+    <div class="card"><h3>Atributos globales</h3><ul>
+      <li><strong>Color</strong> (<code>pa_color</code>): el único atributo de variación. Swatch de color o imagen. Términos en español (Negro, Marrón, Carey, Print, Dorado…).</li>
+      <li><strong>Forma</strong> (<code>pa_forma</code>): Redonda, Ovalada, Cuadrada, Rectangular, Cat eye, Aviador, Deportiva. Filtro y probador.</li>
+      <li><strong>Colección</strong> (<code>pa_coleccion</code>): Básica, Esencial, Superior, Élite. Filtro y archivo.</li>
+      <li><strong>Polarizada</strong> (<code>pa_polarizada</code>): Sí / No.</li>
+      <li><strong>Tipo de lente</strong> (<code>pa_lente</code>): Común, Polarizado, Fotocromático, Espejado, Sin graduar.</li>
+      <li><strong>Material del marco</strong> (<code>pa_material</code>): Policarbonato, Metal, Acetato, TR90, Acrílico.</li>
+      <li><strong>Género</strong> (<code>pa_genero</code>): Mujer, Hombre, Unisex. Se carga desde el día uno, pero el filtro se muestra solo cuando todos los productos lo tengan.</li>
+      <li><strong>Medidas</strong>: campos numéricos (ACF) <code>ancho_total</code>, <code>lente</code>, <code>puente</code>, <code>varilla</code>, en mm. Alimentan la tabla fija de la ficha y, más adelante, un filtro por tamaño.</li>
+    </ul></div>
+    <div class="card"><h3>¿Colecciones como categoría o como atributo? Atributo.</h3><ol>
+      <li><strong>No responden a una búsqueda:</strong> nadie busca "colección superior". Como categorías competirían con <code>/gafas-de-sol/</code> por las mismas palabras, con páginas casi iguales.</li>
+      <li><strong>Son un nivel de precio, no un tipo de producto.</strong> Un modelo tiene una sola colección y un solo precio. Como atributo, se puede editar el precio de toda una colección en bloque filtrando por él.</li>
+      <li><strong>Se combinan con otros filtros</strong> (Superior + Cat eye), cosa que un árbol de categorías no permite sin duplicar productos.</li>
+      <li><strong>Igual tienen URL</strong> para el mega menú, activando "archivos" en el atributo (<code>/coleccion/superior/</code>), con noindex hasta que tengan texto propio.</li>
+      <li><strong>Las migas quedan limpias:</strong> Inicio › Gafas de sol › Glow, sin preguntarse si va por categoría o por colección.</li>
+    </ol></div>
+    <div class="card"><h3>Producto, variación y nombres</h3><ul>
+      <li><strong>Producto variable = modelo</strong> (Glow). <strong>Variación = color</strong>, con su propia galería (plugin de imágenes por variación), stock y SKU.</li>
+      <li>SKU: <code>SG-{MODELO}-{COLOR}</code>, por ejemplo <code>SG-GLOW-NEG</code>.</li>
+      <li>Nombre de variación "Glow · Negro": separador de atributos " · " con el filtro <code>woocommerce_product_variation_title_attributes_separator</code>.</li>
+      <li>Hoy cada color es un producto separado en Empretienda (Gala black, Gala carey…). En la migración se agrupan: los 90 productos actuales quedan en unos 55 modelos.</li>
+      <li><strong>Renombrar antes de migrar:</strong> "Bulgari" es una marca registrada y conviene cambiarlo. "Apolo (polarized)" pasa a "Apolo", y los colores en inglés (black, pink, gold) pasan a español.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- IMPLEMENTACIÓN -->
+<section class="part" id="implementacion" aria-labelledby="im-h">
+  <header><h2 id="im-h">Notas de implementación por pantalla</h2><p>Elementor Pro + Hello Elementor + WooCommerce. Donde hace falta un plugin, va el tipo y un ejemplo conocido; elegí el que ya uses si cumple.</p></header>
+  <div class="tw"><table>
+    <thead><tr><th>Pantalla</th><th>Plantilla (Theme Builder)</th><th>Widgets de Elementor</th><th>Plugin (tipo · ejemplo)</th><th>CSS / JS propio</th></tr></thead>
+    <tbody>
+      <tr><td>Global</td><td>Site Settings</td><td>Colores y tipografías globales con los tokens del sistema; botones y formularios globales</td><td>Caché y WebP · LiteSpeed Cache o WP Rocket + ShortPixel</td><td><code>sunny.css</code>: tokens, foco visible, selección, scrollbars. Sin jQuery propio.</td></tr>
+      <tr><td>Header</td><td>Header (sticky)</td><td>Menu (mega menú de Elementor Pro), Search, Menu Cart (abre el side cart), Off-Canvas para mobile</td><td>Buscador AJAX · FiboSearch</td><td>Barra de anuncios: 3 textos rotando cada 5 s, con pausa visible y sin rotar si hay movimiento reducido (20 líneas de JS). Link "Ir al contenido".</td></tr>
+      <tr><td>Footer</td><td>Footer</td><td>Form (newsletter), Icon List, Nested Accordion solo en mobile</td><td>WhatsApp flotante · Joinchat. Email marketing · Brevo o Mailchimp</td><td>El botón de arrepentimiento enlaza a su página, visible en todas.</td></tr>
+      <tr><td>Home</td><td>Página</td><td>Containers, Image (hero con <code>fetchpriority=high</code>), Loop Grid + Taxonomy Filter por <code>pa_forma</code> (probador), Loop Carousel</td><td>—</td><td>Rayos de colecciones en SVG inline (5 líneas por nivel). Tabla de polarizadas en HTML real.</td></tr>
+      <tr><td>Listado</td><td>Product Archive</td><td>Archive Title, Archive Description, Loop Grid con Loop Item propio</td><td>Filtros AJAX · FiboFilters o Filter Everything. Swatches en loop · Variation Swatches (CartFlows/Emran)</td><td>Ordenamiento con el shortcode de WooCommerce. Drawer de filtros en mobile.</td></tr>
+      <tr><td>Card (Loop Item)</td><td>Loop Item</td><td>Imagen dinámica, segunda foto en hover, título + color, precio</td><td>Segunda imagen · el mismo plugin de swatches o ACF</td><td>Shortcode <code>[sg_precio]</code>: transferencia (×0,75), lista + cuotas y sin impuestos.</td></tr>
+      <tr><td>Ficha</td><td>Single Product</td><td>Product Images, Product Title, Add to Cart, Button (WhatsApp con texto dinámico), Product Content, Nested Accordion, Products (ventas dirigidas = "Completá el look")</td><td>Cotizador · plugin de Correo Argentino con MiCorreo. Imágenes por variación · Additional Variation Images. Reseñas con foto · CusRev (apagado hasta tener reseñas)</td><td>Tabla de especificaciones con Dynamic Tags de ACF. Barra de compra fija en mobile con IntersectionObserver.</td></tr>
+      <tr><td>Side cart</td><td>—</td><td>—</td><td>Side cart con barra de envío y cross-sell · FunnelKit Cart o XootiX Side Cart</td><td>Estilos con los tokens; recordatorio del 25% como bloque HTML del plugin.</td></tr>
+      <tr><td>Carrito</td><td>Página Carrito</td><td>Cart (dos columnas)</td><td>Cotizador de Correo</td><td>Sin campo de cupón hasta que haya promociones.</td></tr>
+      <tr><td>Checkout</td><td>Página Checkout</td><td>Checkout (dos columnas), header mínimo propio</td><td>Campos · Checkout Field Editor (DNI). Descuento por medio de pago · Payment Gateway Based Fees and Discounts. Mercado Pago oficial. Transferencia · BACS de WooCommerce</td><td>Texto del botón según medio de pago (10 líneas de JS sobre <code>payment_method_selected</code>).</td></tr>
+      <tr><td>Confirmación</td><td>Página Gracias (hook <code>woocommerce_thankyou</code>)</td><td>Shortcode con detalle del pedido</td><td>Personalizador de gracias · NextMove o hooks propios</td><td>Datos bancarios de BACS con botones de copiar; línea de tiempo según el estado del pedido.</td></tr>
+      <tr><td>Mi cuenta</td><td>Página Mi cuenta</td><td>My Account</td><td>Mayorista · Wholesale Suite. Seguimiento · el plugin de Correo</td><td>Estado del pedido con píldora de color y texto. Arrepentimiento por pedido durante 10 días.</td></tr>
+      <tr><td>Quiénes somos</td><td>Página</td><td>Containers, Image, Heading, Icon List</td><td>—</td><td>Banda ink con rayos SVG y banda mar.</td></tr>
+      <tr><td>Ayuda</td><td>Página</td><td>Nested Accordion con schema de FAQ (Rank Math), Table of Contents como navegación lateral</td><td>Rank Math (FAQPage)</td><td>Las respuestas de envíos y cambios salen de un template guardado, el mismo que usa la ficha: una sola fuente de texto.</td></tr>
+      <tr><td>Contacto</td><td>Página</td><td>Form × 2 (contacto y mayorista), Icon List</td><td>Mayorista · Wholesale Suite (alta del rol al aprobar)</td><td>Validación de CUIT de 11 dígitos en el formulario.</td></tr>
+      <tr><td>Blog</td><td>Archive (posts) y Single Post</td><td>Loop Grid de posts, Post Title, Post Content, Table of Contents, Products</td><td>—</td><td>Ancho de lectura 68ch; callout gris sin borde de color.</td></tr>
+      <tr><td>Arrepentimiento</td><td>Página</td><td>Form con email al cliente y a la tienda; Submissions activadas</td><td>—</td><td>Código de trámite generado en el envío (campo oculto + 5 líneas de PHP), como pide la Res. 424/2020.</td></tr>
+      <tr><td>404</td><td>Single 404</td><td>Heading, Search, Loop Grid (recién llegadas)</td><td>—</td><td>Rayos SVG; noindex.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cols">
+    <div class="card"><h3>Core Web Vitals</h3><ul>
+      <li>Hero: una sola imagen WebP con <code>fetchpriority="high"</code>, sin lazy y con medidas fijas.</li>
+      <li>Fuentes: Gloock 400 y Hanken Grotesk 400/600/700/800, autoalojadas, con preload de las dos más usadas y <code>font-display: swap</code>.</li>
+      <li>Imágenes de producto a 800px en WebP (las actuales pesan hasta 700 KB en PNG; convertidas, entre 9 y 34 KB).</li>
+      <li>Nada de sliders automáticos, animaciones de entrada ni videos de fondo. Transiciones de 150–250 ms.</li>
+      <li>Desactivá en Elementor los widgets y los íconos de Font Awesome que no se usen (Experiments: "Inline Font Icons", "Optimized DOM").</li>
+    </ul></div>
+    <div class="card"><h3>Lo que el prototipo ya resuelve y conviene copiar</h3><ul>
+      <li>Archivo <code>sunnygafas/assets/sunny.css</code>: tokens, botones, campos, cards, swatches y footer.</li>
+      <li>Archivo <code>sunnygafas/assets/proto.css</code>: estilos de listado, ficha, carrito, checkout, cuenta y etapa 4.</li>
+      <li>Lógica de precios, filtros y validaciones en <code>sunnygafas/prototipo/app.src.js</code> como referencia de comportamiento.</li>
+      <li>Para levantarlo en tu máquina: <code>python3 -m http.server 8080 --directory sunnygafas/dist</code>.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- QC -->
+<section class="part" id="qc" aria-labelledby="qc-h">
+  <header><h2 id="qc-h">Control de calidad de la etapa 4</h2></header>
+  <div class="cols">
+    <div class="card wide"><h3>1 · Heurísticas de Nielsen</h3><div class="tw" style="background:none"><table style="min-width:760px">
+      <thead><tr><th>Heurística</th><th>Instit.</th><th>Ayuda</th><th>Contacto</th><th>Blog</th><th>404</th><th>Problema principal que queda</th></tr></thead>
+      <tbody>
+        <tr><td>Visibilidad del estado</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Formularios con "Enviando…" y confirmación en el lugar.</td></tr>
+        <tr><td>Relación con el mundo real</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Preguntas escritas como las haría quien compra.</td></tr>
+        <tr><td>Control y libertad</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Arrepentimiento sin pedir motivo.</td></tr>
+        <tr><td>Consistencia</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Mismos acordeones, campos y cards que en compra.</td></tr>
+        <tr><td>Prevención de errores</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>CUIT y número de pedido validados con ejemplo.</td></tr>
+        <tr><td>Reconocer antes que recordar</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Navegación de temas siempre visible en Ayuda.</td></tr>
+        <tr><td>Flexibilidad</td><td><span class="score s3">3</span></td><td><span class="score s3">3</span></td><td><span class="score">4</span></td><td><span class="score s3">3</span></td><td><span class="score">4</span></td><td>Ayuda sin buscador propio. Con 30 preguntas no hace falta; sumarlo si pasan de 60.</td></tr>
+        <tr><td>Estética y minimalismo</td><td><span class="score s3">3</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Quiénes somos depende de la foto propia y de la historia real.</td></tr>
+        <tr><td>Recuperarse de errores</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>404 con buscador, categorías y productos.</td></tr>
+        <tr><td>Ayuda</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>WhatsApp al cierre de Ayuda y primero en Contacto.</td></tr>
+      </tbody></table></div></div>
+    <div class="card"><h3>2 · Especificidad</h3><ul>
+      <li><strong>Quiénes somos</strong> no cuenta valores genéricos: su banda central es quién avala las gafas, con nombre y matrícula.</li>
+      <li><strong>Ayuda</strong> responde con los datos reales: Correo Argentino, 25%, 3 cuotas, Ley 27.743 y 10 días de arrepentimiento.</li>
+      <li><strong>El blog</strong> apunta a búsquedas de quien compra anteojos y cada artículo termina en productos.</li>
+    </ul></div>
+    <div class="card"><h3>3 · Dosis de color</h3><ul>
+      <li><strong>Quiénes somos:</strong> lienzo arena-50, banda ink (óptico, con rayos dorados) y banda mar (dónde encontrarnos). Ninguna comparte viewport con la foto grande.</li>
+      <li><strong>Ayuda, contacto, blog y legales:</strong> lienzo blanco. El único dorado es el logo; mar en íconos y la tabla de medidas.</li>
+      <li><strong>404:</strong> los rayos son el momento dorado; el header es el bloque de marca.</li>
+    </ul></div>
+    <div class="card"><h3>4 · Largo y redundancia</h3><ul>
+      <li>Las respuestas de envíos, pagos y cambios existen una sola vez (template global) y aparecen en Ayuda y en la ficha.</li>
+      <li>La guía de medidas vive en Ayuda y en un artículo. El artículo amplía; Ayuda resume y enlaza.</li>
+      <li>Saqué de Quiénes somos los números de clientes o ventas: no hay datos y no se inventan.</li>
+    </ul></div>
+    <div class="card"><h3>5 · Accesibilidad</h3><ul>
+      <li>Probé las 15 páginas a 390 y 1440 px: sin scroll horizontal y sin errores de consola.</li>
+      <li>Acordeones con <code>details/summary</code> nativos; formularios con label visible y error con ícono y texto.</li>
+      <li>Artículos a 18/30 px y 68ch de ancho; índice del artículo con links reales.</li>
+      <li>Tabla de medidas con <code>th scope</code>; el dibujo tiene descripción.</li>
+    </ul></div>
+    <div class="card"><h3>6 · Copy</h3><ul>
+      <li>Sin "Descubrí", "Bienvenido", "experiencia" ni frases de cierre. Cero exclamaciones.</li>
+      <li>El artículo de UV400 usa solo datos de óptica general (rangos UVA y UVB) y marca lo que debe revisar el óptico.</li>
+      <li>Legales: estructura y diseño de lectura, con el texto marcado para redactar con un abogado.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- DATOS -->
+<section class="part" id="datos" aria-labelledby="dt-h">
+  <header><h2 id="dt-h">Lista final de datos para pedirle a la clienta</h2><p>Todo lo que hoy aparece entre corchetes en el sitio, agrupado y sin repetir. Los primeros de cada grupo son los que frenan el lanzamiento.</p></header>
+  <div class="card"><div class="ask">
+    <h4>Empresa y legales</h4><ol>
+      <li>Razón social, CUIT, domicilio legal y condición fiscal (para el precio sin impuestos nacionales).</li>
+      <li>Términos y condiciones y política de privacidad redactados por un abogado.</li>
+      <li>Plazo y condiciones de cambio, quién paga el envío del cambio y garantía por fallas.</li>
+      <li>Ciudad desde donde despachan.</li></ol>
+    <h4>Óptico</h4><ol>
+      <li>Nombre, apellido y matrícula del óptico que avala las gafas.</li>
+      <li>Qué revisa en cada modelo y dos líneas sobre su trayectoria.</li>
+      <li>Validar los textos de forma de cara, la tabla de polarizadas y el artículo de UV400.</li></ol>
+    <h4>Catálogo</h4><ol>
+      <li>Medidas de cada modelo: ancho total, lente, puente y varilla.</li>
+      <li>Material del marco y tipo de lente de los modelos sin descripción.</li>
+      <li>Confirmar la forma de cada modelo (las asigné mirando las fotos).</li>
+      <li>Confirmar los colores que nombré mirando las fotos (Risky negro, Milo dorado, Río beige y otros).</li>
+      <li>Qué cambia entre Básica, Esencial, Superior y Élite además del precio.</li>
+      <li>Stock por variación.</li>
+      <li>Cuáles son "recién llegadas" y llevan badge Nuevo.</li>
+      <li>Nuevo nombre para "Bulgari" (marca registrada).</li>
+      <li>Material y largo de cada cadena; si vienen en bolsita o caja.</li>
+      <li>Si Sale va a existir y con qué productos.</li></ol>
+    <h4>Envíos y pagos</h4><ol>
+      <li>Credenciales de MiCorreo (o tarifas de Correo Argentino) y plazos de entrega.</li>
+      <li>Monto mínimo de envío gratis, o confirmar que no hay.</li>
+      <li>Datos bancarios: titular, CUIT, banco, CBU y alias.</li>
+      <li>Plazo para transferir y cómo quieren recibir el comprobante.</li>
+      <li>Si hay pago en efectivo, dónde y cómo.</li>
+      <li>Cuenta de Mercado Pago con cuotas sin interés configuradas.</li></ol>
+    <h4>Contacto y mayorista</h4><ol>
+      <li>Número de WhatsApp y horario de atención.</li>
+      <li>Condiciones mayoristas: compra mínima, lista de precios, plazo de respuesta y quién aprueba.</li>
+      <li>Incentivo de la newsletter, si lo hay, y herramienta de email.</li></ol>
+    <h4>Marca y contenido</h4><ol>
+      <li>Logo en SVG.</li>
+      <li>Historia real para Quiénes somos: quién fundó Sunnygafas, cuándo y por qué.</li>
+      <li>Fotos propias: hero (4:5 y 1440×680), una por categoría, foto para Quiénes somos y una foto puesta por modelo.</li>
+      <li>Estándar para las fotos de producto: fondo blanco, vista 3/4 y frente, mismo encuadre.</li>
+      <li>Logos oficiales de los medios de pago en SVG.</li>
+      <li>Validar "anteojos" vs. "gafas" en titles y slugs (Keyword Planner o Search Console).</li></ol>
+    <h4>Accesos técnicos</h4><ol>
+      <li>Hosting y dominio, con acceso para instalar WordPress.</li>
+      <li>Licencia de Elementor Pro y de los plugins pagos que elijan.</li>
+      <li>Exportación del catálogo de Empretienda (CSV) para migrar productos y armar las redirecciones 301.</li></ol>
+  </div></div>
+</section>
+</div>
