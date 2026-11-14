@@ -106,7 +106,7 @@ def nav_items(active, drawer=False):
             out.append(f'<li><a href="/{CAT_PAGE[k]}.html"{cur}>{CATEGORIES[k]}</a></li>')
     return '\n        '.join(out)
 
-def page(path, title, desc, body, css=('pages',), js=(), active=None, jsonld=None, preload='', robots=None, og_image='/assets/img/hero-desk.webp'):
+def page(path, title, desc, body, css=('pages',), js=(), active=None, jsonld=None, preload='', robots=None, og_image='/assets/img/hero-ink-desk.webp'):
     canonical = SITE_URL + ('/' if path == 'index.html' else '/' + path)
     head = f'''<!doctype html>
 <html lang="es-AR">
@@ -121,7 +121,7 @@ def page(path, title, desc, body, css=('pages',), js=(), active=None, jsonld=Non
 <meta property="og:image" content="{SITE_URL}{og_image}">
 <meta property="og:locale" content="es_AR">
 <link rel="icon" href="/assets/img/isotipo-sunnygafas.png">
-<link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/bodoni-moda-latin-opsz.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 {preload}<link rel="stylesheet" href="/css/tokens.css">
 <link rel="stylesheet" href="/css/site.css">
@@ -147,7 +147,7 @@ ORG = {'@context': 'https://schema.org', '@type': 'Organization', 'name': 'Sunny
 page('index.html', 'Sunnygafas · Gafas de sol, polarizadas y armazones',
      'Gafas de sol, polarizadas, armazones, clip-on 2 en 1 y accesorios. 25% off con transferencia o efectivo, 3 cuotas sin interés y envíos a todo el país.',
      (T / 'home.html').read_text(), css=('home',), js=('home',), jsonld=[ORG, {'@context': 'https://schema.org', '@type': 'WebSite', 'name': 'Sunnygafas', 'url': SITE_URL}],
-     preload='<link rel="preload" href="/assets/img/hero-desk.webp" as="image" media="(min-width: 761px)">\n<link rel="preload" href="/assets/img/hero-mob.webp" as="image" media="(max-width: 760px)">\n')
+     preload='<link rel="preload" href="/assets/img/hero-ink-desk.webp" as="image" media="(min-width: 761px)">\n<link rel="preload" href="/assets/img/hero-ink-mob.webp" as="image" media="(max-width: 760px)">\n')
 
 # ---------- Catálogo ----------
 CAT_TPL = (T / 'catalogo.html').read_text()

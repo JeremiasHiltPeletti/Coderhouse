@@ -86,6 +86,9 @@ for m in M['models']:
         files = sorted(glob.glob(str(src / f'{s}__*.*')), key=lambda f: int(f.rsplit('__', 1)[1].split('.')[0]))
         gal = []
         card = None; how = ''
+        if v.get('cardFrom') == 'prev' and prev and (prev / (v['prev'] + '.webp')).exists():
+            pim = load(prev / (v['prev'] + '.webp'))
+            card = studio_card(pim) or pim.resize((CW, CH), Image.LANCZOS); how = 'recorte previo normalizado'
         for k, f in enumerate(files[:5], 1):
             im = load(f)
             g = gallery_crop(im); g.thumbnail((1000, 1000), Image.LANCZOS)

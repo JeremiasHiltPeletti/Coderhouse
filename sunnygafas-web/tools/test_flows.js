@@ -20,22 +20,36 @@ const ok = (name, cond, extra) => { results.push([cond ? 'OK ' : 'FALLA', name, 
   await p.click('.hero__ctas a[href="#forma"]'); await p.waitForTimeout(900);
   let r = await p.evaluate(() => { const t = document.getElementById('forma-title').getBoundingClientRect(), h = document.querySelector('.header').getBoundingClientRect(); return { top: t.top, hb: h.bottom }; });
   ok('Home: el título «Elegí por forma» queda visible bajo la cabecera fija', r.top >= r.hb && r.top < 400, JSON.stringify(r));
-  for (const shape of ['cuadrada', 'cateye', 'aviador', 'redonda']) {
-    await p.click(`.shape[data-shape="${shape}"]`); await p.waitForTimeout(150);
+  // enlace del hero a la variante retratada
+  const heroHref = await p.getAttribute('.hero__sign a', 'href');
+  ok('Hero: el enlace de la foto apunta a Saturday XL · Print', heroHref === '/producto/saturday.html?color=print', heroHref);
+  for (const shape of ['redonda', 'cateye', 'aviador', 'cuadrada']) {
+    await p.click(`.shape-btn[data-shape="${shape}"]`); await p.waitForTimeout(350);
     r = await p.evaluate((shape) => {
       const SG = window.SG;
-      const cards = [...document.querySelectorAll('#shapeGrid .product-card')].filter((c) => getComputedStyle(c).display !== 'none').map((c) => c.dataset.id);
-      const puestas = [...document.querySelectorAll('#fitShot:not([hidden]) .puesta')].map((a) => new URL(a.href).pathname.split('/').pop().replace('.html', ''));
-      return { cards, puestas, okCards: cards.every((id) => SG.inGroup(SG.BY_ID[id], shape)), okPuestas: puestas.every((id) => SG.inGroup(SG.BY_ID[id], shape)),
-               fullWhenEmpty: puestas.length > 0 || document.querySelector('.shape-body').classList.contains('shape-body--full') };
+      const links = [...document.querySelectorAll('#shapePhotos a')];
+      const hrefs = [...new Set(links.map((a) => a.getAttribute('href')))];
+      const model = document.getElementById('shapeModel');
+      const u = new URL(model.href), id = u.pathname.split('/').pop().replace('.html', ''), pr = SG.BY_ID[id];
+      const v = pr.vars.find((x) => x.slug === (u.searchParams.get('color') || pr.vars[0].slug));
+      const imgs = links.map((a) => a.querySelector('img'));
+      return { n: links.length, sameDest: hrefs.length === 1 && hrefs[0] === model.getAttribute('href'), inShape: SG.inGroup(pr, shape),
+               label: model.textContent, labelOK: model.textContent === pr.name + ' · ' + v.label,
+               photosOfVariant: imgs.every((im) => im.getAttribute('src').includes('/' + v.img + '-')), loaded: imgs.every((im) => im.complete && im.naturalWidth > 0),
+               all: document.getElementById('shapeAll').getAttribute('href'), pressed: document.querySelectorAll('.shape-btn[aria-pressed="true"]').length };
     }, shape);
-    ok(`Forma ${shape}: modelos y retratos coinciden con el filtro`, r.okCards && r.okPuestas && r.fullWhenEmpty && r.cards.length > 0, `${r.cards.length} modelos, ${r.puestas.length} retratos`);
+    ok(`Forma ${shape}: dos fotos de la misma variante, nombre y enlaces coinciden`, r.n >= 1 && r.sameDest && r.inShape && r.labelOK && r.photosOfVariant && r.loaded && r.all === '/catalogo.html?forma=' + shape && r.pressed === 1, `${r.label} · ${r.n} fotos`);
   }
-  await p.click('.shape[data-shape="cuadrada"]');
-  const puestaHref = await p.getAttribute('#fitShot .puesta', 'href');
-  await Promise.all([p.waitForURL('**/producto/**'), p.click('#fitShot .puesta')]); await p.waitForLoadState('networkidle');
+  const allHref = await p.getAttribute('#shapeAll', 'href');
+  await Promise.all([p.waitForURL('**/catalogo.html**'), p.click('#shapeAll')]); await p.waitForLoadState('networkidle');
+  r = await p.evaluate(() => ({ count: document.getElementById('catCount').textContent, ok: [...document.querySelectorAll('#catGrid .product-card')].every((c) => window.SG.inGroup(window.SG.BY_ID[c.dataset.id], 'cuadrada')) }));
+  ok('«Ver modelos cuadrados» abre el catálogo filtrado', allHref === '/catalogo.html?forma=cuadrada' && r.ok, r.count);
+  await p.goBack({ waitUntil: 'networkidle' });
+  await p.click('.shape-btn[data-shape="cuadrada"]'); await p.waitForTimeout(200);
+  const puestaHref = await p.getAttribute('#shapePhotos a', 'href');
+  await Promise.all([p.waitForURL('**/producto/**'), p.click('#shapePhotos a')]); await p.waitForLoadState('networkidle');
   r = await p.evaluate(() => ({ h1: document.querySelector('h1').textContent, variant: document.getElementById('pdpVariant').textContent, buy: document.getElementById('pdpBuy').href }));
-  ok('Retrato puesto → abre la ficha de esa variante', p.url().endsWith(puestaHref) && !!r.h1, `${r.h1} · ${r.variant}`);
+  ok('Foto puesta → abre la ficha de esa variante', p.url().endsWith(puestaHref) && r.h1 === 'Charlotte' && r.variant === 'Marrón' && r.buy.endsWith('charlotte-brown'), `${r.h1} · ${r.variant}`);
 
   /* 2 · Buscar «Gala Carey» → ficha → Caramelo */
   await p.goto(BASE + '/', { waitUntil: 'networkidle' });

@@ -1,55 +1,54 @@
 /* =========================================================
-   Sunnygafas — Home: recién llegadas, selector de forma y comparador
+   Sunnygafas — Home: recién llegadas, forma en dos vistas y comparador
    Datos: js/data.js · Tarjeta, menú y buscador: js/site.js
    ========================================================= */
 (function () {
   const SG = window.SG;
-  const { PRODUCTS, BY_ID, FEATURED, SHAPE_GROUPS, SHAPE_NAME, productURL, inGroup, firstInStock, cardHTML, bindSwatches, $, $$ } = SG;
+  const { PRODUCTS, BY_ID, FEATURED, SHAPE_GROUPS, productURL, inGroup, firstInStock, cardHTML, bindSwatches, $, $$ } = SG;
 
   /* ---------- Recién llegadas ---------- */
   const newGrid = $("#newGrid");
   newGrid.innerHTML = FEATURED.map((id) => cardHTML(BY_ID[id], firstInStock(BY_ID[id]))).join("");
   bindSwatches(newGrid);
 
-  /* ---------- Elegí por forma ---------- */
-  /* Fotos con el modelo puesto: salen de la galería oficial de esa misma variante */
-  const PUESTAS = [
-    { id: "saturday", color: "print", src: "saturday-xl-print-2", alt: "Mujer con las gafas Saturday XL print, de tres cuartos" },
-    { id: "charlotte", color: "marron", src: "charlotte-brown-2", alt: "Mujer con las gafas Charlotte marrón, al sol en la calle" },
-    { id: "risky", color: "negro", src: "risky-5", alt: "Hombre con el armazón Risky negro, de perfil" },
-    { id: "pilot", color: "negro", src: "pilot-black-1", alt: "Mujer con las gafas Pilot negro, dentro de un auto" },
-    { id: "lupe", color: "print", src: "lupe-1", alt: "Mujer con el armazón Lupe print" }
-  ].map((f) => {
-    const p = BY_ID[f.id];
-    return p ? Object.assign(f, { p, vi: Math.max(0, p.vars.findIndex((v) => v.slug === f.color)) }) : null;
-  }).filter(Boolean);
-  const CAT_ORDER = { sol: 0, pol: 1, arm: 2, clip: 3, acc: 4 };
-  const shapeGrid = $("#shapeGrid"), shapeAll = $("#shapeAll"), shapeStatus = $("#shapeStatus"), fitShot = $("#fitShot");
+  /* ---------- Elegí por forma: un modelo representativo en dos vistas ---------- */
+  /* Cada forma muestra una variante real. «worn» es la foto puesta de esa misma variante (galería oficial);
+     si no hay retrato, se usan dos vistas de producto de la misma montura. */
+  const SHAPE_PICK = {
+    redonda:  { id: "glow", color: "negro", shots: [
+      { src: "glow-black-2", alt: "Glow negro, vista de frente sobre una mesa clara" },
+      { src: "glow-black-4", alt: "Glow negro, detalle del aro dorado y la bisagra" }] },
+    cuadrada: { id: "charlotte", color: "marron", shots: [
+      { src: "charlotte-brown-2", worn: true, alt: "Mujer con las gafas Charlotte marrón, al sol en la calle", pos: "50% 30%" },
+      { src: "charlotte-brown-1", alt: "Charlotte marrón, vista de producto sobre una superficie gris" }] },
+    cateye:   { id: "pilot", color: "negro", shots: [
+      { src: "pilot-black-1", worn: true, alt: "Mujer con las gafas Pilot negro, dentro de un auto", pos: "50% 28%" },
+      { src: "pilot-black-2", studio: true, alt: "Pilot negro, vista de frente" }] },
+    aviador:  { id: "saturday", color: "print", shots: [
+      { src: "saturday-xl-print-2", worn: true, alt: "Mujer con las gafas Saturday XL print, de tres cuartos", pos: "50% 26%" },
+      { src: "saturday-xl-print-3", alt: "Saturday XL print, vista de producto" }] }
+  };
+  const shapePhotos = $("#shapePhotos"), shapeModel = $("#shapeModel"), shapePrice = $("#shapePrice"), shapeAll = $("#shapeAll"), shapeStatus = $("#shapeStatus");
   function renderShape(group, announce) {
-    const all = PRODUCTS.filter((p) => inGroup(p, group) && p.vars.some((v) => v.stock))
-      .sort((a, b) => (CAT_ORDER[a.cat] - CAT_ORDER[b.cat]) || (b.isNew - a.isNew));
-    const list = all.slice(0, 4);
-    shapeGrid.innerHTML = list.map((p) => cardHTML(p, firstInStock(p))).join("");
-    // Misma regla que la grilla: solo retratos de modelos de la forma activa
-    const puestas = PUESTAS.filter((f) => inGroup(f.p, group)).slice(0, 2);
-    fitShot.hidden = !puestas.length;
-    fitShot.classList.toggle("puestas--single", puestas.length === 1);
-    $(".shape-body").classList.toggle("shape-body--full", !puestas.length);
-    $(".puestas__list", fitShot).innerHTML = puestas.map((f) => {
-      const v = f.p.vars[f.vi];
-      return '<a class="puesta" href="' + productURL(f.p, f.vi) + '"><img src="/assets/img/p/' + f.src + '.webp" alt="' + f.alt + '" loading="lazy">' +
-        '<span class="puesta__cap"><b>' + f.p.name + "</b> · " + v.label + "</span></a>";
-    }).join("");
+    const pick = SHAPE_PICK[group], p = BY_ID[pick.id];
+    const vi = Math.max(0, p.vars.findIndex((v) => v.slug === pick.color)), v = p.vars[vi], url = productURL(p, vi);
+    const n = PRODUCTS.filter((x) => inGroup(x, group) && x.vars.some((y) => y.stock)).length;
+    shapePhotos.classList.toggle("shape__photos--one", pick.shots.length === 1);
+    shapePhotos.innerHTML = pick.shots.map((f) =>
+      '<a class="shape__photo' + (f.studio ? " shape__photo--studio" : "") + '" href="' + url + '"><img src="/assets/img/p/' + f.src + '.webp" alt="' + f.alt + '" loading="lazy"' + (f.pos ? ' style="object-position:' + f.pos + '"' : "") + ">" +
+      '<span class="shape__tag">' + (f.worn ? "Puesta" : "Montura") + "</span></a>").join("");
+    shapeModel.textContent = p.name + " · " + v.label;
+    shapeModel.href = url;
+    shapePrice.innerHTML = "<strong>" + SG.money(SG.transferPrice(v.price)) + "</strong> con transferencia o efectivo · " + SG.money(v.price) + " de lista";
     shapeAll.href = "/catalogo.html?forma=" + group;
-    shapeAll.firstChild.textContent = "Ver los " + all.length + " modelos " + SHAPE_GROUPS[group].plural + " ";
-    if (announce) shapeStatus.textContent = SHAPE_GROUPS[group].label + ": " + list.length + " modelos. " + list.map((p) => p.name + " (" + SHAPE_NAME[p.shape].toLowerCase() + ")").join(", ") + ".";
+    shapeAll.firstChild.textContent = "Ver modelos " + SHAPE_GROUPS[group].plural + " ";
+    if (announce) shapeStatus.textContent = SHAPE_GROUPS[group].label + ": " + p.name + " " + v.label + ", " + pick.shots.length + " fotos. " + n + " modelos con esta forma.";
   }
-  bindSwatches(shapeGrid);
-  $$(".shape").forEach((btn) => btn.addEventListener("click", () => {
-    $$(".shape").forEach((b) => b.setAttribute("aria-pressed", b === btn));
+  $$(".shape-btn").forEach((btn) => btn.addEventListener("click", () => {
+    $$(".shape-btn").forEach((b) => b.setAttribute("aria-pressed", b === btn));
     renderShape(btn.dataset.shape, true);
   }));
-  renderShape("redonda", false);
+  renderShape("cuadrada", false);
 
   /* ---------- Comparador: misma foto en ambas capas; la común suma un reflejo simulado ---------- */
   const stage = $(".compare__stage"), range = $("#compareRange");

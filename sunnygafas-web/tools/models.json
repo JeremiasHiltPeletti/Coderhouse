@@ -117,7 +117,8 @@
     {
      "c": "Print",
      "s": "yanis-print",
-     "prev": "yanis-print"
+     "prev": "yanis-print",
+     "cardFrom": "prev"
     },
     {
      "c": "Negro",
