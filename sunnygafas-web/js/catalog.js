@@ -7,7 +7,7 @@
 (function () {
   const SG = window.SG;
   const byId = (i) => document.getElementById(i);
-  /* Catálogo no disponible: sin datos no hay grilla que mostrar; se ofrece reintentar y la tienda oficial */
+  /* Catálogo no disponible: sin datos no hay grilla que mostrar; se ofrece reintentar y contacto */
   if (!SG || !SG.PRODUCTS || !SG.cardHTML) {
     ["catGrid", "filters", "applied"].forEach((i) => { byId(i).hidden = true; });
     document.querySelector(".cat-bar").hidden = true;
@@ -15,7 +15,7 @@
     byId("catRetry").addEventListener("click", () => location.reload());
     return;
   }
-  const { PRODUCTS, SHAPE_GROUPS, CATEGORIES, COLLECTIONS, COLOR_FAMILY, FAMILY_HEX, inGroup, norm, search, cardHTML, bindSwatches, $, $$ } = SG;
+  const { PRODUCTS, SHAPE_GROUPS, CATEGORIES, COLLECTIONS, FAMILIES, FAMILY_HEX, inGroup, norm, search, cardHTML, bindSwatches, $, $$ } = SG;
   const main = $("#contenido"), cat = main.dataset.cat || null;
   const grid = $("#catGrid"), count = $("#catCount"), applied = $("#applied"), empty = $("#catEmpty"), form = $("#filterForm");
   const filters = $("#filters"), panel = $("#filtersPanel"), openBtn = $("#filtersOpen"), badge = $("#filtersBadge"), applyBtn = $("#filtersApply"), sort = $("#sort");
@@ -47,7 +47,7 @@
      alguna de sus variantes cumple las dos condiciones a la vez. */
   const colSlug = (c) => norm(c);
   const famSlug = (f) => norm(f).replace(/[^a-z]+/g, "-");
-  const famOf = (v) => COLOR_FAMILY[v.c] || "Color";
+  const famOf = (v) => v.fam || "Color";
   const GROUPS = [];
   if (!cat) {
     const cats = Object.keys(CATEGORIES).filter((k) => base.some((p) => p.cat === k));
@@ -55,7 +55,7 @@
   }
   const shapes = Object.keys(SHAPE_GROUPS).filter((g) => base.some((p) => inGroup(p, g)));
   if (shapes.length > 1) GROUPS.push({ key: "forma", label: "Forma", options: shapes.map((g) => ({ v: g, label: SHAPE_GROUPS[g].label, icon: "f-" + g })), test: (p, vals) => vals.some((g) => inGroup(p, g)) });
-  const fams = Object.keys(FAMILY_HEX).filter((f) => base.some((p) => p.vars.some((v) => famOf(v) === f)));
+  const fams = FAMILIES.filter((f) => base.some((p) => p.vars.some((v) => famOf(v) === f)));
   if (fams.length > 1) GROUPS.push({ key: "color", label: "Color", options: fams.map((f) => ({ v: famSlug(f), label: f, hex: FAMILY_HEX[f] })), vtest: (v, vals) => vals.includes(famSlug(famOf(v))) });
   const cols = COLLECTIONS.filter((c) => base.some((p) => p.col === c));
   if (cols.length > 1) GROUPS.push({ key: "col", label: "Colección", options: cols.map((c) => ({ v: colSlug(c), label: c })), test: (p, vals) => !!p.col && vals.includes(colSlug(p.col)) });
@@ -105,7 +105,11 @@
     if (o === "menor") list.sort(byPrice(1));
     else if (o === "mayor") list.sort(byPrice(-1));
     else if (o === "nombre") list.sort((a, b) => a.p.name.localeCompare(b.p.name, "es"));
-    else list.sort((a, b) => (b.p.vars[b.vi].stock - a.p.vars[a.vi].stock) || (b.p.isNew - a.p.isNew));
+    else {
+      // Destacados: primero la selección curada, después lo que tiene stock, agrupado por categoría
+      const CAT_ORDER = ["sol", "pol", "arm", "clip", "acc"], feat = (x) => { const i = SG.FEATURED.indexOf(x.p.id); return i < 0 ? 99 : i; };
+      list.sort((a, b) => (feat(a) - feat(b)) || (b.p.vars[b.vi].stock - a.p.vars[a.vi].stock) || (CAT_ORDER.indexOf(a.p.cat) - CAT_ORDER.indexOf(b.p.cat)));
+    }
     return list;
   }
   const nActive = () => GROUPS.reduce((n, g) => n + state[g.key].length, 0);

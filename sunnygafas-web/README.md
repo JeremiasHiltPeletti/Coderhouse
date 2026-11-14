@@ -1,76 +1,92 @@
-# Sunnygafas · sitio web
+# Sunnygafas · sitio con compra propia
 
-Sitio estático (HTML, CSS y JavaScript sin dependencias). Publicado en https://sunnygafas-home.netlify.app.
+Sitio estático (HTML, CSS y JavaScript sin dependencias) generado con Python. La navegación y la compra se hacen dentro del sitio: catálogo, fichas, carrito y checkout. La tienda de origen (Empretienda) se usa solo como **fuente de datos**; el sitio no enlaza compras hacia ella.
 
-La compra se completa en la tienda oficial, https://sunnygafas.empretienda.com.ar: cada color del sitio enlaza a la ficha oficial de ese mismo color.
-
-## Abrirlo en tu máquina
-
-Las rutas son absolutas (`/css/...`), así que hace falta un servidor local:
+## Cómo verlo
 
 ```bash
-python3 -m http.server 8090 --directory sunnygafas-web
+python3 -m http.server 8090 --bind 127.0.0.1
 ```
 
-Después abrí http://localhost:8090.
+Abrí http://127.0.0.1:8090. Las rutas son absolutas (`/css/...`), así que hace falta un servidor.
 
-## Publicar
-
-Subí la carpeta `sunnygafas-web` completa a Netlify (arrastrándola al panel o con `netlify deploy --prod --dir sunnygafas-web`). No hay paso de compilación en el servidor: los HTML ya están generados.
-
-## Actualizar precios, stock o modelos
+## Datos: de la tienda de origen al sitio
 
 ```bash
-python3 tools/sync_store.py     # lee precio, stock y descripción de cada variante en la tienda oficial
-python3 tools/build.py          # regenera js/data.js y todas las páginas
-node tools/test_flows.js        # recorridos de verificación en navegador (requiere Playwright y el servidor local)
-```
-
-- **Qué modelos se muestran y qué ficha oficial corresponde a cada color:** `tools/models.json`.
-- **Fotos:** `python3 tools/images.py <carpeta_con_las_fotos_de_la_tienda>` prepara galerías y tarjetas con el mismo criterio.
-- **Dominio final:** cambiá `SITE_URL` en `tools/build.py` y volvé a generar. Actualiza canónicas, `sitemap.xml`, `robots.txt` y datos estructurados.
-
-## Estructura
-
-| Ruta | Contenido |
-|---|---|
-| `index.html` | Home |
-| `gafas-de-sol.html`, `polarizadas.html`, `armazones.html`, `clip-on.html`, `accesorios.html`, `catalogo.html` | Catálogo por categoría, completo y resultados de búsqueda |
-| `producto/<modelo>.html` | Ficha de cada modelo (`?color=` elige la variante) |
-| `guia-de-calce.html`, `ayuda.html`, `404.html` | Guía, ayuda y página no encontrada |
-| `demo.html` | Redirige los enlaces de la versión anterior a su página definitiva |
-| `css/tokens.css`, `css/site.css`, `css/home.css`, `css/pages.css` | Tokens y componentes, cabecera y pie, Home, resto de las páginas |
-| `js/data.js` | Catálogo único (generado) |
-| `js/site.js`, `js/home.js`, `js/catalog.js`, `js/product.js` | Lógica compartida y por página |
-| `tools/` | Generador, sincronización con la tienda, fotos, plantillas y pruebas |
-
-## Cambios de la auditoría (noviembre de 2026)
-
-- **Filtros**: color y stock se cruzan sobre una misma variante; la tarjeta muestra y enlaza esa variante, y el orden por precio usa el precio visible (`js/catalog.js`).
-- **Datos de ficha**: protección UV, polarización y fotocromía son atributos independientes con tres estados. `null` significa «sin confirmar»: no se muestra ni se niega. En clip-on, `parts` indica a qué pieza pertenece cada atributo (`tools/models.json`, `tools/build.py`).
-- **Pendientes de validar por la marca**: están listados en `tools/models.json → pending` (medidas, estuche y líquido, polarización de Ciclismo, antirreflejo de Classic, presupuesto de cristales en Coco y Oriana, tarjetas, plazos y política de cambios).
-- **Comparador de reflejo**: pasó de la Home a Polarizadas (`tools/templates/_compare.html`, `css/compare.css`, `js/compare.js`).
-
-### Pruebas
-
-```bash
-node tools/test_flows.js            # recorridos generales
+python3 tools/sync_store.py                 # 1. lee todos los productos publicados (sitemap + fichas públicas)
 ```
 
 ```bash
-node tools/test_audit.js --tienda   # criterios de la auditoría; --tienda sigue la compra hasta Empretienda
+python3 tools/catalog.py                    # 2. agrupa los colores de cada modelo en variantes
 ```
 
-Las dos aceptan una URL base como primer argumento (por defecto `http://localhost:8090`).
+```bash
+python3 -W ignore tools/images.py <carpeta_de_fotos>   # 3. prepara galerías y tarjetas
+```
 
-### Vista previa sin publicar
+```bash
+python3 tools/build.py                      # 4. genera páginas, datos, sitemap y redirecciones
+```
+
+- `tools/store-snapshot.json`: un registro por producto de origen (nombre, categoría, precio, stock y cantidad, descripción, fotos). Se descartan las imágenes de plantilla de la tienda (logo y banner).
+- `tools/catalog.json`: modelos con sus variantes. En la tienda cada color es un producto; acá se agrupan por nombre base y colección, y cada variante conserva su SKU, precio, stock y fotos.
+- `tools/curation.json`: correcciones de agrupamiento y color, forma de cada modelo, piezas de los clip-on, correcciones de atributos de lente, datos de accesorios, selección de la Home y **datos pendientes de validar**.
+
+Atributos de lente (protección UV, polarización, fotocromía) son independientes y tienen tres estados: `true` respaldado por la descripción de origen, `false` negado por la fuente, `null` sin confirmar (no se muestra ni se niega). En clip-on cada característica se asigna a su pieza (armazón o clip).
+
+## Cobertura del catálogo (sincronizado 2026-11-14 16:06)
+
+219 productos publicados en la fuente → **113 modelos con 219 variantes** (28 sin stock). Ningún producto quedó afuera (`catalog.py` lo verifica).
+
+| Categoría | Modelos | Variantes |
+| --- | --- | --- |
+| Gafas de sol | 65 | 132 |
+| Polarizadas | 16 | 26 |
+| Armazones | 21 | 42 |
+| Clip-on 2 en 1 | 8 | 11 |
+| Accesorios | 3 | 8 |
+
+## Compra
+
+- **Carrito** (`/carrito.html`): se guarda en el navegador. Cantidades limitadas al stock informado por la fuente; quitar productos; seguir comprando.
+- **Checkout** (`/checkout.html`): contacto, entrega (Correo Argentino, retiro o entrega a acordar) y pago (transferencia o efectivo con 25% off; tarjetas por Ualá Bis en hasta 3 cuotas sin interés). Validación por campo y resumen de errores.
+- **Modo de prueba**: al confirmar no se registra un pedido ni se cobra. La condición se indica antes del botón final y en la confirmación (`/pedido.html`).
+- **Botón de arrepentimiento** (`/arrepentimiento.html`): formulario en modo de prueba, con alternativa por WhatsApp y email.
+
+Condiciones comerciales mostradas: verificadas en la configuración pública de la tienda de origen (medios de pago activos, descuento de 25% en transferencia y efectivo, 3 cuotas sin interés, tarjetas de Ualá Bis y medios de envío activos: Correo Argentino, envío personalizado, retiro y a acordar).
+
+## Pendiente para operar
+
+Integraciones:
+- Procesador de pagos (Ualá Bis u otro) y sistema de pedidos con stock en línea.
+- Cotización de envío por código postal (Correo Argentino).
+- Envío de emails (confirmación de pedido y constancia de arrepentimiento).
+- Dominio definitivo (`SITE_URL` en `tools/build.py`).
+
+Datos que la marca debe validar:
+- **Medidas**: Ningún producto tiene lente, puente y varilla publicados.
+- **Estuche y liquido**: No figura en las fichas de la tienda (solo Cat eye 6 en 1 declara estuche).
+- **Costo y plazo de envio**: La tienda calcula el costo por código postal con Correo Argentino; falta integrar esa cotización.
+- **Retiro en local**: La tienda tiene retiro en local activo, pero no publica la dirección ni horarios.
+- **Politica de cambios**: Plazos y condiciones de cambio sin publicar.
+- **Ciclismo polarizado**: La tienda describe cristales fotocromáticos; no confirma polarización.
+- **Cadena dorada**: La tienda describe la cadena gold como «plata claro».
+- **Largo y enganche de cadenas**: Sin publicar.
+- **Presupuesto de cristales**: Lo ofrecen por consulta; precio y plazos sin publicar.
+- **Pagos y pedidos**: Falta conectar un procesador de pagos (Ualá Bis u otro) y un sistema de pedidos y stock en línea.
+
+## Pruebas
+
+```bash
+node tools/test_site.js [base]
+```
+
+Recorre en Chromium, a 1440, 768, 390 y 360 px: cobertura del catálogo, ausencia de enlaces a la tienda de origen, Home, filtros combinados, fichas y variantes agotadas, carrito, checkout con errores y confirmación, teclado, foco visible, contraste, objetivos táctiles, desbordes y elementos fijos.
+
+## Vista previa sin publicar
 
 ```bash
 python3 tools/preview_deploy.py <site_id> "Título"
 ```
 
-Sube un deploy en borrador a Netlify y devuelve su URL propia. Producción no cambia hasta que se publique ese deploy desde el panel.
-
-### Distintivo de Netlify
-
-Netlify lo inyecta en producción en el plan gratuito y no se puede desactivar desde el código ni desde la configuración de ese plan. El sitio no lo oculta: `js/site.js` detecta su presencia y sube la barra de compra fija para que el botón no quede debajo. Para retirarlo hace falta un plan pago o publicar en otro hosting.
+Sube un deploy en borrador a Netlify con URL propia. Producción no cambia hasta publicar ese deploy desde el panel.

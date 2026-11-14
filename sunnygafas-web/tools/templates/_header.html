@@ -1,9 +1,9 @@
-<!-- Barra de beneficios vigentes (verificados en la tienda oficial) -->
+<!-- Condiciones vigentes, verificadas en la configuración pública de la tienda de origen (ver README) -->
 <div class="topbar on-dark">
   <ul class="container topbar__list">
     <li class="topbar__promo"><svg class="icon"><use href="#i-tag"/></svg><span><strong>25% off</strong> con transferencia<span class="hide-sm"> o efectivo</span></span></li>
     <li><svg class="icon"><use href="#i-card"/></svg>3 cuotas sin interés</li>
-    <li class="hide-sm"><svg class="icon"><use href="#i-truck"/></svg>Envíos a todo el país</li>
+    <li class="hide-sm"><svg class="icon"><use href="#i-truck"/></svg>Envíos por Correo Argentino</li>
   </ul>
 </div>
 
@@ -22,6 +22,9 @@
       <button class="icon-btn" type="button" id="searchToggle" aria-expanded="false" aria-controls="searchPanel" aria-label="Buscar modelos">
         <svg class="icon"><use href="#i-search"/></svg>
       </button>
+      <a class="icon-btn cart-btn" href="/carrito.html" data-cart-link aria-label="Ver carrito">
+        <svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg><span class="cart-btn__count" data-cart-count hidden>0</span>
+      </a>
       <button class="icon-btn menu-btn" type="button" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">
         <svg class="icon"><use href="#i-menu"/></svg>
       </button>
@@ -54,6 +57,7 @@
       {{DRAWER_NAV}}
     </ul>
     <div class="drawer__extra">
+      <a class="link" href="/carrito.html">Ver carrito</a>
       <a class="link" href="/guia-de-calce.html">Guía de calce</a>
       <a class="link" href="/ayuda.html">Ayuda</a>
       <a class="link" href="{{WA_HOLA}}" rel="noopener">Escribinos por WhatsApp</a>

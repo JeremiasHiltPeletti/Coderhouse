@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /demo.html
+Disallow: /carrito.html
+Disallow: /checkout.html
+Disallow: /pedido.html
 Sitemap: https://sunnygafas-home.netlify.app/sitemap.xml

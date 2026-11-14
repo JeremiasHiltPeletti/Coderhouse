@@ -3,9 +3,14 @@
    El petróleo se reserva para esta demostración.
    ========================================================= */
 .polar-demo { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); background: var(--mar); color: var(--white); border-radius: var(--r-ui); overflow: hidden; }
-.polar-demo__text { display: grid; gap: 12px; align-content: center; padding: 32px; }
+.polar-demo__text { display: grid; gap: 14px; align-content: center; padding: 40px; }
 .polar-demo h2 { color: var(--white); font-size: 34px; line-height: 1.05; }
 .polar-demo p { color: var(--mar-soft); }
+.polar-demo .btn-light { justify-self: start; margin-top: 4px; }
+.polar-demo__note { font-size: var(--fs-small); }
+.polar-demo__note strong { color: var(--white); }
+.compare__cap { position: absolute; right: 12px; bottom: 10px; z-index: 2; font-size: 12.5px; font-weight: 600; color: var(--ink); background: rgba(255,250,242,.9); padding: 4px 9px; border-radius: 6px; }
+.compare { position: relative; }
 .compare { margin: 0; min-width: 0; display: grid; }
 .compare__stage { position: relative; min-height: 360px; overflow: hidden; --pos: 45%; background: #0F2F33; cursor: ew-resize; }
 .compare__layer { position: absolute; inset: 0; }

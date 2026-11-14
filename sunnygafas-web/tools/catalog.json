@@ -1,0 +1,2005 @@
+{
+ "source_count": 219,
+ "fetched": "2026-11-14 16:06",
+ "models": [
+  {
+   "id": "gala",
+   "name": "Gala",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "gala-carey",
+     "label": "Carey",
+     "family": "Carey y print"
+    },
+    {
+     "src": "gala-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "gala-caramelo",
+     "label": "Caramelo",
+     "family": "Marrón"
+    },
+    {
+     "src": "gala-print",
+     "label": "Print",
+     "family": "Carey y print"
+    }
+   ]
+  },
+  {
+   "id": "siena",
+   "name": "Siena",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "siena-print",
+     "label": "Print",
+     "family": "Carey y print"
+    },
+    {
+     "src": "siena-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "siena-carey",
+     "label": "Carey",
+     "family": "Carey y print"
+    },
+    {
+     "src": "siena-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "coco",
+   "name": "Coco",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "coco-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "coco-grey",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    },
+    {
+     "src": "coco-print",
+     "label": "Print",
+     "family": "Carey y print"
+    },
+    {
+     "src": "coco-clear",
+     "label": "Transparente",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "lux",
+   "name": "Lux",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "lux-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "lux-gold",
+     "label": "Dorado",
+     "family": "Dorado"
+    },
+    {
+     "src": "lux-rose",
+     "label": "Rosé",
+     "family": "Color"
+    },
+    {
+     "src": "lux-red",
+     "label": "Rojo",
+     "family": "Color"
+    },
+    {
+     "src": "lux-beige",
+     "label": "Beige",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "oriana",
+   "name": "Oriana",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "oriana-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "oriana-pink",
+     "label": "Rosa",
+     "family": "Color"
+    },
+    {
+     "src": "oriana-print",
+     "label": "Print",
+     "family": "Carey y print"
+    }
+   ]
+  },
+  {
+   "id": "ciclismo-fotocromaticos",
+   "name": "Ciclismo fotocromáticos",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "ciclismo-fotocromaticos",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "pilot",
+   "name": "Pilot",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "pilot-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "ambar-elite",
+   "name": "Ámbar",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "ambar-negro",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "ambar-carey",
+     "label": "Carey",
+     "family": "Carey y print"
+    }
+   ]
+  },
+  {
+   "id": "edward",
+   "name": "Edward",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "edward-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "edward-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "charlotte",
+   "name": "Charlotte",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "charlotte-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "charlotte-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "madonna",
+   "name": "Madonna",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "madonna",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "bulgari",
+   "name": "Bulgari",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "bulgari",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "boston",
+   "name": "Boston",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "boston-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "boston-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "clasicas",
+   "name": "Clásicas",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "clasicas-grey",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    }
+   ]
+  },
+  {
+   "id": "rio",
+   "name": "Río",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "rio",
+     "label": "Beige",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "bert",
+   "name": "Bert",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "bert-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "bert-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "kendall",
+   "name": "Kendall",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "kendall-print",
+     "label": "Print",
+     "family": "Carey y print"
+    },
+    {
+     "src": "kendall-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "monaco",
+   "name": "Mónaco",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "monaco-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "monaco-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    }
+   ]
+  },
+  {
+   "id": "astrid",
+   "name": "Astrid",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "astrid-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "astrid-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    }
+   ]
+  },
+  {
+   "id": "belgica",
+   "name": "Bélgica",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "belgica-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "belgica-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "square",
+   "name": "Square",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "square-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "square-grey",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    }
+   ]
+  },
+  {
+   "id": "jacob",
+   "name": "Jacob",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "jacob-grey",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    },
+    {
+     "src": "jacob-mate",
+     "label": "Negro mate",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "nova",
+   "name": "Nova",
+   "cat": "clip",
+   "col": null,
+   "vars": [
+    {
+     "src": "nova",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "milo",
+   "name": "Milo",
+   "cat": "clip",
+   "col": null,
+   "vars": [
+    {
+     "src": "milo",
+     "label": "Dorado",
+     "family": "Dorado"
+    }
+   ]
+  },
+  {
+   "id": "ambar-clip-on",
+   "name": "Ambar",
+   "cat": "clip",
+   "col": null,
+   "vars": [
+    {
+     "src": "ambar",
+     "label": "Dorado",
+     "family": "Dorado"
+    }
+   ]
+  },
+  {
+   "id": "grey-jack",
+   "name": "Grey Jack",
+   "cat": "clip",
+   "col": null,
+   "vars": [
+    {
+     "src": "grey-jack",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "cat-eye-6-en-1",
+   "name": "Cat eye 6 en 1",
+   "cat": "clip",
+   "col": null,
+   "vars": [
+    {
+     "src": "cat-eye-6-en-1",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "aruba",
+   "name": "Aruba",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "aruba-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "aruba-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "aruba-gold",
+     "label": "Dorado",
+     "family": "Dorado"
+    }
+   ]
+  },
+  {
+   "id": "justin",
+   "name": "Justin",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "justin-clear",
+     "label": "Transparente",
+     "family": "Claros"
+    },
+    {
+     "src": "justin-print",
+     "label": "Print",
+     "family": "Carey y print"
+    },
+    {
+     "src": "justin-print-clear",
+     "label": "Print transparente",
+     "family": "Carey y print"
+    }
+   ]
+  },
+  {
+   "id": "aviador-polarizado",
+   "name": "Aviador polarizado",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "aviador-black-polarizado",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "aviador-brown-polarizado",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "aviador-polarizado",
+     "label": "Espejado",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "holland",
+   "name": "Holland",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "holland-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "alexa",
+   "name": "Alexa",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "alexa-blue",
+     "label": "Azul",
+     "family": "Color"
+    },
+    {
+     "src": "alexa-print",
+     "label": "Print",
+     "family": "Carey y print"
+    }
+   ]
+  },
+  {
+   "id": "rangler",
+   "name": "Rangler",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "rangler-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "rangler-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "rangler-mate",
+     "label": "Negro mate",
+     "family": "Negro"
+    },
+    {
+     "src": "rangler-blue",
+     "label": "Azul",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "elegant",
+   "name": "Elegant",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "elegant-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "elegant",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "megan",
+   "name": "Megan",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "megan-grey",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    },
+    {
+     "src": "megan-print",
+     "label": "Print",
+     "family": "Carey y print"
+    },
+    {
+     "src": "megan-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "soho",
+   "name": "Soho",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "soho-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "soho",
+     "label": "Negro mate",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "donna",
+   "name": "Donna",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "donna-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "shein",
+   "name": "Shein",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "shein-print-black",
+     "label": "Print negro",
+     "family": "Carey y print"
+    },
+    {
+     "src": "shein-print-brown",
+     "label": "Print marrón",
+     "family": "Carey y print"
+    },
+    {
+     "src": "shein-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "carolyn-superior",
+   "name": "Carolyn",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "carolyn-print",
+     "label": "Print",
+     "family": "Carey y print"
+    }
+   ]
+  },
+  {
+   "id": "bonnie",
+   "name": "Bonnie",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "bonnie",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "glow",
+   "name": "Glow",
+   "cat": "sol",
+   "col": "Básica",
+   "vars": [
+    {
+     "src": "glow-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "venetto",
+   "name": "Venetto",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "venetto",
+     "label": "Dorado",
+     "family": "Dorado"
+    }
+   ]
+  },
+  {
+   "id": "rosella",
+   "name": "Rosella",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "rosella",
+     "label": "Negro mate",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "pacific",
+   "name": "Pacific",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "pacific-grey",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    },
+    {
+     "src": "pacific-clear",
+     "label": "Transparente",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "yanis",
+   "name": "Yanis",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "yanis-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "yanis-print",
+     "label": "Print",
+     "family": "Carey y print"
+    }
+   ]
+  },
+  {
+   "id": "lennon-elite",
+   "name": "Lennon",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "lennon-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "cadena-de-acrilico",
+   "name": "Cadena de acrílico",
+   "cat": "acc",
+   "col": null,
+   "vars": [
+    {
+     "src": "cadena-beige",
+     "label": "Beige",
+     "family": "Claros"
+    },
+    {
+     "src": "cadena-caramel",
+     "label": "Caramelo",
+     "family": "Marrón"
+    },
+    {
+     "src": "cadena-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "cadena-metalica",
+   "name": "Cadena metálica",
+   "cat": "acc",
+   "col": null,
+   "vars": [
+    {
+     "src": "cadena-gold",
+     "label": "Dorado",
+     "family": "Dorado"
+    },
+    {
+     "src": "cadena-silver",
+     "label": "Plateado",
+     "family": "Gris y plateado"
+    },
+    {
+     "src": "cadena-rose",
+     "label": "Rosé",
+     "family": "Color"
+    },
+    {
+     "src": "cadena-gris",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    }
+   ]
+  },
+  {
+   "id": "toronto",
+   "name": "Toronto",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "toronto-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "toronto-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    }
+   ]
+  },
+  {
+   "id": "nikola",
+   "name": "Nikola",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "nikola-mate-brown",
+     "label": "Marrón mate",
+     "family": "Marrón"
+    },
+    {
+     "src": "nikola-mate-grey",
+     "label": "Gris mate",
+     "family": "Gris y plateado"
+    },
+    {
+     "src": "nikola-black-degrade",
+     "label": "Negro degradé",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "detroit",
+   "name": "Detroit",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "detroit-degrade",
+     "label": "Negro degradé",
+     "family": "Negro"
+    },
+    {
+     "src": "detroit-violet-print",
+     "label": "Violeta print",
+     "family": "Color"
+    },
+    {
+     "src": "detroit-print",
+     "label": "Print",
+     "family": "Carey y print"
+    },
+    {
+     "src": "detroit-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "olga",
+   "name": "Olga",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "olga-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "olga-grey",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    },
+    {
+     "src": "olga-clear",
+     "label": "Transparente",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "moneta",
+   "name": "Moneta",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "moneta-print",
+     "label": "Print",
+     "family": "Carey y print"
+    },
+    {
+     "src": "moneta-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "moneta-tea",
+     "label": "Té",
+     "family": "Marrón"
+    },
+    {
+     "src": "moneta-clear",
+     "label": "Transparente",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "west",
+   "name": "West",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "west-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "west-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "west-green",
+     "label": "Verde",
+     "family": "Color"
+    },
+    {
+     "src": "west-blue",
+     "label": "Azul",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "aviador-retro",
+   "name": "Aviador retro",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "aviador-retro-print-violet",
+     "label": "Print violeta",
+     "family": "Carey y print"
+    },
+    {
+     "src": "aviador-retro-print-yellow",
+     "label": "Print amarillo",
+     "family": "Carey y print"
+    },
+    {
+     "src": "aviador-retro-grey",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    },
+    {
+     "src": "aviador-retro-blue",
+     "label": "Azul",
+     "family": "Color"
+    },
+    {
+     "src": "aviador-retro-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "aviador-retro-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    }
+   ]
+  },
+  {
+   "id": "galaxy",
+   "name": "Galaxy",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "galaxy-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "galaxy-green",
+     "label": "Verde",
+     "family": "Color"
+    },
+    {
+     "src": "galaxy-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "galaxy-caramel",
+     "label": "Caramelo",
+     "family": "Marrón"
+    }
+   ]
+  },
+  {
+   "id": "oval",
+   "name": "Oval",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "oval-gold",
+     "label": "Dorado",
+     "family": "Dorado"
+    },
+    {
+     "src": "oval-silver",
+     "label": "Plateado",
+     "family": "Gris y plateado"
+    },
+    {
+     "src": "oval-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "molly",
+   "name": "Molly",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "molly-black",
+     "label": "Negro",
+     "family": "Negro"
+    },
+    {
+     "src": "molly-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    }
+   ]
+  },
+  {
+   "id": "mallorca",
+   "name": "Mallorca",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "mallorca",
+     "label": "Print",
+     "family": "Carey y print"
+    }
+   ]
+  },
+  {
+   "id": "chad",
+   "name": "Chad",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "chad",
+     "label": "Dorado",
+     "family": "Dorado"
+    }
+   ]
+  },
+  {
+   "id": "dubai",
+   "name": "Dubai",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "dubai-print",
+     "label": "Print",
+     "family": "Carey y print"
+    },
+    {
+     "src": "dubai-pink",
+     "label": "Rosa",
+     "family": "Color"
+    },
+    {
+     "src": "dubai-blue",
+     "label": "Azul",
+     "family": "Color"
+    },
+    {
+     "src": "dubai-yellow",
+     "label": "Amarillo",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "braga",
+   "name": "Braga",
+   "cat": "sol",
+   "col": "Básica",
+   "vars": [
+    {
+     "src": "braga-green",
+     "label": "Verde",
+     "family": "Color"
+    },
+    {
+     "src": "braga-yellow",
+     "label": "Amarillo",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "madrid",
+   "name": "Madrid",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "madrid-print",
+     "label": "Print",
+     "family": "Carey y print"
+    }
+   ]
+  },
+  {
+   "id": "saturday-xl-superior",
+   "name": "Saturday XL",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "saturday-xl-degrade",
+     "label": "Negro degradé",
+     "family": "Negro"
+    },
+    {
+     "src": "saturday-xl-grey",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    }
+   ]
+  },
+  {
+   "id": "focus",
+   "name": "Focus",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "focus",
+     "label": "Carey",
+     "family": "Carey y print"
+    }
+   ]
+  },
+  {
+   "id": "lenny",
+   "name": "Lenny",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "lenny-caramel",
+     "label": "Caramelo",
+     "family": "Marrón"
+    }
+   ]
+  },
+  {
+   "id": "michael",
+   "name": "Michael",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "michael",
+     "label": "Transparente",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "erika",
+   "name": "Erika",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "erika-violet",
+     "label": "Violeta",
+     "family": "Color"
+    },
+    {
+     "src": "erika-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    }
+   ]
+  },
+  {
+   "id": "round",
+   "name": "Round",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "round-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    }
+   ]
+  },
+  {
+   "id": "galicia",
+   "name": "Galicia",
+   "cat": "sol",
+   "col": "Básica",
+   "vars": [
+    {
+     "src": "galicia",
+     "label": "Nude",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "yris",
+   "name": "Yris",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "yris-violet",
+     "label": "Violeta",
+     "family": "Color"
+    },
+    {
+     "src": "yris-blue",
+     "label": "Azul",
+     "family": "Color"
+    },
+    {
+     "src": "yris-beige",
+     "label": "Beige",
+     "family": "Claros"
+    },
+    {
+     "src": "yris-white",
+     "label": "Blanco",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "saturday-premium",
+   "name": "Saturday premium",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "saturday-premium-print",
+     "label": "Print",
+     "family": "Carey y print"
+    },
+    {
+     "src": "saturday-premium-aqua-print",
+     "label": "Aqua print",
+     "family": "Color"
+    },
+    {
+     "src": "saturday-premium-blue",
+     "label": "Azul",
+     "family": "Color"
+    },
+    {
+     "src": "saturday-premium-pink",
+     "label": "Rosa",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "roxy",
+   "name": "Roxy",
+   "cat": "sol",
+   "col": "Básica",
+   "vars": [
+    {
+     "src": "roxy",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    }
+   ]
+  },
+  {
+   "id": "jagger",
+   "name": "Jagger",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "jagger",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "classic",
+   "name": "Classic",
+   "cat": "clip",
+   "col": null,
+   "vars": [
+    {
+     "src": "classic-red",
+     "label": "Rojo",
+     "family": "Color"
+    },
+    {
+     "src": "classic-grey",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    }
+   ]
+  },
+  {
+   "id": "wake",
+   "name": "Wake",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "wake",
+     "label": "Plateado",
+     "family": "Gris y plateado"
+    }
+   ]
+  },
+  {
+   "id": "gattizioni-rectangular",
+   "name": "Gattizioni rectangular",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "gattizioni-rectangular",
+     "label": "Transparente",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "gattizioni-redondo",
+   "name": "Gattizioni redondo",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "gattizioni-redondo",
+     "label": "Transparente",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "risky",
+   "name": "Risky",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "risky-blue",
+     "label": "Azul",
+     "family": "Color"
+    },
+    {
+     "src": "risky-green",
+     "label": "Verde",
+     "family": "Color"
+    },
+    {
+     "src": "risky",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "prada",
+   "name": "Prada",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "prada-mate",
+     "label": "Negro mate",
+     "family": "Negro"
+    },
+    {
+     "src": "prada-nude",
+     "label": "Nude",
+     "family": "Claros"
+    },
+    {
+     "src": "prada-caramel",
+     "label": "Caramelo",
+     "family": "Marrón"
+    }
+   ]
+  },
+  {
+   "id": "clasicos",
+   "name": "Clásicos",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "clasicos-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "michelle",
+   "name": "Michelle",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "michelle-clear",
+     "label": "Transparente",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "sara",
+   "name": "Sara",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "sara-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "sara-grey",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    }
+   ]
+  },
+  {
+   "id": "estuche-organizador-x5",
+   "name": "Estuche organizador x5",
+   "cat": "acc",
+   "col": null,
+   "vars": [
+    {
+     "src": "estuche-organizador-x5",
+     "label": "Único",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "harry",
+   "name": "Harry",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "harry",
+     "label": "Marrón",
+     "family": "Marrón"
+    }
+   ]
+  },
+  {
+   "id": "mery",
+   "name": "Mery",
+   "cat": "sol",
+   "col": "Básica",
+   "vars": [
+    {
+     "src": "mery-blue",
+     "label": "Azul",
+     "family": "Color"
+    },
+    {
+     "src": "mery-violet",
+     "label": "Violeta",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "london",
+   "name": "London",
+   "cat": "sol",
+   "col": "Élite",
+   "vars": [
+    {
+     "src": "london-green",
+     "label": "Verde",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "saturday-esencial",
+   "name": "Saturday",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "saturday-green",
+     "label": "Verde",
+     "family": "Color"
+    },
+    {
+     "src": "saturday-grey",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    },
+    {
+     "src": "saturday-yellow",
+     "label": "Amarillo",
+     "family": "Color"
+    },
+    {
+     "src": "saturday-aqua",
+     "label": "Aqua",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "clasico-patilla-metal",
+   "name": "Clásico patilla metal",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "clasico-print-patilla-metal",
+     "label": "Print",
+     "family": "Carey y print"
+    },
+    {
+     "src": "clasico-black-patilla-metal",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "sidney",
+   "name": "Sidney",
+   "cat": "sol",
+   "col": "Básica",
+   "vars": [
+    {
+     "src": "sidney-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "sidney-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "capri",
+   "name": "Capri",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "capri",
+     "label": "Transparente",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "saturday-xl",
+   "name": "Saturday XL",
+   "cat": "sol",
+   "col": "Básica",
+   "vars": [
+    {
+     "src": "saturday-xl-blue-orange",
+     "label": "Naranja y azul",
+     "family": "Color"
+    },
+    {
+     "src": "saturday-xl-print",
+     "label": "Print",
+     "family": "Carey y print"
+    }
+   ]
+  },
+  {
+   "id": "roma",
+   "name": "Roma",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "roma",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "dallas",
+   "name": "Dallas",
+   "cat": "sol",
+   "col": "Básica",
+   "vars": [
+    {
+     "src": "dallas-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "dallas-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "tr90",
+   "name": "TR90",
+   "cat": "clip",
+   "col": null,
+   "vars": [
+    {
+     "src": "tr90-clip-on",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "indiana",
+   "name": "Indiana",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "indiana",
+     "label": "Único",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "cielo",
+   "name": "Cielo",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "cielo",
+     "label": "Celeste",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "kingdom",
+   "name": "Kingdom",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "kingdom-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "kingdom-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "lennon-clip-on",
+   "name": "Lennon",
+   "cat": "clip",
+   "col": null,
+   "vars": [
+    {
+     "src": "lennon-gold",
+     "label": "Dorado",
+     "family": "Dorado"
+    },
+    {
+     "src": "lennon-silver",
+     "label": "Plateado",
+     "family": "Gris y plateado"
+    },
+    {
+     "src": "lennon-pink",
+     "label": "Rosa",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "mora",
+   "name": "Mora",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "mora-print-aqua",
+     "label": "Print aqua",
+     "family": "Carey y print"
+    },
+    {
+     "src": "mora-print-yellow",
+     "label": "Print amarillo",
+     "family": "Carey y print"
+    }
+   ]
+  },
+  {
+   "id": "mark",
+   "name": "Mark",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "mark-brown",
+     "label": "Marrón",
+     "family": "Marrón"
+    },
+    {
+     "src": "mark-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "carolyn-esencial",
+   "name": "Carolyn",
+   "cat": "sol",
+   "col": "Esencial",
+   "vars": [
+    {
+     "src": "carolyn-grey",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    },
+    {
+     "src": "carolyn-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "planet",
+   "name": "Planet",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "planet",
+     "label": "Transparente",
+     "family": "Claros"
+    }
+   ]
+  },
+  {
+   "id": "diana",
+   "name": "Diana",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "diana",
+     "label": "Único",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "madera",
+   "name": "Madera",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "madera-black",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "leah",
+   "name": "Leah",
+   "cat": "sol",
+   "col": "Superior",
+   "vars": [
+    {
+     "src": "leah",
+     "label": "Print",
+     "family": "Carey y print"
+    }
+   ]
+  },
+  {
+   "id": "rose",
+   "name": "Rose",
+   "cat": "sol",
+   "col": "Básica",
+   "vars": [
+    {
+     "src": "rose",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "tulum",
+   "name": "Tulum",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "tulum-polarizadas",
+     "label": "Azul print",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "apolo",
+   "name": "Apolo",
+   "cat": "pol",
+   "col": null,
+   "vars": [
+    {
+     "src": "apolo-polarized",
+     "label": "Negro",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "aron",
+   "name": "Aron",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "aron",
+     "label": "Gris",
+     "family": "Gris y plateado"
+    }
+   ]
+  },
+  {
+   "id": "andrew",
+   "name": "Andrew",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "andrew",
+     "label": "Único",
+     "family": "Color"
+    }
+   ]
+  },
+  {
+   "id": "ricky",
+   "name": "Ricky",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "ricky",
+     "label": "Negro mate",
+     "family": "Negro"
+    }
+   ]
+  },
+  {
+   "id": "lupe",
+   "name": "Lupe",
+   "cat": "arm",
+   "col": null,
+   "vars": [
+    {
+     "src": "lupe",
+     "label": "Print",
+     "family": "Carey y print"
+    }
+   ]
+  }
+ ]
+}

@@ -1,364 +1,59 @@
 [
  {
-  "s": "glow-black",
-  "card": "estudio (foto 1)",
+  "s": "gala-print",
+  "card": "conservada",
   "gal": [
    {
-    "f": "glow-black-1",
+    "f": "gala-print-1",
     "w": 600,
-    "h": 371
+    "h": 348
    },
    {
-    "f": "glow-black-2",
+    "f": "gala-print-2",
     "w": 600,
-    "h": 800
+    "h": 566
    },
    {
-    "f": "glow-black-3",
-    "w": 600,
-    "h": 800
+    "f": "gala-print-3",
+    "w": 575,
+    "h": 380
    },
    {
-    "f": "glow-black-4",
+    "f": "gala-print-4",
     "w": 600,
-    "h": 800
+    "h": 250
    }
   ]
  },
  {
-  "s": "braga-green",
-  "card": "estudio (foto 1)",
+  "s": "gala-caramelo",
+  "card": "conservada",
   "gal": [
    {
-    "f": "braga-green-1",
+    "f": "gala-caramelo-1",
     "w": 600,
-    "h": 322
+    "h": 287
    },
    {
-    "f": "braga-green-2",
+    "f": "gala-caramelo-2",
     "w": 600,
-    "h": 800
+    "h": 561
    },
    {
-    "f": "braga-green-3",
-    "w": 600,
-    "h": 799
+    "f": "gala-caramelo-3",
+    "w": 559,
+    "h": 269
    },
    {
-    "f": "braga-green-4",
+    "f": "gala-caramelo-4",
     "w": 600,
-    "h": 800
-   },
-   {
-    "f": "braga-green-5",
-    "w": 600,
-    "h": 800
-   }
-  ]
- },
- {
-  "s": "braga-yellow",
-  "card": "recorte previo",
-  "gal": [
-   {
-    "f": "braga-yellow-1",
-    "w": 600,
-    "h": 346
-   },
-   {
-    "f": "braga-yellow-2",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "braga-yellow-3",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "braga-yellow-4",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "braga-yellow-5",
-    "w": 600,
-    "h": 600
-   }
-  ]
- },
- {
-  "s": "roxy",
-  "card": "estudio (foto 1)",
-  "gal": [
-   {
-    "f": "roxy-1",
-    "w": 600,
-    "h": 340
-   },
-   {
-    "f": "roxy-2",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "roxy-3",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "roxy-4",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "roxy-5",
-    "w": 600,
-    "h": 600
-   }
-  ]
- },
- {
-  "s": "dallas-brown",
-  "card": "estudio (foto 1)",
-  "gal": [
-   {
-    "f": "dallas-brown-1",
-    "w": 600,
-    "h": 211
-   },
-   {
-    "f": "dallas-brown-2",
-    "w": 600,
-    "h": 407
-   },
-   {
-    "f": "dallas-brown-3",
-    "w": 600,
-    "h": 514
-   },
-   {
-    "f": "dallas-brown-4",
-    "w": 600,
-    "h": 419
-   },
-   {
-    "f": "dallas-brown-5",
-    "w": 600,
-    "h": 394
-   }
-  ]
- },
- {
-  "s": "dallas-black",
-  "card": "recorte previo",
-  "gal": [
-   {
-    "f": "dallas-black-1",
-    "w": 600,
-    "h": 539
-   },
-   {
-    "f": "dallas-black-2",
-    "w": 600,
-    "h": 491
-   },
-   {
-    "f": "dallas-black-3",
-    "w": 600,
-    "h": 728
-   },
-   {
-    "f": "dallas-black-4",
-    "w": 600,
-    "h": 839
-   }
-  ]
- },
- {
-  "s": "saturday-xl-blue-orange",
-  "card": "estudio (foto 1)",
-  "gal": [
-   {
-    "f": "saturday-xl-blue-orange-1",
-    "w": 600,
-    "h": 295
-   },
-   {
-    "f": "saturday-xl-blue-orange-2",
-    "w": 600,
-    "h": 607
-   },
-   {
-    "f": "saturday-xl-blue-orange-3",
-    "w": 600,
-    "h": 584
-   },
-   {
-    "f": "saturday-xl-blue-orange-4",
-    "w": 600,
-    "h": 504
-   },
-   {
-    "f": "saturday-xl-blue-orange-5",
-    "w": 600,
-    "h": 800
-   }
-  ]
- },
- {
-  "s": "saturday-xl-print",
-  "card": "recorte previo",
-  "gal": [
-   {
-    "f": "saturday-xl-print-1",
-    "w": 600,
-    "h": 856
-   },
-   {
-    "f": "saturday-xl-print-2",
-    "w": 600,
-    "h": 886
-   },
-   {
-    "f": "saturday-xl-print-3",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "saturday-xl-print-4",
-    "w": 600,
-    "h": 657
-   },
-   {
-    "f": "saturday-xl-print-5",
-    "w": 600,
-    "h": 710
-   }
-  ]
- },
- {
-  "s": "molly-brown",
-  "card": "recorte previo",
-  "gal": [
-   {
-    "f": "molly-brown-1",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "molly-brown-2",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "molly-brown-3",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "molly-brown-4",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "molly-brown-5",
-    "w": 600,
-    "h": 600
-   }
-  ]
- },
- {
-  "s": "molly-black",
-  "card": "recorte previo",
-  "gal": [
-   {
-    "f": "molly-black-1",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "molly-black-2",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "molly-black-3",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "molly-black-4",
-    "w": 600,
-    "h": 600
-   },
-   {
-    "f": "molly-black-5",
-    "w": 600,
-    "h": 600
-   }
-  ]
- },
- {
-  "s": "yanis-print",
-  "card": "recorte previo normalizado",
-  "gal": [
-   {
-    "f": "yanis-print-1",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "yanis-print-2",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "yanis-print-3",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "yanis-print-4",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "yanis-print-5",
-    "w": 600,
-    "h": 800
-   }
-  ]
- },
- {
-  "s": "yanis-black",
-  "card": "recorte previo",
-  "gal": [
-   {
-    "f": "yanis-black-1",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "yanis-black-2",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "yanis-black-3",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "yanis-black-4",
-    "w": 600,
-    "h": 800
+    "h": 298
    }
   ]
  },
  {
   "s": "gala-carey",
-  "card": "estudio (foto 1)",
+  "card": "conservada",
   "gal": [
    {
     "f": "gala-carey-1",
@@ -384,7 +79,7 @@
  },
  {
   "s": "gala-black",
-  "card": "estudio (foto 1)",
+  "card": "conservada",
   "gal": [
    {
     "f": "gala-black-1",
@@ -409,138 +104,8 @@
   ]
  },
  {
-  "s": "gala-caramelo",
-  "card": "estudio (foto 1)",
-  "gal": [
-   {
-    "f": "gala-caramelo-1",
-    "w": 600,
-    "h": 287
-   },
-   {
-    "f": "gala-caramelo-2",
-    "w": 600,
-    "h": 561
-   },
-   {
-    "f": "gala-caramelo-3",
-    "w": 559,
-    "h": 269
-   },
-   {
-    "f": "gala-caramelo-4",
-    "w": 600,
-    "h": 298
-   }
-  ]
- },
- {
-  "s": "gala-print",
-  "card": "estudio (foto 1)",
-  "gal": [
-   {
-    "f": "gala-print-1",
-    "w": 600,
-    "h": 348
-   },
-   {
-    "f": "gala-print-2",
-    "w": 600,
-    "h": 566
-   },
-   {
-    "f": "gala-print-3",
-    "w": 575,
-    "h": 380
-   },
-   {
-    "f": "gala-print-4",
-    "w": 600,
-    "h": 250
-   }
-  ]
- },
- {
-  "s": "siena-brown",
-  "card": "estudio (foto 1)",
-  "gal": [
-   {
-    "f": "siena-brown-1",
-    "w": 581,
-    "h": 307
-   },
-   {
-    "f": "siena-brown-2",
-    "w": 600,
-    "h": 525
-   },
-   {
-    "f": "siena-brown-3",
-    "w": 600,
-    "h": 336
-   },
-   {
-    "f": "siena-brown-4",
-    "w": 600,
-    "h": 272
-   }
-  ]
- },
- {
-  "s": "siena-black",
-  "card": "estudio (foto 1)",
-  "gal": [
-   {
-    "f": "siena-black-1",
-    "w": 600,
-    "h": 318
-   },
-   {
-    "f": "siena-black-2",
-    "w": 600,
-    "h": 620
-   },
-   {
-    "f": "siena-black-3",
-    "w": 587,
-    "h": 260
-   },
-   {
-    "f": "siena-black-4",
-    "w": 600,
-    "h": 266
-   }
-  ]
- },
- {
-  "s": "siena-carey",
-  "card": "estudio (foto 1)",
-  "gal": [
-   {
-    "f": "siena-carey-1",
-    "w": 594,
-    "h": 348
-   },
-   {
-    "f": "siena-carey-2",
-    "w": 600,
-    "h": 499
-   },
-   {
-    "f": "siena-carey-3",
-    "w": 600,
-    "h": 288
-   },
-   {
-    "f": "siena-carey-4",
-    "w": 600,
-    "h": 266
-   }
-  ]
- },
- {
   "s": "siena-print",
-  "card": "estudio (foto 1)",
+  "card": "conservada",
   "gal": [
    {
     "f": "siena-print-1",
@@ -565,8 +130,499 @@
   ]
  },
  {
+  "s": "siena-brown",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "siena-brown-1",
+    "w": 581,
+    "h": 307
+   },
+   {
+    "f": "siena-brown-2",
+    "w": 600,
+    "h": 525
+   },
+   {
+    "f": "siena-brown-3",
+    "w": 600,
+    "h": 336
+   },
+   {
+    "f": "siena-brown-4",
+    "w": 600,
+    "h": 272
+   }
+  ]
+ },
+ {
+  "s": "siena-carey",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "siena-carey-1",
+    "w": 594,
+    "h": 348
+   },
+   {
+    "f": "siena-carey-2",
+    "w": 600,
+    "h": 499
+   },
+   {
+    "f": "siena-carey-3",
+    "w": 600,
+    "h": 288
+   },
+   {
+    "f": "siena-carey-4",
+    "w": 600,
+    "h": 266
+   }
+  ]
+ },
+ {
+  "s": "siena-black",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "siena-black-1",
+    "w": 600,
+    "h": 318
+   },
+   {
+    "f": "siena-black-2",
+    "w": 600,
+    "h": 620
+   },
+   {
+    "f": "siena-black-3",
+    "w": 587,
+    "h": 260
+   },
+   {
+    "f": "siena-black-4",
+    "w": 600,
+    "h": 266
+   }
+  ]
+ },
+ {
+  "s": "coco-black",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "coco-black-1",
+    "w": 600,
+    "h": 827
+   },
+   {
+    "f": "coco-black-2",
+    "w": 600,
+    "h": 531
+   },
+   {
+    "f": "coco-black-3",
+    "w": 600,
+    "h": 344
+   }
+  ]
+ },
+ {
+  "s": "coco-grey",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "coco-grey-1",
+    "w": 600,
+    "h": 487
+   },
+   {
+    "f": "coco-grey-2",
+    "w": 600,
+    "h": 685
+   },
+   {
+    "f": "coco-grey-3",
+    "w": 600,
+    "h": 363
+   }
+  ]
+ },
+ {
+  "s": "coco-print",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "coco-print-1",
+    "w": 600,
+    "h": 343
+   },
+   {
+    "f": "coco-print-2",
+    "w": 600,
+    "h": 881
+   },
+   {
+    "f": "coco-print-3",
+    "w": 600,
+    "h": 668
+   }
+  ]
+ },
+ {
+  "s": "coco-clear",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "coco-clear-1",
+    "w": 507,
+    "h": 900
+   },
+   {
+    "f": "coco-clear-2",
+    "w": 600,
+    "h": 647
+   },
+   {
+    "f": "coco-clear-3",
+    "w": 600,
+    "h": 316
+   }
+  ]
+ },
+ {
+  "s": "lux-black",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "lux-black-1",
+    "w": 600,
+    "h": 662
+   },
+   {
+    "f": "lux-black-2",
+    "w": 507,
+    "h": 900
+   },
+   {
+    "f": "lux-black-3",
+    "w": 507,
+    "h": 900
+   }
+  ]
+ },
+ {
+  "s": "lux-gold",
+  "card": "estudio (foto 3)",
+  "gal": [
+   {
+    "f": "lux-gold-1",
+    "w": 507,
+    "h": 900
+   },
+   {
+    "f": "lux-gold-2",
+    "w": 507,
+    "h": 900
+   },
+   {
+    "f": "lux-gold-3",
+    "w": 590,
+    "h": 696
+   }
+  ]
+ },
+ {
+  "s": "lux-rose",
+  "card": "estudio (foto 2)",
+  "gal": [
+   {
+    "f": "lux-rose-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "lux-rose-2",
+    "w": 600,
+    "h": 668
+   },
+   {
+    "f": "lux-rose-3",
+    "w": 598,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "lux-red",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "lux-red-1",
+    "w": 600,
+    "h": 583
+   },
+   {
+    "f": "lux-red-2",
+    "w": 569,
+    "h": 800
+   },
+   {
+    "f": "lux-red-3",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "lux-beige",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "lux-beige-1",
+    "w": 600,
+    "h": 507
+   },
+   {
+    "f": "lux-beige-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "lux-beige-3",
+    "w": 572,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "oriana-black",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "oriana-black-1",
+    "w": 600,
+    "h": 352
+   },
+   {
+    "f": "oriana-black-2",
+    "w": 600,
+    "h": 499
+   },
+   {
+    "f": "oriana-black-3",
+    "w": 600,
+    "h": 461
+   }
+  ]
+ },
+ {
+  "s": "oriana-pink",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "oriana-pink-1",
+    "w": 600,
+    "h": 637
+   },
+   {
+    "f": "oriana-pink-2",
+    "w": 600,
+    "h": 440
+   },
+   {
+    "f": "oriana-pink-3",
+    "w": 600,
+    "h": 627
+   }
+  ]
+ },
+ {
+  "s": "oriana-print",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "oriana-print-1",
+    "w": 600,
+    "h": 599
+   },
+   {
+    "f": "oriana-print-2",
+    "w": 600,
+    "h": 308
+   },
+   {
+    "f": "oriana-print-3",
+    "w": 600,
+    "h": 619
+   }
+  ]
+ },
+ {
+  "s": "ciclismo-fotocromaticos",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "ciclismo-fotocromaticos-1",
+    "w": 600,
+    "h": 530
+   },
+   {
+    "f": "ciclismo-fotocromaticos-2",
+    "w": 600,
+    "h": 574
+   },
+   {
+    "f": "ciclismo-fotocromaticos-3",
+    "w": 600,
+    "h": 524
+   },
+   {
+    "f": "ciclismo-fotocromaticos-4",
+    "w": 600,
+    "h": 571
+   }
+  ]
+ },
+ {
+  "s": "pilot-black",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "pilot-black-1",
+    "w": 600,
+    "h": 627
+   },
+   {
+    "f": "pilot-black-2",
+    "w": 600,
+    "h": 750
+   },
+   {
+    "f": "pilot-black-3",
+    "w": 507,
+    "h": 900
+   },
+   {
+    "f": "pilot-black-4",
+    "w": 531,
+    "h": 252
+   },
+   {
+    "f": "pilot-black-5",
+    "w": 507,
+    "h": 900
+   }
+  ]
+ },
+ {
+  "s": "ambar-negro",
+  "card": "estudio (foto 3)",
+  "gal": [
+   {
+    "f": "ambar-negro-1",
+    "w": 462,
+    "h": 900
+   },
+   {
+    "f": "ambar-negro-2",
+    "w": 519,
+    "h": 900
+   },
+   {
+    "f": "ambar-negro-3",
+    "w": 480,
+    "h": 284
+   },
+   {
+    "f": "ambar-negro-4",
+    "w": 500,
+    "h": 500
+   },
+   {
+    "f": "ambar-negro-5",
+    "w": 500,
+    "h": 500
+   },
+   {
+    "f": "ambar-negro-6",
+    "w": 507,
+    "h": 900
+   }
+  ]
+ },
+ {
+  "s": "ambar-carey",
+  "card": "estudio (foto 2)",
+  "gal": [
+   {
+    "f": "ambar-carey-1",
+    "w": 389,
+    "h": 500
+   },
+   {
+    "f": "ambar-carey-2",
+    "w": 600,
+    "h": 339
+   },
+   {
+    "f": "ambar-carey-3",
+    "w": 507,
+    "h": 900
+   },
+   {
+    "f": "ambar-carey-4",
+    "w": 507,
+    "h": 900
+   }
+  ]
+ },
+ {
+  "s": "edward-brown",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "edward-brown-1",
+    "w": 600,
+    "h": 429
+   },
+   {
+    "f": "edward-brown-2",
+    "w": 461,
+    "h": 605
+   },
+   {
+    "f": "edward-brown-3",
+    "w": 600,
+    "h": 235
+   }
+  ]
+ },
+ {
+  "s": "edward-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "edward-black-1",
+    "w": 600,
+    "h": 529
+   },
+   {
+    "f": "edward-black-2",
+    "w": 600,
+    "h": 681
+   },
+   {
+    "f": "edward-black-3",
+    "w": 600,
+    "h": 673
+   }
+  ]
+ },
+ {
   "s": "charlotte-brown",
-  "card": "recorte previo",
+  "card": "conservada",
   "gal": [
    {
     "f": "charlotte-brown-1",
@@ -587,7 +643,7 @@
  },
  {
   "s": "charlotte-black",
-  "card": "recorte previo",
+  "card": "conservada",
   "gal": [
    {
     "f": "charlotte-black-1",
@@ -607,62 +663,893 @@
   ]
  },
  {
-  "s": "pilot-black",
-  "card": "estudio (foto 4)",
+  "s": "madonna",
+  "card": "conservada",
   "gal": [
    {
-    "f": "pilot-black-1",
+    "f": "madonna-1",
     "w": 600,
-    "h": 627
+    "h": 800
    },
    {
-    "f": "pilot-black-2",
+    "f": "madonna-2",
     "w": 600,
-    "h": 750
+    "h": 800
    },
    {
-    "f": "pilot-black-3",
-    "w": 563,
-    "h": 1000
+    "f": "madonna-3",
+    "w": 600,
+    "h": 800
    },
    {
-    "f": "pilot-black-4",
-    "w": 531,
-    "h": 252
-   },
-   {
-    "f": "pilot-black-5",
-    "w": 563,
-    "h": 1000
+    "f": "madonna-4",
+    "w": 600,
+    "h": 800
    }
   ]
  },
  {
-  "s": "tulum-polarizadas",
+  "s": "bulgari",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "bulgari-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "bulgari-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "bulgari-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "bulgari-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "boston-brown",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "boston-brown-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "boston-brown-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "boston-brown-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "boston-brown-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "boston-black",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "boston-black-1",
+    "w": 593,
+    "h": 284
+   },
+   {
+    "f": "boston-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "boston-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "boston-black-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "clasicas-grey",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "clasicas-grey-1",
+    "w": 600,
+    "h": 307
+   },
+   {
+    "f": "clasicas-grey-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "clasicas-grey-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "clasicas-grey-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "rio",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "rio-1",
+    "w": 600,
+    "h": 749
+   },
+   {
+    "f": "rio-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rio-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rio-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "bert-brown",
   "card": "estudio (foto 1)",
   "gal": [
    {
-    "f": "tulum-polarizadas-1",
-    "w": 585,
-    "h": 350
+    "f": "bert-brown-1",
+    "w": 600,
+    "h": 747
    },
    {
-    "f": "tulum-polarizadas-2",
+    "f": "bert-brown-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "tulum-polarizadas-3",
+    "f": "bert-brown-3",
     "w": 600,
     "h": 800
    },
    {
-    "f": "tulum-polarizadas-4",
+    "f": "bert-brown-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "bert-black",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "bert-black-1",
+    "w": 600,
+    "h": 749
+   },
+   {
+    "f": "bert-black-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "tulum-polarizadas-5",
+    "f": "bert-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "bert-black-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "kendall-print",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "kendall-print-1",
+    "w": 570,
+    "h": 739
+   },
+   {
+    "f": "kendall-print-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "kendall-print-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "kendall-print-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "kendall-print-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "kendall-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "kendall-black-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "kendall-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "kendall-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "kendall-black-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "monaco-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "monaco-black-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "monaco-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "monaco-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "monaco-black-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "monaco-black-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "monaco-brown",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "monaco-brown-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "monaco-brown-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "monaco-brown-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "monaco-brown-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "astrid-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "astrid-black-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "astrid-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "astrid-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "astrid-black-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "astrid-brown",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "astrid-brown-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "astrid-brown-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "astrid-brown-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "astrid-brown-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "belgica-brown",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "belgica-brown-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "belgica-brown-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "belgica-brown-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "belgica-brown-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "belgica-brown-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "belgica-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "belgica-black-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "belgica-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "belgica-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "belgica-black-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "square-black",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "square-black-1",
+    "w": 600,
+    "h": 412
+   },
+   {
+    "f": "square-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "square-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "square-black-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "square-grey",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "square-grey-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "square-grey-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "square-grey-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "square-grey-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "jacob-grey",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "jacob-grey-1",
+    "w": 600,
+    "h": 384
+   },
+   {
+    "f": "jacob-grey-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "jacob-grey-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "jacob-grey-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "jacob-mate",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "jacob-mate-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "jacob-mate-2",
+    "w": 600,
+    "h": 450
+   },
+   {
+    "f": "jacob-mate-3",
+    "w": 600,
+    "h": 450
+   },
+   {
+    "f": "jacob-mate-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "nova",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "nova-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "nova-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "nova-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "nova-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "nova-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "nova-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "milo",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "milo-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "milo-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "milo-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "milo-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "milo-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "milo-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "ambar",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "ambar-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "ambar-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "ambar-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "ambar-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "ambar-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "grey-jack",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "grey-jack-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "grey-jack-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "grey-jack-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "grey-jack-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "cat-eye-6-en-1",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "cat-eye-6-en-1-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cat-eye-6-en-1-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cat-eye-6-en-1-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cat-eye-6-en-1-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cat-eye-6-en-1-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cat-eye-6-en-1-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "aruba-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "aruba-black-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "aruba-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "aruba-black-3",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "aruba-brown",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "aruba-brown-1",
+    "w": 600,
+    "h": 900
+   },
+   {
+    "f": "aruba-brown-2",
+    "w": 600,
+    "h": 675
+   },
+   {
+    "f": "aruba-brown-3",
+    "w": 600,
+    "h": 837
+   },
+   {
+    "f": "aruba-brown-4",
+    "w": 600,
+    "h": 755
+   },
+   {
+    "f": "aruba-brown-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "aruba-gold",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "aruba-gold-1",
+    "w": 388,
+    "h": 581
+   },
+   {
+    "f": "aruba-gold-2",
+    "w": 600,
+    "h": 330
+   },
+   {
+    "f": "aruba-gold-3",
+    "w": 600,
+    "h": 333
+   },
+   {
+    "f": "aruba-gold-4",
+    "w": 600,
+    "h": 745
+   },
+   {
+    "f": "aruba-gold-5",
+    "w": 600,
+    "h": 750
+   }
+  ]
+ },
+ {
+  "s": "justin-clear",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "justin-clear-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "justin-clear-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "justin-clear-3",
+    "w": 600,
+    "h": 450
+   }
+  ]
+ },
+ {
+  "s": "justin-print",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "justin-print-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "justin-print-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "justin-print-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "justin-print-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "justin-print-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "justin-print-clear",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "justin-print-clear-1",
+    "w": 600,
+    "h": 424
+   },
+   {
+    "f": "justin-print-clear-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "justin-print-clear-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "justin-print-clear-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "aviador-polarizado",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "aviador-polarizado-1",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "aviador-brown-polarizado",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "aviador-brown-polarizado-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "aviador-brown-polarizado-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "aviador-brown-polarizado-3",
     "w": 600,
     "h": 800
    }
@@ -670,7 +1557,7 @@
  },
  {
   "s": "aviador-black-polarizado",
-  "card": "recorte previo",
+  "card": "conservada",
   "gal": [
    {
     "f": "aviador-black-polarizado-1",
@@ -700,576 +1587,2941 @@
   ]
  },
  {
-  "s": "aviador-brown-polarizado",
-  "card": "recorte previo",
+  "s": "holland-black",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "aviador-brown-polarizado-1",
+    "f": "holland-black-1",
     "w": 600,
     "h": 800
    },
    {
-    "f": "aviador-brown-polarizado-2",
+    "f": "holland-black-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "aviador-brown-polarizado-3",
+    "f": "holland-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "holland-black-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "holland-black-5",
     "w": 600,
     "h": 800
    }
   ]
  },
  {
-  "s": "aviador-polarizado",
-  "card": "recorte previo",
+  "s": "alexa-blue",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "aviador-polarizado-1",
+    "f": "alexa-blue-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "alexa-blue-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "alexa-blue-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "alexa-blue-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "alexa-blue-5",
     "w": 600,
     "h": 800
    }
   ]
  },
  {
-  "s": "apolo-polarized",
+  "s": "alexa-print",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "alexa-print-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "alexa-print-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "alexa-print-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "alexa-print-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "rangler-brown",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "rangler-brown-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rangler-brown-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rangler-brown-3",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "rangler-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "rangler-black-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rangler-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rangler-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rangler-black-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "rangler-mate",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "rangler-mate-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rangler-mate-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rangler-mate-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rangler-mate-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "rangler-blue",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "rangler-blue-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rangler-blue-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rangler-blue-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rangler-blue-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "elegant-brown",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "elegant-brown-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "elegant-brown-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "elegant-brown-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "elegant-brown-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "elegant-brown-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "elegant",
   "card": "estudio (foto 1)",
   "gal": [
    {
-    "f": "apolo-polarized-1",
+    "f": "elegant-1",
     "w": 600,
-    "h": 526
+    "h": 302
    },
    {
-    "f": "apolo-polarized-2",
+    "f": "elegant-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "apolo-polarized-3",
+    "f": "elegant-3",
     "w": 600,
     "h": 800
    },
    {
-    "f": "apolo-polarized-4",
+    "f": "elegant-4",
     "w": 600,
     "h": 800
    },
    {
-    "f": "apolo-polarized-5",
-    "w": 600,
-    "h": 800
-   }
-  ]
- },
- {
-  "s": "ciclismo-fotocromaticos",
-  "card": "recorte previo",
-  "gal": [
-   {
-    "f": "ciclismo-fotocromaticos-1",
-    "w": 600,
-    "h": 530
-   },
-   {
-    "f": "ciclismo-fotocromaticos-2",
-    "w": 600,
-    "h": 574
-   },
-   {
-    "f": "ciclismo-fotocromaticos-3",
-    "w": 600,
-    "h": 524
-   },
-   {
-    "f": "ciclismo-fotocromaticos-4",
-    "w": 600,
-    "h": 571
-   }
-  ]
- },
- {
-  "s": "madonna",
-  "card": "recorte previo",
-  "gal": [
-   {
-    "f": "madonna-1",
+    "f": "elegant-5",
     "w": 600,
     "h": 800
    },
    {
-    "f": "madonna-2",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "madonna-3",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "madonna-4",
+    "f": "elegant-6",
     "w": 600,
     "h": 800
    }
   ]
  },
  {
-  "s": "bulgari",
-  "card": "recorte previo",
-  "gal": [
-   {
-    "f": "bulgari-1",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "bulgari-2",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "bulgari-3",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "bulgari-4",
-    "w": 600,
-    "h": 800
-   }
-  ]
- },
- {
-  "s": "boston-brown",
-  "card": "recorte previo",
-  "gal": [
-   {
-    "f": "boston-brown-1",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "boston-brown-2",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "boston-brown-3",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "boston-brown-4",
-    "w": 600,
-    "h": 800
-   }
-  ]
- },
- {
-  "s": "boston-black",
+  "s": "megan-grey",
   "card": "estudio (foto 1)",
   "gal": [
    {
-    "f": "boston-black-1",
-    "w": 593,
-    "h": 284
+    "f": "megan-grey-1",
+    "w": 600,
+    "h": 322
    },
    {
-    "f": "boston-black-2",
+    "f": "megan-grey-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "boston-black-3",
+    "f": "megan-grey-3",
     "w": 600,
     "h": 800
    },
    {
-    "f": "boston-black-4",
-    "w": 600,
-    "h": 800
-   }
-  ]
- },
- {
-  "s": "clasicas-grey",
-  "card": "estudio (foto 1)",
-  "gal": [
-   {
-    "f": "clasicas-grey-1",
-    "w": 600,
-    "h": 307
-   },
-   {
-    "f": "clasicas-grey-2",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "clasicas-grey-3",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "clasicas-grey-4",
+    "f": "megan-grey-4",
     "w": 600,
     "h": 800
    }
   ]
  },
  {
-  "s": "rio",
+  "s": "megan-print",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "megan-print-1",
+    "w": 600,
+    "h": 740
+   },
+   {
+    "f": "megan-print-2",
+    "w": 600,
+    "h": 866
+   },
+   {
+    "f": "megan-print-3",
+    "w": 600,
+    "h": 588
+   },
+   {
+    "f": "megan-print-4",
+    "w": 600,
+    "h": 400
+   },
+   {
+    "f": "megan-print-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "megan-print-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "megan-black",
+  "card": "estudio (foto 5)",
+  "gal": [
+   {
+    "f": "megan-black-1",
+    "w": 600,
+    "h": 734
+   },
+   {
+    "f": "megan-black-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "megan-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "megan-black-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "megan-black-5",
+    "w": 600,
+    "h": 402
+   }
+  ]
+ },
+ {
+  "s": "soho-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "soho-black-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "soho-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "soho-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "soho-black-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "soho-black-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "soho",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "soho-1",
+    "w": 600,
+    "h": 559
+   },
+   {
+    "f": "soho-2",
+    "w": 600,
+    "h": 529
+   },
+   {
+    "f": "soho-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "soho-4",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "soho-5",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "donna-black",
+  "card": "estudio (foto 3)",
+  "gal": [
+   {
+    "f": "donna-black-1",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "donna-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "donna-black-3",
+    "w": 600,
+    "h": 498
+   },
+   {
+    "f": "donna-black-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "donna-black-5",
+    "w": 600,
+    "h": 568
+   }
+  ]
+ },
+ {
+  "s": "shein-print-black",
+  "card": "estudio (foto 4)",
+  "gal": [
+   {
+    "f": "shein-print-black-1",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "shein-print-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "shein-print-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "shein-print-black-4",
+    "w": 600,
+    "h": 411
+   },
+   {
+    "f": "shein-print-black-5",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "shein-print-brown",
+  "card": "estudio (foto 2)",
+  "gal": [
+   {
+    "f": "shein-print-brown-1",
+    "w": 600,
+    "h": 693
+   },
+   {
+    "f": "shein-print-brown-2",
+    "w": 600,
+    "h": 288
+   },
+   {
+    "f": "shein-print-brown-3",
+    "w": 600,
+    "h": 562
+   },
+   {
+    "f": "shein-print-brown-4",
+    "w": 600,
+    "h": 262
+   },
+   {
+    "f": "shein-print-brown-5",
+    "w": 600,
+    "h": 557
+   },
+   {
+    "f": "shein-print-brown-6",
+    "w": 600,
+    "h": 542
+   }
+  ]
+ },
+ {
+  "s": "shein-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "shein-black-1",
+    "w": 600,
+    "h": 704
+   },
+   {
+    "f": "shein-black-2",
+    "w": 600,
+    "h": 534
+   },
+   {
+    "f": "shein-black-3",
+    "w": 600,
+    "h": 584
+   },
+   {
+    "f": "shein-black-4",
+    "w": 600,
+    "h": 723
+   },
+   {
+    "f": "shein-black-5",
+    "w": 600,
+    "h": 786
+   },
+   {
+    "f": "shein-black-6",
+    "w": 600,
+    "h": 822
+   }
+  ]
+ },
+ {
+  "s": "carolyn-print",
   "card": "estudio (foto 1)",
   "gal": [
    {
-    "f": "rio-1",
+    "f": "carolyn-print-1",
+    "w": 600,
+    "h": 355
+   },
+   {
+    "f": "carolyn-print-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "carolyn-print-3",
+    "w": 600,
+    "h": 483
+   },
+   {
+    "f": "carolyn-print-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "bonnie",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "bonnie-1",
+    "w": 600,
+    "h": 428
+   },
+   {
+    "f": "bonnie-2",
     "w": 600,
     "h": 749
    },
    {
-    "f": "rio-2",
+    "f": "bonnie-3",
+    "w": 600,
+    "h": 749
+   },
+   {
+    "f": "bonnie-4",
+    "w": 600,
+    "h": 749
+   }
+  ]
+ },
+ {
+  "s": "glow-black",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "glow-black-1",
+    "w": 600,
+    "h": 371
+   },
+   {
+    "f": "glow-black-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "rio-3",
+    "f": "glow-black-3",
     "w": 600,
     "h": 800
    },
    {
-    "f": "rio-4",
+    "f": "glow-black-4",
     "w": 600,
     "h": 800
    }
   ]
  },
  {
-  "s": "risky",
+  "s": "venetto",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "venetto-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "venetto-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "venetto-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "venetto-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "venetto-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "rosella",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "rosella-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rosella-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rosella-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rosella-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rosella-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "rosella-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "pacific-grey",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "pacific-grey-1",
+    "w": 600,
+    "h": 483
+   },
+   {
+    "f": "pacific-grey-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "pacific-grey-3",
+    "w": 600,
+    "h": 324
+   },
+   {
+    "f": "pacific-grey-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "pacific-clear",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "pacific-clear-1",
+    "w": 600,
+    "h": 354
+   },
+   {
+    "f": "pacific-clear-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "pacific-clear-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "pacific-clear-4",
+    "w": 600,
+    "h": 308
+   },
+   {
+    "f": "pacific-clear-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "yanis-black",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "yanis-black-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yanis-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yanis-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yanis-black-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "yanis-print",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "yanis-print-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yanis-print-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yanis-print-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yanis-print-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yanis-print-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yanis-print-6",
+    "w": 600,
+    "h": 662
+   }
+  ]
+ },
+ {
+  "s": "lennon-black",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "lennon-black-1",
+    "w": 600,
+    "h": 539
+   },
+   {
+    "f": "lennon-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "lennon-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "lennon-black-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "cadena-beige",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "cadena-beige-1",
+    "w": 507,
+    "h": 900
+   },
+   {
+    "f": "cadena-beige-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-beige-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-beige-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-beige-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-beige-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "cadena-caramel",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "cadena-caramel-1",
+    "w": 507,
+    "h": 900
+   },
+   {
+    "f": "cadena-caramel-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-caramel-3",
+    "w": 600,
+    "h": 450
+   },
+   {
+    "f": "cadena-caramel-4",
+    "w": 600,
+    "h": 450
+   },
+   {
+    "f": "cadena-caramel-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-caramel-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "cadena-black",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "cadena-black-1",
+    "w": 507,
+    "h": 900
+   },
+   {
+    "f": "cadena-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-black-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-black-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "cadena-gris",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "cadena-gris-1",
+    "w": 507,
+    "h": 900
+   },
+   {
+    "f": "cadena-gris-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-gris-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-gris-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-gris-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-gris-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "cadena-rose",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "cadena-rose-1",
+    "w": 574,
+    "h": 900
+   },
+   {
+    "f": "cadena-rose-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-rose-3",
+    "w": 600,
+    "h": 450
+   }
+  ]
+ },
+ {
+  "s": "cadena-gold",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "cadena-gold-1",
+    "w": 507,
+    "h": 900
+   },
+   {
+    "f": "cadena-gold-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-gold-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-gold-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-gold-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "cadena-silver",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "cadena-silver-1",
+    "w": 600,
+    "h": 839
+   },
+   {
+    "f": "cadena-silver-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-silver-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cadena-silver-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "toronto-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "toronto-black-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "toronto-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "toronto-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "toronto-black-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "toronto-black-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "toronto-brown",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "toronto-brown-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "toronto-brown-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "toronto-brown-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "toronto-brown-4",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "nikola-mate-brown",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "nikola-mate-brown-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "nikola-mate-brown-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "nikola-mate-brown-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "nikola-mate-brown-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "nikola-mate-grey",
   "card": "estudio (foto 2)",
   "gal": [
    {
-    "f": "risky-1",
+    "f": "nikola-mate-grey-1",
     "w": 600,
-    "h": 553
+    "h": 773
    },
    {
-    "f": "risky-2",
-    "w": 600,
-    "h": 586
+    "f": "nikola-mate-grey-2",
+    "w": 480,
+    "h": 266
    },
    {
-    "f": "risky-3",
+    "f": "nikola-mate-grey-3",
     "w": 600,
     "h": 800
    },
    {
-    "f": "risky-4",
-    "w": 567,
-    "h": 269
-   },
-   {
-    "f": "risky-5",
+    "f": "nikola-mate-grey-4",
     "w": 600,
-    "h": 958
+    "h": 800
    }
   ]
  },
  {
-  "s": "risky-green",
-  "card": "estudio (foto 1)",
+  "s": "nikola-black-degrade",
+  "card": "estudio (foto 3)",
   "gal": [
    {
-    "f": "risky-green-1",
+    "f": "nikola-black-degrade-1",
     "w": 600,
-    "h": 311
+    "h": 727
    },
    {
-    "f": "risky-green-2",
+    "f": "nikola-black-degrade-2",
     "w": 600,
-    "h": 600
+    "h": 651
    },
    {
-    "f": "risky-green-3",
+    "f": "nikola-black-degrade-3",
     "w": 600,
-    "h": 600
+    "h": 314
    },
    {
-    "f": "risky-green-4",
+    "f": "nikola-black-degrade-4",
     "w": 600,
-    "h": 336
+    "h": 545
+   },
+   {
+    "f": "nikola-black-degrade-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "nikola-black-degrade-6",
+    "w": 529,
+    "h": 900
    }
   ]
  },
  {
-  "s": "risky-blue",
-  "card": "estudio (foto 1)",
+  "s": "detroit-degrade",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "risky-blue-1",
-    "w": 500,
-    "h": 269
+    "f": "detroit-degrade-1",
+    "w": 600,
+    "h": 800
    },
    {
-    "f": "risky-blue-2",
+    "f": "detroit-degrade-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "detroit-degrade-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "detroit-degrade-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "detroit-violet-print",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "detroit-violet-print-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "detroit-violet-print-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "detroit-violet-print-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "detroit-violet-print-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "detroit-print",
+  "card": "estudio (foto 3)",
+  "gal": [
+   {
+    "f": "detroit-print-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "detroit-print-2",
     "w": 600,
     "h": 600
    },
    {
-    "f": "risky-blue-3",
-    "w": 500,
+    "f": "detroit-print-3",
+    "w": 600,
+    "h": 799
+   },
+   {
+    "f": "detroit-print-4",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "detroit-print-5",
+    "w": 600,
+    "h": 799
+   },
+   {
+    "f": "detroit-print-6",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "detroit-black",
+  "card": "estudio (foto 2)",
+  "gal": [
+   {
+    "f": "detroit-black-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "detroit-black-2",
+    "w": 600,
+    "h": 353
+   },
+   {
+    "f": "detroit-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "detroit-black-4",
+    "w": 600,
+    "h": 326
+   },
+   {
+    "f": "detroit-black-5",
+    "w": 600,
+    "h": 799
+   }
+  ]
+ },
+ {
+  "s": "olga-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "olga-black-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "olga-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "olga-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "olga-black-4",
+    "w": 600,
+    "h": 799
+   }
+  ]
+ },
+ {
+  "s": "olga-grey",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "olga-grey-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "olga-grey-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "olga-grey-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "olga-grey-4",
+    "w": 600,
+    "h": 799
+   }
+  ]
+ },
+ {
+  "s": "olga-clear",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "olga-clear-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "olga-clear-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "olga-clear-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "olga-clear-4",
+    "w": 600,
+    "h": 799
+   },
+   {
+    "f": "olga-clear-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "moneta-print",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "moneta-print-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "moneta-print-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "moneta-print-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "moneta-print-4",
+    "w": 600,
+    "h": 799
+   }
+  ]
+ },
+ {
+  "s": "moneta-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "moneta-black-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "moneta-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "moneta-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "moneta-black-4",
+    "w": 600,
+    "h": 799
+   }
+  ]
+ },
+ {
+  "s": "moneta-tea",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "moneta-tea-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "moneta-tea-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "moneta-tea-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "moneta-tea-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "moneta-clear",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "moneta-clear-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "moneta-clear-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "moneta-clear-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "moneta-clear-4",
+    "w": 600,
+    "h": 799
+   }
+  ]
+ },
+ {
+  "s": "west-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "west-black-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "west-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "west-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "west-black-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "west-black-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "west-brown",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "west-brown-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "west-brown-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "west-brown-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "west-brown-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "west-brown-5",
+    "w": 600,
+    "h": 771
+   }
+  ]
+ },
+ {
+  "s": "west-green",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "west-green-1",
+    "w": 600,
+    "h": 326
+   },
+   {
+    "f": "west-green-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "west-green-3",
+    "w": 600,
     "h": 352
    },
    {
-    "f": "risky-blue-4",
+    "f": "west-green-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "west-blue",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "west-blue-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "west-blue-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "west-blue-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "west-blue-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "west-blue-5",
+    "w": 600,
+    "h": 837
+   },
+   {
+    "f": "west-blue-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "aviador-retro-print-violet",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "aviador-retro-print-violet-1",
+    "w": 600,
+    "h": 354
+   },
+   {
+    "f": "aviador-retro-print-violet-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "aviador-retro-print-violet-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "aviador-retro-print-violet-4",
+    "w": 600,
+    "h": 364
+   },
+   {
+    "f": "aviador-retro-print-violet-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "aviador-retro-print-yellow",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "aviador-retro-print-yellow-1",
+    "w": 600,
+    "h": 787
+   },
+   {
+    "f": "aviador-retro-print-yellow-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "aviador-retro-print-yellow-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "aviador-retro-print-yellow-4",
+    "w": 535,
+    "h": 713
+   }
+  ]
+ },
+ {
+  "s": "aviador-retro-grey",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "aviador-retro-grey-1",
+    "w": 405,
+    "h": 539
+   },
+   {
+    "f": "aviador-retro-grey-2",
+    "w": 600,
+    "h": 799
+   },
+   {
+    "f": "aviador-retro-grey-3",
+    "w": 600,
+    "h": 799
+   }
+  ]
+ },
+ {
+  "s": "aviador-retro-blue",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "aviador-retro-blue-1",
+    "w": 600,
+    "h": 742
+   },
+   {
+    "f": "aviador-retro-blue-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "aviador-retro-blue-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "aviador-retro-blue-4",
     "w": 600,
     "h": 600
    }
   ]
  },
  {
-  "s": "aron",
-  "card": "recorte previo",
+  "s": "aviador-retro-black",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "aron-1",
-    "w": 600,
-    "h": 496
-   },
-   {
-    "f": "aron-2",
+    "f": "aviador-retro-black-1",
     "w": 600,
     "h": 800
    },
    {
-    "f": "aron-3",
+    "f": "aviador-retro-black-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "aron-4",
+    "f": "aviador-retro-black-3",
     "w": 600,
     "h": 800
    },
    {
-    "f": "aron-5",
+    "f": "aviador-retro-black-4",
     "w": 600,
     "h": 800
    }
   ]
  },
  {
-  "s": "lupe",
-  "card": "estudio (foto 5)",
+  "s": "aviador-retro-brown",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "lupe-1",
-    "w": 600,
-    "h": 556
-   },
-   {
-    "f": "lupe-2",
-    "w": 600,
-    "h": 678
-   },
-   {
-    "f": "lupe-3",
+    "f": "aviador-retro-brown-1",
     "w": 600,
     "h": 800
    },
    {
-    "f": "lupe-4",
+    "f": "aviador-retro-brown-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "lupe-5",
+    "f": "aviador-retro-brown-3",
     "w": 600,
-    "h": 291
-   }
-  ]
- },
- {
-  "s": "coco-clear",
-  "card": "estudio (foto 2)",
-  "gal": [
-   {
-    "f": "coco-clear-1",
-    "w": 563,
-    "h": 1000
+    "h": 800
    },
    {
-    "f": "coco-clear-2",
+    "f": "aviador-retro-brown-4",
     "w": 600,
-    "h": 647
+    "h": 800
    },
    {
-    "f": "coco-clear-3",
-    "w": 600,
-    "h": 316
-   }
-  ]
- },
- {
-  "s": "coco-black",
-  "card": "estudio (foto 1)",
-  "gal": [
-   {
-    "f": "coco-black-1",
-    "w": 600,
-    "h": 827
-   },
-   {
-    "f": "coco-black-2",
-    "w": 600,
-    "h": 531
-   },
-   {
-    "f": "coco-black-3",
-    "w": 600,
-    "h": 344
-   }
-  ]
- },
- {
-  "s": "coco-grey",
-  "card": "estudio (foto 1)",
-  "gal": [
-   {
-    "f": "coco-grey-1",
-    "w": 600,
-    "h": 487
-   },
-   {
-    "f": "coco-grey-2",
-    "w": 600,
-    "h": 685
-   },
-   {
-    "f": "coco-grey-3",
-    "w": 600,
-    "h": 363
-   }
-  ]
- },
- {
-  "s": "coco-print",
-  "card": "estudio (foto 1)",
-  "gal": [
-   {
-    "f": "coco-print-1",
-    "w": 600,
-    "h": 343
-   },
-   {
-    "f": "coco-print-2",
-    "w": 600,
-    "h": 881
-   },
-   {
-    "f": "coco-print-3",
+    "f": "aviador-retro-brown-5",
     "w": 600,
     "h": 668
    }
   ]
  },
  {
-  "s": "oriana-pink",
-  "card": "estudio (foto 1)",
+  "s": "galaxy-black",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "oriana-pink-1",
+    "f": "galaxy-black-1",
     "w": 600,
-    "h": 637
+    "h": 600
    },
    {
-    "f": "oriana-pink-2",
-    "w": 600,
-    "h": 440
+    "f": "galaxy-black-2",
+    "w": 564,
+    "h": 564
    },
    {
-    "f": "oriana-pink-3",
+    "f": "galaxy-black-3",
     "w": 600,
-    "h": 627
+    "h": 600
+   },
+   {
+    "f": "galaxy-black-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "galaxy-black-5",
+    "w": 600,
+    "h": 800
    }
   ]
  },
  {
-  "s": "oriana-black",
-  "card": "estudio (foto 1)",
+  "s": "galaxy-green",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "oriana-black-1",
-    "w": 600,
-    "h": 352
+    "f": "galaxy-green-1",
+    "w": 551,
+    "h": 900
    },
    {
-    "f": "oriana-black-2",
+    "f": "galaxy-green-2",
     "w": 600,
-    "h": 499
+    "h": 636
    },
    {
-    "f": "oriana-black-3",
+    "f": "galaxy-green-3",
     "w": 600,
-    "h": 461
+    "h": 800
    }
   ]
  },
  {
-  "s": "oriana-print",
+  "s": "galaxy-brown",
   "card": "estudio (foto 1)",
   "gal": [
    {
-    "f": "oriana-print-1",
-    "w": 600,
-    "h": 599
+    "f": "galaxy-brown-1",
+    "w": 579,
+    "h": 333
    },
    {
-    "f": "oriana-print-2",
+    "f": "galaxy-brown-2",
     "w": 600,
-    "h": 308
+    "h": 280
    },
    {
-    "f": "oriana-print-3",
+    "f": "galaxy-brown-3",
     "w": 600,
-    "h": 619
+    "h": 280
+   },
+   {
+    "f": "galaxy-brown-4",
+    "w": 600,
+    "h": 800
    }
   ]
  },
  {
-  "s": "tr90-clip-on",
+  "s": "galaxy-caramel",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "galaxy-caramel-1",
+    "w": 600,
+    "h": 812
+   },
+   {
+    "f": "galaxy-caramel-2",
+    "w": 600,
+    "h": 565
+   },
+   {
+    "f": "galaxy-caramel-3",
+    "w": 600,
+    "h": 695
+   },
+   {
+    "f": "galaxy-caramel-4",
+    "w": 600,
+    "h": 681
+   },
+   {
+    "f": "galaxy-caramel-5",
+    "w": 600,
+    "h": 548
+   },
+   {
+    "f": "galaxy-caramel-6",
+    "w": 426,
+    "h": 439
+   }
+  ]
+ },
+ {
+  "s": "oval-black",
+  "card": "estudio (foto 3)",
+  "gal": [
+   {
+    "f": "oval-black-1",
+    "w": 474,
+    "h": 631
+   },
+   {
+    "f": "oval-black-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "oval-black-3",
+    "w": 600,
+    "h": 245
+   },
+   {
+    "f": "oval-black-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "oval-black-5",
+    "w": 600,
+    "h": 172
+   }
+  ]
+ },
+ {
+  "s": "oval-gold",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "oval-gold-1",
+    "w": 600,
+    "h": 900
+   },
+   {
+    "f": "oval-gold-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "oval-gold-3",
+    "w": 600,
+    "h": 799
+   },
+   {
+    "f": "oval-gold-4",
+    "w": 600,
+    "h": 900
+   },
+   {
+    "f": "oval-gold-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "oval-gold-6",
+    "w": 600,
+    "h": 799
+   }
+  ]
+ },
+ {
+  "s": "oval-silver",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "oval-silver-1",
+    "w": 600,
+    "h": 670
+   },
+   {
+    "f": "oval-silver-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "oval-silver-3",
+    "w": 600,
+    "h": 731
+   },
+   {
+    "f": "oval-silver-4",
+    "w": 600,
+    "h": 737
+   },
+   {
+    "f": "oval-silver-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "molly-black",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "molly-black-1",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "molly-black-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "molly-black-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "molly-black-4",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "molly-black-5",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "molly-black-6",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "molly-brown",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "molly-brown-1",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "molly-brown-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "molly-brown-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "molly-brown-4",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "molly-brown-5",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "molly-brown-6",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "mallorca",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "mallorca-1",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "mallorca-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "mallorca-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "mallorca-4",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "mallorca-5",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "chad",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "chad-1",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "chad-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "chad-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "chad-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "chad-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "chad-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "dubai-print",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "dubai-print-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "dubai-print-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "dubai-print-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "dubai-print-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "dubai-print-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "dubai-pink",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "dubai-pink-1",
+    "w": 600,
+    "h": 760
+   },
+   {
+    "f": "dubai-pink-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "dubai-pink-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "dubai-pink-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "dubai-blue",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "dubai-blue-1",
+    "w": 600,
+    "h": 656
+   },
+   {
+    "f": "dubai-blue-2",
+    "w": 600,
+    "h": 662
+   },
+   {
+    "f": "dubai-blue-3",
+    "w": 600,
+    "h": 602
+   }
+  ]
+ },
+ {
+  "s": "dubai-yellow",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "dubai-yellow-1",
+    "w": 600,
+    "h": 338
+   },
+   {
+    "f": "dubai-yellow-2",
+    "w": 500,
+    "h": 285
+   },
+   {
+    "f": "dubai-yellow-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "dubai-yellow-4",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "braga-green",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "braga-green-1",
+    "w": 600,
+    "h": 322
+   },
+   {
+    "f": "braga-green-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "braga-green-3",
+    "w": 600,
+    "h": 799
+   },
+   {
+    "f": "braga-green-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "braga-green-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "braga-green-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "braga-yellow",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "braga-yellow-1",
+    "w": 600,
+    "h": 346
+   },
+   {
+    "f": "braga-yellow-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "braga-yellow-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "braga-yellow-4",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "braga-yellow-5",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "madrid-print",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "madrid-print-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "madrid-print-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "madrid-print-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "madrid-print-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "madrid-print-5",
+    "w": 600,
+    "h": 799
+   },
+   {
+    "f": "madrid-print-6",
+    "w": 600,
+    "h": 799
+   }
+  ]
+ },
+ {
+  "s": "saturday-xl-degrade",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "saturday-xl-degrade-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-xl-degrade-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-xl-degrade-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-xl-degrade-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-xl-degrade-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "saturday-xl-grey",
   "card": "estudio (foto 2)",
   "gal": [
    {
-    "f": "tr90-clip-on-1",
+    "f": "saturday-xl-grey-1",
     "w": 600,
-    "h": 584
+    "h": 641
    },
    {
-    "f": "tr90-clip-on-2",
+    "f": "saturday-xl-grey-2",
     "w": 600,
-    "h": 590
+    "h": 305
    },
    {
-    "f": "tr90-clip-on-3",
+    "f": "saturday-xl-grey-3",
     "w": 600,
-    "h": 663
+    "h": 707
    },
    {
-    "f": "tr90-clip-on-4",
+    "f": "saturday-xl-grey-4",
     "w": 600,
-    "h": 589
+    "h": 580
    },
    {
-    "f": "tr90-clip-on-5",
+    "f": "saturday-xl-grey-5",
     "w": 600,
-    "h": 805
+    "h": 825
+   },
+   {
+    "f": "saturday-xl-grey-6",
+    "w": 600,
+    "h": 392
+   }
+  ]
+ },
+ {
+  "s": "focus",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "focus-1",
+    "w": 599,
+    "h": 259
+   },
+   {
+    "f": "focus-2",
+    "w": 600,
+    "h": 736
+   },
+   {
+    "f": "focus-3",
+    "w": 600,
+    "h": 799
+   },
+   {
+    "f": "focus-4",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "lenny-caramel",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "lenny-caramel-1",
+    "w": 600,
+    "h": 546
+   },
+   {
+    "f": "lenny-caramel-2",
+    "w": 600,
+    "h": 593
+   },
+   {
+    "f": "lenny-caramel-3",
+    "w": 600,
+    "h": 289
+   },
+   {
+    "f": "lenny-caramel-4",
+    "w": 600,
+    "h": 591
+   },
+   {
+    "f": "lenny-caramel-5",
+    "w": 600,
+    "h": 248
+   },
+   {
+    "f": "lenny-caramel-6",
+    "w": 600,
+    "h": 578
+   }
+  ]
+ },
+ {
+  "s": "michael",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "michael-1",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "michael-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "michael-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "michael-4",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "michael-5",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "erika-violet",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "erika-violet-1",
+    "w": 600,
+    "h": 668
+   },
+   {
+    "f": "erika-violet-2",
+    "w": 600,
+    "h": 418
+   },
+   {
+    "f": "erika-violet-3",
+    "w": 600,
+    "h": 449
+   },
+   {
+    "f": "erika-violet-4",
+    "w": 600,
+    "h": 291
+   },
+   {
+    "f": "erika-violet-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "erika-violet-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "erika-brown",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "erika-brown-1",
+    "w": 600,
+    "h": 606
+   },
+   {
+    "f": "erika-brown-2",
+    "w": 600,
+    "h": 280
+   },
+   {
+    "f": "erika-brown-3",
+    "w": 600,
+    "h": 381
+   },
+   {
+    "f": "erika-brown-4",
+    "w": 600,
+    "h": 302
+   },
+   {
+    "f": "erika-brown-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "erika-brown-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "round-brown",
+  "card": "estudio (foto 3)",
+  "gal": [
+   {
+    "f": "round-brown-1",
+    "w": 600,
+    "h": 625
+   },
+   {
+    "f": "round-brown-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "round-brown-3",
+    "w": 500,
+    "h": 234
+   },
+   {
+    "f": "round-brown-4",
+    "w": 500,
+    "h": 256
+   },
+   {
+    "f": "round-brown-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "galicia",
+  "card": "estudio (foto 3)",
+  "gal": [
+   {
+    "f": "galicia-1",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "galicia-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "galicia-3",
+    "w": 600,
+    "h": 280
+   },
+   {
+    "f": "galicia-4",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "yris-violet",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "yris-violet-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yris-violet-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yris-violet-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yris-violet-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "yris-blue",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "yris-blue-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yris-blue-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yris-blue-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yris-blue-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "yris-beige",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "yris-beige-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yris-beige-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yris-beige-3",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "yris-white",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "yris-white-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yris-white-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "yris-white-3",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "saturday-premium-aqua-print",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "saturday-premium-aqua-print-1",
+    "w": 480,
+    "h": 640
+   },
+   {
+    "f": "saturday-premium-aqua-print-2",
+    "w": 600,
+    "h": 799
+   },
+   {
+    "f": "saturday-premium-aqua-print-3",
+    "w": 600,
+    "h": 799
+   },
+   {
+    "f": "saturday-premium-aqua-print-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-premium-aqua-print-5",
+    "w": 507,
+    "h": 900
+   },
+   {
+    "f": "saturday-premium-aqua-print-6",
+    "w": 507,
+    "h": 900
+   }
+  ]
+ },
+ {
+  "s": "saturday-premium-blue",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "saturday-premium-blue-1",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "saturday-premium-blue-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-premium-blue-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "saturday-premium-blue-4",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "saturday-premium-blue-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-premium-blue-6",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "saturday-premium-print",
+  "card": "estudio (foto 5)",
+  "gal": [
+   {
+    "f": "saturday-premium-print-1",
+    "w": 600,
+    "h": 824
+   },
+   {
+    "f": "saturday-premium-print-2",
+    "w": 557,
+    "h": 900
+   },
+   {
+    "f": "saturday-premium-print-3",
+    "w": 600,
+    "h": 309
+   },
+   {
+    "f": "saturday-premium-print-4",
+    "w": 600,
+    "h": 778
+   },
+   {
+    "f": "saturday-premium-print-5",
+    "w": 600,
+    "h": 325
+   },
+   {
+    "f": "saturday-premium-print-6",
+    "w": 600,
+    "h": 718
+   }
+  ]
+ },
+ {
+  "s": "saturday-premium-pink",
+  "card": "estudio (foto 6)",
+  "gal": [
+   {
+    "f": "saturday-premium-pink-1",
+    "w": 600,
+    "h": 786
+   },
+   {
+    "f": "saturday-premium-pink-2",
+    "w": 600,
+    "h": 545
+   },
+   {
+    "f": "saturday-premium-pink-3",
+    "w": 600,
+    "h": 726
+   },
+   {
+    "f": "saturday-premium-pink-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-premium-pink-5",
+    "w": 600,
+    "h": 724
+   },
+   {
+    "f": "saturday-premium-pink-6",
+    "w": 600,
+    "h": 485
+   }
+  ]
+ },
+ {
+  "s": "roxy",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "roxy-1",
+    "w": 600,
+    "h": 340
+   },
+   {
+    "f": "roxy-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "roxy-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "roxy-4",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "roxy-5",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "roxy-6",
+    "w": 490,
+    "h": 285
+   }
+  ]
+ },
+ {
+  "s": "jagger",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "jagger-1",
+    "w": 600,
+    "h": 335
+   },
+   {
+    "f": "jagger-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "jagger-3",
+    "w": 600,
+    "h": 297
+   },
+   {
+    "f": "jagger-4",
+    "w": 600,
+    "h": 800
    }
   ]
  },
  {
   "s": "classic-red",
-  "card": "recorte previo",
+  "card": "conservada",
   "gal": [
    {
     "f": "classic-red-1",
@@ -1300,7 +4552,7 @@
  },
  {
   "s": "classic-grey",
-  "card": "recorte previo",
+  "card": "conservada",
   "gal": [
    {
     "f": "classic-grey-1",
@@ -1330,101 +4582,1090 @@
   ]
  },
  {
-  "s": "nova",
-  "card": "recorte previo",
+  "s": "wake",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "nova-1",
+    "f": "wake-1",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "wake-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "wake-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "wake-4",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "gattizioni-rectangular",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "gattizioni-rectangular-1",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "gattizioni-rectangular-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "gattizioni-rectangular-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "gattizioni-rectangular-4",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "gattizioni-redondo",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "gattizioni-redondo-1",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "gattizioni-redondo-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "gattizioni-redondo-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "gattizioni-redondo-4",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "risky-blue",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "risky-blue-1",
+    "w": 500,
+    "h": 269
+   },
+   {
+    "f": "risky-blue-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "risky-blue-3",
+    "w": 500,
+    "h": 352
+   },
+   {
+    "f": "risky-blue-4",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "risky-green",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "risky-green-1",
+    "w": 600,
+    "h": 311
+   },
+   {
+    "f": "risky-green-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "risky-green-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "risky-green-4",
+    "w": 600,
+    "h": 336
+   }
+  ]
+ },
+ {
+  "s": "risky",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "risky-1",
+    "w": 600,
+    "h": 553
+   },
+   {
+    "f": "risky-2",
+    "w": 600,
+    "h": 586
+   },
+   {
+    "f": "risky-3",
     "w": 600,
     "h": 800
    },
    {
-    "f": "nova-2",
+    "f": "risky-4",
+    "w": 567,
+    "h": 269
+   },
+   {
+    "f": "risky-5",
+    "w": 564,
+    "h": 900
+   },
+   {
+    "f": "risky-6",
+    "w": 600,
+    "h": 452
+   }
+  ]
+ },
+ {
+  "s": "prada-mate",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "prada-mate-1",
+    "w": 600,
+    "h": 332
+   },
+   {
+    "f": "prada-mate-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "prada-mate-3",
+    "w": 600,
+    "h": 436
+   },
+   {
+    "f": "prada-mate-4",
+    "w": 600,
+    "h": 555
+   }
+  ]
+ },
+ {
+  "s": "prada-nude",
+  "card": "estudio (foto 2)",
+  "gal": [
+   {
+    "f": "prada-nude-1",
+    "w": 600,
+    "h": 540
+   },
+   {
+    "f": "prada-nude-2",
+    "w": 600,
+    "h": 298
+   },
+   {
+    "f": "prada-nude-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "prada-nude-4",
+    "w": 600,
+    "h": 732
+   },
+   {
+    "f": "prada-nude-5",
+    "w": 600,
+    "h": 620
+   }
+  ]
+ },
+ {
+  "s": "prada-caramel",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "prada-caramel-1",
+    "w": 600,
+    "h": 316
+   },
+   {
+    "f": "prada-caramel-2",
+    "w": 600,
+    "h": 492
+   },
+   {
+    "f": "prada-caramel-3",
+    "w": 600,
+    "h": 365
+   },
+   {
+    "f": "prada-caramel-4",
     "w": 600,
     "h": 800
    },
    {
-    "f": "nova-3",
+    "f": "prada-caramel-5",
+    "w": 600,
+    "h": 492
+   },
+   {
+    "f": "prada-caramel-6",
+    "w": 600,
+    "h": 376
+   }
+  ]
+ },
+ {
+  "s": "clasicos-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "clasicos-black-1",
+    "w": 500,
+    "h": 500
+   },
+   {
+    "f": "clasicos-black-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "clasicos-black-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "clasicos-black-4",
+    "w": 600,
+    "h": 600
+   }
+  ]
+ },
+ {
+  "s": "michelle-clear",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "michelle-clear-1",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "michelle-clear-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "michelle-clear-3",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "michelle-clear-4",
+    "w": 600,
+    "h": 818
+   }
+  ]
+ },
+ {
+  "s": "sara-brown",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "sara-brown-1",
     "w": 600,
     "h": 800
    },
    {
-    "f": "nova-4",
+    "f": "sara-brown-2",
+    "w": 600,
+    "h": 853
+   },
+   {
+    "f": "sara-brown-3",
     "w": 600,
     "h": 800
    },
    {
-    "f": "nova-5",
+    "f": "sara-brown-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "sara-brown-5",
     "w": 600,
     "h": 800
    }
   ]
  },
  {
-  "s": "milo",
-  "card": "recorte previo",
+  "s": "sara-grey",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "milo-1",
+    "f": "sara-grey-1",
     "w": 600,
     "h": 800
    },
    {
-    "f": "milo-2",
+    "f": "sara-grey-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "sara-grey-3",
     "w": 600,
     "h": 800
    },
    {
-    "f": "milo-3",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "milo-4",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "milo-5",
+    "f": "sara-grey-4",
     "w": 600,
     "h": 800
    }
   ]
  },
  {
-  "s": "ambar",
-  "card": "recorte previo",
+  "s": "estuche-organizador-x5",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "ambar-1",
+    "f": "estuche-organizador-x5-1",
+    "w": 600,
+    "h": 549
+   },
+   {
+    "f": "estuche-organizador-x5-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "ambar-2",
+    "f": "estuche-organizador-x5-3",
     "w": 600,
     "h": 800
    },
    {
-    "f": "ambar-3",
+    "f": "estuche-organizador-x5-4",
+    "w": 600,
+    "h": 450
+   },
+   {
+    "f": "estuche-organizador-x5-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "harry",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "harry-1",
+    "w": 600,
+    "h": 796
+   },
+   {
+    "f": "harry-2",
+    "w": 600,
+    "h": 796
+   },
+   {
+    "f": "harry-3",
+    "w": 600,
+    "h": 796
+   }
+  ]
+ },
+ {
+  "s": "mery-blue",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "mery-blue-1",
     "w": 600,
     "h": 800
    },
    {
-    "f": "ambar-4",
+    "f": "mery-blue-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "ambar-5",
+    "f": "mery-blue-3",
     "w": 600,
     "h": 800
+   },
+   {
+    "f": "mery-blue-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "mery-blue-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "mery-violet",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "mery-violet-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "mery-violet-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "mery-violet-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "mery-violet-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "mery-violet-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "london-green",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "london-green-1",
+    "w": 600,
+    "h": 288
+   },
+   {
+    "f": "london-green-2",
+    "w": 552,
+    "h": 318
+   },
+   {
+    "f": "london-green-3",
+    "w": 600,
+    "h": 558
+   },
+   {
+    "f": "london-green-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "london-green-5",
+    "w": 481,
+    "h": 211
+   }
+  ]
+ },
+ {
+  "s": "saturday-green",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "saturday-green-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-green-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-green-3",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "saturday-grey",
+  "card": "estudio (foto 2)",
+  "gal": [
+   {
+    "f": "saturday-grey-1",
+    "w": 600,
+    "h": 739
+   },
+   {
+    "f": "saturday-grey-2",
+    "w": 600,
+    "h": 282
+   },
+   {
+    "f": "saturday-grey-3",
+    "w": 600,
+    "h": 745
+   },
+   {
+    "f": "saturday-grey-4",
+    "w": 600,
+    "h": 695
+   }
+  ]
+ },
+ {
+  "s": "saturday-yellow",
+  "card": "estudio (foto 3)",
+  "gal": [
+   {
+    "f": "saturday-yellow-1",
+    "w": 600,
+    "h": 591
+   },
+   {
+    "f": "saturday-yellow-2",
+    "w": 600,
+    "h": 770
+   },
+   {
+    "f": "saturday-yellow-3",
+    "w": 600,
+    "h": 273
+   },
+   {
+    "f": "saturday-yellow-4",
+    "w": 600,
+    "h": 784
+   },
+   {
+    "f": "saturday-yellow-5",
+    "w": 600,
+    "h": 564
+   },
+   {
+    "f": "saturday-yellow-6",
+    "w": 600,
+    "h": 524
+   }
+  ]
+ },
+ {
+  "s": "saturday-aqua",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "saturday-aqua-1",
+    "w": 600,
+    "h": 317
+   },
+   {
+    "f": "saturday-aqua-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-aqua-3",
+    "w": 600,
+    "h": 695
+   },
+   {
+    "f": "saturday-aqua-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-aqua-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-aqua-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "clasico-print-patilla-metal",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "clasico-print-patilla-metal-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "clasico-print-patilla-metal-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "clasico-print-patilla-metal-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "clasico-print-patilla-metal-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "clasico-black-patilla-metal",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "clasico-black-patilla-metal-1",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "clasico-black-patilla-metal-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "clasico-black-patilla-metal-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "clasico-black-patilla-metal-4",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "sidney-brown",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "sidney-brown-1",
+    "w": 600,
+    "h": 247
+   },
+   {
+    "f": "sidney-brown-2",
+    "w": 600,
+    "h": 770
+   },
+   {
+    "f": "sidney-brown-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "sidney-brown-4",
+    "w": 600,
+    "h": 757
+   },
+   {
+    "f": "sidney-brown-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "sidney-black",
+  "card": "estudio (foto 2)",
+  "gal": [
+   {
+    "f": "sidney-black-1",
+    "w": 600,
+    "h": 583
+   },
+   {
+    "f": "sidney-black-2",
+    "w": 600,
+    "h": 338
+   },
+   {
+    "f": "sidney-black-3",
+    "w": 600,
+    "h": 886
+   },
+   {
+    "f": "sidney-black-4",
+    "w": 600,
+    "h": 331
+   },
+   {
+    "f": "sidney-black-5",
+    "w": 600,
+    "h": 601
+   },
+   {
+    "f": "sidney-black-6",
+    "w": 600,
+    "h": 490
+   }
+  ]
+ },
+ {
+  "s": "capri",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "capri-1",
+    "w": 600,
+    "h": 820
+   },
+   {
+    "f": "capri-2",
+    "w": 600,
+    "h": 807
+   },
+   {
+    "f": "capri-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "capri-4",
+    "w": 600,
+    "h": 739
+   },
+   {
+    "f": "capri-5",
+    "w": 600,
+    "h": 757
+   }
+  ]
+ },
+ {
+  "s": "saturday-xl-blue-orange",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "saturday-xl-blue-orange-1",
+    "w": 600,
+    "h": 295
+   },
+   {
+    "f": "saturday-xl-blue-orange-2",
+    "w": 600,
+    "h": 607
+   },
+   {
+    "f": "saturday-xl-blue-orange-3",
+    "w": 600,
+    "h": 584
+   },
+   {
+    "f": "saturday-xl-blue-orange-4",
+    "w": 600,
+    "h": 504
+   },
+   {
+    "f": "saturday-xl-blue-orange-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "saturday-xl-print",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "saturday-xl-print-1",
+    "w": 600,
+    "h": 856
+   },
+   {
+    "f": "saturday-xl-print-2",
+    "w": 600,
+    "h": 886
+   },
+   {
+    "f": "saturday-xl-print-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "saturday-xl-print-4",
+    "w": 600,
+    "h": 657
+   },
+   {
+    "f": "saturday-xl-print-5",
+    "w": 600,
+    "h": 710
+   },
+   {
+    "f": "saturday-xl-print-6",
+    "w": 600,
+    "h": 596
+   }
+  ]
+ },
+ {
+  "s": "roma",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "roma-1",
+    "w": 600,
+    "h": 349
+   },
+   {
+    "f": "roma-2",
+    "w": 600,
+    "h": 759
+   },
+   {
+    "f": "roma-3",
+    "w": 600,
+    "h": 271
+   },
+   {
+    "f": "roma-4",
+    "w": 600,
+    "h": 489
+   }
+  ]
+ },
+ {
+  "s": "dallas-brown",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "dallas-brown-1",
+    "w": 600,
+    "h": 211
+   },
+   {
+    "f": "dallas-brown-2",
+    "w": 600,
+    "h": 407
+   },
+   {
+    "f": "dallas-brown-3",
+    "w": 600,
+    "h": 514
+   },
+   {
+    "f": "dallas-brown-4",
+    "w": 600,
+    "h": 419
+   },
+   {
+    "f": "dallas-brown-5",
+    "w": 600,
+    "h": 394
+   }
+  ]
+ },
+ {
+  "s": "dallas-black",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "dallas-black-1",
+    "w": 600,
+    "h": 539
+   },
+   {
+    "f": "dallas-black-2",
+    "w": 600,
+    "h": 491
+   },
+   {
+    "f": "dallas-black-3",
+    "w": 600,
+    "h": 728
+   },
+   {
+    "f": "dallas-black-4",
+    "w": 600,
+    "h": 839
+   }
+  ]
+ },
+ {
+  "s": "tr90-clip-on",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "tr90-clip-on-1",
+    "w": 600,
+    "h": 584
+   },
+   {
+    "f": "tr90-clip-on-2",
+    "w": 600,
+    "h": 590
+   },
+   {
+    "f": "tr90-clip-on-3",
+    "w": 600,
+    "h": 663
+   },
+   {
+    "f": "tr90-clip-on-4",
+    "w": 600,
+    "h": 589
+   },
+   {
+    "f": "tr90-clip-on-5",
+    "w": 600,
+    "h": 805
+   }
+  ]
+ },
+ {
+  "s": "indiana",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "indiana-1",
+    "w": 542,
+    "h": 271
+   },
+   {
+    "f": "indiana-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "indiana-3",
+    "w": 600,
+    "h": 323
+   },
+   {
+    "f": "indiana-4",
+    "w": 600,
+    "h": 327
+   },
+   {
+    "f": "indiana-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "cielo",
+  "card": "estudio (foto 1)",
+  "gal": [
+   {
+    "f": "cielo-1",
+    "w": 600,
+    "h": 275
+   },
+   {
+    "f": "cielo-2",
+    "w": 600,
+    "h": 412
+   },
+   {
+    "f": "cielo-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "cielo-4",
+    "w": 509,
+    "h": 234
+   }
+  ]
+ },
+ {
+  "s": "kingdom-brown",
+  "card": "estudio (foto 2)",
+  "gal": [
+   {
+    "f": "kingdom-brown-1",
+    "w": 600,
+    "h": 374
+   },
+   {
+    "f": "kingdom-brown-2",
+    "w": 580,
+    "h": 277
+   },
+   {
+    "f": "kingdom-brown-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "kingdom-brown-4",
+    "w": 600,
+    "h": 284
+   },
+   {
+    "f": "kingdom-brown-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "kingdom-black",
+  "card": "estudio (foto 2)",
+  "gal": [
+   {
+    "f": "kingdom-black-1",
+    "w": 600,
+    "h": 750
+   },
+   {
+    "f": "kingdom-black-2",
+    "w": 600,
+    "h": 306
+   },
+   {
+    "f": "kingdom-black-3",
+    "w": 600,
+    "h": 182
+   },
+   {
+    "f": "kingdom-black-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "kingdom-black-5",
+    "w": 600,
+    "h": 234
    }
   ]
  },
  {
   "s": "lennon-gold",
-  "card": "estudio (foto 1)",
+  "card": "conservada",
   "gal": [
    {
     "f": "lennon-gold-1",
@@ -1450,12 +5691,17 @@
     "f": "lennon-gold-5",
     "w": 600,
     "h": 800
+   },
+   {
+    "f": "lennon-gold-6",
+    "w": 600,
+    "h": 565
    }
   ]
  },
  {
   "s": "lennon-silver",
-  "card": "estudio (foto 1)",
+  "card": "conservada",
   "gal": [
    {
     "f": "lennon-silver-1",
@@ -1481,12 +5727,17 @@
     "f": "lennon-silver-5",
     "w": 600,
     "h": 800
+   },
+   {
+    "f": "lennon-silver-6",
+    "w": 600,
+    "h": 565
    }
   ]
  },
  {
   "s": "lennon-pink",
-  "card": "estudio (foto 1)",
+  "card": "conservada",
   "gal": [
    {
     "f": "lennon-pink-1",
@@ -1512,263 +5763,591 @@
     "f": "lennon-pink-5",
     "w": 600,
     "h": 800
+   },
+   {
+    "f": "lennon-pink-6",
+    "w": 600,
+    "h": 565
    }
   ]
  },
  {
-  "s": "cat-eye-6-en-1",
-  "card": "recorte previo",
+  "s": "mora-print-aqua",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "cat-eye-6-en-1-1",
-    "w": 600,
-    "h": 800
+    "f": "mora-print-aqua-1",
+    "w": 507,
+    "h": 900
    },
    {
-    "f": "cat-eye-6-en-1-2",
+    "f": "mora-print-aqua-2",
     "w": 600,
-    "h": 800
+    "h": 344
    },
    {
-    "f": "cat-eye-6-en-1-3",
+    "f": "mora-print-aqua-3",
     "w": 600,
-    "h": 800
+    "h": 764
    },
    {
-    "f": "cat-eye-6-en-1-4",
+    "f": "mora-print-aqua-4",
     "w": 600,
-    "h": 800
+    "h": 576
    },
    {
-    "f": "cat-eye-6-en-1-5",
+    "f": "mora-print-aqua-5",
     "w": 600,
-    "h": 800
+    "h": 580
+   },
+   {
+    "f": "mora-print-aqua-6",
+    "w": 600,
+    "h": 721
    }
   ]
  },
  {
-  "s": "grey-jack",
-  "card": "recorte previo",
+  "s": "mora-print-yellow",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "grey-jack-1",
+    "f": "mora-print-yellow-1",
     "w": 600,
-    "h": 800
+    "h": 806
    },
    {
-    "f": "grey-jack-2",
+    "f": "mora-print-yellow-2",
     "w": 600,
-    "h": 800
+    "h": 290
    },
    {
-    "f": "grey-jack-3",
+    "f": "mora-print-yellow-3",
     "w": 600,
-    "h": 800
+    "h": 676
    },
    {
-    "f": "grey-jack-4",
+    "f": "mora-print-yellow-4",
     "w": 600,
-    "h": 800
+    "h": 645
+   },
+   {
+    "f": "mora-print-yellow-5",
+    "w": 600,
+    "h": 694
+   },
+   {
+    "f": "mora-print-yellow-6",
+    "w": 600,
+    "h": 437
    }
   ]
  },
  {
-  "s": "cadena-gold",
-  "card": "recorte previo",
+  "s": "mark-brown",
+  "card": "estudio (foto 2)",
   "gal": [
    {
-    "f": "cadena-gold-1",
-    "w": 563,
-    "h": 1000
+    "f": "mark-brown-1",
+    "w": 600,
+    "h": 462
    },
    {
-    "f": "cadena-gold-2",
+    "f": "mark-brown-2",
     "w": 600,
-    "h": 800
+    "h": 407
    },
    {
-    "f": "cadena-gold-3",
+    "f": "mark-brown-3",
     "w": 600,
-    "h": 800
+    "h": 413
    },
    {
-    "f": "cadena-gold-4",
+    "f": "mark-brown-4",
     "w": 600,
-    "h": 800
+    "h": 534
    },
    {
-    "f": "cadena-gold-5",
+    "f": "mark-brown-5",
     "w": 600,
-    "h": 800
+    "h": 170
    }
   ]
  },
  {
-  "s": "cadena-silver",
+  "s": "mark-black",
   "card": "estudio (foto 1)",
   "gal": [
    {
-    "f": "cadena-silver-1",
+    "f": "mark-black-1",
     "w": 600,
-    "h": 839
+    "h": 554
    },
    {
-    "f": "cadena-silver-2",
+    "f": "mark-black-2",
+    "w": 600,
+    "h": 725
+   },
+   {
+    "f": "mark-black-3",
+    "w": 600,
+    "h": 590
+   },
+   {
+    "f": "mark-black-4",
+    "w": 600,
+    "h": 405
+   },
+   {
+    "f": "mark-black-5",
+    "w": 600,
+    "h": 523
+   },
+   {
+    "f": "mark-black-6",
+    "w": 600,
+    "h": 782
+   }
+  ]
+ },
+ {
+  "s": "carolyn-grey",
+  "card": "estudio (foto 3)",
+  "gal": [
+   {
+    "f": "carolyn-grey-1",
+    "w": 599,
+    "h": 748
+   },
+   {
+    "f": "carolyn-grey-2",
+    "w": 600,
+    "h": 600
+   },
+   {
+    "f": "carolyn-grey-3",
+    "w": 600,
+    "h": 300
+   },
+   {
+    "f": "carolyn-grey-4",
+    "w": 600,
+    "h": 317
+   },
+   {
+    "f": "carolyn-grey-5",
+    "w": 600,
+    "h": 650
+   },
+   {
+    "f": "carolyn-grey-6",
+    "w": 600,
+    "h": 252
+   }
+  ]
+ },
+ {
+  "s": "carolyn-black",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "carolyn-black-1",
     "w": 600,
     "h": 800
    },
    {
-    "f": "cadena-silver-3",
+    "f": "carolyn-black-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "cadena-silver-4",
+    "f": "carolyn-black-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "carolyn-black-4",
     "w": 600,
     "h": 800
    }
   ]
  },
  {
-  "s": "cadena-rose",
+  "s": "planet",
+  "card": "estudio (foto 2)",
+  "gal": [
+   {
+    "f": "planet-1",
+    "w": 600,
+    "h": 497
+   },
+   {
+    "f": "planet-2",
+    "w": 600,
+    "h": 562
+   },
+   {
+    "f": "planet-3",
+    "w": 600,
+    "h": 313
+   },
+   {
+    "f": "planet-4",
+    "w": 600,
+    "h": 439
+   },
+   {
+    "f": "planet-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "planet-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "diana",
   "card": "estudio (foto 1)",
   "gal": [
    {
-    "f": "cadena-rose-1",
+    "f": "diana-1",
     "w": 600,
-    "h": 940
+    "h": 380
    },
    {
-    "f": "cadena-rose-2",
+    "f": "diana-2",
     "w": 600,
-    "h": 800
+    "h": 458
    },
    {
-    "f": "cadena-rose-3",
+    "f": "diana-3",
     "w": 600,
-    "h": 450
-   }
-  ]
- },
- {
-  "s": "cadena-gris",
-  "card": "recorte previo",
-  "gal": [
-   {
-    "f": "cadena-gris-1",
-    "w": 563,
-    "h": 1000
+    "h": 391
    },
    {
-    "f": "cadena-gris-2",
+    "f": "diana-4",
     "w": 600,
     "h": 800
    },
    {
-    "f": "cadena-gris-3",
+    "f": "diana-5",
     "w": 600,
     "h": 800
    },
    {
-    "f": "cadena-gris-4",
-    "w": 600,
-    "h": 800
-   },
-   {
-    "f": "cadena-gris-5",
+    "f": "diana-6",
     "w": 600,
     "h": 800
    }
   ]
  },
  {
-  "s": "cadena-beige",
-  "card": "recorte previo",
+  "s": "madera-black",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "cadena-beige-1",
-    "w": 563,
-    "h": 1000
+    "f": "madera-black-1",
+    "w": 600,
+    "h": 734
    },
    {
-    "f": "cadena-beige-2",
+    "f": "madera-black-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "cadena-beige-3",
+    "f": "madera-black-3",
+    "w": 600,
+    "h": 567
+   },
+   {
+    "f": "madera-black-4",
     "w": 600,
     "h": 800
    },
    {
-    "f": "cadena-beige-4",
+    "f": "madera-black-5",
+    "w": 600,
+    "h": 471
+   },
+   {
+    "f": "madera-black-6",
+    "w": 600,
+    "h": 736
+   }
+  ]
+ },
+ {
+  "s": "leah",
+  "card": "ambiente, recorte centrado",
+  "gal": [
+   {
+    "f": "leah-1",
+    "w": 600,
+    "h": 812
+   },
+   {
+    "f": "leah-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "cadena-beige-5",
+    "f": "leah-3",
+    "w": 600,
+    "h": 799
+   },
+   {
+    "f": "leah-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "leah-5",
     "w": 600,
     "h": 800
    }
   ]
  },
  {
-  "s": "cadena-caramel",
-  "card": "recorte previo",
+  "s": "rose",
+  "card": "ambiente, recorte centrado",
   "gal": [
    {
-    "f": "cadena-caramel-1",
-    "w": 563,
-    "h": 1000
+    "f": "rose-1",
+    "w": 600,
+    "h": 799
    },
    {
-    "f": "cadena-caramel-2",
+    "f": "rose-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "cadena-caramel-3",
+    "f": "rose-3",
     "w": 600,
-    "h": 450
+    "h": 800
    },
    {
-    "f": "cadena-caramel-4",
-    "w": 600,
-    "h": 450
+    "f": "rose-4",
+    "w": 579,
+    "h": 900
    },
    {
-    "f": "cadena-caramel-5",
+    "f": "rose-5",
+    "w": 600,
+    "h": 669
+   },
+   {
+    "f": "rose-6",
+    "w": 600,
+    "h": 332
+   }
+  ]
+ },
+ {
+  "s": "tulum-polarizadas",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "tulum-polarizadas-1",
+    "w": 585,
+    "h": 350
+   },
+   {
+    "f": "tulum-polarizadas-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "tulum-polarizadas-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "tulum-polarizadas-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "tulum-polarizadas-5",
     "w": 600,
     "h": 800
    }
   ]
  },
  {
-  "s": "cadena-black",
-  "card": "recorte previo",
+  "s": "apolo-polarized",
+  "card": "conservada",
   "gal": [
    {
-    "f": "cadena-black-1",
-    "w": 563,
-    "h": 1000
+    "f": "apolo-polarized-1",
+    "w": 600,
+    "h": 526
    },
    {
-    "f": "cadena-black-2",
+    "f": "apolo-polarized-2",
     "w": 600,
     "h": 800
    },
    {
-    "f": "cadena-black-3",
+    "f": "apolo-polarized-3",
     "w": 600,
     "h": 800
    },
    {
-    "f": "cadena-black-4",
+    "f": "apolo-polarized-4",
     "w": 600,
     "h": 800
    },
    {
-    "f": "cadena-black-5",
+    "f": "apolo-polarized-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "apolo-polarized-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "aron",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "aron-1",
+    "w": 600,
+    "h": 496
+   },
+   {
+    "f": "aron-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "aron-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "aron-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "aron-5",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "andrew",
+  "card": "estudio (foto 3)",
+  "gal": [
+   {
+    "f": "andrew-1",
+    "w": 600,
+    "h": 376
+   },
+   {
+    "f": "andrew-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "andrew-3",
+    "w": 600,
+    "h": 288
+   },
+   {
+    "f": "andrew-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "andrew-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "andrew-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "ricky",
+  "card": "estudio (foto 3)",
+  "gal": [
+   {
+    "f": "ricky-1",
+    "w": 600,
+    "h": 293
+   },
+   {
+    "f": "ricky-2",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "ricky-3",
+    "w": 477,
+    "h": 257
+   },
+   {
+    "f": "ricky-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "ricky-5",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "ricky-6",
+    "w": 600,
+    "h": 800
+   }
+  ]
+ },
+ {
+  "s": "lupe",
+  "card": "conservada",
+  "gal": [
+   {
+    "f": "lupe-1",
+    "w": 600,
+    "h": 556
+   },
+   {
+    "f": "lupe-2",
+    "w": 600,
+    "h": 678
+   },
+   {
+    "f": "lupe-3",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "lupe-4",
+    "w": 600,
+    "h": 800
+   },
+   {
+    "f": "lupe-5",
+    "w": 600,
+    "h": 291
+   },
+   {
+    "f": "lupe-6",
     "w": 600,
     "h": 800
    }

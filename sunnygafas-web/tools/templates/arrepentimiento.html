@@ -1,0 +1,44 @@
+<main id="contenido" class="page page--white">
+  <div class="container">
+    <nav aria-label="Migas de pan">
+      <ol class="crumbs">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/ayuda.html">Ayuda</a></li>
+        <li><span aria-current="page">Botón de arrepentimiento</span></li>
+      </ol>
+    </nav>
+    <article class="read">
+      <header class="read__head">
+        <h1>Botón de arrepentimiento</h1>
+        <p class="lead">Tenés 10 días corridos desde que recibís el producto para revocar la compra, sin explicar el motivo, como establece la Ley de Defensa del Consumidor.</p>
+      </header>
+      <form class="co-form regret" id="regretForm" novalidate>
+        <div class="field">
+          <label for="rOrder">Número de pedido</label>
+          <input id="rOrder" name="order" type="text" autocomplete="off" aria-describedby="rOrderErr">
+          <p class="field__err" id="rOrderErr" hidden></p>
+        </div>
+        <div class="field">
+          <label for="rName">Nombre y apellido</label>
+          <input id="rName" name="name" type="text" autocomplete="name" aria-describedby="rNameErr">
+          <p class="field__err" id="rNameErr" hidden></p>
+        </div>
+        <div class="field">
+          <label for="rEmail">Email de la compra</label>
+          <input id="rEmail" name="email" type="email" autocomplete="email" aria-describedby="rEmailErr">
+          <p class="field__err" id="rEmailErr" hidden></p>
+        </div>
+        <div class="field">
+          <label for="rNote">Comentario <span class="optional">(opcional)</span></label>
+          <textarea id="rNote" name="note" rows="3"></textarea>
+        </div>
+        <div class="demo-note" role="note"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg><p><strong>Vista previa: modo de prueba.</strong> Este formulario todavía no envía la solicitud. Mientras tanto, pedí la revocación por <a href="{{WA_CAMBIO}}" rel="noopener">WhatsApp</a> o a <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>.</p></div>
+        <button class="btn btn-primary btn-lg" type="submit">Enviar solicitud de prueba</button>
+      </form>
+      <div class="read__box" id="regretDone" tabindex="-1" hidden>
+        <h2>Solicitud de prueba registrada</h2>
+        <p>En el sitio en funcionamiento te enviaríamos por email el código de la solicitud dentro de las 24 horas. Código de esta prueba: <strong id="regretCode"></strong>.</p>
+      </div>
+    </article>
+  </div>
+</main>

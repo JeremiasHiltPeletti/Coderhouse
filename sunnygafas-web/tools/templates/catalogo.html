@@ -16,7 +16,6 @@
         <input id="catSearchInput" name="q" type="search" autocomplete="off" placeholder="Ej. Gala carey">
         <button class="btn btn-outline" type="submit">Buscar</button>
       </form>
-      <a class="link cat-head__store" href="{{STORE_CAT}}" rel="noopener">{{STORE_LABEL}} <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
     </header>
 
     <div class="cat-layout">
@@ -66,24 +65,24 @@
             <button class="btn btn-primary" type="button" id="emptyClear">Borrar filtros</button>
             <button class="btn btn-primary" type="button" id="emptySearch" hidden>Buscar de nuevo</button>
             <a class="link" id="emptyAll" href="/catalogo.html" hidden>Ver todas las categorías <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="link" id="emptyStore" href="{{STORE_CAT}}" rel="noopener" hidden>Ver catálogo completo en la tienda oficial <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+            <a class="link" id="emptyStore" href="/catalogo.html" hidden>Ver todo el catálogo <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </div>
 
         <div class="empty" id="catError" hidden>
           <h2 class="empty__title">No pudimos mostrar el catálogo.</h2>
-          <p>Podés volver a intentar o ver los modelos en la tienda oficial.</p>
+          <p>Volvé a intentar en unos segundos. Si sigue sin cargar, escribinos y te ayudamos a elegir.</p>
           <div class="empty__actions">
             <button class="btn btn-primary" type="button" id="catRetry">Reintentar</button>
-            <a class="link" href="{{STORE_CAT}}" rel="noopener">{{STORE_LABEL}} <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+            <a class="link" href="{{WA_ELEGIR}}" rel="noopener">Escribinos por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </div>
 
-        <noscript><p class="empty">Para ver los modelos acá hace falta JavaScript. También podés verlos en la <a href="{{STORE_CAT}}">tienda oficial</a>.</p></noscript>
+        <noscript><p class="empty">Para ver los modelos acá hace falta JavaScript.</p></noscript>
 {{EXTRA}}
         <div class="cat-note">
-          <p class="meta">El precio destacado es con transferencia o efectivo. El precio de lista y las cuotas se confirman en la tienda oficial.</p>
-          <p class="meta">Acá mostramos una selección con fotos revisadas. Datos de la tienda al {{SYNCED}}.</p>
+          <p class="meta">El precio destacado es con transferencia o efectivo (25% off). Con tarjeta pagás el precio de lista, en hasta 3 cuotas sin interés.</p>
+          <p class="meta">Precios y stock actualizados al {{SYNCED}}.</p>
         </div>
       </div>
     </div>

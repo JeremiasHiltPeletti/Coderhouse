@@ -1,0 +1,8 @@
+[
+ {"q": "¿Cómo compro?", "a": "Elegí el modelo y el color, y tocá «Agregar al carrito». Desde el carrito podés cambiar cantidades o quitar productos. Al continuar, completás tus datos, elegís la entrega y el medio de pago."},
+ {"q": "¿Cómo me llega el pedido?", "a": "Podés elegir envío por Correo Argentino, retiro en nuestro punto de entrega o acordar la entrega con nosotros. El costo y el plazo del envío se confirman con tu código postal antes de pagar."},
+ {"q": "¿Qué medios de pago aceptan?", "a": "Transferencia o efectivo, con 25% off sobre el precio de lista. También tarjetas {{CARDS}}, en hasta 3 cuotas sin interés al precio de lista."},
+ {"q": "¿Cómo sé si me van a quedar bien?", "a": "Compará las medidas con un par que ya uses: en la <a href=\"/guia-de-calce.html\">guía de calce</a> te mostramos dónde están los números y qué significa cada uno. Si un modelo todavía no tiene medidas publicadas, pedilas desde su ficha."},
+ {"q": "¿Las gafas tienen protección UV?", "a": "Depende del modelo. En cada ficha figura si los lentes tienen filtro UV400, si son polarizados o fotocromáticos. En los clip-on aclaramos qué característica tiene el armazón y cuál el clip."},
+ {"q": "¿Puedo cambiar o devolver una compra?", "a": "Para un cambio, escribinos con tu número de pedido y te indicamos los pasos. Si te arrepentís de la compra, tenés 10 días corridos desde que recibís el producto para revocarla con el <a href=\"/arrepentimiento.html\">botón de arrepentimiento</a>, como establece la Ley de Defensa del Consumidor."}
+]

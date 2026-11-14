@@ -13,12 +13,17 @@ site = sys.argv[1]
 title = sys.argv[2] if len(sys.argv) > 2 else 'Vista previa'
 API = 'https://api.netlify.com/api/v1'
 TOKEN = os.environ.get('NETLIFY_AUTH_TOKEN', 'token')
-SKIP = {'tools', 'README.md', '.git', '.netlify'}
+SKIP = {'tools', 'README.md', '.git', '.netlify', '.gitignore', '.cache'}
 
-def call(method, url, data=None, ctype='application/json'):
-    req = urllib.request.Request(url, data=data, method=method, headers={'Authorization': 'Bearer ' + TOKEN, 'Content-Type': ctype})
-    with urllib.request.urlopen(req, timeout=120) as r:
-        return json.loads(r.read() or b'{}')
+def call(method, url, data=None, ctype='application/json', tries=5):
+    for k in range(tries):
+        try:
+            req = urllib.request.Request(url, data=data, method=method, headers={'Authorization': 'Bearer ' + TOKEN, 'Content-Type': ctype})
+            with urllib.request.urlopen(req, timeout=120) as r:
+                return json.loads(r.read() or b'{}')
+        except (OSError, urllib.error.URLError) as e:   # cortes de red: reintenta con espera creciente
+            if k == tries - 1: raise
+            time.sleep(2 * (k + 1))
 
 files = {}
 for f in sorted(root.rglob('*')):

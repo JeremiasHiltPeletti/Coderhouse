@@ -1,0 +1,32 @@
+<main id="contenido" class="page page--white">
+  <div class="container">
+    <ol class="steps" aria-label="Pasos de la compra">
+      <li class="is-done"><span>1</span>Carrito</li>
+      <li class="is-done"><span>2</span>Datos, entrega y pago</li>
+      <li aria-current="step"><span>3</span>Confirmación</li>
+    </ol>
+    <div class="order" id="orderFull" hidden>
+      <p class="demo-badge">Pedido de prueba</p>
+      <h1 class="co-title" id="orderTitle" tabindex="-1">Recibimos tu pedido de prueba</h1>
+      <p class="lead">Esta vista previa muestra cómo se confirma una compra. <strong>No se registró un pedido real ni se realizó ningún cobro.</strong></p>
+      <div class="order__grid">
+        <section class="order__box" aria-labelledby="orderNextTitle">
+          <h2 id="orderNextTitle">Qué pasaría después</h2>
+          <ol class="read__steps" id="orderNext"></ol>
+        </section>
+        <aside class="summary" aria-labelledby="orderSumTitle">
+          <h2 class="summary__title" id="orderSumTitle">Resumen · <span id="orderId"></span></h2>
+          <ul class="mini" id="orderLines"></ul>
+          <dl class="summary__rows" id="orderSummary"></dl>
+          <dl class="summary__rows summary__rows--data" id="orderData"></dl>
+        </aside>
+      </div>
+      <div class="empty__actions"><a class="btn btn-primary" href="/catalogo.html">Seguir explorando</a><a class="link" href="/">Ir al inicio <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+    </div>
+    <div class="empty co-empty" id="orderEmpty" hidden>
+      <h2 class="empty__title">No hay un pedido para mostrar</h2>
+      <p>Esta página aparece después de confirmar una compra.</p>
+      <div class="empty__actions"><a class="btn btn-primary" href="/catalogo.html">Ver el catálogo</a></div>
+    </div>
+  </div>
+</main>

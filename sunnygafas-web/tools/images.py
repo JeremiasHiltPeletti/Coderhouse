@@ -2,7 +2,8 @@
 
   uso: python3 tools/images.py <carpeta_con_galerias> [carpeta_recortes_previos]
 
-  - assets/img/p/<slug>-<n>.webp   galería de ficha (lado mayor <= 1000 px)
+  Recorre tools/catalog.json (todas las variantes). Las fotos ya preparadas se conservan.
+  - assets/img/p/<slug>-<n>.webp   galería de ficha (hasta 6 fotos, lado mayor <= 900 px)
   - assets/img/card/<slug>.webp    tarjeta 720x612 con criterio común:
         foto de estudio (fondo claro y parejo)  -> se recorta al producto, se lleva el fondo a blanco
                                                   y se centra con la misma escala aparente
@@ -15,7 +16,8 @@ from PIL import Image, ImageFilter, ImageChops, ImageOps
 root = pathlib.Path(__file__).resolve().parent.parent
 src = pathlib.Path(sys.argv[1])
 prev = pathlib.Path(sys.argv[2]) if len(sys.argv) > 2 else None
-M = json.load(open(root / 'tools/models.json'))
+M = json.load(open(root / 'tools/catalog.json'))
+PREV_CARDS = {'yanis-print': 'yanis-print'}   # recortes curados a mano en una etapa anterior
 P = root / 'assets/img/p'; C = root / 'assets/img/card'
 P.mkdir(parents=True, exist_ok=True); C.mkdir(parents=True, exist_ok=True)
 CW, CH = 720, 612
@@ -82,27 +84,26 @@ def cover_card(im):
 report = []
 for m in M['models']:
     for v in m['vars']:
-        s = v['s']
+        s = v['src']
         files = sorted(glob.glob(str(src / f'{s}__*.*')), key=lambda f: int(f.rsplit('__', 1)[1].split('.')[0]))
-        gal = []
-        card = None; how = ''
-        if v.get('cardFrom') == 'prev' and prev and (prev / (v['prev'] + '.webp')).exists():
-            pim = load(prev / (v['prev'] + '.webp'))
-            card = studio_card(pim) or pim.resize((CW, CH), Image.LANCZOS); how = 'recorte previo normalizado'
-        for k, f in enumerate(files[:5], 1):
-            im = load(f)
-            g = gallery_crop(im); g.thumbnail((1000, 1000), Image.LANCZOS)
-            g.save(P / f'{s}-{k}.webp', quality=80, method=6)
-            gal.append({'f': f'{s}-{k}', 'w': g.size[0], 'h': g.size[1]})
-            if card is None:
-                med, lo = border_stats(im)
+        gal, card, how = [], None, 'conservada'
+        cpath = C / f'{s}.webp'
+        for k, f in enumerate(files[:6], 1):
+            out = P / f'{s}-{k}.webp'
+            if not out.exists():
+                im = load(f)
+                g = gallery_crop(im); g.thumbnail((900, 900), Image.LANCZOS)
+                g.save(out, quality=78, method=6)
+            with Image.open(out) as g:
+                gal.append({'f': f'{s}-{k}', 'w': g.size[0], 'h': g.size[1]})
+            if not cpath.exists() and card is None:
+                im = load(f); med, lo = border_stats(im)
                 if med >= 236 and lo >= 205:
                     card = studio_card(im); how = f'estudio (foto {k})' if card else ''
-        if card is None and prev and v.get('prev') and (prev / (v['prev'] + '.webp')).exists():
-            card = load(prev / (v['prev'] + '.webp')).resize((CW, CH), Image.LANCZOS); how = 'recorte previo'
-        if card is None:
-            card = cover_card(load(files[0])); how = 'ambiente, recorte centrado'
-        card.save(C / f'{s}.webp', quality=82, method=6)
+        if not cpath.exists():
+            if card is None:
+                card = cover_card(load(files[0])); how = 'ambiente, recorte centrado'
+            card.save(cpath, quality=82, method=6)
         report.append({'s': s, 'card': how, 'gal': gal})
 json.dump(report, open(root / 'tools/images-report.json', 'w'), indent=1)
 import collections

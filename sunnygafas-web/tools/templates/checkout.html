@@ -1,0 +1,132 @@
+<main id="contenido" class="page page--white">
+  <div class="container">
+    <nav aria-label="Migas de pan">
+      <ol class="crumbs">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/carrito.html">Carrito</a></li>
+        <li><span aria-current="page">Finalizar compra</span></li>
+      </ol>
+    </nav>
+    <ol class="steps" aria-label="Pasos de la compra">
+      <li class="is-done"><span>1</span><a href="/carrito.html">Carrito</a></li>
+      <li aria-current="step"><span>2</span>Datos, entrega y pago</li>
+      <li><span>3</span>Confirmación</li>
+    </ol>
+    <h1 class="co-title">Finalizar compra</h1>
+
+    <div class="co-layout" id="coFull" hidden>
+      <form class="co-form" id="coForm" novalidate>
+        <div class="errsum" id="coErrors" tabindex="-1" hidden>
+          <h2 class="errsum__title">Revisá estos datos</h2>
+          <ul id="coErrorList"></ul>
+        </div>
+
+        <fieldset class="co-block">
+          <legend class="co-block__title"><span class="co-block__n">1</span>Contacto</legend>
+          <div class="field">
+            <label for="fEmail">Email</label>
+            <input id="fEmail" name="email" type="email" autocomplete="email" required aria-describedby="fEmailHelp fEmailErr">
+            <p class="field__help" id="fEmailHelp">Te enviamos el resumen del pedido a esta dirección.</p>
+            <p class="field__err" id="fEmailErr" hidden></p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="fName">Nombre y apellido</label>
+              <input id="fName" name="name" type="text" autocomplete="name" required aria-describedby="fNameErr">
+              <p class="field__err" id="fNameErr" hidden></p>
+            </div>
+            <div class="field">
+              <label for="fPhone">Teléfono</label>
+              <input id="fPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="fPhoneHelp fPhoneErr">
+              <p class="field__help" id="fPhoneHelp">Con código de área, por ejemplo 11 2345 6789.</p>
+              <p class="field__err" id="fPhoneErr" hidden></p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="co-block" id="shipSet" aria-describedby="shipErr">
+          <legend class="co-block__title"><span class="co-block__n">2</span>Entrega</legend>
+          <p class="field__err" id="shipErr" hidden></p>
+          <div class="options">
+            <label class="option"><input type="radio" name="ship" value="correo"><span class="option__body"><strong>Envío por Correo Argentino</strong><span class="meta">A domicilio o a sucursal. El costo y el plazo se confirman con tu código postal.</span></span><span class="option__price">A confirmar</span></label>
+            <label class="option"><input type="radio" name="ship" value="retiro"><span class="option__body"><strong>Retiro en nuestro punto de entrega</strong><span class="meta">Te escribimos para coordinar día y lugar.</span></span><span class="option__price">A coordinar</span></label>
+            <label class="option"><input type="radio" name="ship" value="acordar"><span class="option__body"><strong>Acordar la entrega</strong><span class="meta">Te contactamos para definir cómo te lo hacemos llegar.</span></span><span class="option__price">A confirmar</span></label>
+          </div>
+          <div class="address" id="addressBox" hidden>
+            <div class="field-row">
+              <div class="field field--grow">
+                <label for="fStreet">Calle y número</label>
+                <input id="fStreet" name="street" type="text" autocomplete="address-line1" aria-describedby="fStreetErr">
+                <p class="field__err" id="fStreetErr" hidden></p>
+              </div>
+              <div class="field field--sm">
+                <label for="fFloor">Piso o depto. <span class="optional">(opcional)</span></label>
+                <input id="fFloor" name="floor" type="text" autocomplete="address-line2">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="fCity">Localidad</label>
+                <input id="fCity" name="city" type="text" autocomplete="address-level2" aria-describedby="fCityErr">
+                <p class="field__err" id="fCityErr" hidden></p>
+              </div>
+              <div class="field">
+                <label for="fProv">Provincia</label>
+                <select id="fProv" name="province" autocomplete="address-level1" aria-describedby="fProvErr">
+                  <option value="">Elegí una provincia</option>
+                  <option>Buenos Aires</option><option>Ciudad Autónoma de Buenos Aires</option><option>Catamarca</option><option>Chaco</option><option>Chubut</option>
+                  <option>Córdoba</option><option>Corrientes</option><option>Entre Ríos</option><option>Formosa</option><option>Jujuy</option><option>La Pampa</option>
+                  <option>La Rioja</option><option>Mendoza</option><option>Misiones</option><option>Neuquén</option><option>Río Negro</option><option>Salta</option>
+                  <option>San Juan</option><option>San Luis</option><option>Santa Cruz</option><option>Santa Fe</option><option>Santiago del Estero</option>
+                  <option>Tierra del Fuego</option><option>Tucumán</option>
+                </select>
+                <p class="field__err" id="fProvErr" hidden></p>
+              </div>
+              <div class="field field--sm">
+                <label for="fZip">Código postal</label>
+                <input id="fZip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" aria-describedby="fZipErr">
+                <p class="field__err" id="fZipErr" hidden></p>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="co-block" id="paySet" aria-describedby="payErr">
+          <legend class="co-block__title"><span class="co-block__n">3</span>Pago</legend>
+          <p class="field__err" id="payErr" hidden></p>
+          <div class="options">
+            <label class="option"><input type="radio" name="pay" value="transferencia"><span class="option__body"><strong>Transferencia</strong><span class="meta">25% off sobre el precio de lista. Te enviamos los datos al confirmar.</span></span><span class="option__tag">25% off</span></label>
+            <label class="option"><input type="radio" name="pay" value="efectivo"><span class="option__body"><strong>Efectivo</strong><span class="meta">25% off sobre el precio de lista. Al retirar o según lo que acordemos.</span></span><span class="option__tag">25% off</span></label>
+            <label class="option"><input type="radio" name="pay" value="tarjeta"><span class="option__body"><strong>Tarjeta de crédito o débito</strong><span class="meta">{{CARDS}}. Hasta 3 cuotas sin interés.</span></span></label>
+          </div>
+        </fieldset>
+
+        <div class="field field--check">
+          <label class="check"><input type="checkbox" id="fTerms" name="terms" aria-describedby="fTermsErr"><span>Leí cómo funcionan los <a href="/ayuda.html#cambios">cambios y el arrepentimiento</a>.</span></label>
+          <p class="field__err" id="fTermsErr" hidden></p>
+        </div>
+
+        <!-- Condición de prueba, visible antes de la acción final -->
+        <div class="demo-note" role="note">
+          <svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>
+          <p><strong>Vista previa del sitio: modo de prueba.</strong> Al confirmar no se registra un pedido real, no se cobra ni se reserva stock. Todavía no están conectados el procesador de pagos ni el sistema de pedidos.</p>
+        </div>
+        <button class="btn btn-primary btn-lg co-submit" type="submit" id="coSubmit">Confirmar pedido de prueba</button>
+        <a class="link co-keep" href="/carrito.html"><svg class="icon icon--back" aria-hidden="true"><use href="#i-arrow"/></svg>Volver al carrito</a>
+      </form>
+
+      <aside class="summary summary--sticky" aria-labelledby="coSumTitle">
+        <h2 class="summary__title" id="coSumTitle">Tu pedido</h2>
+        <ul class="mini" id="coLines"></ul>
+        <dl class="summary__rows" id="coSummary"></dl>
+        <p class="summary__note meta" id="coPayNote"></p>
+      </aside>
+    </div>
+
+    <div class="empty co-empty" id="coEmpty" hidden>
+      <h2 class="empty__title">No hay productos para comprar</h2>
+      <p>Tu carrito está vacío. Agregá un modelo desde su ficha para continuar.</p>
+      <div class="empty__actions"><a class="btn btn-primary" href="/catalogo.html">Ver el catálogo</a></div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,435 @@
+{
+ "_nota": "Curaduría del catálogo. overrides: corrige modelo o color de un producto de origen. labels: color de productos que no lo indican en el nombre (tomado de la descripción o de las fotos). shapes: forma por modelo. El resto de los campos se documenta en README.md.",
+ "overrides": {
+  "cadena-beige": {
+   "model": "Cadena de acrílico",
+   "label": "Beige"
+  },
+  "cadena-caramel": {
+   "model": "Cadena de acrílico",
+   "label": "Caramelo"
+  },
+  "cadena-black": {
+   "model": "Cadena de acrílico",
+   "label": "Negro"
+  },
+  "cadena-gold": {
+   "model": "Cadena metálica",
+   "label": "Dorado"
+  },
+  "cadena-silver": {
+   "model": "Cadena metálica",
+   "label": "Plateado"
+  },
+  "cadena-rose": {
+   "model": "Cadena metálica",
+   "label": "Rosé"
+  },
+  "cadena-gris": {
+   "model": "Cadena metálica",
+   "label": "Gris"
+  },
+  "aviador-polarizado": {
+   "model": "Aviador polarizado",
+   "label": "Espejado"
+  },
+  "aviador-brown-polarizado": {
+   "model": "Aviador polarizado",
+   "label": "Marrón"
+  },
+  "aviador-black-polarizado": {
+   "model": "Aviador polarizado",
+   "label": "Negro"
+  },
+  "clasico-print-patilla-metal": {
+   "model": "Clásico patilla metal",
+   "label": "Print"
+  },
+  "clasico-black-patilla-metal": {
+   "model": "Clásico patilla metal",
+   "label": "Negro"
+  },
+  "tulum-polarizadas": {
+   "model": "Tulum",
+   "label": "Azul print"
+  },
+  "saturday-xl-blue-orange": {
+   "label": "Naranja y azul"
+  },
+  "nikola-mate-brown": {
+   "label": "Marrón mate"
+  },
+  "nikola-mate-grey": {
+   "label": "Gris mate"
+  },
+  "soho": {
+   "label": "Negro mate"
+  },
+  "elegant": {
+   "label": "Negro"
+  },
+  "risky": {
+   "label": "Negro"
+  },
+  "tr90-clip-on": {
+   "model": "TR90"
+  },
+  "detroit-degrade": {
+   "label": "Negro degradé"
+  },
+  "saturday-xl-degrade": {
+   "label": "Negro degradé"
+  }
+ },
+ "labels": {
+  "ciclismo-fotocromaticos": "Negro",
+  "madonna": "Negro",
+  "bulgari": "Negro",
+  "rio": "Beige",
+  "nova": "Negro",
+  "milo": "Dorado",
+  "ambar": "Dorado",
+  "grey-jack": "Negro",
+  "cat-eye-6-en-1": "Negro",
+  "bonnie": "Negro",
+  "venetto": "Dorado",
+  "rosella": "Negro mate",
+  "mallorca": "Print",
+  "chad": "Dorado",
+  "focus": "Carey",
+  "michael": "Transparente",
+  "galicia": "Nude",
+  "roxy": "Gris",
+  "jagger": "Negro",
+  "wake": "Plateado",
+  "gattizioni-rectangular": "Transparente",
+  "gattizioni-redondo": "Transparente",
+  "estuche-organizador-x5": "Único",
+  "harry": "Marrón",
+  "capri": "Transparente",
+  "roma": "Negro",
+  "leah": "Print",
+  "rose": "Negro",
+  "apolo-polarized": "Negro",
+  "aron": "Gris",
+  "andrew": "Único",
+  "ricky": "Negro mate",
+  "lupe": "Print",
+  "cielo": "Celeste",
+  "planet": "Transparente",
+  "indiana": "Único",
+  "diana": "Único",
+  "tr90-clip-on": "Negro"
+ },
+ "ids": {
+  "tr90": "tr90",
+  "aviador-polarizado": "aviador-polarizado",
+  "saturday-xl-basica": "saturday-xl",
+  "saturday": "saturday-esencial"
+ },
+ "names": {},
+ "order": {
+  "charlotte": [
+   "charlotte-brown",
+   "charlotte-black"
+  ],
+  "gala": [
+   "gala-carey",
+   "gala-black",
+   "gala-caramelo",
+   "gala-print"
+  ],
+  "aviador-polarizado": [
+   "aviador-black-polarizado",
+   "aviador-brown-polarizado",
+   "aviador-polarizado"
+  ],
+  "cadena-de-acrilico": [
+   "cadena-beige",
+   "cadena-caramel",
+   "cadena-black"
+  ],
+  "cadena-metalica": [
+   "cadena-gold",
+   "cadena-silver",
+   "cadena-rose",
+   "cadena-gris"
+  ],
+  "saturday-premium": [
+   "saturday-premium-print",
+   "saturday-premium-aqua-print",
+   "saturday-premium-blue",
+   "saturday-premium-pink"
+  ],
+  "oval": [
+   "oval-gold",
+   "oval-silver",
+   "oval-black"
+  ],
+  "classic": [
+   "classic-red",
+   "classic-grey"
+  ],
+  "saturday-xl": [
+   "saturday-xl-blue-orange",
+   "saturday-xl-print"
+  ]
+ },
+ "shapes": {
+  "gala": "ovalada",
+  "siena": "ovalada",
+  "coco": "aviador",
+  "lux": "cateye",
+  "oriana": "cuadrada",
+  "ciclismo-fotocromaticos": null,
+  "pilot": "cateye",
+  "ambar-elite": "cuadrada",
+  "edward": "cuadrada",
+  "charlotte": "cuadrada",
+  "madonna": "cuadrada",
+  "bulgari": "cuadrada",
+  "boston": "redonda",
+  "clasicas": "cuadrada",
+  "rio": "redonda",
+  "bert": "cateye",
+  "kendall": "cateye",
+  "monaco": "cuadrada",
+  "astrid": "cateye",
+  "belgica": "cuadrada",
+  "square": "cuadrada",
+  "jacob": "cuadrada",
+  "nova": "cuadrada",
+  "milo": "cuadrada",
+  "ambar-clip-on": "redonda",
+  "grey-jack": "cuadrada",
+  "cat-eye-6-en-1": "cateye",
+  "aruba": "cuadrada",
+  "justin": "cuadrada",
+  "aviador-polarizado": "aviador",
+  "holland": "cateye",
+  "alexa": "cuadrada",
+  "rangler": "cuadrada",
+  "elegant": "cateye",
+  "megan": "cateye",
+  "soho": "cuadrada",
+  "donna": "cuadrada",
+  "shein": "cuadrada",
+  "carolyn-superior": "redonda",
+  "bonnie": "cateye",
+  "glow": "redonda",
+  "venetto": "geometrica",
+  "rosella": "cateye",
+  "pacific": "ovalada",
+  "yanis": "cateye",
+  "lennon-elite": "redonda",
+  "toronto": "aviador",
+  "nikola": "cuadrada",
+  "detroit": "aviador",
+  "olga": "cuadrada",
+  "moneta": "cuadrada",
+  "west": "geometrica",
+  "aviador-retro": "aviador",
+  "galaxy": "cuadrada",
+  "oval": "ovalada",
+  "molly": "redonda",
+  "mallorca": "cateye",
+  "chad": "cuadrada",
+  "dubai": "aviador",
+  "braga": "aviador",
+  "madrid": "aviador",
+  "saturday-xl-superior": "aviador",
+  "focus": "ovalada",
+  "lenny": "aviador",
+  "michael": "cuadrada",
+  "erika": "cuadrada",
+  "round": "cuadrada",
+  "galicia": "aviador",
+  "yris": "cateye",
+  "saturday-premium": "aviador",
+  "roxy": "cateye",
+  "jagger": "cuadrada",
+  "classic": "cuadrada",
+  "wake": "aviador",
+  "gattizioni-rectangular": "cuadrada",
+  "gattizioni-redondo": "redonda",
+  "risky": "cuadrada",
+  "prada": "geometrica",
+  "clasicos": "cuadrada",
+  "michelle": "cuadrada",
+  "sara": "cateye",
+  "harry": "cuadrada",
+  "mery": "cuadrada",
+  "london": "redonda",
+  "clasico-patilla-metal": "cuadrada",
+  "sidney": "geometrica",
+  "capri": "aviador",
+  "roma": "cuadrada",
+  "dallas": "cuadrada",
+  "tr90": "redonda",
+  "indiana": "cateye",
+  "cielo": "redonda",
+  "kingdom": "cuadrada",
+  "lennon-clip-on": "redonda",
+  "mora": "aviador",
+  "mark": "redonda",
+  "carolyn-esencial": "redonda",
+  "planet": "aviador",
+  "diana": "redonda",
+  "madera": "cuadrada",
+  "leah": "cuadrada",
+  "rose": "redonda",
+  "tulum": "redonda",
+  "apolo": "aviador",
+  "aron": "cuadrada",
+  "andrew": "redonda",
+  "ricky": "cuadrada",
+  "lupe": "redonda",
+  "saturday-xl": "aviador",
+  "saturday-esencial": "aviador"
+ },
+ "parts": {
+  "classic": [
+   [
+    "Armazón",
+    "Policarbonato, varillas flexibles"
+   ],
+   [
+    "Lentes del armazón",
+    "Con antirreflejo"
+   ],
+   [
+    "Clip solar",
+    "Polarizado, imantado"
+   ]
+  ],
+  "lennon-clip-on": [
+   [
+    "Armazón",
+    "Metálico, frente negro"
+   ],
+   [
+    "Lentes del armazón",
+    "Blue cut"
+   ],
+   [
+    "Clip solar",
+    "Polarizado, imantado"
+   ]
+  ],
+  "nova": [
+   [
+    "Armazón",
+    "Policarbonato, varillas metálicas"
+   ],
+   [
+    "Clip solar",
+    "Policarbonato degradé, filtro UV400"
+   ]
+  ],
+  "milo": [
+   [
+    "Armazón",
+    "Metálico"
+   ],
+   [
+    "Clip solar",
+    "Metálico negro, filtro UV400"
+   ]
+  ],
+  "ambar-clip-on": [
+   [
+    "Armazón",
+    "Metálico"
+   ],
+   [
+    "Clip solar",
+    "Policarbonato carey, filtro UV400"
+   ]
+  ],
+  "cat-eye-6-en-1": [
+   [
+    "Armazón",
+    "Cat eye, varillas flexibles"
+   ],
+   [
+    "Clips incluidos",
+    "5 (1 polarizado)"
+   ],
+   [
+    "Estuche",
+    "Con compartimientos, incluido"
+   ]
+  ],
+  "grey-jack": [
+   [
+    "Armazón",
+    "Varillas flexibles, marco mate degradé"
+   ],
+   [
+    "Clips incluidos",
+    "4 intercambiables (2 polarizados)"
+   ]
+  ],
+  "tr90": [
+   [
+    "Armazón",
+    "TR90, liviano y flexible"
+   ]
+  ]
+ },
+ "lens": {
+  "ciclismo-fotocromaticos": {
+   "photo": true,
+   "polar": null
+  },
+  "focus": {
+   "uv": false
+  }
+ },
+ "accessory": {
+  "cadena-de-acrilico": {
+   "Material": "Acrílico con detalles dorados"
+  },
+  "cadena-metalica": {
+   "Material": "Metálica"
+  },
+  "estuche-organizador-x5": {
+   "Capacidad": "5 anteojos",
+   "Uso": "Organizador portátil"
+  }
+ },
+ "descs": {
+  "saturday-xl-print": "Montura de policarbonato en print carey, con lentes celestes y filtro UV400.",
+  "charlotte-brown": "Montura metálica dorada, semi al aire, con lentes marrones y filtro UV400.",
+  "tulum-polarizadas": "Montura de policarbonato nacarado, con varillas y bisagras metálicas. Lentes espejados y polarizados con filtro UV400.",
+  "ciclismo-fotocromaticos": "Montura de policarbonato con lentes fotocromáticos para actividades al aire libre.",
+  "risky": "Armazón de acetato con bisagras metálicas.",
+  "classic-red": "Armazón rojo de policarbonato con clip solar imantado.",
+  "classic-grey": "Armazón gris de policarbonato con clip solar imantado.",
+  "cadena-beige": "Cadena de acrílico en beige y dorado.",
+  "cadena-gold": ""
+ },
+ "featured": [
+  "charlotte",
+  "gala",
+  "pilot",
+  "saturday-premium",
+  "tulum",
+  "aviador-polarizado",
+  "lux",
+  "classic"
+ ],
+ "pending": {
+  "_nota": "Datos que el sitio no afirma hasta que la marca los valide.",
+  "medidas": "Ningún producto tiene lente, puente y varilla publicados.",
+  "estuche_y_liquido": "No figura en las fichas de la tienda (solo Cat eye 6 en 1 declara estuche).",
+  "costo_y_plazo_de_envio": "La tienda calcula el costo por código postal con Correo Argentino; falta integrar esa cotización.",
+  "retiro_en_local": "La tienda tiene retiro en local activo, pero no publica la dirección ni horarios.",
+  "politica_de_cambios": "Plazos y condiciones de cambio sin publicar.",
+  "ciclismo_polarizado": "La tienda describe cristales fotocromáticos; no confirma polarización.",
+  "cadena_dorada": "La tienda describe la cadena gold como «plata claro».",
+  "largo_y_enganche_de_cadenas": "Sin publicar.",
+  "presupuesto_de_cristales": "Lo ofrecen por consulta; precio y plazos sin publicar.",
+  "pagos_y_pedidos": "Falta conectar un procesador de pagos (Ualá Bis u otro) y un sistema de pedidos y stock en línea."
+ }
+}

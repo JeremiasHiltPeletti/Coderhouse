@@ -1,0 +1,41 @@
+<main id="contenido" class="page page--white">
+  <div class="container">
+    <nav aria-label="Migas de pan">
+      <ol class="crumbs">
+        <li><a href="/">Inicio</a></li>
+        <li><span aria-current="page">Carrito</span></li>
+      </ol>
+    </nav>
+    <ol class="steps" aria-label="Pasos de la compra">
+      <li aria-current="step"><span>1</span>Carrito</li>
+      <li><span>2</span>Datos, entrega y pago</li>
+      <li><span>3</span>Confirmación</li>
+    </ol>
+    <h1 class="co-title">Tu carrito</h1>
+    <p class="visually-hidden" id="cartStatus" role="status" aria-live="polite"></p>
+
+    <div class="co-layout" id="cartFull" hidden>
+      <section aria-labelledby="cartItemsTitle">
+        <h2 class="visually-hidden" id="cartItemsTitle">Productos</h2>
+        <ul class="lines" id="cartLines"></ul>
+        <a class="link co-keep" id="cartKeep" href="/catalogo.html"><svg class="icon icon--back" aria-hidden="true"><use href="#i-arrow"/></svg>Seguir comprando</a>
+      </section>
+      <aside class="summary" aria-labelledby="sumTitle">
+        <h2 class="summary__title" id="sumTitle">Resumen</h2>
+        <dl class="summary__rows" id="cartSummary"></dl>
+        <a class="btn btn-primary btn-lg summary__go" href="/checkout.html">Continuar con la compra</a>
+        <p class="summary__note meta">El costo de envío se confirma con tu código postal. Elegís el medio de pago en el paso siguiente.</p>
+      </aside>
+    </div>
+
+    <div class="empty co-empty" id="cartEmpty" hidden>
+      <h2 class="empty__title">Tu carrito está vacío</h2>
+      <p>Elegí un modelo y un color, y agregalo desde su ficha.</p>
+      <div class="empty__actions">
+        <a class="btn btn-primary" href="/catalogo.html">Ver el catálogo</a>
+        <a class="link" href="/gafas-de-sol.html">Ver gafas de sol <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <noscript><p class="empty">Para usar el carrito hace falta JavaScript.</p></noscript>
+  </div>
+</main>

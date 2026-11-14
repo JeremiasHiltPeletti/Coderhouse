@@ -23,12 +23,12 @@
         <ul class="gallery__thumbs" id="galleryThumbs" aria-label="Elegir foto"></ul>
       </section>
 
-      <!-- Decisión: color, disponibilidad, precio y qué hacer con esa variante -->
+      <!-- Decisión: color, disponibilidad, precio y compra de esa variante -->
       <section class="buy" aria-labelledby="pdpTitle">
         <div class="buy__color">
           <p class="buy__label">Color: <strong id="pdpVariant">{{VARIANT}}</strong> <span class="buy__stock" id="pdpStock" hidden>Sin stock</span></p>
           <div class="swatches swatches--lg" id="pdpSwatches" role="group" aria-label="Colores de {{NAME}}"></div>
-          <p class="buy__avail meta" id="pdpAvail" hidden></p>
+          <p class="buy__avail meta" id="pdpAvail"></p>
         </div>
 
         <div class="buy__price" id="pdpPrice">
@@ -39,16 +39,36 @@
 
         <p class="visually-hidden" id="pdpStatus" role="status" aria-live="polite"></p>
 
-        <div class="buy__ctas" id="pdpCtas">
-          <a class="btn btn-primary btn-lg" id="pdpBuy" href="{{STORE_URL}}" rel="noopener"><span id="pdpBuyText">Comprar en la tienda oficial</span> <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
-          <a class="btn btn-outline btn-lg" id="pdpRx" href="{{WA}}" rel="noopener" hidden><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Pedir presupuesto de cristales por WhatsApp</a>
-          <a class="btn btn-outline btn-lg" id="pdpWa" href="{{WA}}" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span id="pdpWaText">Consultar por WhatsApp</span></a>
+        <form class="buy__form" id="pdpForm" novalidate>
+          <div class="qty" id="pdpQtyBox">
+            <span class="qty__label" id="pdpQtyLabel">Cantidad</span>
+            <div class="qty__ctl" role="group" aria-labelledby="pdpQtyLabel">
+              <button type="button" class="qty__btn" data-step="-1" aria-label="Restar una unidad"><svg class="icon" aria-hidden="true"><use href="#i-minus"/></svg></button>
+              <input class="qty__input" id="pdpQty" type="number" inputmode="numeric" min="1" value="1" aria-labelledby="pdpQtyLabel">
+              <button type="button" class="qty__btn" data-step="1" aria-label="Sumar una unidad"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
+            </div>
+          </div>
+          <div class="buy__ctas" id="pdpCtas">
+            <button class="btn btn-primary btn-lg" id="pdpAdd" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg><span id="pdpAddText">Agregar al carrito</span></button>
+            <a class="btn btn-outline btn-lg" id="pdpRx" href="{{WA}}" rel="noopener" hidden><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Pedir presupuesto de cristales por WhatsApp</a>
+            <a class="btn btn-outline btn-lg" id="pdpWa" href="{{WA}}" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span id="pdpWaText">Consultar por WhatsApp</span></a>
+          </div>
+        </form>
+
+        <!-- Confirmación de lo agregado: queda a la vista con los dos caminos posibles -->
+        <div class="added" id="pdpAdded" hidden tabindex="-1">
+          <p class="added__msg"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span id="pdpAddedText">Agregaste el producto al carrito.</span></p>
+          <div class="added__ctas">
+            <a class="btn btn-primary" id="pdpGoCart" href="/carrito.html">Ver carrito</a>
+            <a class="btn btn-outline" id="pdpKeep" href="{{CAT_URL}}">Seguir comprando</a>
+          </div>
         </div>
-        <p class="buy__next meta" id="pdpNext">Se abre este modelo en Empretienda. Ahí podés agregarlo al carrito y calcular el envío con tu código postal.</p>
+
+        <ul class="buy__facts" id="pdpFacts"></ul>
 
         <ul class="buy__links">
           <li id="pdpMeasureJump"><a class="link" href="#medidas">Ver medidas y calce <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-          <li><a class="link" href="/ayuda.html#envios">Cómo calcular el envío <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a class="link" href="/ayuda.html#envios">Cómo es el envío <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
         </ul>
       </section>
     </div>
@@ -81,6 +101,6 @@
   <!-- Barra fija en celular: repite la acción de la ficha cuando el botón principal sale de pantalla -->
   <div class="buybar" id="buybar" hidden>
     <p class="buybar__text"><strong id="buybarName">{{NAME}}</strong><span class="num" id="buybarPrice">{{PRICE_T}}</span></p>
-    <a class="btn btn-primary" id="buybarBtn" href="{{STORE_URL}}" rel="noopener">Comprar en Empretienda</a>
+    <button class="btn btn-primary" id="buybarBtn" type="button">Agregar al carrito</button>
   </div>
 </main>
