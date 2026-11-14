@@ -1,0 +1,833 @@
+<title>Sunnygafas · Etapa 1</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap">
+<style>
+/* Presentación: dirección arriba, mockup 390px a la izquierda con notas fijas a la derecha, control de calidad abajo. */
+:root{
+  --white:#FFFFFF; --arena-50:#FFFAF2; --arena-100:#F7EEDF; --piedra:#F2F0EC;
+  --ink:#1E1A16; --ink-muted:#6B5F53; --on-ink-muted:#B5AA9D;
+  --line:#8C7D6C; --line-soft:#E6D8C3;
+  --oro:#C48A36; --oro-strong:#85561A; --oro-soft:#F4E6CC;
+  --mar:#1D5A60; --mar-soft:#D9EBE8; --whatsapp:#1F7A4D;
+  --success:#2E6F3A; --error:#B3261E;
+  --desk:#E7E3DC; /* mesa de presentación, fuera del sistema */
+  --f-display:"Gloock", Georgia, "Times New Roman", serif;
+  --f-ui:"Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--desk);color:var(--ink);font:400 16px/24px var(--f-ui);-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+::selection{background:var(--mar-soft);color:var(--ink)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:4px}
+img{display:block;max-width:100%}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;margin:0;text-wrap:balance;letter-spacing:-0.01em}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+.ico{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Documento de presentación ---------- */
+.doc{max-width:1180px;margin:0 auto}
+.doc-head{padding-block:48px 32px;display:grid;gap:24px}
+.doc-brand{display:flex;align-items:center;gap:12px}
+.doc-brand img{height:32px;width:auto}
+.doc-brand span{font-family:var(--f-display);font-size:22px}
+.doc-head h1{font-size:clamp(36px,5vw,56px);line-height:1.05;max-width:16ch}
+.doc-lede{font-size:18px;line-height:28px;color:var(--ink-muted);max-width:62ch}
+.dir{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;margin-block:8px 48px}
+.dir>div{background:var(--white);padding:24px;display:grid;gap:8px;align-content:start}
+.dir h2{font-size:22px;line-height:28px}
+.dir p,.dir li{font-size:15px;line-height:23px;color:var(--ink-muted)}
+.dir ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.dir strong{color:var(--ink);font-weight:600}
+.rays-demo{display:flex;gap:16px;align-items:flex-end;background:var(--ink);border-radius:8px;padding:12px 16px;margin-top:4px}
+.rays-demo figure{margin:0;display:grid;justify-items:center;gap:4px;color:var(--on-ink-muted);font-size:12px}
+
+.stage{display:grid;grid-template-columns:390px minmax(0,1fr);gap:56px;align-items:start}
+.stage>div{min-width:0;width:100%;max-width:390px}
+@media (max-width:430px){.stage>div{max-width:none}}
+.stage-label{font-size:14px;color:var(--ink-muted);margin-bottom:12px;display:flex;justify-content:space-between;gap:12px}
+.notes{position:sticky;top:24px;display:grid;gap:4px;max-height:calc(100vh - 48px);overflow:auto;padding-right:4px}
+.notes h2{font-size:28px;line-height:32px;margin-bottom:12px}
+.note{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding:14px 0;border-top:1px solid #D6CFC4}
+.note b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--arena-50);font-size:13px;font-weight:700}
+.note h3{font:600 16px/22px var(--f-ui);margin-bottom:2px;letter-spacing:0}
+.note p{font-size:14px;line-height:21px;color:var(--ink-muted)}
+.note code{font-size:12.5px;background:#DDD7CE;padding:1px 5px;border-radius:4px;color:var(--ink)}
+.notes .notes-toggle{display:none}
+
+/* ---------- Marco del teléfono ---------- */
+.phone{width:390px;max-width:100%;background:var(--arena-50);border-radius:28px;box-shadow:0 1px 2px rgba(30,26,22,.08),0 24px 60px -24px rgba(30,26,22,.35);position:relative}
+.pin{position:absolute;left:-44px;margin-top:8px;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--arena-50);font-size:13px;font-weight:700;display:grid;place-items:center}
+.sec{position:relative}
+
+/* ---------- Componentes de Sunnygafas ---------- */
+.wrap{padding-inline:16px}
+.announce{background:var(--ink);color:var(--oro);height:36px;display:flex;align-items:center;justify-content:center;position:relative;font:700 12px/16px var(--f-ui);letter-spacing:.08em;text-transform:uppercase;border-radius:28px 28px 0 0}
+.announce p{transition:opacity .25s var(--ease)}
+.announce button{position:absolute;right:0;top:-4px;width:44px;height:44px;background:none;border:0;color:var(--on-ink-muted);display:grid;place-items:center}
+.announce button .ico{width:14px;height:14px}
+.hdr{position:sticky;top:0;z-index:20;background:var(--arena-50);height:60px;display:grid;grid-template-columns:88px 1fr 88px;align-items:center;padding-inline:4px;border-bottom:1px solid var(--line-soft)}
+.hdr .side{display:flex}
+.hdr .side.r{justify-content:flex-end}
+.icobtn{width:44px;height:44px;display:grid;place-items:center;background:none;border:0;border-radius:12px;position:relative;color:var(--ink)}
+.icobtn:hover{background:var(--piedra)}
+.count{position:absolute;top:6px;right:4px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--ink);color:var(--arena-50);font-size:11px;font-weight:700;line-height:18px;text-align:center;font-variant-numeric:tabular-nums}
+.logo{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.logo img{height:32px;width:auto}
+.logo span{font-family:var(--f-display);font-size:21px;line-height:1;color:var(--ink)}
+
+.hero{position:relative;aspect-ratio:4/5;color:var(--white);display:flex;align-items:flex-end}
+.ph{position:absolute;inset:0;background:var(--piedra);overflow:hidden}
+.ph-hero{background:
+  radial-gradient(120% 70% at 72% 18%, #F2C98A 0%, rgba(242,201,138,0) 55%),
+  linear-gradient(180deg,#D9A867 0%,#B07A4A 38%,#6E4B33 70%,#3A2A20 100%)}
+.ph-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,26,22,0) 40%,rgba(30,26,22,.78) 100%)}
+.ph-tag{position:absolute;top:12px;left:12px;right:12px;z-index:2;display:flex}
+.ph-tag span{background:rgba(255,255,255,.92);color:var(--ink);font-size:12px;line-height:16px;padding:6px 10px;border-radius:999px;max-width:100%}
+.hero-copy{position:relative;z-index:2;padding:0 16px 32px;display:grid;gap:16px}
+.hero h1{font-size:48px;line-height:50px}
+.hero p{font-size:18px;line-height:28px;color:#F3EBDF;max-width:30ch}
+.btn{height:48px;padding:0 24px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 16px/1 var(--f-ui);text-decoration:none;border:1px solid transparent;transition:background-color .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease)}
+.btn-primary{background:var(--ink);color:var(--arena-50)}
+.btn-primary:hover{background:var(--oro-strong);color:var(--white)}
+.hero .btn-primary{background:var(--arena-50);color:var(--ink);justify-self:start}
+.hero .btn-primary:hover{background:var(--white)}
+.btn-secondary{background:var(--white);color:var(--ink);border-color:var(--line)}
+.btn-secondary:hover{border-color:var(--ink)}
+.btn-wa{background:var(--whatsapp);color:var(--white)}
+.btn-wa:hover{background:#18633E}
+.btn-block{width:100%}
+.link{color:var(--ink);font-weight:600;text-decoration:underline;display:inline-flex;align-items:center;gap:6px;min-height:44px}
+.payline{background:var(--arena-50);padding:14px 16px;border-bottom:1px solid var(--line-soft);font-size:14px;line-height:20px;color:var(--ink-muted);text-align:center}
+.payline strong{color:var(--mar);font-weight:700}
+
+.section{padding-block:48px}
+.sec-head{display:grid;gap:8px;margin-bottom:24px}
+.sec-head h2{font-size:28px;line-height:32px}
+.sec-head p{color:var(--ink-muted)}
+.sec-head.row{grid-template-columns:1fr auto;align-items:end}
+
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding:2px 16px 4px}
+.chip{flex:none;height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--white);font:600 15px/1 var(--f-ui);display:inline-flex;align-items:center;gap:8px;transition:background-color .15s var(--ease),color .15s var(--ease)}
+.chip svg{width:26px;height:14px;stroke-width:1.5}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--arena-50);border-color:var(--ink)}
+.fit-line{margin-block:16px 20px;font-size:15px;line-height:22px;color:var(--ink);display:grid;gap:6px;min-height:68px}
+.tbv{font-size:12px;line-height:16px;color:var(--ink-muted);border:1px dashed var(--line);border-radius:999px;padding:2px 8px;justify-self:start}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px 12px}
+.card{display:grid;gap:10px;text-decoration:none;color:inherit;min-width:0}
+.card-photo{position:relative;aspect-ratio:4/5;background:var(--piedra);border-radius:12px;overflow:hidden;display:grid;place-items:center}
+.card-photo img{width:100%;height:100%;object-fit:contain;padding:14%;mix-blend-mode:multiply;transition:transform .25s var(--ease)}
+.card:hover .card-photo img{transform:scale(1.03)}
+.badges{position:absolute;top:8px;left:8px;display:flex;gap:4px}
+.badge{height:24px;padding:0 10px;border-radius:999px;font:700 12px/24px var(--f-ui);white-space:nowrap}
+.b-new{background:var(--oro-soft);color:var(--oro-strong)}
+.b-pol{background:var(--mar-soft);color:var(--mar)}
+.b-type{background:var(--white);color:var(--ink);border:1px solid var(--line-soft);line-height:22px}
+.card-name{font-size:15px;line-height:20px;font-weight:600}
+.card-name span{font-weight:400;color:var(--ink-muted)}
+.sw{display:flex;gap:6px;align-items:center}
+.sw i{width:24px;height:24px;border-radius:50%;border:1px solid rgba(30,26,22,.15);display:block}
+.sw i.on{box-shadow:0 0 0 2px var(--white),0 0 0 4px var(--ink)}
+.price{display:grid;gap:2px;font-variant-numeric:tabular-nums}
+.p-transfer{color:var(--mar);font-size:14px;line-height:20px}
+.p-transfer b{display:block;font-size:19px;line-height:24px;font-weight:800;letter-spacing:-.01em}
+.p-list{font-size:14px;line-height:20px;color:var(--ink-muted)}
+.p-tax{font-size:12px;line-height:16px;color:var(--ink-muted)}
+.card-ph .card-photo svg{width:56%;color:var(--line)}
+.card-ph .card-name{color:var(--ink-muted)}
+
+.trust{border-block:1px solid var(--line-soft);padding-block:32px;display:grid;grid-template-columns:1fr 1fr;gap:28px 16px}
+.trust div{display:grid;gap:8px;align-content:start}
+.trust .circ{width:40px;height:40px;border-radius:50%;background:var(--mar-soft);color:var(--mar);display:grid;place-items:center}
+.trust .circ .ico{width:22px;height:22px}
+.trust h3{font:700 15px/20px var(--f-ui);letter-spacing:0}
+.trust p{font-size:14px;line-height:20px;color:var(--ink-muted)}
+
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cat{position:relative;border-radius:12px;overflow:hidden;color:var(--white);text-decoration:none;display:flex;align-items:flex-end;min-height:0}
+.cat.wide{grid-column:1/-1;aspect-ratio:16/11}
+.cat.tall{aspect-ratio:4/5}
+.cat .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,26,22,0) 45%,rgba(30,26,22,.7) 100%)}
+.ph-sol{background:radial-gradient(90% 60% at 30% 25%,#F3D7A6,rgba(243,215,166,0) 60%),linear-gradient(160deg,#E2B57C,#A9764B 55%,#5B4030)}
+.ph-pol{background:radial-gradient(80% 50% at 70% 20%,#F6E2B8,rgba(246,226,184,0) 60%),linear-gradient(175deg,#9FC3C2 0%,#4F8C90 45%,#24494E 100%)}
+.ph-arm{background:radial-gradient(70% 80% at 85% 30%,#FBF3E4,rgba(251,243,228,0) 65%),linear-gradient(140deg,#D8CFC2,#9C8F80 60%,#5D5348)}
+.cat .ph-tag span{font-size:11px;line-height:14px;padding:5px 8px}
+.cat-label{position:relative;z-index:2;padding:14px;display:flex;align-items:center;justify-content:space-between;width:100%;gap:8px}
+.cat-label h3{font-size:22px;line-height:28px}
+.cat-label .ico{width:20px;height:20px}
+.rows{margin-top:16px;border-top:1px solid var(--line-soft)}
+.rowlink{display:grid;grid-template-columns:56px 1fr 24px;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line-soft);text-decoration:none;color:inherit;min-height:72px}
+.rowlink .th{width:56px;height:56px;border-radius:8px;background:var(--piedra);overflow:hidden;display:grid;place-items:center}
+.rowlink .th img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;mix-blend-mode:multiply}
+.rowlink .th svg{width:36px;color:var(--line)}
+.rowlink b{display:block;font-weight:600;font-size:16px;line-height:22px}
+.rowlink small{display:block;font-size:14px;line-height:20px;color:var(--ink-muted)}
+.rowlink .ico{color:var(--ink-muted)}
+
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:62%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-16px;padding:0 16px 8px;scrollbar-width:none}
+.rail>*{scroll-snap-align:start}
+.rail-hint{font-size:14px;color:var(--ink-muted);margin-top:8px}
+
+.band-ink{background:var(--ink);color:var(--arena-50)}
+.band-ink .sec-head p{color:var(--on-ink-muted)}
+.tiers{display:grid;border-top:1px solid #3A332C}
+.tier{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid #3A332C;align-items:center}
+.tier h3{font-size:22px;line-height:28px}
+.tier p{font-size:14px;line-height:20px;color:var(--on-ink-muted)}
+.tier a{color:var(--arena-50);font-size:14px;font-weight:600;min-height:32px;display:inline-flex;align-items:center}
+.rays{color:var(--oro);overflow:visible}
+.band-ink .tbv{color:var(--on-ink-muted);border-color:#5C5249}
+
+.band-mar{background:var(--mar);color:var(--white)}
+.band-mar .sec-head p{color:#D9EBE8}
+.cmp{background:var(--white);color:var(--ink);border-radius:12px;padding:8px 12px 12px 16px}
+.cmp table{width:100%;border-collapse:collapse;font-size:14px;line-height:20px}
+.cmp th{font:600 14px/20px var(--f-ui);text-align:left;padding:12px 6px;vertical-align:bottom}
+.cmp thead th{border-bottom:1px solid var(--line-soft)}
+.cmp thead th:not(:first-child){color:var(--mar);font-size:15px}
+.cmp td{padding:12px 6px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.cmp tbody th{font-weight:600;color:var(--ink);width:30%;vertical-align:top;padding-left:0}
+.cmp thead th:first-child{padding-left:0}
+.cmp tr:last-child td,.cmp tr:last-child th{border-bottom:0}
+.yn{display:flex;gap:6px;align-items:flex-start}
+.yn .ico{width:18px;height:18px;margin-top:1px}
+.yn.y .ico{color:var(--mar)}
+.yn.n .ico{color:var(--ink-muted)}
+.band-mar .btn-secondary{margin-top:24px}
+.band-mar .tbv{color:#D9EBE8;border-color:#7FA9AC;margin-top:12px}
+
+.reviews-off{margin:0 16px;border:1.5px dashed var(--line);border-radius:12px;padding:24px;display:grid;gap:12px;background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(140,125,108,.06) 10px 20px)}
+.reviews-off .flag{justify-self:start;background:var(--ink);color:var(--arena-50);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.reviews-off p{font-size:14px;line-height:21px;color:var(--ink-muted)}
+
+.prefoot{background:var(--arena-100)}
+.field{display:grid;gap:6px}
+.field label{font-weight:600;font-size:14px;line-height:20px}
+.field input{height:48px;border-radius:6px;border:1px solid var(--line);background:var(--white);padding:0 14px;font:400 16px/1 var(--f-ui);color:var(--ink);width:100%}
+.field input:focus{outline:2px solid var(--ink);outline-offset:1px;border-color:var(--ink)}
+.field .help{font-size:14px;line-height:20px;color:var(--ink-muted)}
+.field.err input{border-color:var(--error);border-width:2px}
+.field.err .help{color:var(--error);display:flex;gap:6px}
+.field.ok .help{color:var(--success);display:flex;gap:6px}
+.nl{display:grid;gap:12px}
+
+.foot{background:var(--ink);color:var(--arena-50);padding-block:48px 32px;border-radius:0 0 28px 28px}
+.foot .logo{justify-content:flex-start}
+.foot .logo span{color:var(--arena-50)}
+.foot-intro{color:var(--on-ink-muted);font-size:14px;line-height:20px;margin-top:12px}
+.contact{display:grid;gap:4px;margin-top:24px}
+.contact .btn-wa{margin-bottom:8px}
+.contact a:not(.btn){display:flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;color:var(--arena-50)}
+.contact .ico{width:20px;height:20px;color:var(--on-ink-muted)}
+.acc{border-top:1px solid #3A332C;margin-top:24px}
+.acc details{border-bottom:1px solid #3A332C}
+.acc summary{list-style:none;min-height:52px;display:flex;align-items:center;justify-content:space-between;font-weight:600;cursor:pointer}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary .ico{width:20px;height:20px;transition:transform .2s var(--ease);color:var(--on-ink-muted)}
+.acc details[open] summary .ico{transform:rotate(180deg)}
+.acc ul{list-style:none;margin:0;padding:0 0 12px;display:grid}
+.acc li a{display:flex;align-items:center;min-height:40px;color:var(--on-ink-muted);text-decoration:none}
+.acc li a:hover{color:var(--arena-50)}
+.foot h4{font:700 12px/16px var(--f-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--on-ink-muted);margin:28px 0 12px}
+.pay{display:flex;flex-wrap:wrap;gap:6px}
+.pay span{height:30px;padding:0 10px;border-radius:6px;background:var(--white);color:var(--ink);font-size:12px;font-weight:700;display:inline-flex;align-items:center}
+.foot-ship{color:var(--on-ink-muted);font-size:14px;line-height:20px}
+.legal{margin-top:28px;padding-top:20px;border-top:1px solid #3A332C;display:grid;gap:12px;font-size:13px;line-height:19px;color:var(--on-ink-muted)}
+.legal .links{display:flex;flex-wrap:wrap;gap:4px 16px}
+.legal .links a{color:var(--on-ink-muted);min-height:32px;display:inline-flex;align-items:center}
+.btn-regret{height:48px;border-radius:12px;border:1px solid var(--on-ink-muted);color:var(--arena-50);background:transparent;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.btn-regret:hover{border-color:var(--arena-50)}
+
+.fab{position:sticky;bottom:16px;z-index:30;display:flex;justify-content:flex-end;padding-right:16px;margin-top:-72px;pointer-events:none}
+.fab a{pointer-events:auto;width:56px;height:56px;border-radius:50%;background:var(--whatsapp);color:var(--white);display:grid;place-items:center;box-shadow:0 6px 16px -4px rgba(30,26,22,.35)}
+
+/* ---------- Estados ---------- */
+.states{margin-top:72px}
+.states>h2,.qc>h2{font-size:36px;line-height:40px;margin-bottom:8px}
+.states>p,.qc>p.lede{color:var(--ink-muted);max-width:66ch;margin-bottom:24px}
+.state-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.frame{background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 1px 2px rgba(30,26,22,.08),0 16px 40px -24px rgba(30,26,22,.3);display:flex;flex-direction:column}
+.frame-cap{padding:12px 16px;font-size:13px;line-height:18px;color:var(--ink-muted);border-top:1px solid var(--line-soft);background:var(--white);margin-top:auto}
+.frame-cap b{color:var(--ink)}
+.drawer{background:var(--white);min-height:520px;display:flex;flex-direction:column}
+.drawer-top{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 4px 0 16px;border-bottom:1px solid var(--line-soft)}
+.drawer-top .logo{justify-content:flex-start}
+.drawer nav{padding:8px 16px}
+.drawer nav a{display:flex;align-items:center;justify-content:space-between;min-height:52px;border-bottom:1px solid var(--line-soft);text-decoration:none;font-weight:600}
+.drawer nav a .ico{width:20px;height:20px;color:var(--ink-muted)}
+.drawer nav a.sub{font-weight:400;color:var(--ink-muted);min-height:44px}
+.drawer-foot{margin-top:auto;padding:16px;display:grid;gap:8px;background:var(--piedra)}
+.drawer-foot a.acct{display:flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;font-weight:600}
+.mini{padding:24px 16px;display:grid;gap:16px;background:var(--arena-100);flex:1}
+.mini.white{background:var(--white)}
+.empty{display:grid;gap:12px;justify-items:start}
+.empty svg{width:72px;color:var(--line)}
+
+/* ---------- Control de calidad ---------- */
+.qc{margin-top:80px;display:grid;gap:16px}
+.qc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.qc-card{background:var(--white);border-radius:12px;padding:24px;display:grid;gap:12px;align-content:start;min-width:0}
+.qc-card h3{font-size:22px;line-height:28px}
+.qc-card p,.qc-card li{font-size:15px;line-height:23px;color:var(--ink-muted)}
+.qc-card ul,.qc-card ol{margin:0;padding-left:20px;display:grid;gap:6px}
+.qc-card strong{color:var(--ink);font-weight:600}
+.tbl{overflow-x:auto}
+.tbl table{width:100%;border-collapse:collapse;font-size:14px;line-height:20px;font-variant-numeric:tabular-nums}
+.tbl th,.tbl td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.tbl thead th{font-weight:700;font-size:13px;color:var(--ink-muted)}
+.tbl td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
+.tbl td{color:var(--ink-muted)}
+.score{display:inline-grid;place-items:center;min-width:34px;height:24px;border-radius:999px;font-weight:800;font-size:13px;background:var(--mar-soft);color:var(--mar)}
+.score.s3{background:var(--piedra);color:var(--ink)}
+.pass{color:var(--success);font-weight:700}
+.warn{color:var(--oro-strong);font-weight:700}
+.vp{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.vp div{border:1px solid var(--line-soft);border-radius:8px;padding:10px;font-size:13px;line-height:18px;color:var(--ink-muted)}
+.vp b{display:block;color:var(--ink);font-size:14px}
+.ask{columns:2 300px;gap:32px}
+.ask li{break-inside:avoid;margin-bottom:6px}
+
+@media (max-width:900px){
+  .stage{grid-template-columns:minmax(0,1fr);justify-items:center}
+  .notes{position:static;max-height:none;width:100%;max-width:560px}
+  .notes-list[hidden]{display:none}
+  .notes .notes-toggle{display:inline-flex}
+  .pin{display:none}
+  .stage-label{width:100%;max-width:390px}
+}
+@media (max-width:430px){
+  .phone{border-radius:0;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)))}
+  .announce{border-radius:0}.foot{border-radius:0}
+  .phone{width:auto;max-width:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="m7 4 13 8-13 8Z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <!-- Silueta de placeholder y formas de marco: trazo fino -->
+  <symbol id="g-glasses" viewBox="0 0 120 48"><path d="M8 18h104" stroke-width="1.5"/><rect x="10" y="16" width="40" height="24" rx="11"/><rect x="70" y="16" width="40" height="24" rx="11"/><path d="M50 22c4-4 16-4 20 0"/></symbol>
+  <symbol id="f-round" viewBox="0 0 52 28"><circle cx="13" cy="14" r="10"/><circle cx="39" cy="14" r="10"/><path d="M23 12c2-2 4-2 6 0"/></symbol>
+  <symbol id="f-square" viewBox="0 0 52 28"><rect x="3" y="5" width="20" height="17" rx="2"/><rect x="29" y="5" width="20" height="17" rx="2"/><path d="M23 10c2-2 4-2 6 0"/></symbol>
+  <symbol id="f-cat" viewBox="0 0 52 28"><path d="M2 7c8-2 16-1 21 2-1 8-5 13-11 13S2 16 2 7Z"/><path d="M50 7c-8-2-16-1-21 2 1 8 5 13 11 13s10-6 10-15Z"/><path d="M23 10c2-1.5 4-1.5 6 0"/></symbol>
+  <symbol id="f-avi" viewBox="0 0 52 28"><path d="M3 6h20c0 9-3 16-10 16S3 15 3 6Z"/><path d="M29 6h20c0 9-3 16-10 16S29 15 29 6Z"/><path d="M23 7h6M18 3h16"/></symbol>
+</svg>
+
+<div class="doc">
+
+<header class="doc-head">
+  <div class="doc-brand"><img src="assets/isotipo-sunnygafas.png" alt="" width="40" height="32"><span>Sunnygafas</span></div>
+  <h1>Etapa 1: dirección y home mobile</h1>
+  <p class="doc-lede">Home completa a 390px con copy final, construida solo con el sistema del brief y las fotos reales de la tienda. Las fotos lifestyle son placeholders con su proporción exacta, porque no tengo un banco de imágenes con licencia. Abajo están los estados nuevos y el control de calidad.</p>
+</header>
+
+<section class="dir" aria-label="Dirección">
+  <div>
+    <h2>Público</h2>
+    <p>Llega desde Instagram, en el celular, después de ver un modelo puesto. Quiere saber tres cosas antes de comprar: si le va a quedar bien, si protege de verdad y cuánto le sale con transferencia. Le escribe a la marca por WhatsApp antes que por email.</p>
+  </div>
+  <div>
+    <h2>Propuesta de valor</h2>
+    <p><strong>Gafas UV400 avaladas por óptico, con estuche de regalo y 25% menos pagando con transferencia.</strong></p>
+    <p>Todo el home sostiene esa frase con datos que se pueden verificar: el óptico con matrícula, el precio con transferencia en cada card y el despacho todos los días hábiles.</p>
+  </div>
+  <div>
+    <h2>Cómo aplico el sistema</h2>
+    <ul>
+      <li>Lienzo <strong>arena-50</strong> porque el home es página de marca. Las fotos de producto van sobre <strong>piedra</strong> con <code>multiply</code> para que el fondo blanco de las fotos actuales desaparezca.</li>
+      <li>Una banda <strong>ink</strong> (colecciones), una <strong>mar</strong> (polarizadas) y una <strong>arena-100</strong> (newsletter, que pasa a ser pre-footer global).</li>
+      <li><strong>Mar</strong> carga lo útil: precio con transferencia, íconos de confianza y la comparativa.</li>
+    </ul>
+  </div>
+  <div>
+    <h2>El motivo de los rayos</h2>
+    <p>Los rayos se usan para medir algo. En la banda de colecciones, cada nivel suma rayos dorados finos: Básica 3, Esencial 5, Superior 7 y Élite 9. Nunca van de fondo ni como franjas rellenas.</p>
+    <div class="rays-demo" aria-hidden="true">
+      <figure><svg class="rays" data-rays="3" width="48" height="28"></svg>Básica</figure>
+      <figure><svg class="rays" data-rays="5" width="48" height="28"></svg>Esencial</figure>
+      <figure><svg class="rays" data-rays="7" width="48" height="28"></svg>Superior</figure>
+      <figure><svg class="rays" data-rays="9" width="48" height="28"></svg>Élite</figure>
+    </div>
+  </div>
+</section>
+
+<div class="stage">
+  <div>
+    <div class="stage-label"><span>Home · mobile 390px · modo Persuade</span><span>Scroll completo</span></div>
+
+    <!-- ================= MOCKUP ================= -->
+    <div class="phone" id="home">
+
+      <div class="sec"><span class="pin" aria-hidden="true">1</span>
+        <div class="announce" role="region" aria-label="Beneficios" aria-live="off">
+          <p id="ann">25% de descuento con transferencia</p>
+          <button type="button" id="annToggle" aria-label="Pausar mensajes"><svg class="ico"><use href="#i-pause"/></svg></button>
+        </div>
+      </div>
+      <header class="hdr">
+        <div class="side">
+          <button class="icobtn" aria-label="Abrir menú"><svg class="ico"><use href="#i-menu"/></svg></button>
+          <button class="icobtn" aria-label="Buscar"><svg class="ico"><use href="#i-search"/></svg></button>
+        </div>
+        <a class="logo" href="#home" aria-label="Sunnygafas, inicio"><img src="assets/isotipo-sunnygafas.png" alt="" width="40" height="32"><span>Sunnygafas</span></a>
+        <div class="side r">
+          <button class="icobtn" aria-label="Mi cuenta"><svg class="ico"><use href="#i-user"/></svg></button>
+          <button class="icobtn" aria-label="Carrito, 2 productos"><svg class="ico"><use href="#i-bag"/></svg><span class="count">2</span></button>
+        </div>
+      </header>
+
+      <main>
+        <section class="sec hero" aria-labelledby="h1"><span class="pin" aria-hidden="true">2</span>
+          <div class="ph ph-hero" role="img" aria-label="Placeholder: mujer de unos 30 años con gafas de sol en la ruta, luz de tarde">
+            <div class="ph-tag"><span>Foto lifestyle 4:5 · mujer con gafas de sol en la ruta, luz de tarde, medio cuerpo</span></div>
+          </div>
+          <div class="hero-copy">
+            <h1 id="h1">Gafas de sol avaladas por óptico</h1>
+            <p>UV400 en todos los modelos. Estuche y líquido limpiador en cada compra.</p>
+            <a class="btn btn-primary" href="#">Ver gafas de sol</a>
+          </div>
+        </section>
+        <p class="payline"><strong>25% menos con transferencia o efectivo</strong> · 3 cuotas sin interés con tarjeta</p>
+
+        <section class="sec section wrap" aria-labelledby="h-prob"><span class="pin" aria-hidden="true">3</span>
+          <div class="sec-head">
+            <h2 id="h-prob">El probador</h2>
+            <p>Elegí una forma y mirá qué modelos la tienen.</p>
+          </div>
+          <div class="chips" role="group" aria-label="Forma del marco">
+            <button class="chip" aria-pressed="true" data-shape="round"><svg class="ico"><use href="#f-round"/></svg>Redondas</button>
+            <button class="chip" aria-pressed="false" data-shape="square"><svg class="ico"><use href="#f-square"/></svg>Cuadradas</button>
+            <button class="chip" aria-pressed="false" data-shape="cat"><svg class="ico"><use href="#f-cat"/></svg>Cat eye</button>
+            <button class="chip" aria-pressed="false" data-shape="avi"><svg class="ico"><use href="#f-avi"/></svg>Aviador</button>
+          </div>
+          <div class="fit-line" aria-live="polite">
+            <p id="fitText">Suavizan las caras con ángulos marcados: mandíbula cuadrada o frente ancha.</p>
+            <span class="tbv">Texto a validar con el óptico</span>
+          </div>
+          <div class="grid2" id="probGrid"></div>
+          <p style="margin-top:16px"><a class="link" id="probLink" href="#">Ver todas las redondas <svg class="ico" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a></p>
+        </section>
+
+        <section class="sec wrap" aria-label="Por qué comprar en Sunnygafas"><span class="pin" aria-hidden="true">4</span>
+          <div class="trust">
+            <div><span class="circ"><svg class="ico"><use href="#i-sun"/></svg></span><h3>Protección UV400</h3><p>Filtran los rayos UVA y UVB hasta 400 nm.</p></div>
+            <div><span class="circ"><svg class="ico"><use href="#i-eye"/></svg></span><h3>Avaladas por óptico</h3><p>[Nombre y apellido], M.N. [n.º]</p></div>
+            <div><span class="circ"><svg class="ico"><use href="#i-gift"/></svg></span><h3>Estuche de regalo</h3><p>Con líquido limpiador, en cada compra.</p></div>
+            <div><span class="circ"><svg class="ico"><use href="#i-truck"/></svg></span><h3>Despacho diario</h3><p>Todos los días hábiles, a todo el país.</p></div>
+          </div>
+        </section>
+
+        <section class="sec section wrap" aria-labelledby="h-cat"><span class="pin" aria-hidden="true">5</span>
+          <div class="sec-head"><h2 id="h-cat">Comprá por categoría</h2></div>
+          <div class="cats">
+            <a class="cat wide" href="#"><div class="ph ph-sol" role="img" aria-label="Placeholder: pareja en la playa con gafas de sol"><div class="ph-tag"><span>16:11 · pareja en la playa al atardecer, cara y hombros</span></div></div><div class="cat-label"><h3>Gafas de sol</h3><svg class="ico"><use href="#i-arrow"/></svg></div></a>
+            <a class="cat tall" href="#"><div class="ph ph-pol" role="img" aria-label="Placeholder: hombre manejando con gafas polarizadas"><div class="ph-tag"><span>4:5 · manejando, reflejo en el parabrisas</span></div></div><div class="cat-label"><h3>Polarizadas</h3></div></a>
+            <a class="cat tall" href="#"><div class="ph ph-arm" role="img" aria-label="Placeholder: mujer leyendo con armazón, luz de ventana"><div class="ph-tag"><span>4:5 · interior, luz de ventana, leyendo</span></div></div><div class="cat-label"><h3>Armazones</h3></div></a>
+          </div>
+          <div class="rows">
+            <a class="rowlink" href="#"><span class="th"><svg viewBox="0 0 120 48" fill="none" stroke="currentColor" stroke-width="2.5"><use href="#g-glasses"/></svg></span><span><b>Clip-on 2 en 1</b><small>Armazón para receta con lente de sol que se suma encima</small></span><svg class="ico"><use href="#i-chev"/></svg></a>
+            <a class="rowlink" href="#"><span class="th"><img src="assets/productos/cadena-gold.webp" alt="" loading="lazy" width="56" height="56"></span><span><b>Accesorios</b><small>Cadenas para anteojos desde $6.000</small></span><svg class="ico"><use href="#i-chev"/></svg></a>
+            <a class="rowlink" href="#"><span class="th" style="background:var(--white);border:1px solid var(--line-soft)"><span style="font-weight:800;color:var(--ink);font-size:15px">Sale</span></span><span><b>Sale</b><small>[Qué entra en Sale y hasta cuándo]</small></span><svg class="ico"><use href="#i-chev"/></svg></a>
+          </div>
+        </section>
+
+        <section class="sec section wrap" aria-labelledby="h-new" style="padding-top:0"><span class="pin" aria-hidden="true">6</span>
+          <div class="sec-head row"><h2 id="h-new">Recién llegadas</h2><a class="link" href="#">Ver todo</a></div>
+          <div class="rail" id="newRail"></div>
+          <p class="rail-hint">Deslizá para ver más</p>
+        </section>
+
+        <section class="sec section band-ink" aria-labelledby="h-col"><span class="pin" aria-hidden="true">7</span>
+          <div class="wrap">
+            <div class="sec-head">
+              <h2 id="h-col">De Básica a Élite</h2>
+              <p>Cuatro colecciones. Cuantos más rayos, más sube la terminación.</p>
+            </div>
+            <div class="tiers">
+              <div class="tier"><svg class="rays" data-rays="3" width="64" height="36" aria-hidden="true"></svg><div><h3>Básica</h3><p>[Marco] · [Lente] · [Qué la define]</p><a href="#">Ver Básica</a></div></div>
+              <div class="tier"><svg class="rays" data-rays="5" width="64" height="36" aria-hidden="true"></svg><div><h3>Esencial</h3><p>[Qué suma sobre Básica]</p><a href="#">Ver Esencial</a></div></div>
+              <div class="tier"><svg class="rays" data-rays="7" width="64" height="36" aria-hidden="true"></svg><div><h3>Superior</h3><p>[Qué suma sobre Esencial]</p><a href="#">Ver Superior</a></div></div>
+              <div class="tier"><svg class="rays" data-rays="9" width="64" height="36" aria-hidden="true"></svg><div><h3>Élite</h3><p>[Qué suma sobre Superior]</p><a href="#">Ver Élite</a></div></div>
+            </div>
+            <p style="margin-top:16px"><span class="tbv">Criterios a confirmar con la marca</span></p>
+          </div>
+        </section>
+
+        <section class="sec section band-mar" aria-labelledby="h-pol"><span class="pin" aria-hidden="true">8</span>
+          <div class="wrap">
+            <div class="sec-head">
+              <h2 id="h-pol">¿Polarizadas o comunes?</h2>
+              <p>Las dos filtran UV400. Cambia lo que pasa con el reflejo.</p>
+            </div>
+            <div class="cmp">
+              <table>
+                <caption class="sr">Comparación entre gafas polarizadas y comunes</caption>
+                <thead><tr><th scope="col"><span class="sr">Aspecto</span></th><th scope="col">Polarizadas</th><th scope="col">Comunes</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">UV400</th><td><span class="yn y"><svg class="ico"><use href="#i-check"/></svg>Sí</span></td><td><span class="yn y"><svg class="ico"><use href="#i-check"/></svg>Sí</span></td></tr>
+                  <tr><th scope="row">Reflejo en agua, asfalto y nieve</th><td><span class="yn y"><svg class="ico"><use href="#i-check"/></svg>Lo cortan</span></td><td><span class="yn n"><svg class="ico"><use href="#i-x"/></svg>Lo oscurecen, no lo cortan</span></td></tr>
+                  <tr><th scope="row">Pantallas del celu y del auto</th><td><span class="yn n"><svg class="ico"><use href="#i-x"/></svg>Algunas se ven con manchas</span></td><td><span class="yn y"><svg class="ico"><use href="#i-check"/></svg>Se ven normal</span></td></tr>
+                  <tr><th scope="row">Van mejor para</th><td>Manejar, playa, pesca</td><td>Ciudad y uso diario</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <a class="btn btn-secondary btn-block" href="#">Ver gafas polarizadas</a>
+            <span class="tbv">Tabla a validar con el óptico</span>
+          </div>
+        </section>
+
+        <section class="sec section" aria-label="Reseñas (no se publica)"><span class="pin" aria-hidden="true">9</span>
+          <div class="reviews-off">
+            <span class="flag">No se publica todavía</span>
+            <h2 style="font-size:28px;line-height:32px">Lo que dicen quienes compraron</h2>
+            <p>Bloque reservado. Se activa cuando haya reseñas verificadas de compras reales, juntadas por el email posterior a la entrega. Muestra puntaje promedio, cantidad total y 3 reseñas con foto. Hasta entonces se oculta y no queda hueco en el home.</p>
+            <p><strong style="color:var(--ink)">Plugin:</strong> reseñas de WooCommerce con foto y solicitud automática por email.</p>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <section class="sec section prefoot" aria-labelledby="h-nl"><span class="pin" aria-hidden="true">10</span>
+          <div class="wrap nl">
+            <h2 id="h-nl" style="font-size:28px;line-height:32px">Te avisamos cuando entran modelos</h2>
+            <p style="color:var(--ink-muted)">[Incentivo a definir]. Un email por tanda nueva, nada más.</p>
+            <form class="nl" novalidate onsubmit="event.preventDefault()">
+              <div class="field">
+                <label for="nl-email">Email</label>
+                <input id="nl-email" type="email" autocomplete="email" placeholder="tunombre@gmail.com">
+                <p class="help">Te podés dar de baja desde cualquier email.</p>
+              </div>
+              <button class="btn btn-primary btn-block" type="submit">Suscribirme</button>
+            </form>
+          </div>
+        </section>
+
+        <div class="foot"><span class="pin" aria-hidden="true">11</span>
+          <div class="wrap">
+            <a class="logo" href="#home" aria-label="Sunnygafas, inicio"><img src="assets/isotipo-sunnygafas.png" alt="" width="40" height="32"><span>Sunnygafas</span></a>
+            <p class="foot-intro">Gafas de sol, polarizadas, armazones y cadenas. Venta online desde [ciudad], sin local a la calle.</p>
+            <div class="contact">
+              <a class="btn btn-wa btn-block" href="#"><svg class="ico"><use href="#i-chat"/></svg>Escribinos por WhatsApp</a>
+              <a href="#"><svg class="ico"><use href="#i-chat"/></svg>[+54 9 xx xxxx-xxxx]</a>
+              <a href="#"><svg class="ico"><use href="#i-ig"/></svg>@sunnygafas</a>
+              <a href="#"><svg class="ico"><use href="#i-mail"/></svg>sunny.gafas.ch@gmail.com</a>
+            </div>
+            <div class="acc">
+              <details><summary>Comprar<svg class="ico"><use href="#i-down"/></svg></summary><ul><li><a href="#">Gafas de sol</a></li><li><a href="#">Polarizadas</a></li><li><a href="#">Armazones</a></li><li><a href="#">Clip-on 2 en 1</a></li><li><a href="#">Accesorios</a></li><li><a href="#">Sale</a></li></ul></details>
+              <details><summary>Ayuda<svg class="ico"><use href="#i-down"/></svg></summary><ul><li><a href="#">Envíos</a></li><li><a href="#">Pagos</a></li><li><a href="#">Cambios y devoluciones</a></li><li><a href="#">Cuidado de tus gafas</a></li><li><a href="#">Guía de medidas</a></li><li><a href="#">Preguntas frecuentes</a></li></ul></details>
+              <details><summary>Sunnygafas<svg class="ico"><use href="#i-down"/></svg></summary><ul><li><a href="#">Quiénes somos</a></li><li><a href="#">Venta mayorista</a></li><li><a href="#">Blog</a></li><li><a href="#">Contacto</a></li><li><a href="#">Mi cuenta</a></li></ul></details>
+            </div>
+            <h4>Medios de pago</h4>
+            <div class="pay" aria-label="Medios de pago aceptados"><span>Visa</span><span>Mastercard</span><span>American Express</span><span>Naranja</span><span>Cabal</span><span>Maestro</span><span>Mercado Pago</span><span>Transferencia</span></div>
+            <p class="foot-ship" style="margin-top:8px">Logos oficiales en SVG en la versión final.</p>
+            <h4>Envíos</h4>
+            <p class="foot-ship">Correo Argentino a todo el país. Envío personalizado: a acordar por WhatsApp.</p>
+            <div class="legal">
+              <a class="btn-regret" href="#">Botón de arrepentimiento</a>
+              <div class="links"><a href="#">Términos y condiciones</a><a href="#">Privacidad</a><a href="#">Cambios y devoluciones</a><a href="#">Defensa del Consumidor</a></div>
+              <p>[Razón social] · CUIT [xx-xxxxxxxx-x] · [Domicilio legal]</p>
+              <p>© 2026 Sunnygafas</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <div class="fab"><a href="#" aria-label="Escribinos por WhatsApp"><svg class="ico" style="width:28px;height:28px"><use href="#i-chat"/></svg></a></div>
+    </div>
+    <!-- ================= /MOCKUP ================= -->
+  </div>
+
+  <aside class="notes" aria-labelledby="notes-h">
+    <h2 id="notes-h">Notas por sección</h2>
+    <button class="btn btn-secondary notes-toggle" type="button" id="notesToggle" aria-expanded="false" aria-controls="notesList">Ver notas</button>
+    <div class="notes-list" id="notesList">
+      <div class="note"><b>1</b><div><h3>Barra de anuncios + header fijo</h3><p>Rota 3 beneficios cada 5 s con pausa visible (WCAG 2.2.2) y se detiene con movimiento reducido. Header fijo de 60px: logo a 32px de alto, 4 íconos de 44px, contador del carrito. <code>Theme Builder › Header</code> con sticky de Elementor Pro.</p></div></div>
+      <div class="note"><b>2</b><div><h3>Hero</h3><p>Una sola foto 4:5 a sangre en WebP con <code>fetchpriority="high"</code>, sin slider. H1 verificable (el óptico existe) y una CTA. El botón invierte a crema sobre la foto para no perder contraste. Debajo, la única mención del 25% fuera de cards y barra.</p></div></div>
+      <div class="note"><b>3</b><div><h3>El probador</h3><p>Chips con la silueta de cada forma, así el color nunca es el único indicador. Filtra 2 a 4 productos por el atributo <code>pa_forma</code>. Probalo: tocá los chips. <code>Loop Grid</code> con taxonomía + filtro de Elementor (Taxonomy Filter) o plugin de filtros AJAX.</p></div></div>
+      <div class="note"><b>4</b><div><h3>Confianza</h3><p>Cuatro datos reales entre filetes <code>line-soft</code>, sin cajas. El nombre y la matrícula del óptico quedan como placeholder hasta tenerlos.</p></div></div>
+      <div class="note"><b>5</b><div><h3>Comprá por categoría</h3><p>Tres categorías con foto y tres como filas. La fila de Accesorios usa la foto real de Cadena · Gold. Escala a cientos de productos sin rediseño: las filas salen de las categorías de WooCommerce.</p></div></div>
+      <div class="note"><b>6</b><div><h3>Recién llegadas</h3><p>Carrusel manual con scroll-snap: nunca se mueve solo. Cards con los tres precios. <code>Loop Carousel</code> de Elementor Pro, orden por fecha.</p></div></div>
+      <div class="note"><b>7</b><div><h3>De Básica a Élite · banda ink</h3><p>El único momento dorado de este tramo son los rayos, que crecen con cada nivel. Los criterios quedan en placeholder: no invento materiales.</p></div></div>
+      <div class="note"><b>8</b><div><h3>¿Polarizadas o comunes? · banda mar</h3><p>Tabla real (<code>&lt;table&gt;</code> con <code>th</code>) en card blanca. Cada fila combina ícono y texto. CTA secundaria porque la primaria del tramo ya está en el hero.</p></div></div>
+      <div class="note"><b>9</b><div><h3>Reseñas</h3><p>Reservado y oculto hasta tener reseñas verificadas. En producción no ocupa espacio.</p></div></div>
+      <div class="note"><b>10</b><div><h3>Newsletter · pre-footer global</h3><p>Única banda <code>arena-100</code>. Está en el footer de todas las páginas, así el home no la repite. Formulario de Elementor conectado a la herramienta de email.</p></div></div>
+      <div class="note"><b>11</b><div><h3>Footer</h3><p>WhatsApp primero, navegación en acordeones, medios de pago, envíos y legales con botón de arrepentimiento a la vista (Res. 424/2020). <code>Theme Builder › Footer</code>.</p></div></div>
+    </div>
+  </aside>
+</div>
+
+<!-- ================= ESTADOS ================= -->
+<section class="states" aria-labelledby="st-h">
+  <h2 id="st-h">Estados que aparecen en esta etapa</h2>
+  <p>Menú off-canvas, probador sin resultados, newsletter con error y con éxito, y el placeholder de producto cuando una foto no carga.</p>
+  <div class="state-row">
+    <div class="frame">
+      <div class="drawer">
+        <div class="drawer-top"><a class="logo" href="#"><img src="assets/isotipo-sunnygafas.png" alt="" width="40" height="32"><span>Sunnygafas</span></a><button class="icobtn" aria-label="Cerrar menú"><svg class="ico"><use href="#i-x"/></svg></button></div>
+        <nav aria-label="Menú mobile">
+          <a href="#">Gafas de sol<svg class="ico"><use href="#i-down"/></svg></a>
+          <a class="sub" href="#">Básica</a><a class="sub" href="#">Esencial</a><a class="sub" href="#">Superior</a><a class="sub" href="#">Élite</a>
+          <a href="#">Polarizadas<svg class="ico"><use href="#i-chev"/></svg></a>
+          <a href="#">Armazones<svg class="ico"><use href="#i-chev"/></svg></a>
+          <a href="#">Clip-on 2 en 1<svg class="ico"><use href="#i-chev"/></svg></a>
+          <a href="#">Accesorios<svg class="ico"><use href="#i-chev"/></svg></a>
+          <a href="#">Sale<svg class="ico"><use href="#i-chev"/></svg></a>
+          <a href="#">Ayuda<svg class="ico"><use href="#i-chev"/></svg></a>
+        </nav>
+        <div class="drawer-foot">
+          <a class="acct" href="#"><svg class="ico"><use href="#i-user"/></svg>Ingresá o creá tu cuenta</a>
+          <a class="btn btn-wa btn-block" href="#"><svg class="ico"><use href="#i-chat"/></svg>Escribinos por WhatsApp</a>
+        </div>
+      </div>
+      <p class="frame-cap"><b>Menú off-canvas.</b> Entra desde la izquierda en 250ms, atrapa el foco y cierra con Esc o tocando afuera. <code>Popup</code> de Elementor Pro o widget Off-Canvas.</p>
+    </div>
+
+    <div class="frame">
+      <div class="mini white">
+        <div class="chips" style="margin:0;padding:0" role="group" aria-label="Forma del marco (estado vacío)">
+          <button class="chip" aria-pressed="false"><svg class="ico"><use href="#f-round"/></svg>Redondas</button>
+          <button class="chip" aria-pressed="true"><svg class="ico"><use href="#f-cat"/></svg>Cat eye</button>
+        </div>
+        <div class="empty">
+          <svg viewBox="0 0 52 28" fill="none" stroke="currentColor" stroke-width="1.25"><use href="#f-cat"/></svg>
+          <h3 style="font-size:22px;line-height:28px">Hoy no hay cat eye en stock</h3>
+          <p style="color:var(--ink-muted)">Escribinos y te avisamos cuando entren, o probá con redondas: también levantan la mirada.</p>
+          <a class="btn btn-secondary" href="#">Avisame por WhatsApp</a>
+        </div>
+      </div>
+      <p class="frame-cap"><b>Probador sin resultados.</b> Si una forma no tiene stock, el chip sigue visible y el estado propone una salida. Nunca muestra "0 resultados" a secas.</p>
+    </div>
+
+    <div class="frame">
+      <div class="mini">
+        <div class="field err">
+          <label for="s-err">Email</label>
+          <input id="s-err" type="email" value="martina.gomez" aria-invalid="true" aria-describedby="s-err-h">
+          <p class="help" id="s-err-h"><svg class="ico" style="width:18px;height:18px;margin-top:1px"><use href="#i-alert"/></svg>Revisá el email: le falta el dominio, por ejemplo @gmail.com.</p>
+        </div>
+        <div class="field ok">
+          <label for="s-ok">Email</label>
+          <input id="s-ok" type="email" value="martina.gomez@gmail.com">
+          <p class="help"><svg class="ico" style="width:18px;height:18px;margin-top:1px"><use href="#i-check"/></svg>Listo, te anotamos. Revisá tu bandeja para confirmar.</p>
+        </div>
+        <button class="btn btn-primary btn-block" disabled style="opacity:.55;cursor:progress">Enviando…</button>
+      </div>
+      <p class="frame-cap"><b>Newsletter.</b> El error reemplaza a la ayuda y dice cómo corregirlo; el éxito confirma en el lugar, sin pop-up. Mientras envía, el botón se bloquea.</p>
+    </div>
+
+    <div class="frame">
+      <div class="mini white">
+        <div class="grid2">
+          <div class="card card-ph"><div class="card-photo"><svg viewBox="0 0 120 48" fill="none" stroke="currentColor" stroke-width="1.25"><use href="#g-glasses"/></svg></div><p class="card-name">Glow · Negro</p><p style="font-size:12px;color:var(--ink-muted)">Foto no disponible</p></div>
+          <div class="card"><div class="card-photo"><span class="badges"><span class="badge" style="background:var(--piedra);color:var(--ink-muted);border:1px solid var(--line-soft)">Sin stock</span></span><img src="assets/productos/oriana-print.webp" alt="Oriana · Print, armazón carey" style="opacity:.55"></div><p class="card-name">Oriana <span>· Print</span></p><p class="p-list">Sin stock · <a href="#" style="color:var(--ink)">Avisame</a></p></div>
+        </div>
+      </div>
+      <p class="frame-cap"><b>Foto que no carga y sin stock.</b> El placeholder usa piedra, la silueta en trazo fino y el nombre. Sin stock baja la opacidad de la foto, suma el badge y ofrece aviso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTROL DE CALIDAD ================= -->
+<section class="qc" aria-labelledby="qc-h">
+  <h2 id="qc-h">Control de calidad</h2>
+  <p class="lede">Pasé critique, polish y audit de impeccable sobre la home mobile, más el checklist de UX. Estos son los resultados después de corregir.</p>
+
+  <div class="qc-grid">
+    <div class="qc-card" style="grid-column:1/-1">
+      <h3>1 · Heurísticas de Nielsen</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Heurística</th><th>Puntaje</th><th>Problema principal que queda</th></tr></thead>
+        <tbody>
+          <tr><td>Visibilidad del estado</td><td><span class="score">4</span></td><td>Contador del carrito, chip activo con fondo y forma, estados de envío del form. Resuelto.</td></tr>
+          <tr><td>Relación con el mundo real</td><td><span class="score">4</span></td><td>Formas con silueta y lenguaje de óptica ("puente", "varilla" quedan para la ficha).</td></tr>
+          <tr><td>Control y libertad</td><td><span class="score s3">3</span></td><td>La barra de anuncios rota sola. Tiene pausa, pero el botón es chico visualmente (target de 44px).</td></tr>
+          <tr><td>Consistencia</td><td><span class="score">4</span></td><td>Precio en tres líneas idéntico en todas las cards; un solo primario por tramo.</td></tr>
+          <tr><td>Prevención de errores</td><td><span class="score">4</span></td><td>Email con <code>type="email"</code> y autocompletado; validación al salir del campo, no mientras escribe.</td></tr>
+          <tr><td>Reconocer antes que recordar</td><td><span class="score">4</span></td><td>Swatches visibles en card y nombre del color en el título.</td></tr>
+          <tr><td>Flexibilidad</td><td><span class="score s3">3</span></td><td>El probador filtra por una forma a la vez. Combinar forma + color queda para el listado.</td></tr>
+          <tr><td>Estética y minimalismo</td><td><span class="score s3">3</span></td><td>Con fotos placeholder el home pierde fuerza; con fotos propias sube a 4.</td></tr>
+          <tr><td>Recuperarse de errores</td><td><span class="score">4</span></td><td>Error de email con la corrección; probador vacío con salida.</td></tr>
+          <tr><td>Ayuda</td><td><span class="score">4</span></td><td>WhatsApp flotante y en el footer; la comparativa responde la duda más común antes de preguntar.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="qc-card">
+      <h3>2 · Especificidad</h3>
+      <p>Cambiando solo el logo, ¿podría ser otra tienda? <strong>No del todo</strong>, por cuatro cosas que solo tiene Sunnygafas:</p>
+      <ul>
+        <li>El H1 nombra al óptico que avala las gafas, con matrícula en la banda de confianza.</li>
+        <li>El probador por forma con fotos reales del catálogo.</li>
+        <li>Los rayos del isotipo convertidos en escala de colecciones.</li>
+        <li>El precio con transferencia en <strong>mar</strong> en cada card, con el cálculo exacto ($20.250).</li>
+      </ul>
+      <p>Lo que todavía es genérico: el hero sin foto propia. Es la pieza que más depende de la clienta.</p>
+    </div>
+
+    <div class="qc-card">
+      <h3>3 · Dosis de color</h3>
+      <p>Viewports de 390 × 844 recorriendo el home de arriba abajo. Criterio: el header (logo + barra) es un solo bloque de marca y no lleva otro dorado al lado.</p>
+      <div class="vp">
+        <div><b>V1 · Hero</b>Dorado: header. Foto manda, sin bandas.</div>
+        <div><b>V2 · Probador</b>Dorado: header. Mar en precios.</div>
+        <div><b>V3 · Confianza + categorías</b>Dorado: header. Mar en íconos.</div>
+        <div><b>V4 · Filas + recién llegadas</b>Dorado: header.</div>
+        <div><b>V5 · Banda ink</b>Dorado: rayos. Sin fotos al lado.</div>
+        <div><b>V6 · Banda mar</b>Dorado: header. Sin oro sobre mar.</div>
+        <div><b>V7 · Newsletter</b>Dorado: header. Única banda arena-100.</div>
+        <div><b>V8 · Footer</b>Dorado: logo sobre ink.</div>
+      </div>
+      <p><span class="pass">Cumple:</span> banda ink y banda mar presentes; ninguna banda de color comparte viewport con una foto grande. <span class="warn">A decidir:</span> en V5 el header fijo suma su dorado al de los rayos. Propongo contar el header aparte.</p>
+    </div>
+
+    <div class="qc-card">
+      <h3>4 · Largo y redundancia</h3>
+      <ul>
+        <li><strong>Saqué</strong> la newsletter como sección del home: es el pre-footer global y estaba duplicada.</li>
+        <li><strong>Saqué</strong> el 25% como bloque propio: queda en barra, cards y la línea bajo el hero, como pide el brief.</li>
+        <li><strong>Saqué</strong> "UV400" del texto de la banda de colecciones: ya está en confianza y en la comparativa.</li>
+        <li><strong>Queda</strong> una repetición inevitable: con 4 modelos conocidos, Glow, Braga y Oriana aparecen en el probador y en recién llegadas. Con el catálogo completo se separan.</li>
+      </ul>
+    </div>
+
+    <div class="qc-card">
+      <h3>5 · Accesibilidad</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Par</th><th>Contraste</th></tr></thead>
+        <tbody>
+          <tr><td>ink-muted / arena-50</td><td>5.97:1 <span class="pass">AA</span></td></tr>
+          <tr><td>mar / white (precio)</td><td>7.83:1 <span class="pass">AA</span></td></tr>
+          <tr><td>oro / ink (barra)</td><td>5.79:1 <span class="pass">AA</span></td></tr>
+          <tr><td>on-ink-muted / ink</td><td>7.58:1 <span class="pass">AA</span></td></tr>
+          <tr><td>oro-strong / oro-soft</td><td>5.10:1 <span class="pass">AA</span></td></tr>
+          <tr><td>line / white (bordes)</td><td>3.99:1 <span class="pass">≥3:1</span></td></tr>
+          <tr><td>white / whatsapp</td><td>5.32:1 <span class="pass">AA</span></td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li>Targets de 44px o más en íconos, chips, filas y links del footer; botones de 48px.</li>
+        <li>Foco visible de 2px en ink; títulos en orden H1 → H2 → H3; tabla con <code>th scope</code>.</li>
+        <li>Alt en fotos de producto ("Oriana · Print, armazón carey"); los placeholders llevan su descripción.</li>
+        <li>Falta en producción: link "Ir al contenido" (va en el header de Theme Builder, oculto hasta el foco).</li>
+      </ul>
+    </div>
+
+    <div class="qc-card">
+      <h3>6 · Copy</h3>
+      <ul>
+        <li>Sin "Descubrí", "Bienvenido", "experiencia", "calidad premium", "elevá" ni "imperdible". Sin "no es X, es Y".</li>
+        <li>Cero signos de exclamación y cero emojis en la interfaz.</li>
+        <li>Botones con verbo primero: "Ver gafas de sol", "Suscribirme", "Escribinos por WhatsApp".</li>
+        <li>Datos inventados: ninguno. Los textos de forma de cara y la tabla de polarizadas son criterios generales de óptica y están marcados para validar con el óptico.</li>
+        <li>Precio sin impuestos calculado con IVA 21% ($27.000 / 1,21 = $22.314). Depende de la condición fiscal de la marca: está en la lista.</li>
+      </ul>
+    </div>
+
+    <div class="qc-card" style="grid-column:1/-1">
+      <h3>7 · Datos a pedir (hasta acá)</h3>
+      <ol class="ask">
+        <li>Nombre, apellido y matrícula del óptico que avala las gafas.</li>
+        <li>Forma de marco de cada uno de los ~12 productos (redonda, cuadrada, cat eye, aviador).</li>
+        <li>Qué cambia entre Básica, Esencial, Superior y Élite (marco, lente, terminación) y si tienen el mismo precio.</li>
+        <li>Cuáles modelos son polarizados.</li>
+        <li>Qué productos son "recién llegados" y cuáles llevan badge Nuevo.</li>
+        <li>Qué entra en Sale y con qué precios reales.</li>
+        <li>Precio de cada cadena ($6.000 o $11.200).</li>
+        <li>Incentivo de la newsletter, si lo hay.</li>
+        <li>Número de WhatsApp.</li>
+        <li>Razón social, CUIT, domicilio legal y ciudad desde donde despachan.</li>
+        <li>Condición fiscal (responsable inscripta o monotributo) para mostrar bien el precio sin impuestos nacionales.</li>
+        <li>Logo en vector (SVG): el adjunto es un PNG de 400 × 266 sobre blanco y lo recorté a mano.</li>
+        <li>Fotos lifestyle propias: hero 4:5 y 16:9, y una por categoría.</li>
+        <li>Si hay monto de envío gratis y cuál es.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+  // Rayos: líneas finas desde una semicircunferencia, como en el isotipo
+  document.querySelectorAll('svg.rays').forEach(function(s){
+    var n=+s.dataset.rays, w=+s.getAttribute('width'), h=+s.getAttribute('height');
+    var cx=w/2, cy=h-2, r0=h*0.32, r1=h*0.92, out='<path d="M2 '+cy+'H'+(w-2)+'" stroke="currentColor" stroke-width="1.25"/>';
+    for(var i=0;i<n;i++){
+      var a=Math.PI*(0.12+0.76*(n===1?0.5:i/(n-1)));
+      var len=(i%2? r1*0.78 : r1);
+      out+='<line x1="'+(cx-Math.cos(a)*r0).toFixed(1)+'" y1="'+(cy-Math.sin(a)*r0).toFixed(1)+'" x2="'+(cx-Math.cos(a)*len).toFixed(1)+'" y2="'+(cy-Math.sin(a)*len).toFixed(1)+'" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>';
+    }
+    s.setAttribute('viewBox','0 0 '+w+' '+h); s.innerHTML=out;
+  });
+
+  // Barra de anuncios con pausa
+  var msgs=['25% de descuento con transferencia','3 cuotas sin interés con tarjeta','Despachamos todos los días hábiles'], k=0, timer=null;
+  var ann=document.getElementById('ann'), tg=document.getElementById('annToggle');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function next(){ann.style.opacity=0;setTimeout(function(){k=(k+1)%msgs.length;ann.textContent=msgs[k];ann.style.opacity=1;},250);}
+  function play(){timer=setInterval(next,5000);tg.setAttribute('aria-label','Pausar mensajes');tg.innerHTML='<svg class="ico"><use href="#i-pause"/></svg>';}
+  function stop(){clearInterval(timer);timer=null;tg.setAttribute('aria-label','Reanudar mensajes');tg.innerHTML='<svg class="ico"><use href="#i-play"/></svg>';}
+  if(!reduce) play(); else stop();
+  tg.addEventListener('click',function(){timer?stop():play();});
+
+  // Productos reales
+  var P={
+    glow:{n:'Glow',c:'Negro',img:'glow-negro',alt:'Glow · Negro, gafas ovaladas de metal dorado con lente negro',sw:[['#1E1A16','Negro']]},
+    braga:{n:'Braga',c:'Verde',img:'braga-verde',alt:'Braga · Verde, gafas aviador de carey con lente verde',sw:[['#9DBB9E','Verde']]},
+    oriana:{n:'Oriana',c:'Rosa',img:'oriana-rosa',alt:'Oriana · Rosa, armazón rectangular',sw:[['#E7B8B2','Rosa'],['#1E1A16','Negro'],['linear-gradient(135deg,#6B4426 0 30%,#C59A6A 30% 55%,#3D2716 55%)','Print']],badge:'<span class="badge b-type">Armazón</span>'}
+  };
+  function price(){return '<div class="price"><p class="p-transfer"><b>$20.250</b>con transferencia</p><p class="p-list">$27.000 o 3 × $9.000 sin interés</p><p class="p-tax">Sin imp. nacionales: $22.314</p></div>';}
+  function card(key,extraBadge){
+    var p=P[key], sw=p.sw.map(function(s,i){return '<i'+(i===0?' class="on"':'')+' style="background:'+s[0]+'" title="'+s[1]+'"></i>';}).join('');
+    var b=(extraBadge||'')+(p.badge||'');
+    return '<a class="card" href="#"><div class="card-photo">'+(b?'<span class="badges">'+b+'</span>':'')+'<img src="assets/productos/'+p.img+'.webp" alt="'+p.alt+'" loading="lazy"></div><p class="card-name">'+p.n+' <span>· '+p.c+'</span></p><div class="sw" aria-label="'+p.sw.length+(p.sw.length>1?' colores':' color')+'">'+sw+'</div>'+price()+'</a>';
+  }
+  function ph(label){return '<div class="card card-ph"><div class="card-photo"><svg viewBox="0 0 120 48" fill="none" stroke="currentColor" stroke-width="1.25"><use href="#g-glasses"/></svg></div><p class="card-name">'+label+'</p><p class="p-tax">Del catálogo actual, según la forma</p></div>';}
+
+  var shapes={
+    round:{t:'Suavizan las caras con ángulos marcados: mandíbula cuadrada o frente ancha.',l:'Ver todas las redondas',items:function(){return card('glow')+ph('[Otro modelo redondo]');}},
+    square:{t:'Dan estructura a las caras redondas u ovaladas.',l:'Ver todas las cuadradas',items:function(){return card('oriana')+ph('[Otro modelo cuadrado]');}},
+    cat:{t:'Levantan la mirada. Suman en caras con mentón angosto o forma de corazón.',l:'Ver todas las cat eye',items:function(){return ph('[Modelo cat eye]')+ph('[Modelo cat eye]');}},
+    avi:{t:'Acompañan casi todas las caras; resaltan en las ovaladas y cuadradas.',l:'Ver todas las aviador',items:function(){return card('braga')+ph('[Otro modelo aviador]');}}
+  };
+  var grid=document.getElementById('probGrid'), ft=document.getElementById('fitText'), pl=document.getElementById('probLink');
+  function show(s){var d=shapes[s];grid.innerHTML=d.items();ft.textContent=d.t;pl.firstChild.nodeValue=d.l+' ';}
+  document.querySelectorAll('[data-shape]').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('[data-shape]').forEach(function(x){x.setAttribute('aria-pressed',x===b);});show(b.dataset.shape);});});
+  show('round');
+
+  document.getElementById('newRail').innerHTML=card('oriana','<span class="badge b-new">Nuevo</span>')+card('braga')+card('glow')+ph('[Modelo nuevo]');
+
+  // Notas plegables en pantallas angostas
+  var nt=document.getElementById('notesToggle'), nl=document.getElementById('notesList');
+  var mq=window.matchMedia('(max-width:900px)');
+  function sync(){ if(mq.matches){nl.hidden=nt.getAttribute('aria-expanded')!=='true';} else {nl.hidden=false;} }
+  nt.addEventListener('click',function(){var o=nt.getAttribute('aria-expanded')==='true';nt.setAttribute('aria-expanded',!o);nt.textContent=o?'Ver notas':'Ocultar notas';sync();});
+  mq.addEventListener('change',sync); sync();
+})();
+</script>
