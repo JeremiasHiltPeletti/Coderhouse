@@ -1,0 +1,687 @@
+<title>Sunnygafas · Etapa 3</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/sunny.css">
+<style>
+/* Presentación igual que la etapa 2: desktop escalado arriba, mobile 390 con estados abajo. */
+:root{--desk:#E7E3DC;--desk-ink:#1E1A16;--desk-muted:#6B5F53;--desk-rule:#D6CFC4;--card:#FFFFFF;color-scheme:light}
+body{background:var(--desk);color:var(--desk-ink);font:400 16px/24px "Hanken Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 80px}
+.doc{max-width:1240px;margin:0 auto}
+.doc h1,.doc h2,.doc h3{font-family:"Gloock",Georgia,serif;font-weight:400;margin:0;text-wrap:balance}
+.doc-head{padding-block:48px 24px;display:grid;gap:20px}
+.doc-brand{display:flex;align-items:center;gap:12px}.doc-brand img{height:32px;width:auto}.doc-brand span{font-family:"Gloock",Georgia,serif;font-size:22px}
+.doc-head h1{font-size:clamp(36px,5vw,56px);line-height:1.05}
+.doc-lede{font-size:18px;line-height:28px;color:var(--desk-muted);max-width:70ch}
+.toc{display:flex;flex-wrap:wrap;gap:8px}
+.toc a{height:40px;padding:0 16px;border-radius:999px;background:var(--card);display:inline-flex;align-items:center;text-decoration:none;font-weight:600;font-size:14px;color:var(--desk-ink)}
+.finding{background:var(--card);border-radius:12px;padding:24px;display:grid;gap:12px;margin-top:8px}
+.finding h2{font-size:24px;line-height:30px}
+.finding p,.finding li{font-size:15px;line-height:23px;color:var(--desk-muted)}
+.finding ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.finding strong{color:var(--desk-ink)}
+.screen{margin-top:72px}
+.screen>header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}
+.screen>header h2{font-size:36px;line-height:40px}
+.screen>header p{color:var(--desk-muted);max-width:70ch}
+.mode{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--desk-muted)}
+.cap{font-size:14px;color:var(--desk-muted);margin:24px 0 10px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.cap b{color:var(--desk-ink)}
+.zoombtn{background:none;border:0;font:600 14px/1 "Hanken Grotesk",sans-serif;color:var(--desk-ink);text-decoration:underline;cursor:pointer;min-height:32px}
+.dframe{border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(30,26,22,.08),0 24px 60px -28px rgba(30,26,22,.35);background:var(--card)}
+.dframe.real{overflow-x:auto}
+.dframe>.scr{width:1440px}
+.mrow{display:grid;grid-template-columns:390px minmax(0,1fr);gap:40px;align-items:start}
+.mframe{width:390px;max-width:100%;border-radius:28px;overflow:clip;box-shadow:0 1px 2px rgba(30,26,22,.08),0 24px 60px -24px rgba(30,26,22,.35);background:var(--card)}
+.states{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;align-content:start}
+.sframe{background:var(--card);border-radius:20px;overflow:hidden;box-shadow:0 1px 2px rgba(30,26,22,.08),0 16px 40px -24px rgba(30,26,22,.3);display:flex;flex-direction:column}
+.sframe>.scr{flex:1}
+.scap{padding:12px 16px;font-size:13px;line-height:18px;color:var(--desk-muted);border-top:1px solid #EEE8DF}
+.scap b{color:var(--desk-ink)}
+.notes{display:grid;margin-top:8px}
+.notes div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding:12px 0;border-top:1px solid var(--desk-rule);font-size:14px;line-height:21px;color:var(--desk-muted)}
+.notes b{color:var(--desk-ink)}
+.notes code,.finding code,.qc-card code{font-size:12.5px;background:#DDD7CE;padding:1px 5px;border-radius:4px;color:var(--desk-ink)}
+.qc{margin-top:88px;display:grid;gap:16px}
+.qc>h2{font-size:36px;line-height:40px}
+.qc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+.qc-card{background:var(--card);border-radius:12px;padding:24px;display:grid;gap:12px;align-content:start;min-width:0}
+.qc-card h3{font-size:22px;line-height:28px}
+.qc-card p,.qc-card li{font-size:15px;line-height:23px;color:var(--desk-muted)}
+.qc-card ul,.qc-card ol{margin:0;padding-left:20px;display:grid;gap:6px}
+.qc-card strong{color:var(--desk-ink)}
+.qc-card table{width:100%;border-collapse:collapse;font-size:14px;line-height:20px}
+.qc-card th,.qc-card td{text-align:left;padding:9px 8px;border-bottom:1px solid #EEE8DF;vertical-align:top;color:var(--desk-muted)}
+.qc-card thead th{font-size:13px;font-weight:700}
+.qc-card td:first-child{color:var(--desk-ink);font-weight:600}
+.tw{overflow-x:auto}
+.score{display:inline-grid;place-items:center;min-width:30px;height:24px;border-radius:999px;font-weight:800;font-size:13px;background:#D9EBE8;color:#1D5A60}
+.score.s3{background:#F2F0EC;color:#1E1A16}
+.pass{color:#2E6F3A;font-weight:700}.warn{color:#85561A;font-weight:700}
+.wide{grid-column:1/-1}
+.ask{columns:2 320px;gap:32px}.ask li{break-inside:avoid;margin-bottom:6px}
+@media (max-width:860px){.mrow{grid-template-columns:minmax(0,1fr)}.mframe{width:100%;max-width:390px}.notes div{grid-template-columns:minmax(0,1fr);gap:4px}}
+
+/* ---------- Piezas de la etapa 3 ---------- */
+.nlgrid,.nlform{display:grid;gap:12px}
+@container scr (min-width:1000px){.nlgrid{grid-template-columns:1fr 1fr;gap:64px;align-items:end}.nlform{grid-template-columns:1fr auto;align-items:start}.nlform .btn{margin-top:26px}}
+
+/* Línea de producto */
+.line{display:grid;grid-template-columns:80px minmax(0,1fr) auto;gap:4px 14px;padding-block:16px;border-bottom:1px solid var(--line-soft);align-items:start}
+.line .th{grid-row:span 3;width:80px;aspect-ratio:4/5;border-radius:8px;background:var(--piedra);overflow:hidden;display:block}
+.line .th img{width:100%;height:100%;object-fit:contain;padding:8%;mix-blend-mode:multiply}
+.line .th img.full{object-fit:cover;padding:0;mix-blend-mode:normal}
+.line .nm{font-weight:600;font-size:15px;line-height:20px}
+.line .nm span{font-weight:400;color:var(--ink-muted)}
+.line .meta{font-size:13px;line-height:18px;color:var(--ink-muted)}
+.line .lp{text-align:right;font-variant-numeric:tabular-nums;grid-row:1/3;grid-column:3}
+.line .lp b{display:block;font-size:15px;font-weight:700}
+.line .lp small{display:block;font-size:13px;color:var(--mar);font-weight:600}
+.line .acts{grid-column:2/4;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
+.stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:12px;height:44px}
+.stepper button{width:40px;height:42px;border:0;background:none;display:grid;place-items:center;border-radius:12px}
+.stepper button:hover{background:var(--piedra)}
+.stepper button[disabled]{color:var(--line);cursor:not-allowed;background:none}
+.stepper output{min-width:24px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.rm{background:none;border:0;font-size:14px;color:var(--ink-muted);text-decoration:underline;min-height:44px;padding:0 4px}
+.rm:hover{color:var(--ink)}
+
+/* Barra de envío gratis */
+.freebar{background:var(--mar);color:var(--white);padding:12px 16px;display:grid;gap:8px;font-size:14px;line-height:20px}
+.freebar b{font-weight:700}
+.freebar .trk{height:6px;border-radius:3px;background:rgba(255,255,255,.25);overflow:hidden}
+.freebar .trk i{display:block;height:100%;background:var(--white);border-radius:3px}
+.freebar.done{display:flex;align-items:center;gap:10px}
+.freebar small{color:var(--mar-soft);font-size:12px}
+
+/* Resumen */
+.sumrows{display:grid;gap:0;font-variant-numeric:tabular-nums}
+.sumrows div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;font-size:15px;line-height:22px}
+.sumrows div span:last-child{text-align:right}
+.sumrows .disc{color:var(--mar);font-weight:600}
+.sumrows .tot{border-top:1px solid var(--line-soft);margin-top:6px;padding-top:14px;font-size:18px;font-weight:800;align-items:baseline}
+.sumrows .tot small{display:block;font-size:13px;font-weight:400;color:var(--ink-muted)}
+.sumrows .tax{font-size:12px;line-height:16px;color:var(--ink-muted);padding-top:0}
+.tnote{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line-soft);border-radius:12px;padding:14px;font-size:14px;line-height:20px}
+.tnote b{color:var(--mar);font-weight:700}
+.tnote .circ{width:36px;height:36px}.tnote .circ .ico{width:18px;height:18px}
+.policy{display:flex;gap:10px;font-size:14px;line-height:20px;color:var(--ink-muted)}
+.policy .ico{width:18px;height:18px;color:var(--mar);margin-top:1px}
+.xsell{display:grid;gap:10px}
+.xsell h3{font:700 15px/20px var(--f-ui);letter-spacing:0}
+.xitem{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:8px;border:1px solid var(--line-soft);border-radius:12px}
+.xitem .th{width:56px;height:56px;border-radius:8px;overflow:hidden;background:var(--piedra)}
+.xitem .th img{width:100%;height:100%;object-fit:cover}
+.xitem b{display:block;font-size:14px;font-weight:600;line-height:20px}
+.xitem small{font-size:13px;color:var(--ink-muted);font-variant-numeric:tabular-nums}
+.xitem small em{font-style:normal;color:var(--mar);font-weight:700}
+.xitem .btn{height:44px;padding:0 14px;font-size:14px}
+
+/* Side cart */
+.sc-stage{position:relative;min-height:860px;background:var(--white)}
+.sc-back{filter:saturate(.9)}
+.scrim{position:absolute;inset:0;background:rgba(30,26,22,.45);z-index:45}
+.sidecart{position:absolute;top:0;right:0;bottom:0;width:100%;background:var(--white);z-index:46;display:flex;flex-direction:column;box-shadow:var(--shadow-float)}
+.sc-top{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 4px 0 16px;border-bottom:1px solid var(--line-soft)}
+.sc-top h2{font-size:22px;line-height:28px}
+.sc-body{flex:1;overflow:auto;padding:0 16px 16px;display:grid;gap:16px;align-content:start}
+.sc-foot{border-top:1px solid var(--line-soft);padding:12px 16px 16px;display:grid;gap:10px;background:var(--white)}
+.sc-foot .row{display:flex;justify-content:space-between;align-items:baseline;font-variant-numeric:tabular-nums}
+.sc-foot .row b{font-size:18px;font-weight:800}
+.sc-foot .sub{font-size:14px;color:var(--ink-muted);display:flex;justify-content:space-between}
+.sc-foot .sub em{font-style:normal;color:var(--mar);font-weight:700}
+.sc-foot .link{justify-self:center;min-height:40px}
+@container scr (min-width:1000px){.sidecart{width:440px}}
+.emptycart{display:grid;justify-items:center;text-align:center;gap:12px;padding:48px 8px}
+.emptycart svg{width:72px;color:var(--line)}
+
+/* Carrito página */
+.cart-grid{display:grid;gap:24px}
+.cart-h{padding-block:8px 8px;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.summary{display:grid;gap:16px;align-content:start}
+.sumcard{border:1px solid var(--line-soft);border-radius:12px;padding:20px;display:grid;gap:14px}
+.sumcard h2{font-size:22px;line-height:28px}
+@container scr (min-width:1000px){
+  .cart-grid{grid-template-columns:minmax(0,1fr) 400px;gap:64px;align-items:start}
+  .summary{position:sticky;top:104px}
+  .cart-grid .line{grid-template-columns:104px minmax(0,1fr) 160px auto;gap:4px 24px;padding-block:24px}
+  .cart-grid .line .th{width:104px}
+  .cart-grid .line .acts{grid-column:2;justify-content:flex-start;gap:16px}
+  .cart-grid .line .lp{grid-column:3/5}
+}
+
+/* Checkout */
+.co-hdr{border-bottom:1px solid var(--line-soft);background:var(--white)}
+.co-hdr .row{height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-inline:16px;max-width:1408px;margin-inline:auto}
+.co-hdr .back{font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:4px;min-height:44px;text-decoration:none}
+.co-hdr .back .ico{transform:rotate(180deg);width:18px;height:18px}
+.co-hdr .help{font-size:14px;display:inline-flex;gap:6px;align-items:center;min-height:44px;color:var(--whatsapp);font-weight:700;text-decoration:none}
+.co-hdr .help .ico{width:18px;height:18px}
+.co-hdr .help span{color:var(--ink)}
+.co-sum-m{border-bottom:1px solid var(--line-soft);background:var(--piedra)}
+.co-sum-m summary{list-style:none;display:flex;justify-content:space-between;align-items:center;min-height:56px;padding-inline:16px;font-weight:600;cursor:pointer}
+.co-sum-m summary::-webkit-details-marker{display:none}
+.co-sum-m summary b{font-variant-numeric:tabular-nums;font-size:17px}
+.co-sum-m .inner{padding:0 16px 16px}
+.co-grid{display:grid;gap:8px}
+.co-main{display:grid;gap:8px}
+.step{padding-block:24px;border-bottom:1px solid var(--line-soft);display:grid;gap:16px}
+.step h2{font-size:22px;line-height:28px;display:flex;gap:12px;align-items:center}
+.step h2 .n{width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--arena-50);font:700 14px/28px var(--f-ui);text-align:center;flex:none}
+.step .aside{font-size:14px;color:var(--ink-muted)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px 12px}
+.fgrid .full{grid-column:1/-1}
+.opts{display:grid;gap:8px}
+.opt{display:grid;grid-template-columns:24px 1fr auto;gap:4px 12px;align-items:start;border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;position:relative;transition:border-color .15s var(--ease)}
+.opt:hover{border-color:var(--ink)}
+.opt input{appearance:none;width:22px;height:22px;border:1.5px solid var(--line);border-radius:50%;margin:1px 0 0;display:grid;place-items:center;background:var(--white)}
+.opt input:checked{border-color:var(--ink)}
+.opt input:checked::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--ink)}
+.opt:has(input:checked){border:2px solid var(--ink);padding:13px 15px}
+.opt input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.opt b{font-weight:600;font-size:15px;line-height:22px}
+.opt small{grid-column:2/4;font-size:14px;line-height:20px;color:var(--ink-muted)}
+.opt .amt{font-weight:700;font-variant-numeric:tabular-nums;text-align:right;font-size:15px}
+.opt .amt em{display:block;font-style:normal;font-size:12px;font-weight:400;color:var(--ink-muted)}
+.opt .extra{grid-column:2/4;display:none;margin-top:8px}
+.opt:has(input:checked) .extra{display:grid;gap:8px}
+.paylogos{display:flex;flex-wrap:wrap;gap:4px;grid-column:2/4;margin-top:4px}
+.paylogos span{height:24px;padding:0 8px;border-radius:4px;border:1px solid var(--line-soft);font-size:11px;font-weight:700;display:inline-flex;align-items:center}
+.terms{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:20px}
+.terms input{appearance:none;width:22px;height:22px;border:1.5px solid var(--line);border-radius:6px;margin:0;flex:none;display:grid;place-items:center}
+.terms input:checked{background:var(--ink);border-color:var(--ink)}
+.terms input:checked::after{content:"";width:10px;height:6px;border:2px solid var(--arena-50);border-top:0;border-right:0;transform:translateY(-1px) rotate(-45deg)}
+.co-side{display:none}
+.paybtn{display:grid;gap:10px;padding-block:24px}
+.paybtn p{font-size:13px;line-height:18px;color:var(--ink-muted);text-align:center}
+.lines-mini .line{grid-template-columns:56px minmax(0,1fr) auto;padding-block:10px}
+.lines-mini .line .th{width:56px;grid-row:span 2;position:relative;overflow:visible}
+.lines-mini .line .th .q{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;border-radius:10px;background:var(--ink-muted);color:var(--white);font-size:11px;font-weight:700;display:grid;place-items:center}
+.lines-mini .line .lp{grid-row:1/3}
+@container scr (min-width:1000px){
+  .co-hdr .row{padding-inline:64px}
+  .co-sum-m{display:none}
+  .co-grid{grid-template-columns:minmax(0,1fr) 440px;gap:64px;align-items:start}
+  .co-side{display:block;position:sticky;top:24px;background:var(--piedra);border-radius:12px;padding:24px;margin-top:24px}
+  .co-side h2{font-size:22px;line-height:28px;margin-bottom:8px}
+  .fgrid{grid-template-columns:repeat(6,1fr)}
+  .fgrid>*{grid-column:span 3}
+  .fgrid .s2{grid-column:span 2}
+  .fgrid .s4{grid-column:span 4}
+  .fgrid .full{grid-column:1/-1}
+  .opts.two{grid-template-columns:1fr 1fr}
+  .paybtn{max-width:480px}
+}
+
+/* Confirmación */
+.ok-head{display:grid;gap:12px;padding-block:32px 8px}
+.ok-head .circ{width:48px;height:48px;background:var(--mar-soft)}
+.ok-head .circ .ico{width:26px;height:26px}
+.bank{border:2px solid var(--ink);border-radius:12px;padding:20px;display:grid;gap:12px}
+.bank h2{font-size:22px;line-height:28px}
+.bank .amount{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line-soft)}
+.bank .amount b{font-size:28px;font-weight:800;color:var(--mar);font-variant-numeric:tabular-nums}
+.bank dl{margin:0;display:grid;gap:0}
+.bank dl>div{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line-soft)}
+.bank dl>div:last-child{border-bottom:0}
+.bank dt{font-size:13px;color:var(--ink-muted);grid-column:1}
+.bank dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums;grid-column:1;word-break:break-all}
+.bank .copy{grid-column:2;grid-row:1/3;height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--white);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px}
+.bank .copy .ico{width:16px;height:16px}
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.timeline li{display:grid;grid-template-columns:28px 1fr;gap:12px;padding-bottom:18px;position:relative}
+.timeline li::before{content:"";position:absolute;left:13px;top:28px;bottom:0;width:2px;background:var(--line-soft)}
+.timeline li:last-child::before{display:none}
+.timeline .dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--line-soft);background:var(--white);display:grid;place-items:center}
+.timeline .dot .ico{width:14px;height:14px}
+.timeline li.done .dot{background:var(--mar);border-color:var(--mar);color:var(--white)}
+.timeline li.now .dot{border-color:var(--ink)}
+.timeline b{display:block;font-weight:600;font-size:15px}
+.timeline small{font-size:14px;color:var(--ink-muted);line-height:20px}
+.ok-grid{display:grid;gap:24px;padding-bottom:48px}
+.ok-grid>*,.co-grid>*,.co-main,.acct>*,.cart-grid>*{min-width:0}
+.co-hdr .back .d{display:none}
+@container scr (min-width:1000px){.co-hdr .back .d{display:inline}}
+@container scr (min-width:1000px){.ok-grid{grid-template-columns:minmax(0,1fr) 400px;gap:64px;align-items:start}.ok-head{padding-top:56px}}
+
+/* Mi cuenta */
+.acct{display:grid;gap:16px;padding-bottom:48px}
+.acct-nav{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding:4px 16px}
+.acct-nav a{flex:none;height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line-soft);display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:14px;font-weight:600}
+.acct-nav a[aria-current="page"]{background:var(--ink);color:var(--arena-50);border-color:var(--ink)}
+.acct-nav a .ico{width:18px;height:18px}
+.order{border:1px solid var(--line-soft);border-radius:12px;padding:16px;display:grid;gap:12px}
+.order .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.order .top b{font-weight:700}
+.order .top small{display:block;font-size:13px;color:var(--ink-muted)}
+.status{height:28px;padding:0 12px;border-radius:999px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.status .ico{width:14px;height:14px}
+.st-wait{background:var(--oro-soft);color:var(--oro-strong)}
+.st-prep{background:var(--piedra);color:var(--ink)}
+.st-ship{background:var(--mar-soft);color:var(--mar)}
+.st-done{background:var(--white);color:var(--success);border:1px solid var(--line-soft)}
+.order .thumbs{display:flex;gap:8px}
+.order .thumbs span{width:48px;height:60px;border-radius:6px;background:var(--piedra);overflow:hidden}
+.order .thumbs img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:6%}
+.order .thumbs img.full{object-fit:cover;padding:0;mix-blend-mode:normal}
+.order .bot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px}
+.order .bot .btns{display:flex;gap:8px;flex-wrap:wrap}
+.order .bot .btn{height:44px;padding:0 14px;font-size:14px}
+.order .regret{font-size:13px;color:var(--ink-muted)}
+.order .regret a{color:var(--ink)}
+.whcard{border:1px solid var(--line-soft);border-radius:12px;padding:20px;display:grid;gap:10px}
+.whcard h3{font-size:22px;line-height:28px}
+@container scr (min-width:1000px){
+  .acct{grid-template-columns:240px minmax(0,1fr);gap:64px;align-items:start;padding-top:16px}
+  .acct-nav{flex-direction:column;margin:0;padding:0;overflow:visible;position:sticky;top:104px}
+  .acct-nav a{border:0;border-radius:12px;height:44px;justify-content:flex-start}
+  .acct-nav a:not([aria-current="page"]):hover{background:var(--piedra)}
+  .acct-main{display:grid;gap:24px}
+  .acct-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+}
+.tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line-soft)}
+.tabs button{height:48px;border:0;background:none;font-weight:600;border-bottom:2px solid transparent}
+.tabs button[aria-selected="true"]{border-bottom-color:var(--ink)}
+.tabs button[aria-selected="false"]{color:var(--ink-muted)}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 21h18M4 10h16M12 3l9 5H3Z"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5Z"/><path d="m3 8 9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12s-8-7-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M3 9 5 3h14l2 6M3 9v11h18V9M3 9h18M9 20v-6h6v6"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+</svg>
+
+<div class="doc">
+<header class="doc-head">
+  <div class="doc-brand"><img src="assets/isotipo-sunnygafas.png" alt="" width="40" height="32"><span>Sunnygafas</span></div>
+  <h1>Etapa 3: carrito, checkout, confirmación y cuenta</h1>
+  <p class="doc-lede">Todo en modo Operate: lienzo blanco, una acción principal por vista y los números completos a la vista. El carrito de ejemplo trae Glow · Negro ($27.000) y Cadena · Gold ($6.000), con los precios reales de la tienda. En el checkout podés cambiar el medio de pago y el envío: el resumen se recalcula al instante.</p>
+  <nav class="toc" aria-label="Pantallas"><a href="#s-side">Side cart</a><a href="#s-cart">Carrito</a><a href="#s-co">Checkout</a><a href="#s-ok">Confirmación</a><a href="#s-acct">Mi cuenta</a><a href="#s-qc">Control de calidad</a></nav>
+</header>
+
+<section class="finding" aria-labelledby="dec-h">
+  <h2 id="dec-h">Tres decisiones que tomé en esta etapa</h2>
+  <ul>
+    <li><strong>El descuento del 25% se ve en dos lugares sin duplicarse:</strong> como recordatorio en el carrito ("pagando con transferencia: $24.750") y como línea aplicada en el checkout cuando elegís transferencia. En el carrito no se descuenta, porque todavía no elegiste cómo pagar.</li>
+    <li><strong>El envío nunca aparece como "gratis" ni como "$0" mientras no haya tarifa.</strong> Hasta tener el monto mínimo de envío gratis y las tarifas de Correo Argentino, todo eso queda en placeholder y el total lo dice: "+ envío".</li>
+    <li><strong>Checkout sin menú ni footer completo.</strong> Solo logo, "Volver al carrito" y WhatsApp para dudas. Los legales y el botón de arrepentimiento siguen al pie.</li>
+  </ul>
+</section>
+
+<!-- SIDE CART -->
+<section class="screen" id="s-side" aria-labelledby="ss-h">
+  <header><div><p class="mode">Operate · componente flotante</p><h2 id="ss-h">Side cart</h2></div><p>Se abre al agregar un producto, sobre la página donde estabas. Barra hacia el envío gratis en <code>mar</code>, líneas editables, cross-sell de cadenas y recordatorio del 25%.</p></header>
+  <div class="cap"><span><b>1440px</b> · escalado · drawer de 440px sobre la ficha</span><button class="zoombtn" data-real="f-side">Ver a 1440 reales</button></div>
+  <div class="dframe" id="f-side"><div class="scr" id="side-d"></div></div>
+  <div class="cap"><span><b>390px</b> · a pantalla completa</span></div>
+  <div class="mrow">
+    <div class="mframe"><div class="scr" id="side-m"></div></div>
+    <div class="states">
+      <div class="sframe"><div class="scr"><div class="sc-top"><h2>Tu carrito</h2><button class="icobtn" aria-label="Cerrar carrito"><svg class="ico"><use href="#i-x"/></svg></button></div><div class="emptycart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><use href="#i-bag"/></svg><h3 class="h3">Tu carrito está vacío</h3><p class="muted small">Las más elegidas de la colección Básica arrancan en $20.250 con transferencia.</p><a class="btn btn-primary" href="#">Ver gafas de sol</a></div></div><p class="scap"><b>Vacío.</b> Una sola salida, con un dato concreto en lugar de "¡Empezá a comprar!".</p></div>
+      <div class="sframe"><div class="scr"><div class="freebar done"><svg class="ico s"><use href="#i-check"/></svg><span><b>Tenés envío gratis</b> con Correo Argentino.</span></div><div style="padding:16px" class="small muted">Cuando el subtotal llega al monto mínimo, la barra pasa a confirmar con texto y check. El monto mínimo es un dato a pedir.</div></div><p class="scap"><b>Envío gratis alcanzado.</b> Confirmación con ícono y texto, no solo la barra llena.</p></div>
+      <div class="sframe"><div class="scr"><div style="padding:0 16px"><div class="line" id="line-oos"></div></div><div style="padding:12px 16px 16px" class="small" ><p style="display:flex;gap:8px;color:var(--error)"><svg class="ico s" style="margin-top:1px"><use href="#i-alert"/></svg>Quedó 1 Cadena · Gold en stock. Ajustamos la cantidad a 1.</p></div></div><p class="scap"><b>Stock real.</b> Si pedís más de lo que hay, se ajusta y te lo decimos. Nunca "¡quedan pocas!".</p></div>
+    </div>
+  </div>
+  <div class="notes">
+    <div><b>Plugin</b><span>Side cart para WooCommerce con barra de envío gratis, cross-sell y edición de cantidades (tipo FunnelKit Cart o Side Cart WooCommerce de XootiX). Se estiliza con CSS de este sistema.</span></div>
+    <div><b>Cross-sell</b><span>Productos de "ventas cruzadas" de WooCommerce. Regla: si hay gafas en el carrito, sugiere cadenas que no estén ya agregadas. Botón "Sumar" que agrega sin salir del drawer.</span></div>
+    <div><b>Accesibilidad</b><span><code>role="dialog"</code> con <code>aria-modal</code>, foco atrapado, cierre con Esc y retorno del foco al botón que lo abrió.</span></div>
+  </div>
+</section>
+
+<!-- CARRITO -->
+<section class="screen" id="s-cart" aria-labelledby="sc-h">
+  <header><div><p class="mode">Operate · pantalla de compra</p><h2 id="sc-h">Carrito</h2></div><p>Para quien prefiere revisar con calma o llega desde el link "Ver carrito". Suma el cotizador de envío y la política de cambios, que el brief pide visible acá.</p></header>
+  <div class="cap"><span><b>1440px</b> · escalado</span><button class="zoombtn" data-real="f-cart">Ver a 1440 reales</button></div>
+  <div class="dframe" id="f-cart"><div class="scr" id="cart-d"></div></div>
+  <div class="cap"><span><b>390px</b></span></div>
+  <div class="mrow">
+    <div class="mframe"><div class="scr" id="cart-m"></div></div>
+    <div class="notes" style="margin:0">
+      <div><b>Widget</b><span><code>Cart</code> de Elementor Pro (WooCommerce) con layout de dos columnas y CSS propio para la línea de producto.</span></div>
+      <div><b>Cotizador</b><span>El mismo plugin de Correo Argentino de la ficha. Si ya se calculó en la ficha, el código postal llega completado.</span></div>
+      <div><b>Cupones</b><span>No muestro campo de cupón: hoy no hay promociones y un campo vacío invita a salir a buscar códigos. Si la marca lanza cupones, va como link plegado "¿Tenés un código?" en el resumen.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKOUT -->
+<section class="screen" id="s-co" aria-labelledby="sco-h">
+  <header><div><p class="mode">Operate · una sola página</p><h2 id="sco-h">Checkout</h2></div><p>Contacto, entrega y pago en una sola página. Elegí "Transferencia o efectivo" y mirá el resumen: el descuento aparece aplicado al instante y el total baja.</p></header>
+  <div class="cap"><span><b>1440px</b> · escalado · interactivo</span><button class="zoombtn" data-real="f-co">Ver a 1440 reales</button></div>
+  <div class="dframe" id="f-co"><div class="scr" id="co-d"></div></div>
+  <div class="cap"><span><b>390px</b> · resumen plegado arriba, con el total</span></div>
+  <div class="mrow">
+    <div class="mframe"><div class="scr" id="co-m"></div></div>
+    <div class="states">
+      <div class="sframe"><div class="scr"><div class="in" style="padding-block:16px;display:grid;gap:16px">
+        <div class="field err"><label for="e-dni">DNI</label><input id="e-dni" inputmode="numeric" value="3245" aria-invalid="true" aria-describedby="e-dni-h"><p class="help" id="e-dni-h"><svg class="ico s"><use href="#i-alert"/></svg>El DNI tiene 7 u 8 números. Revisá que esté completo.</p></div>
+        <div class="field err"><label for="e-tel">Teléfono</label><input id="e-tel" inputmode="tel" value="351 55" aria-invalid="true" aria-describedby="e-tel-h"><p class="help" id="e-tel-h"><svg class="ico s"><use href="#i-alert"/></svg>Sumá la característica y el número completo, por ejemplo 351 555 1234.</p></div>
+      </div></div><p class="scap"><b>Errores de formulario.</b> Se validan al salir del campo. El error reemplaza la ayuda, dice qué corregir y da un ejemplo. Al enviar con errores, el foco va al primero.</p></div>
+      <div class="sframe"><div class="scr"><div class="in" style="padding-block:16px;display:grid;gap:12px">
+        <div class="tnote" style="border-color:var(--error)"><svg class="ico" style="color:var(--error);flex:none"><use href="#i-alert"/></svg><div><b style="color:var(--error)">Mercado Pago rechazó el pago</b><p class="muted" style="margin-top:4px">La tarjeta no tiene fondos suficientes. Probá con otra tarjeta o pagá por transferencia y te ahorrás el 25%. Tu pedido sigue guardado.</p></div></div>
+        <button class="btn btn-primary btn-block">Intentar de nuevo</button><button class="btn btn-secondary btn-block">Pagar con transferencia</button>
+      </div></div><p class="scap"><b>Pago rechazado.</b> Explica el motivo que devuelve Mercado Pago, conserva el pedido y ofrece la alternativa más barata.</p></div>
+      <div class="sframe"><div class="scr"><div class="in" style="padding-block:16px;display:grid;gap:12px">
+        <button class="btn btn-primary btn-block" disabled style="opacity:1;background:var(--oro-strong);color:#fff;cursor:progress">Confirmando tu compra…</button>
+        <p class="small muted" style="text-align:center">No cierres esta página. Tarda unos segundos.</p>
+      </div></div><p class="scap"><b>Enviando.</b> Botón bloqueado con texto de progreso para evitar dobles pedidos.</p></div>
+    </div>
+  </div>
+  <div class="notes">
+    <div><b>Widget</b><span><code>Checkout</code> de Elementor Pro en layout de dos columnas. Campos ordenados con un editor de campos de checkout (tipo Checkout Field Editor) para sumar DNI, que Correo Argentino necesita, y sacar "Empresa".</span></div>
+    <div><b>Descuento</b><span>Plugin de descuento por medio de pago (tipo "Payment Gateway Based Fees and Discounts") con −25% para "Transferencia" y "Efectivo", recalculado por AJAX al cambiar la opción. La línea se llama "Descuento transferencia (25%)".</span></div>
+    <div><b>Pagos</b><span>Transferencia: pasarela BACS de WooCommerce con los datos bancarios. Tarjetas: plugin oficial de Mercado Pago (Checkout Pro), con cuotas sin interés configuradas en la cuenta de MP.</span></div>
+    <div><b>Envío</b><span>Correo Argentino a domicilio y a sucursal (plugin con MiCorreo) y "Envío personalizado" como método de tarifa 0 con la etiqueta "A acordar por WhatsApp".</span></div>
+  </div>
+</section>
+
+<!-- CONFIRMACIÓN -->
+<section class="screen" id="s-ok" aria-labelledby="sok-h">
+  <header><div><p class="mode">Operate · después de pagar</p><h2 id="sok-h">Confirmación de pedido</h2></div><p>Versión transferencia: los datos bancarios son lo primero, con monto exacto y botones para copiar cada dato. Abajo, qué pasa después y el resumen.</p></header>
+  <div class="cap"><span><b>1440px</b> · escalado</span><button class="zoombtn" data-real="f-ok">Ver a 1440 reales</button></div>
+  <div class="dframe" id="f-ok"><div class="scr" id="ok-d"></div></div>
+  <div class="cap"><span><b>390px</b></span></div>
+  <div class="mrow">
+    <div class="mframe"><div class="scr" id="ok-m"></div></div>
+    <div class="states">
+      <div class="sframe"><div class="scr"><div class="in" style="padding-block:20px;display:grid;gap:12px"><span class="circ" style="width:48px;height:48px"><svg class="ico"><use href="#i-check"/></svg></span><h2 class="h2">Listo, Martina. Pagaste $33.000</h2><p class="muted">Mercado Pago aprobó el pago en 3 cuotas de $11.000 sin interés. Te mandamos el detalle a tu email.</p><p class="small muted">Pedido #[1234] · Despachamos el próximo día hábil.</p></div></div><p class="scap"><b>Pago con tarjeta aprobado.</b> Sin datos bancarios: confirma monto, cuotas y próximo paso.</p></div>
+      <div class="sframe"><div class="scr"><div class="in" style="padding-block:20px;display:grid;gap:12px"><div class="bank" style="border-width:1px"><dl><div><dt>CBU</dt><dd>[0000000000000000000000]</dd><button class="copy" style="background:var(--success);color:#fff;border-color:var(--success)"><svg class="ico"><use href="#i-check"/></svg>Copiado</button></div></dl></div></div></div><p class="scap"><b>Copiar.</b> El botón confirma "Copiado" durante 2 segundos y lo anuncia a lectores de pantalla.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MI CUENTA -->
+<section class="screen" id="s-acct" aria-labelledby="sa-h">
+  <header><div><p class="mode">Operate · cuenta de cliente</p><h2 id="sa-h">Mi cuenta</h2></div><p>Pedidos con estado en texto y color, seguimiento de Correo Argentino, botón de arrepentimiento por pedido dentro del plazo y la solicitud de cuenta mayorista.</p></header>
+  <div class="cap"><span><b>1440px</b> · escalado</span><button class="zoombtn" data-real="f-acct">Ver a 1440 reales</button></div>
+  <div class="dframe" id="f-acct"><div class="scr" id="acct-d"></div></div>
+  <div class="cap"><span><b>390px</b></span></div>
+  <div class="mrow">
+    <div class="mframe"><div class="scr" id="acct-m"></div></div>
+    <div class="states">
+      <div class="sframe"><div class="scr"><div class="in" style="padding-block:16px;display:grid;gap:16px">
+        <div class="tabs" role="tablist"><button role="tab" aria-selected="true">Ingresar</button><button role="tab" aria-selected="false">Crear cuenta</button></div>
+        <div class="field"><label for="l-em">Email</label><input id="l-em" type="email" autocomplete="email" value="martina.gomez@gmail.com"></div>
+        <div class="field"><label for="l-pw">Contraseña</label><input id="l-pw" type="password" autocomplete="current-password" value="••••••••"></div>
+        <button class="btn btn-primary btn-block">Ingresar</button>
+        <a class="link" href="#" style="justify-self:center">Me olvidé la contraseña</a>
+        <p class="small muted" style="text-align:center">Podés comprar sin cuenta. Con cuenta, ves tus pedidos y el seguimiento.</p>
+      </div></div><p class="scap"><b>Ingresar o crear cuenta.</b> Dos pestañas en una sola pantalla. Comprar como invitado sigue siendo posible.</p></div>
+      <div class="sframe"><div class="scr"><div class="in" style="padding-block:16px;display:grid;gap:14px">
+        <h3 class="h3">Solicitar cuenta mayorista</h3>
+        <p class="small muted">Accedés a la lista de precios mayoristas. Revisamos la solicitud y te avisamos por email.</p>
+        <div class="field"><label for="w-r">Nombre del negocio</label><input id="w-r" value="Óptica Del Centro"></div>
+        <div class="field"><label for="w-c">CUIT</label><input id="w-c" inputmode="numeric" placeholder="20-12345678-9"></div>
+        <div class="field"><label for="w-ci">Ciudad y provincia</label><input id="w-ci" placeholder="Córdoba, Córdoba"></div>
+        <div class="field"><label for="w-ig">Instagram o web del negocio <span class="muted" style="font-weight:400">(opcional)</span></label><input id="w-ig" placeholder="@tunegocio"></div>
+        <button class="btn btn-primary btn-block">Enviar solicitud</button>
+        <p class="help">[Compra mínima y condiciones mayoristas a confirmar]</p>
+      </div></div><p class="scap"><b>Solicitud mayorista.</b> Reemplaza el formulario actual de Empretienda. Plugin de roles mayoristas (tipo Wholesale Suite) con aprobación manual.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTROL DE CALIDAD -->
+<section class="qc" id="s-qc" aria-labelledby="qc-h">
+  <h2 id="qc-h">Control de calidad</h2>
+  <div class="qc-grid">
+    <div class="qc-card wide">
+      <h3>1 · Heurísticas de Nielsen</h3>
+      <div class="tw"><table>
+        <thead><tr><th>Heurística</th><th>Carrito</th><th>Checkout</th><th>Confirm.</th><th>Cuenta</th><th>Problema principal que queda</th></tr></thead>
+        <tbody>
+          <tr><td>Visibilidad del estado</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Total recalculado al instante; línea de tiempo del pedido; estados en texto.</td></tr>
+          <tr><td>Relación con el mundo real</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>"CBU", "alias", "sucursal de Correo": el vocabulario que ya usa quien compra en Argentina.</td></tr>
+          <tr><td>Control y libertad</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score s3">3</span></td><td><span class="score">4</span></td><td>Confirmación: no se puede cambiar el medio de pago una vez enviado; se resuelve por WhatsApp.</td></tr>
+          <tr><td>Consistencia</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>La misma línea de producto en side cart, carrito, checkout y pedidos.</td></tr>
+          <tr><td>Prevención de errores</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score s3">3</span></td><td>Cuenta: falta confirmar antes de usar el botón de arrepentimiento (va en un paso con resumen).</td></tr>
+          <tr><td>Reconocer antes que recordar</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Monto exacto y datos bancarios copiables; no hay que anotar nada.</td></tr>
+          <tr><td>Flexibilidad</td><td><span class="score s3">3</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score s3">3</span></td><td>Sin "comprar de nuevo" en pedidos anteriores. Lo sumo si la marca ve recompra de cadenas.</td></tr>
+          <tr><td>Estética y minimalismo</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Checkout sin menú ni footer completo.</td></tr>
+          <tr><td>Recuperarse de errores</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Pago rechazado con motivo, pedido guardado y alternativa.</td></tr>
+          <tr><td>Ayuda</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>WhatsApp en el header del checkout y en la confirmación.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="qc-card">
+      <h3>2 · Especificidad</h3>
+      <ul>
+        <li><strong>Carrito:</strong> el recordatorio dice cuánto pagás con transferencia con el número exacto de este carrito ($24.750), no "aprovechá el descuento".</li>
+        <li><strong>Checkout:</strong> "Envío personalizado: a acordar por WhatsApp" existe porque Sunnygafas lo ofrece hoy.</li>
+        <li><strong>Confirmación:</strong> datos bancarios primero, porque el medio de pago que la marca empuja es la transferencia.</li>
+        <li><strong>Cuenta:</strong> la solicitud mayorista es un flujo propio del negocio que ya existe en Empretienda.</li>
+      </ul>
+    </div>
+    <div class="qc-card">
+      <h3>3 · Dosis de color</h3>
+      <ul>
+        <li>Lienzo white en todas las pantallas; productos sobre piedra.</li>
+        <li><strong>Dorado:</strong> el logo y, en el checkout, el badge "−25%" de la opción transferencia (badge de descuento: oro con texto ink). No coinciden con otro dorado en el mismo viewport.</li>
+        <li><strong>Mar:</strong> barra de envío gratis, precio con transferencia, línea de descuento aplicado y monto a transferir.</li>
+        <li>Estados de pedido: "Esperando transferencia" en oro-soft con oro-strong (5.1:1), despachado en mar-soft. Todos llevan texto e ícono.</li>
+      </ul>
+    </div>
+    <div class="qc-card">
+      <h3>4 · Largo y redundancia</h3>
+      <ul>
+        <li><strong>Saqué</strong> el bloque de confianza del checkout: a esta altura no suma y empuja el botón hacia abajo. Queda una línea con la política de cambios.</li>
+        <li><strong>Saqué</strong> el campo "Empresa" y "Dirección línea 2" de WooCommerce; quedan Piso y Depto, opcionales.</li>
+        <li><strong>Un solo resumen</strong> en mobile: plegado arriba con el total y completo antes del botón, con los mismos datos.</li>
+      </ul>
+    </div>
+    <div class="qc-card">
+      <h3>5 · Accesibilidad</h3>
+      <ul>
+        <li>Opciones de entrega y pago como radios reales agrupados en <code>fieldset</code> con <code>legend</code>; la selección se marca con borde de 2px y el punto del radio.</li>
+        <li>Autocompletado en todos los campos (<code>autocomplete="email"</code>, <code>postal-code</code>, <code>tel</code>…) y teclado numérico en DNI, código postal y teléfono.</li>
+        <li>El total que cambia vive en una región <code>aria-live="polite"</code>.</li>
+        <li>Stepper con botones de 40 × 42 dentro de un control de 44px de alto; el botón "−" se deshabilita en 1 y "Quitar" queda aparte.</li>
+        <li>Botón de copiar con anuncio "Copiado" para lectores de pantalla.</li>
+      </ul>
+    </div>
+    <div class="qc-card">
+      <h3>6 · Copy</h3>
+      <ul>
+        <li>Botones: "Iniciar compra", "Confirmar compra", "Pagar con Mercado Pago", "Copiar", "Seguir envío".</li>
+        <li>El botón final cambia de texto según el medio de pago, para que nadie se sorprenda al salir a Mercado Pago.</li>
+        <li>Una sola exclamación en toda la etapa: ninguna. Sin urgencia ni "¡Últimas unidades!".</li>
+        <li>Plazo de arrepentimiento: 10 días corridos desde la entrega (Ley 24.240, art. 34; Res. 424/2020).</li>
+      </ul>
+    </div>
+    <div class="qc-card wide">
+      <h3>7 · Datos a pedir (se suman a la lista)</h3>
+      <ol class="ask">
+        <li>Monto mínimo para envío gratis, o confirmar que no hay.</li>
+        <li>Tarifas de Correo Argentino o credenciales de MiCorreo.</li>
+        <li>Datos bancarios: titular, CUIT, banco, CBU y alias.</li>
+        <li>Plazo para transferir antes de cancelar el pedido.</li>
+        <li>Cómo quieren recibir el comprobante (WhatsApp, email o ambos).</li>
+        <li>Si hay retiro o pago en efectivo, dónde y cómo (no hay local a la calle).</li>
+        <li>Condiciones mayoristas: compra mínima, lista de precios y quién aprueba.</li>
+        <li>Cuenta de Mercado Pago con cuotas sin interés configuradas.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+</div>
+
+<script src="assets/sunny-mock.js"></script>
+<script>
+(function(){
+'use strict';
+var S=window.SG, fmt=S.fmt, ico=S.ico, IMG=S.IMG;
+var FULL=['glow-negro-2'];
+var CART=[{id:'glow',n:'Glow',c:'Negro',meta:'Colección Básica',img:'glow-negro',list:27000,qty:1},{id:'cad',n:'Cadena',c:'Gold',meta:'Accesorio',img:'cadena-gold',list:6000,qty:1,full:true}];
+function sub(){return CART.reduce(function(a,i){return a+i.list*i.qty;},0);}
+function count(){return CART.reduce(function(a,i){return a+i.qty;},0);}
+
+function lineHTML(it,o){
+  o=o||{};
+  var img='<span class="th">'+(o.q?'<span class="q">'+it.qty+'</span>':'')+'<img class="'+(it.full?'full':'')+'" src="'+IMG+it.img+'.webp" alt=""></span>';
+  var price='<div class="lp"><b>'+fmt(it.list*it.qty)+'</b><small>'+fmt(it.list*it.qty*.75)+' transf.</small></div>';
+  if(o.mini) return '<div class="line">'+img+'<p class="nm">'+it.n+' <span>· '+it.c+'</span></p><p class="meta">'+it.meta+'</p>'+price+'</div>';
+  return '<div class="line" data-id="'+it.id+'">'+img+'<p class="nm">'+it.n+' <span>· '+it.c+'</span></p><p class="meta">'+it.meta+'</p>'+price+
+   '<div class="acts"><div class="stepper" role="group" aria-label="Cantidad de '+it.n+' · '+it.c+'"><button type="button" data-a="dec" aria-label="Restar uno"'+(it.qty<=1?' disabled':'')+'>'+ico('i-minus','s')+'</button><output aria-live="polite">'+it.qty+'</output><button type="button" data-a="inc" aria-label="Sumar uno">'+ico('i-plus','s')+'</button></div><button class="rm" type="button" data-a="rm">Quitar</button></div></div>';
+}
+function freebar(){return '<div class="freebar" role="status"><span>Te faltan <b>$[x]</b> para el envío gratis</span><div class="trk" aria-hidden="true"><i style="width:62%"></i></div><small>Monto mínimo a definir con la marca</small></div>';}
+function tnote(){var s=sub();return '<div class="tnote"><span class="circ">'+ico('i-bank')+'</span><span>Pagando con transferencia o efectivo: <b>'+fmt(s*.75)+'</b>. Ahorrás '+fmt(s*.25)+'. Lo elegís en el checkout.</span></div>';}
+function policy(){return '<p class="policy">'+ico('i-refresh')+'<span>Cambios hasta [plazo] días después de recibirlas. <a href="#" style="color:var(--ink)">Ver política de cambios</a></span></p>';}
+function xsell(){return '<div class="xsell"><h3>Sumale una cadena</h3>'+
+  [['Cadena','Beige','cadena-beige',11200],['Cadena','Silver','cadena-silver',6000]].map(function(x){return '<div class="xitem"><span class="th"><img src="'+IMG+x[2]+'.webp" alt=""></span><span><b>'+x[0]+' · '+x[1]+'</b><small><em>'+fmt(x[3]*.75)+'</em> con transf. · '+fmt(x[3])+'</small></span><button class="btn btn-secondary" type="button" aria-label="Sumar '+x[0]+' · '+x[1]+'">Sumar</button></div>';}).join('')+'</div>';}
+
+/* Side cart */
+function sidecartHTML(){
+  var s=sub();
+  return '<div class="sidecart" role="dialog" aria-modal="true" aria-labelledby="sct"><div class="sc-top"><h2 id="sct">Tu carrito ('+count()+')</h2><button class="icobtn" aria-label="Cerrar carrito">'+ico('i-x')+'</button></div>'+
+   freebar()+'<div class="sc-body"><div class="lines">'+CART.map(function(i){return lineHTML(i);}).join('')+'</div>'+xsell()+tnote()+'</div>'+
+   '<div class="sc-foot"><div class="row"><span>Subtotal</span><b>'+fmt(s)+'</b></div><p class="sub"><span>o 3 × '+fmt(s/3)+' sin interés</span><span>Envío en el checkout</span></p><a class="btn btn-primary btn-block" href="#">Iniciar compra</a><a class="link" href="#">Ver carrito</a>'+policy()+'</div></div>';
+}
+function sideStage(){
+  return '<div class="sc-stage">'+S.headerHTML()+'<div class="in sc-back" style="padding-top:24px"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:48px"><div style="aspect-ratio:4/5;background:var(--piedra);border-radius:12px;display:grid;place-items:center"><img src="'+IMG+'glow-negro.webp" alt="" style="width:70%;mix-blend-mode:multiply"></div><div style="display:grid;gap:16px;align-content:start"><h1 class="h1">Glow <span class="muted">· Negro</span></h1>'+S.priceHTML(27000,'bigprice')+'<span class="btn btn-primary">Agregar al carrito</span></div></div></div><div class="scrim" aria-hidden="true"></div>'+sidecartHTML()+'</div>';
+}
+
+/* Carrito página */
+function cartHTML(){
+  var s=sub();
+  return S.headerHTML()+'<main class="in"><nav class="crumbs" aria-label="Migas de pan"><a href="#">Inicio</a>'+ico('i-chev')+'<span aria-current="page">Carrito</span></nav>'+
+   '<div class="cart-h"><h1 class="h1">Tu carrito</h1><span class="muted small">'+count()+' productos</span></div>'+
+   '<div class="cart-grid"><div><div style="margin-inline:-16px" class="cartbar">'+freebar()+'</div><div class="lines">'+CART.map(function(i){return lineHTML(i);}).join('')+'</div><div style="padding-top:24px;display:grid;gap:16px">'+xsell()+'</div></div>'+
+   '<aside class="summary" aria-label="Resumen"><div class="sumcard"><h2>Resumen</h2><div class="sumrows"><div><span>Subtotal</span><span>'+fmt(s)+'</span></div><div><span>Envío</span><span class="muted">Calculalo abajo</span></div><div class="tot"><span>Total</span><span>'+fmt(s)+'<small>o 3 × '+fmt(s/3)+' sin interés</small></span></div><div class="tax"><span>Precio sin imp. nacionales</span><span>'+fmt(Math.round(s/1.21))+'</span></div></div>'+
+   tnote()+'<div class="inline"><div class="field"><label for="cp-c">Código postal</label><input id="cp-c" inputmode="numeric" placeholder="Ej: 5000" autocomplete="postal-code"></div><button class="btn btn-secondary" type="button">Calcular</button></div>'+
+   '<a class="btn btn-primary btn-block" href="#">Iniciar compra</a>'+policy()+'</div><a class="btn btn-wa btn-block" href="#">'+ico('i-chat')+'¿Dudas? Escribinos por WhatsApp</a></aside></div>'+
+   '<div style="height:64px"></div></main>'+S.footerHTML({noNewsletter:true});
+}
+
+/* Checkout */
+var PROV=['Buenos Aires','CABA','Catamarca','Chaco','Chubut','Córdoba','Corrientes','Entre Ríos','Formosa','Jujuy','La Pampa','La Rioja','Mendoza','Misiones','Neuquén','Río Negro','Salta','San Juan','San Luis','Santa Cruz','Santa Fe','Santiago del Estero','Tierra del Fuego','Tucumán'];
+function coSummary(){
+  return '<div class="lines-mini">'+CART.map(function(i){return lineHTML(i,{mini:true,q:true});}).join('')+'</div><div class="sumrows co-rows" aria-live="polite"></div>';
+}
+function coHTML(uid){
+  var s=sub();
+  function f(id,l,attrs,cls,help){return '<div class="field '+(cls||'')+'"><label for="'+uid+id+'">'+l+'</label><input id="'+uid+id+'" '+(attrs||'')+'>'+(help?'<p class="help">'+help+'</p>':'')+'</div>';}
+  return '<header class="co-hdr"><div class="row"><a class="back" href="#">'+ico('i-chev')+'<span><span class="d">Volver al </span>carrito</span></a><a class="logo" href="#" aria-label="Sunnygafas, inicio"><img src="assets/isotipo-sunnygafas.png" alt="" width="40" height="32"><span>Sunnygafas</span></a><a class="help" href="#" aria-label="Ayuda por WhatsApp">'+ico('i-chat')+'<span class="d-help">Ayuda</span></a></div></header>'+
+  '<details class="co-sum-m"><summary><span>Ver resumen ('+count()+')</span><b class="co-total-m">'+fmt(s)+'</b></summary><div class="inner">'+coSummary()+'</div></details>'+
+  '<main class="in"><div class="co-grid"><form class="co-main" onsubmit="event.preventDefault()" novalidate>'+
+   '<section class="step"><h2><span class="n">1</span>Contacto</h2><p class="aside">¿Ya tenés cuenta? <a href="#" style="color:var(--ink);font-weight:600">Ingresá</a></p>'+
+    '<div class="fgrid">'+f('em','Email','type="email" autocomplete="email" value="martina.gomez@gmail.com"','full','Te mandamos la confirmación y el seguimiento.')+f('tel','Teléfono','type="tel" inputmode="tel" autocomplete="tel" value="351 555 1234"','','Por si Correo Argentino necesita ubicarte.')+f('dni','DNI','inputmode="numeric" value="32456789"','','Lo pide Correo Argentino para entregar.')+'</div>'+
+    '<label class="terms"><input type="checkbox" checked><span>Quiero recibir un email cuando entren modelos nuevos</span></label></section>'+
+   '<section class="step"><h2><span class="n">2</span>Entrega</h2><fieldset style="border:0;padding:0;margin:0"><legend class="sr">Forma de entrega</legend><div class="opts">'+
+    '<label class="opt"><input type="radio" name="'+uid+'ship" value="home" checked><b>Correo Argentino a domicilio</b><span class="amt">$[costo]</span><small>Llega en [x a y] días hábiles</small></label>'+
+    '<label class="opt"><input type="radio" name="'+uid+'ship" value="branch"><b>Correo Argentino a sucursal</b><span class="amt">$[costo]</span><small>Retirás en la sucursal que elijas</small><div class="extra"><div class="field"><label for="'+uid+'suc">Sucursal</label><select id="'+uid+'suc"><option>Elegí una sucursal cerca de 5000</option></select></div></div></label>'+
+    '<label class="opt"><input type="radio" name="'+uid+'ship" value="custom"><b>Envío personalizado</b><span class="amt">A acordar</span><small>Te escribimos por WhatsApp para coordinar forma y costo antes de despachar.</small></label>'+
+   '</div></fieldset>'+
+   '<div class="fgrid addr">'+f('nom','Nombre','autocomplete="given-name" value="Martina"')+f('ape','Apellido','autocomplete="family-name" value="Gómez"')+
+    f('calle','Calle','autocomplete="address-line1" value="Av. Hipólito Yrigoyen"','s4')+f('num','Número','inputmode="numeric" value="450"','s2')+f('piso','Piso y depto <span class="muted" style="font-weight:400">(opcional)</span>','autocomplete="address-line2" value="3° B"','s2')+
+    f('cp','Código postal','inputmode="numeric" autocomplete="postal-code" value="5000"','s2')+f('loc','Localidad','autocomplete="address-level2" value="Córdoba"','s2')+
+    '<div class="field full"><label for="'+uid+'prov">Provincia</label><select id="'+uid+'prov" autocomplete="address-level1">'+PROV.map(function(p){return '<option'+(p==='Córdoba'?' selected':'')+'>'+p+'</option>';}).join('')+'</select></div></div></section>'+
+   '<section class="step" style="border-bottom:0"><h2><span class="n">3</span>Pago</h2><fieldset style="border:0;padding:0;margin:0"><legend class="sr">Medio de pago</legend><div class="opts">'+
+    '<label class="opt"><input type="radio" name="'+uid+'pay" value="transfer" checked><b>Transferencia o efectivo <span class="badge b-disc" style="margin-left:6px;vertical-align:1px">−25%</span></b><span class="amt pay-t">'+fmt(s*.75)+'<em>en lugar de '+fmt(s)+'</em></span><small>Te mostramos los datos bancarios al confirmar. Tenés [x] horas para transferir.</small></label>'+
+    '<label class="opt"><input type="radio" name="'+uid+'pay" value="card"><b>Tarjeta de débito o crédito</b><span class="amt">'+fmt(s)+'<em>hasta 3 × '+fmt(s/3)+'</em></span><small>Pagás en Mercado Pago, sin interés en hasta 3 cuotas.</small><div class="paylogos"><span>Visa</span><span>Mastercard</span><span>Amex</span><span>Naranja</span><span>Cabal</span><span>Maestro</span></div></label>'+
+   '</div></fieldset></section>'+
+   '<div class="mob-sum" style="padding-top:8px"></div>'+
+   '<div class="paybtn"><label class="terms"><input type="checkbox" checked><span>Leí y acepto los <a href="#" style="color:var(--ink)">términos y condiciones</a> y la <a href="#" style="color:var(--ink)">política de cambios</a>.</span></label><button class="btn btn-primary btn-block co-btn" type="submit">Confirmar compra</button><p class="co-btn-note">Al confirmar ves los datos para transferir. También te los mandamos por email.</p></div>'+
+  '</form>'+
+  '<aside class="co-side" aria-label="Resumen del pedido"><h2>Tu pedido</h2>'+coSummary()+'</aside></div>'+
+  '<div class="legal" style="color:var(--ink-muted);border-color:var(--line-soft);margin-top:24px;padding-bottom:32px"><a class="btn btn-secondary" href="#" style="height:44px">Botón de arrepentimiento</a><div class="links"><a href="#" style="color:var(--ink-muted)">Términos y condiciones</a><a href="#" style="color:var(--ink-muted)">Privacidad</a><a href="#" style="color:var(--ink-muted)">Defensa del Consumidor</a></div><p>[Razón social] · CUIT [xx-xxxxxxxx-x]</p></div></main>';
+}
+function bindCheckout(root){
+  var s=sub();
+  function update(){
+    var pay=root.querySelector('input[name$="pay"]:checked').value, ship=root.querySelector('input[name$="ship"]:checked').value;
+    var disc=pay==='transfer'?s*.25:0, prod=s-disc;
+    var shipTxt=ship==='custom'?'A acordar':'$[costo]';
+    var html='<div><span>Subtotal</span><span>'+fmt(s)+'</span></div>'+(disc?'<div class="disc"><span>Descuento transferencia (25%)</span><span>'+fmt(-disc)+'</span></div>':'')+
+      '<div><span>Envío</span><span>'+shipTxt+'</span></div>'+
+      '<div class="tot"><span>Total</span><span>'+fmt(prod)+' + envío<small>'+(pay==='card'?'o 3 × '+fmt(s/3)+' sin interés':'Pagás por transferencia o efectivo')+'</small></span></div>'+
+      '<div class="tax"><span>Precio sin imp. nacionales</span><span>'+fmt(Math.round(prod/1.21))+'</span></div>';
+    root.querySelectorAll('.co-rows').forEach(function(r){r.innerHTML=html;});
+    root.querySelector('.co-total-m').textContent=fmt(prod);
+    root.querySelector('.co-btn').textContent=pay==='card'?'Pagar con Mercado Pago':'Confirmar compra';
+    root.querySelector('.co-btn-note').textContent=pay==='card'?'Te llevamos a Mercado Pago para completar el pago con tu tarjeta.':'Al confirmar ves los datos para transferir. También te los mandamos por email.';
+    root.querySelector('.addr').hidden=ship==='custom';
+  }
+  root.addEventListener('change',update); update();
+  var ms=root.querySelector('.mob-sum'); if(root.offsetWidth<1000){ms.innerHTML='<div style="background:var(--piedra);border-radius:12px;padding:16px"><h2 class="h3" style="margin-bottom:8px">Tu pedido</h2>'+coSummary()+'</div>';ms.querySelector('.co-rows').innerHTML=root.querySelector('.co-rows').innerHTML;root.addEventListener('change',function(){ms.querySelector('.co-rows').innerHTML=root.querySelector('.co-rows').innerHTML;});}
+}
+
+/* Confirmación */
+function okHTML(){
+  var s=sub(), t=s*.75;
+  function row(dt,dd){return '<div><dt>'+dt+'</dt><dd>'+dd+'</dd><button class="copy" type="button" aria-label="Copiar '+dt+'">'+ico('i-copy')+'Copiar</button></div>';}
+  return S.headerHTML({count:0})+'<main class="in"><div class="ok-head"><span class="circ">'+ico('i-check')+'</span><h1 class="h1">Gracias, Martina. Recibimos tu pedido</h1><p class="muted lead">Pedido #[1234]. Lo despachamos cuando se acredite la transferencia. Te mandamos todo esto a martina.gomez@gmail.com.</p></div>'+
+  '<div class="ok-grid"><div style="display:grid;gap:32px;grid-template-columns:minmax(0,1fr)">'+
+   '<section class="bank" aria-labelledby="bk-h"><h2 id="bk-h">Transferí para completar la compra</h2><div class="amount"><span>Monto exacto</span><b>'+fmt(t)+'</b></div><p class="small muted" style="margin-top:-4px">+ envío $[costo]. Tenés [x] horas; después el pedido se cancela y el stock se libera.</p>'+
+    '<dl>'+row('Alias','[alias.sunnygafas]')+row('CBU','[0000000000000000000000]')+'<div><dt>Titular</dt><dd>[Nombre o razón social] · CUIT [xx-xxxxxxxx-x]</dd></div><div><dt>Banco</dt><dd>[Banco]</dd></div></dl>'+
+    '<a class="btn btn-wa btn-block" href="#">'+ico('i-chat')+'Mandar comprobante por WhatsApp</a><p class="small muted" style="text-align:center">O respondé el email de confirmación con el comprobante adjunto. [Circuito a confirmar]</p></section>'+
+   '<section aria-labelledby="tl-h" style="display:grid;gap:16px"><h2 class="h3" id="tl-h">Qué sigue</h2><ol class="timeline">'+
+    '<li class="done"><span class="dot">'+ico('i-check')+'</span><span><b>Pedido recibido</b><small>Hoy, [hora]</small></span></li>'+
+    '<li class="now"><span class="dot"></span><span><b>Esperando tu transferencia</b><small>Confirmamos el pago en [plazo] y te avisamos por email.</small></span></li>'+
+    '<li><span class="dot"></span><span><b>Despachado</b><small>Te llega el código de seguimiento de Correo Argentino.</small></span></li>'+
+    '<li><span class="dot"></span><span><b>Entregado</b><small>Llega con estuche y líquido limpiador.</small></span></li></ol></section>'+
+   '<section class="whcard"><h3>Guardá tus datos para la próxima</h3><p class="small muted">Creá una contraseña y ves este pedido y su seguimiento desde Mi cuenta.</p><div class="inline"><div class="field"><label for="pw-new">Contraseña</label><input id="pw-new" type="password" autocomplete="new-password"></div><button class="btn btn-secondary" type="button">Crear cuenta</button></div></section>'+
+  '</div><aside class="sumcard" aria-label="Resumen del pedido"><h2>Tu pedido</h2><div class="lines-mini">'+CART.map(function(i){return lineHTML(i,{mini:true,q:true});}).join('')+'</div>'+
+   '<div class="sumrows"><div><span>Subtotal</span><span>'+fmt(s)+'</span></div><div class="disc"><span>Descuento transferencia (25%)</span><span>'+fmt(-s*.25)+'</span></div><div><span>Envío · Correo a domicilio</span><span>$[costo]</span></div><div class="tot"><span>Total</span><span>'+fmt(t)+' + envío</span></div></div>'+
+   '<div class="small muted" style="display:grid;gap:4px"><b style="color:var(--ink)">Entrega</b><span>Martina Gómez · Av. Hipólito Yrigoyen 450, 3° B · 5000 Córdoba</span></div></aside></div></main>'+S.footerHTML({noNewsletter:true});
+}
+
+/* Mi cuenta */
+function acctHTML(){
+  function th(img,full){return '<span><img class="'+(full?'full':'')+'" src="'+IMG+img+'.webp" alt=""></span>';}
+  return S.headerHTML()+'<main class="in"><nav class="crumbs" aria-label="Migas de pan"><a href="#">Inicio</a>'+ico('i-chev')+'<span aria-current="page">Mi cuenta</span></nav>'+
+  '<h1 class="h1" style="padding-bottom:16px">Hola, Martina</h1>'+
+  '<div class="acct"><nav class="acct-nav" aria-label="Mi cuenta"><a href="#" aria-current="page">'+ico('i-box')+'Pedidos</a><a href="#">'+ico('i-pin')+'Direcciones</a><a href="#">'+ico('i-user')+'Mis datos</a><a href="#">'+ico('i-store')+'Venta mayorista</a><a href="#">'+ico('i-logout')+'Salir</a></nav>'+
+  '<div class="acct-main" style="display:grid;gap:16px"><h2 class="h2">Tus pedidos</h2>'+
+   '<article class="order"><div class="top"><div><b>Pedido #[1234]</b><small>14 de noviembre de 2026 · '+fmt(24750)+' + envío</small></div><span class="status st-wait">'+ico('i-bank')+'Esperando transferencia</span></div><div class="thumbs">'+th('glow-negro')+th('cadena-gold',true)+'</div>'+
+    '<div class="bot"><span class="muted">Glow · Negro, Cadena · Gold</span><div class="btns"><a class="btn btn-primary" href="#">Ver datos para transferir</a></div></div><p class="regret">¿Te arrepentiste? Podés cancelar sin costo hasta 10 días después de recibirlo. <a href="#">Arrepentirme de esta compra</a></p></article>'+
+   '<article class="order"><div class="top"><div><b>Pedido #[1198]</b><small>2 de noviembre de 2026 · $40.500</small></div><span class="status st-ship">'+ico('i-truck')+'Despachado</span></div><div class="thumbs">'+th('gala-carey')+'</div>'+
+    '<div class="bot"><span class="muted">Gala · Carey · Correo Argentino [código]</span><div class="btns"><a class="btn btn-secondary" href="#">Seguir envío</a></div></div></article>'+
+   '<article class="order"><div class="top"><div><b>Pedido #[1103]</b><small>18 de septiembre de 2026 · $20.250</small></div><span class="status st-done">'+ico('i-check')+'Entregado</span></div><div class="thumbs">'+th('braga-verde')+'</div>'+
+    '<div class="bot"><span class="muted">Braga · Verde</span><div class="btns"><a class="btn btn-secondary" href="#">Ver detalle</a></div></div></article>'+
+   '<div class="acct-cols"><section class="whcard"><h3>Venta mayorista</h3><p class="small muted">¿Tenés una óptica o un local? Pedí acceso a la lista de precios mayoristas.</p><a class="btn btn-secondary" href="#" style="justify-self:start">Solicitar cuenta mayorista</a></section>'+
+   '<section class="whcard"><h3>Dirección principal</h3><p class="small muted">Av. Hipólito Yrigoyen 450, 3° B<br>5000 Córdoba, Córdoba</p><a class="link" href="#" style="min-height:32px">Editar dirección</a></section></div>'+
+  '</div></div></main>'+S.footerHTML({noNewsletter:true});
+}
+
+/* Montaje */
+function bindLines(root){
+  root.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(!b)return;var ln=b.closest('.line');var it=CART.filter(function(x){return x.id===ln.dataset.id;})[0];if(!it)return;
+    if(b.dataset.a==='inc')it.qty++; if(b.dataset.a==='dec'&&it.qty>1)it.qty--; if(b.dataset.a==='rm'){ln.style.opacity=.4;return;}
+    ln.outerHTML=lineHTML(it);});
+}
+['side-d','side-m'].forEach(function(id){var el=document.getElementById(id);el.innerHTML=sideStage();bindLines(el);});
+document.getElementById('side-m').querySelector('.sc-stage').style.minHeight='1180px';
+['cart-d','cart-m'].forEach(function(id){var el=document.getElementById(id);el.innerHTML=cartHTML();bindLines(el);});
+document.getElementById('line-oos').outerHTML=lineHTML({id:'x',n:'Cadena',c:'Gold',meta:'Accesorio',img:'cadena-gold',list:6000,qty:1,full:true});
+['co-d','co-m'].forEach(function(id){document.getElementById(id).innerHTML=coHTML(id);});
+['ok-d','ok-m'].forEach(function(id){document.getElementById(id).innerHTML=okHTML();});
+['acct-d','acct-m'].forEach(function(id){document.getElementById(id).innerHTML=acctHTML();});
+document.addEventListener('click',function(e){var c=e.target.closest('.bank .copy');if(!c||c.dataset.done)return;var dd=c.parentNode.querySelector('dd').textContent;try{navigator.clipboard.writeText(dd).catch(function(){});}catch(_){} var old=c.innerHTML;c.dataset.done=1;c.innerHTML=ico('i-check')+'Copiado';c.style.cssText='background:var(--success);color:#fff;border-color:var(--success)';c.setAttribute('aria-label','Copiado');setTimeout(function(){c.innerHTML=old;c.style.cssText='';delete c.dataset.done;},2000);});
+S.fitFrames(); S.bindZoomButtons();
+['co-d','co-m'].forEach(function(id){bindCheckout(document.getElementById(id));});
+})();
+</script>
