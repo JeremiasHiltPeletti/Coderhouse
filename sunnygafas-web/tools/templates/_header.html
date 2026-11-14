@@ -1,0 +1,63 @@
+<!-- Barra de beneficios vigentes (verificados en la tienda oficial) -->
+<div class="topbar on-dark">
+  <ul class="container topbar__list">
+    <li class="topbar__promo"><svg class="icon"><use href="#i-tag"/></svg><span><strong>25% off</strong> con transferencia<span class="hide-sm"> o efectivo</span></span></li>
+    <li><svg class="icon"><use href="#i-card"/></svg>3 cuotas sin interés</li>
+    <li class="hide-sm"><svg class="icon"><use href="#i-truck"/></svg>Envíos a todo el país</li>
+  </ul>
+</div>
+
+<header class="header" id="top">
+  <div class="container header__row">
+    <a class="logo" href="/" aria-label="Sunnygafas, inicio">
+      <img class="logo__mark" src="/assets/img/isotipo-sunnygafas.png" alt="" width="152" height="123">
+      <span class="logo__word">Sunnygafas</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <ul>
+        {{NAV}}
+      </ul>
+    </nav>
+    <div class="header__actions">
+      <button class="icon-btn" type="button" id="searchToggle" aria-expanded="false" aria-controls="searchPanel" aria-label="Buscar modelos">
+        <svg class="icon"><use href="#i-search"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" type="button" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">
+        <svg class="icon"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="search" id="searchPanel" hidden>
+    <div class="container">
+      <form class="search__form" role="search" action="/catalogo.html" method="get">
+        <label class="visually-hidden" for="searchInput">Buscar por modelo, forma o color</label>
+        <svg class="icon"><use href="#i-search"/></svg>
+        <input id="searchInput" name="q" type="search" autocomplete="off" placeholder="Probá «Gala carey» o «aviador»" aria-describedby="searchStatus">
+        <button class="icon-btn" type="button" id="searchClose" aria-label="Cerrar buscador"><svg class="icon"><use href="#i-close"/></svg></button>
+      </form>
+      <p class="search__status meta" id="searchStatus" aria-live="polite">Buscá por modelo, forma o color.</p>
+      <ul class="search__results" id="searchResults"></ul>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="mobileMenu" hidden>
+  <div class="drawer__scrim" data-close-menu></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+    <div class="drawer__head">
+      <p class="drawer__title" id="drawerTitle">Menú</p>
+      <button class="icon-btn" type="button" data-close-menu aria-label="Cerrar menú"><svg class="icon"><use href="#i-close"/></svg></button>
+    </div>
+    <ul class="drawer__nav">
+      {{DRAWER_NAV}}
+    </ul>
+    <div class="drawer__extra">
+      <a class="link" href="/#forma" data-close-menu>Elegí por forma</a>
+      <a class="link" href="/guia-de-calce.html">Guía de calce</a>
+      <a class="link" href="/ayuda.html">Ayuda</a>
+      <a class="link" href="{{WA_HOLA}}" rel="noopener">Escribinos por WhatsApp</a>
+    </div>
+  </div>
+</div>
+

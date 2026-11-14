@@ -1,0 +1,528 @@
+{
+ "fetched": "2026-11-14",
+ "store": "https://sunnygafas.empretienda.com.ar",
+ "store_products": 223,
+ "variants": {
+  "glow-black": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-basica/glow-black",
+   "name": "Glow black",
+   "price": 27000,
+   "stock": true,
+   "desc": "",
+   "path": "gafas-de-sol/coleccion-basica/glow-black"
+  },
+  "braga-green": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-basica/braga-green",
+   "name": "Braga green",
+   "price": 27000,
+   "stock": true,
+   "desc": "Armazón de policarbonato print y cristales verdes degrade filtro uv400",
+   "path": "gafas-de-sol/coleccion-basica/braga-green"
+  },
+  "braga-yellow": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-basica/braga-yellow",
+   "name": "Braga Yellow",
+   "price": 27000,
+   "stock": true,
+   "desc": "Armazón de policarbonato color naranja traslúcido y cristales negros filtro uv400",
+   "path": "gafas-de-sol/coleccion-basica/braga-yellow"
+  },
+  "roxy": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-basica/roxy",
+   "name": "Roxy",
+   "price": 27000,
+   "stock": true,
+   "desc": "Armazón de policarbonato gris traslúcido con cristales negros filtro uv400",
+   "path": "gafas-de-sol/coleccion-basica/roxy"
+  },
+  "dallas-brown": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-basica/dallas-brown",
+   "name": "Dallas Brown",
+   "price": 27000,
+   "stock": true,
+   "desc": "Armazón metálico dorado con cristales marrones y plaquetas de silicona",
+   "path": "gafas-de-sol/coleccion-basica/dallas-brown"
+  },
+  "dallas-black": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-basica/dallas-black",
+   "name": "Dallas Black",
+   "price": 27000,
+   "stock": false,
+   "desc": "Armazón de metal con cristales negros filtro UV400",
+   "path": "gafas-de-sol/coleccion-basica/dallas-black"
+  },
+  "saturday-xl-blue-orange": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-basica/saturday-xl-blue-orange",
+   "name": "Saturday XL blue orange",
+   "price": 27000,
+   "stock": true,
+   "desc": "Armazón de policarbonato naranja traslúcido y cristales azules",
+   "path": "gafas-de-sol/coleccion-basica/saturday-xl-blue-orange"
+  },
+  "saturday-xl-print": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-basica/saturday-xl-print",
+   "name": "Saturday XL print",
+   "price": 27000,
+   "stock": true,
+   "desc": "Policarbonato Carey/print con cristales celestes Filtro UV400",
+   "path": "gafas-de-sol/coleccion-basica/saturday-xl-print"
+  },
+  "molly-brown": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-esencial/molly-brown",
+   "name": "Molly Brown",
+   "price": 40000,
+   "stock": true,
+   "desc": "Armazón de plástico con cristales marrones filtro uv400",
+   "path": "gafas-de-sol/coleccion-esencial/molly-brown"
+  },
+  "molly-black": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-esencial/molly-black",
+   "name": "Molly black",
+   "price": 40000,
+   "stock": false,
+   "desc": "Armazón de plástico y cristales negros filtro uv400",
+   "path": "gafas-de-sol/coleccion-esencial/molly-black"
+  },
+  "yanis-print": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-esencial/yanis-print",
+   "name": "Yanis print",
+   "price": 40000,
+   "stock": true,
+   "desc": "Armazon de policarbonato carey con cristales marrones filtro uv400",
+   "path": "gafas-de-sol/coleccion-esencial/yanis-print"
+  },
+  "yanis-black": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-esencial/yanis-black",
+   "name": "Yanis black",
+   "price": 40000,
+   "stock": false,
+   "desc": "",
+   "path": "gafas-de-sol/coleccion-esencial/yanis-black"
+  },
+  "gala-carey": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-superior/gala-carey",
+   "name": "Gala Carey",
+   "price": 54000,
+   "stock": true,
+   "desc": "",
+   "path": "gafas-de-sol/coleccion-superior/gala-carey"
+  },
+  "gala-black": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-superior/gala-black",
+   "name": "Gala black",
+   "price": 54000,
+   "stock": true,
+   "desc": "",
+   "path": "gafas-de-sol/coleccion-superior/gala-black"
+  },
+  "gala-caramelo": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-superior/gala-caramelo",
+   "name": "Gala caramelo",
+   "price": 54000,
+   "stock": true,
+   "desc": "",
+   "path": "gafas-de-sol/coleccion-superior/gala-caramelo"
+  },
+  "gala-print": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-superior/gala-print",
+   "name": "Gala print",
+   "price": 54000,
+   "stock": true,
+   "desc": "",
+   "path": "gafas-de-sol/coleccion-superior/gala-print"
+  },
+  "siena-brown": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-superior/siena-brown",
+   "name": "Siena Brown",
+   "price": 54000,
+   "stock": true,
+   "desc": "",
+   "path": "gafas-de-sol/coleccion-superior/siena-brown"
+  },
+  "siena-black": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-superior/siena-black",
+   "name": "Siena black",
+   "price": 54000,
+   "stock": true,
+   "desc": "",
+   "path": "gafas-de-sol/coleccion-superior/siena-black"
+  },
+  "siena-carey": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-superior/siena-carey",
+   "name": "Siena Carey",
+   "price": 54000,
+   "stock": true,
+   "desc": "",
+   "path": "gafas-de-sol/coleccion-superior/siena-carey"
+  },
+  "siena-print": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-superior/siena-print",
+   "name": "Siena print",
+   "price": 54000,
+   "stock": true,
+   "desc": "",
+   "path": "gafas-de-sol/coleccion-superior/siena-print"
+  },
+  "charlotte-brown": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-elite/charlotte-brown",
+   "name": "Charlotte Brown",
+   "price": 67000,
+   "stock": true,
+   "desc": "Marco Semi montado al aire dorado metálico con cristales marrones filtro uv400",
+   "path": "gafas-de-sol/coleccion-elite/charlotte-brown"
+  },
+  "charlotte-black": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-elite/charlotte-black",
+   "name": "Charlotte black",
+   "price": 67000,
+   "stock": true,
+   "desc": "Marco Semi montado al aire dorado metálico con cristales negros filtro uv400",
+   "path": "gafas-de-sol/coleccion-elite/charlotte-black"
+  },
+  "pilot-black": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-de-sol/coleccion-elite/pilot-black",
+   "name": "Pilot black",
+   "price": 67000,
+   "stock": true,
+   "desc": "Armazón policarbonato negro con detalles en patillas color plata y cristales filtro uv4000",
+   "path": "gafas-de-sol/coleccion-elite/pilot-black"
+  },
+  "tulum-polarizadas": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-polarizadas/tulum-polarizadas",
+   "name": "Tulum Polarizadas",
+   "price": 80000,
+   "stock": true,
+   "desc": "Gafas de policarbonato rígido nacarado con patillas metálicas reforzadas, bisagras metálicas y cristales espejados filtro UV499 y polarizados",
+   "path": "gafas-polarizadas/tulum-polarizadas"
+  },
+  "aviador-black-polarizado": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-polarizadas/aviador-black-polarizado",
+   "name": "Aviador Black polarizado",
+   "price": 80000,
+   "stock": true,
+   "desc": "Armazón metálico negro mate con patillas de policarbonato, plaquetas de silicona y cristales negros polarizados",
+   "path": "gafas-polarizadas/aviador-black-polarizado"
+  },
+  "aviador-brown-polarizado": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-polarizadas/aviador-brown-polarizado",
+   "name": "Aviador Brown polarizado",
+   "price": 80000,
+   "stock": true,
+   "desc": "Armazón metálico marron con patillas de policarbonato, plaquetas de silicona y cristales marrones degrade polarizados",
+   "path": "gafas-polarizadas/aviador-brown-polarizado"
+  },
+  "aviador-polarizado": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-polarizadas/aviador-polarizado",
+   "name": "Aviador polarizado",
+   "price": 80000,
+   "stock": true,
+   "desc": "",
+   "path": "gafas-polarizadas/aviador-polarizado"
+  },
+  "apolo-polarized": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-polarizadas/apolo-polarized",
+   "name": "Apolo (polarized)",
+   "price": 80000,
+   "stock": true,
+   "desc": "armazon metálico súper resistente co cristales celeste espejados filtro UV400 polarizados",
+   "path": "gafas-polarizadas/apolo-polarized"
+  },
+  "ciclismo-fotocromaticos": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-polarizadas/ciclismo-fotocromaticos",
+   "name": "Ciclismo fotocromáticos",
+   "price": 87000,
+   "stock": true,
+   "desc": "Gafas de policarbonato con cristales fotocromáticos ideales para actividades al aire libre como ciclismo y running",
+   "path": "gafas-polarizadas/ciclismo-fotocromaticos"
+  },
+  "madonna": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-polarizadas/madonna",
+   "name": "Madonna",
+   "price": 87000,
+   "stock": true,
+   "desc": "Armazón de policarbonato con bisagras metálicas , cristales en degrade polarizados",
+   "path": "gafas-polarizadas/madonna"
+  },
+  "bulgari": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-polarizadas/bulgari",
+   "name": "Bulgari",
+   "price": 87000,
+   "stock": true,
+   "desc": "Armazón de policarbonato con detalles metálicos y bisagras metálicas , cristales en degrade polarizados",
+   "path": "gafas-polarizadas/bulgari"
+  },
+  "boston-brown": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-polarizadas/boston-brown",
+   "name": "Boston Brown",
+   "price": 87000,
+   "stock": true,
+   "desc": "Armazón de policarbonato print con patillas metálicas y cristales marrones polarizados",
+   "path": "gafas-polarizadas/boston-brown"
+  },
+  "boston-black": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-polarizadas/boston-black",
+   "name": "Boston black",
+   "price": 87000,
+   "stock": true,
+   "desc": "Armazón de policarbonato con patillas metálicas y cristales negros polarizados",
+   "path": "gafas-polarizadas/boston-black"
+  },
+  "clasicas-grey": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-polarizadas/clasicas-grey",
+   "name": "Clásicas grey",
+   "price": 87000,
+   "stock": true,
+   "desc": "Armazón de policarbonato gris mate con bisagras metálicas y cristales negros polarizados",
+   "path": "gafas-polarizadas/clasicas-grey"
+  },
+  "rio": {
+   "url": "https://sunnygafas.empretienda.com.ar/gafas-polarizadas/rio",
+   "name": "Río",
+   "price": 87000,
+   "stock": true,
+   "desc": "Armazón de policarbonato con patillas metálicas y cristales marrones polarizados",
+   "path": "gafas-polarizadas/rio"
+  },
+  "risky": {
+   "url": "https://sunnygafas.empretienda.com.ar/armazones/risky",
+   "name": "Risky",
+   "price": 40000,
+   "stock": true,
+   "desc": "Acetato con patillas inyectadas y bisagras metálicas , súper resistente. Armazón clásico que va con todo ! Unisex - CONSULTE POR PRESUPUESTO DE CRISTALES CON SU GRADUACIÓN",
+   "path": "armazones/risky"
+  },
+  "risky-green": {
+   "url": "https://sunnygafas.empretienda.com.ar/armazones/risky-green",
+   "name": "Risky Green",
+   "price": 40000,
+   "stock": true,
+   "desc": "Marco de policarbonato negro/verde agua con degrade traslúcido y patillas inyectadas con bisagras metálicas",
+   "path": "armazones/risky-green"
+  },
+  "risky-blue": {
+   "url": "https://sunnygafas.empretienda.com.ar/armazones/risky-blue",
+   "name": "Risky Blue",
+   "price": 40000,
+   "stock": true,
+   "desc": "Armazón de policarbonato negro/azul en degrade con transparencia, patillas inyectadas con bisagras metálicas",
+   "path": "armazones/risky-blue"
+  },
+  "aron": {
+   "url": "https://sunnygafas.empretienda.com.ar/armazones/aron",
+   "name": "Aron",
+   "price": 40000,
+   "stock": true,
+   "desc": "Armazón de policarbonato gris traslúcido bisagras metálicas - CONSULTE POR PRESUPUESTO DE CRISTALES CON SU GRADUACIÓN",
+   "path": "armazones/aron"
+  },
+  "lupe": {
+   "url": "https://sunnygafas.empretienda.com.ar/armazones/lupe",
+   "name": "Lupe",
+   "price": 40000,
+   "stock": true,
+   "desc": "Armazón de policarbonato traslúcido con detalles en lila de diferentes tonos, bisagras metálicas y cristales con antireflex - CONSULTE POR PRESUPUESTO DE CRISTALES CON SU GRADUACIÓN",
+   "path": "armazones/lupe"
+  },
+  "coco-clear": {
+   "url": "https://sunnygafas.empretienda.com.ar/armazones/coco-clear",
+   "name": "Coco clear",
+   "price": 50000,
+   "stock": true,
+   "desc": "Armazon de plástico",
+   "path": "armazones/coco-clear"
+  },
+  "coco-black": {
+   "url": "https://sunnygafas.empretienda.com.ar/armazones/coco-black",
+   "name": "Coco black",
+   "price": 50000,
+   "stock": true,
+   "desc": "Armazon de plástico",
+   "path": "armazones/coco-black"
+  },
+  "coco-grey": {
+   "url": "https://sunnygafas.empretienda.com.ar/armazones/coco-grey",
+   "name": "Coco grey",
+   "price": 50000,
+   "stock": true,
+   "desc": "Armazon de plástico",
+   "path": "armazones/coco-grey"
+  },
+  "coco-print": {
+   "url": "https://sunnygafas.empretienda.com.ar/armazones/coco-print",
+   "name": "Coco print",
+   "price": 50000,
+   "stock": true,
+   "desc": "Armazon de plástico",
+   "path": "armazones/coco-print"
+  },
+  "oriana-pink": {
+   "url": "https://sunnygafas.empretienda.com.ar/armazones/oriana-pink",
+   "name": "Oriana pink",
+   "price": 27000,
+   "stock": true,
+   "desc": "armazon De plástico",
+   "path": "armazones/oriana-pink"
+  },
+  "oriana-black": {
+   "url": "https://sunnygafas.empretienda.com.ar/armazones/oriana-black",
+   "name": "Oriana black",
+   "price": 27000,
+   "stock": true,
+   "desc": "Armazón de plástico",
+   "path": "armazones/oriana-black"
+  },
+  "oriana-print": {
+   "url": "https://sunnygafas.empretienda.com.ar/armazones/oriana-print",
+   "name": "Oriana print",
+   "price": 27000,
+   "stock": true,
+   "desc": "armazon de plástico",
+   "path": "armazones/oriana-print"
+  },
+  "tr90-clip-on": {
+   "url": "https://sunnygafas.empretienda.com.ar/2-en-1-clipon/tr90-clip-on",
+   "name": "TR90 clip on",
+   "price": 80000,
+   "stock": false,
+   "desc": "Armazón ULTRA RESISTENTE material TR 90 : material termoplastico extremadamente liviano, anti abrasivo, no se deforma, resistente a altos impactos. El 85% de su composición es nylon. Esto logra reducir las cargas de la nariz y las orejas lo que hace que las gafas sean mucho más cómodas",
+   "path": "2-en-1-clipon/tr90-clip-on"
+  },
+  "classic-red": {
+   "url": "https://sunnygafas.empretienda.com.ar/2-en-1-clipon/classic-red",
+   "name": "Classic red",
+   "price": 90000,
+   "stock": true,
+   "desc": "Gafas clip on imantadas 2 en 1, armazón de policarbonato con patillas flex inyectadas, cristales con ante reflejo y placa clip para el sol polarizada",
+   "path": "2-en-1-clipon/classic-red"
+  },
+  "classic-grey": {
+   "url": "https://sunnygafas.empretienda.com.ar/2-en-1-clipon/classic-grey",
+   "name": "Classic grey",
+   "price": 90000,
+   "stock": true,
+   "desc": "Gafas clip on imantadas 2 en 1, armazón de policarbonato con patillas inyectadas flex, cristal con anti reflejo y placa para el sol polarizada",
+   "path": "2-en-1-clipon/classic-grey"
+  },
+  "nova": {
+   "url": "https://sunnygafas.empretienda.com.ar/2-en-1-clipon/nova",
+   "name": "Nova",
+   "price": 110000,
+   "stock": true,
+   "desc": "Armazón de policarbonato con patillas metálicas de diseño y clip de policarbonato en degrade con cristales oscuros filtro uv400",
+   "path": "2-en-1-clipon/nova"
+  },
+  "milo": {
+   "url": "https://sunnygafas.empretienda.com.ar/2-en-1-clipon/milo",
+   "name": "Milo",
+   "price": 110000,
+   "stock": true,
+   "desc": "Armazón metálico con clip metálico negro filtro uv400",
+   "path": "2-en-1-clipon/milo"
+  },
+  "ambar": {
+   "url": "https://sunnygafas.empretienda.com.ar/2-en-1-clipon/ambar",
+   "name": "Ambar",
+   "price": 110000,
+   "stock": true,
+   "desc": "Armazón metálico con clip de policarbonato filtro uv400 marrones carey",
+   "path": "2-en-1-clipon/ambar"
+  },
+  "lennon-gold": {
+   "url": "https://sunnygafas.empretienda.com.ar/2-en-1-clipon/lennon-gold",
+   "name": "Lennon gold",
+   "price": 110000,
+   "stock": true,
+   "desc": "Armazón importado metálico color dorado y frente negro, cristales blue cut para el descanso de la vista + clip imantado polarizado color negro para una buena protección contra rayos UV - CONSULTE POR PRESUPUESTO DE CRISTALES CON SU GRADUACIÓN",
+   "path": "2-en-1-clipon/lennon-gold"
+  },
+  "lennon-silver": {
+   "url": "https://sunnygafas.empretienda.com.ar/2-en-1-clipon/lennon-silver",
+   "name": "Lennon silver",
+   "price": 110000,
+   "stock": true,
+   "desc": "Armazón importado metálico color plateado y frente negro, cristales blue cut para el descanso de la vista + clip imantado polarizado degrade color negro/gris para una buena protección contra rayos UV - CONSULTE POR PRESUPUESTO DE CRISTALES CON SU GRADUACIÓN",
+   "path": "2-en-1-clipon/lennon-silver"
+  },
+  "lennon-pink": {
+   "url": "https://sunnygafas.empretienda.com.ar/2-en-1-clipon/lennon-pink",
+   "name": "Lennon pink",
+   "price": 110000,
+   "stock": true,
+   "desc": "Armazón importado metálico color dorado y frente negro, cristales blue cut para el descanso de la vista + clip imantado polarizado degrade color gris/rosa para una buena protección contra rayos UV - CONSULTE POR PRESUPUESTO DE CRISTALES CON SU GRADUACIÓN",
+   "path": "2-en-1-clipon/lennon-pink"
+  },
+  "cat-eye-6-en-1": {
+   "url": "https://sunnygafas.empretienda.com.ar/2-en-1-clipon/cat-eye-6-en-1",
+   "name": "Cat eye 6 en 1",
+   "price": 120000,
+   "stock": true,
+   "desc": "Diseño ojo de gato con patillas flexibles, incluye los 5 clips (1 polarizado) y estuche para guardar con diferentes compartimientos - consultanos por presupuesto de cristales con tu graduación, trabajamos con óptico matriculado",
+   "path": "2-en-1-clipon/cat-eye-6-en-1"
+  },
+  "grey-jack": {
+   "url": "https://sunnygafas.empretienda.com.ar/2-en-1-clipon/grey-jack",
+   "name": "Grey Jack",
+   "price": 130000,
+   "stock": true,
+   "desc": "Clip On premium diseño en material resistente y patillas flexibles, viene con 4 clips (2 de ellos polarizados) son intercambiables. Patillas flexibles y marco mate degrade - consúltanos por presupuesto con tus cristales recetados",
+   "path": "2-en-1-clipon/grey-jack"
+  },
+  "cadena-gold": {
+   "url": "https://sunnygafas.empretienda.com.ar/accesorios/cadena-gold",
+   "name": "Cadena gold",
+   "price": 6000,
+   "stock": true,
+   "desc": "Cadena metálica color plata claro",
+   "path": "accesorios/cadena-gold"
+  },
+  "cadena-silver": {
+   "url": "https://sunnygafas.empretienda.com.ar/accesorios/cadena-silver",
+   "name": "Cadena Silver",
+   "price": 6000,
+   "stock": true,
+   "desc": "Cadena metálica color plata claro",
+   "path": "accesorios/cadena-silver"
+  },
+  "cadena-rose": {
+   "url": "https://sunnygafas.empretienda.com.ar/accesorios/cadena-rose",
+   "name": "Cadena rose",
+   "price": 6000,
+   "stock": true,
+   "desc": "Cadena metálica color rose claro",
+   "path": "accesorios/cadena-rose"
+  },
+  "cadena-gris": {
+   "url": "https://sunnygafas.empretienda.com.ar/accesorios/cadena-gris",
+   "name": "Cadena gris",
+   "price": 6000,
+   "stock": true,
+   "desc": "Cadena metálica color plata o gris oscuro",
+   "path": "accesorios/cadena-gris"
+  },
+  "cadena-beige": {
+   "url": "https://sunnygafas.empretienda.com.ar/accesorios/cadena-beige",
+   "name": "Cadena beige",
+   "price": 11200,
+   "stock": true,
+   "desc": "Cadena de acrílico beige y dorado",
+   "path": "accesorios/cadena-beige"
+  },
+  "cadena-caramel": {
+   "url": "https://sunnygafas.empretienda.com.ar/accesorios/cadena-caramel",
+   "name": "Cadena Caramel",
+   "price": 11200,
+   "stock": true,
+   "desc": "Cadena de acrílico color caramelo y dorado",
+   "path": "accesorios/cadena-caramel"
+  },
+  "cadena-black": {
+   "url": "https://sunnygafas.empretienda.com.ar/accesorios/cadena-black",
+   "name": "Cadena black",
+   "price": 11200,
+   "stock": true,
+   "desc": "Cadena de acrílico negro y dorado",
+   "path": "accesorios/cadena-black"
+  }
+ },
+ "missing": []
+}

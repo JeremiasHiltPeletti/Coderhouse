@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Sunnygafas</title>
+<!-- Compatibilidad: los enlaces de la versión anterior (demo.html?vista=…) llevan a su página definitiva, con la variante elegida. -->
+<script src="/js/data.js"></script>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search), vista = q.get("vista") || "catalogo", SG = window.SG, to = "/catalogo.html";
+  var CAT = { sol: "/gafas-de-sol.html", polarizadas: "/polarizadas.html", armazones: "/armazones.html", clipon: "/clip-on.html", accesorios: "/accesorios.html" };
+  if (vista === "producto") {
+    var p = SG.BY_ID[q.get("id")];
+    to = p ? SG.productURL(p, Math.min(+q.get("v") || 0, p.vars.length - 1)) : "/catalogo.html";
+  } else if (vista === "guia") { to = "/guia-de-calce.html";
+  } else if (vista === "ayuda") { to = "/ayuda.html";
+  } else {
+    var out = new URLSearchParams();
+    if (q.get("forma")) out.set("forma", q.get("forma"));
+    if (q.get("col")) out.set("col", SG.norm(q.get("col")));
+    if (q.get("q")) out.set("q", q.get("q"));
+    to = (CAT[q.get("cat")] || "/catalogo.html") + (out.toString() ? "?" + out.toString() : "");
+  }
+  location.replace(to + location.hash);
+})();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=/catalogo.html"></noscript>
+</head>
+<body><p><a href="/catalogo.html">Ir al catálogo de Sunnygafas</a></p></body>
+</html>

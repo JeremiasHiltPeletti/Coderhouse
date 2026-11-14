@@ -1,0 +1,77 @@
+<main id="contenido" class="page page--white" data-product="{{ID}}">
+  <div class="container">
+    <nav aria-label="Migas de pan">
+      <ol class="crumbs">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="{{CAT_URL}}">{{CAT_NAME}}</a></li>
+        <li><span aria-current="page">{{NAME}}</span></li>
+      </ol>
+    </nav>
+
+    <div class="pdp">
+      <!-- Galería: fotos reales del color elegido -->
+      <section class="gallery" id="gallery" aria-label="Fotos de {{NAME}}">
+        <div class="gallery__stage" id="galleryStage" tabindex="0" role="group" aria-roledescription="galería" aria-label="Fotos del color elegido. Usá las flechas para cambiar de foto."></div>
+        <p class="gallery__count" id="galleryCount" aria-live="polite"></p>
+        <ul class="gallery__thumbs" id="galleryThumbs" aria-label="Elegir foto"></ul>
+      </section>
+
+      <!-- Compra: nombre, color, precio aplicable y siguiente paso -->
+      <section class="buy" aria-labelledby="pdpTitle">
+        <p class="buy__kind meta" id="pdpKind">{{KIND}}</p>
+        <h1 id="pdpTitle">{{NAME}}</h1>
+
+        <div class="buy__color">
+          <p class="buy__label">Color: <strong id="pdpVariant">{{VARIANT}}</strong> <span class="buy__stock" id="pdpStock" hidden>Sin stock</span></p>
+          <div class="swatches swatches--lg" id="pdpSwatches" role="group" aria-label="Colores de {{NAME}}"></div>
+        </div>
+
+        <div class="buy__price" id="pdpPrice">
+          <p class="buy__transfer num"><span id="pdpTransfer">{{PRICE_T}}</span> <small>con transferencia o efectivo</small></p>
+          <p class="buy__list num"><span id="pdpList">{{PRICE_L}}</span> de lista · <span id="pdpInstallments"></span></p>
+        </div>
+
+        <p class="visually-hidden" id="pdpStatus" role="status" aria-live="polite"></p>
+
+        <div class="buy__ctas" id="pdpCtas">
+          <a class="btn btn-primary btn-lg" id="pdpBuy" href="{{STORE_URL}}" rel="noopener">Comprar en la tienda oficial <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+          <a class="btn btn-outline btn-lg" id="pdpWa" href="{{WA}}" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span id="pdpWaText">Consultar por WhatsApp</span></a>
+        </div>
+        <p class="buy__next meta" id="pdpNext">Se abre la ficha de este color en la tienda oficial. Ahí lo agregás al carrito, calculás el envío y pagás.</p>
+
+        <ul class="buy__facts" id="pdpFacts"></ul>
+      </section>
+    </div>
+
+    <!-- Detalle respaldado por la tienda -->
+    <section class="detail" aria-labelledby="detailTitle">
+      <div class="detail__col">
+        <h2 id="detailTitle">Detalle</h2>
+        <p class="detail__desc" id="pdpDesc"></p>
+        <dl class="specs" id="pdpSpecs"></dl>
+      </div>
+      <div class="detail__col">
+        <h2>Medidas y calce</h2>
+        <p>Todavía no publicamos el lente, el puente y la varilla de este modelo. Pedinos las medidas y comparalas con un par que ya te quede cómodo.</p>
+        <div class="detail__links">
+          <a class="btn btn-outline" id="pdpMeasure" href="{{WA}}" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-ruler"/></svg>Pedir las medidas</a>
+          <a class="link" href="/guia-de-calce.html">Cómo leer las medidas <svg class="icon"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="related" aria-labelledby="relatedTitle" id="related" hidden>
+      <div class="section__head">
+        <h2 id="relatedTitle"></h2>
+        <a class="link hide-sm" id="relatedAll" href="{{CAT_URL}}">Ver {{CAT_NAME}} <svg class="icon"><use href="#i-arrow"/></svg></a>
+      </div>
+      <ul class="product-grid" id="relatedGrid"></ul>
+    </section>
+  </div>
+
+  <!-- Barra de compra fija en celular: aparece cuando el botón principal sale de pantalla -->
+  <div class="buybar" id="buybar" hidden>
+    <p class="buybar__text"><strong id="buybarName">{{NAME}}</strong><span class="num" id="buybarPrice">{{PRICE_T}}</span></p>
+    <a class="btn btn-primary" id="buybarBtn" href="{{STORE_URL}}" rel="noopener">Comprar</a>
+  </div>
+</main>

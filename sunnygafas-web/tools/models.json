@@ -1,0 +1,654 @@
+{
+ "_nota": "Curaduría del sitio: qué modelos se muestran, cómo se agrupan los colores y qué ficha oficial corresponde a cada variante (slug de sunnygafas.empretienda.com.ar). Precio, stock, fotos y descripción se leen de la tienda con tools/sync_store.py.",
+ "featured": [
+  "saturday",
+  "charlotte",
+  "gala",
+  "yanis"
+ ],
+ "models": [
+  {
+   "id": "glow",
+   "n": "Glow",
+   "cat": "sol",
+   "shape": "redonda",
+   "vars": [
+    {
+     "c": "Negro",
+     "s": "glow-black",
+     "prev": "glow-negro"
+    }
+   ]
+  },
+  {
+   "id": "braga",
+   "n": "Braga",
+   "cat": "sol",
+   "shape": "aviador",
+   "vars": [
+    {
+     "c": "Verde",
+     "s": "braga-green",
+     "prev": "braga-verde"
+    },
+    {
+     "c": "Amarillo",
+     "s": "braga-yellow",
+     "prev": "braga-amarillo"
+    }
+   ]
+  },
+  {
+   "id": "roxy",
+   "n": "Roxy",
+   "cat": "sol",
+   "shape": "cateye",
+   "vars": [
+    {
+     "c": "Gris",
+     "s": "roxy",
+     "prev": "roxy-gris"
+    }
+   ]
+  },
+  {
+   "id": "dallas",
+   "n": "Dallas",
+   "cat": "sol",
+   "shape": "cuadrada",
+   "vars": [
+    {
+     "c": "Marrón",
+     "s": "dallas-brown",
+     "prev": "dallas-marron"
+    },
+    {
+     "c": "Negro",
+     "s": "dallas-black",
+     "prev": "dallas-negro"
+    }
+   ]
+  },
+  {
+   "id": "saturday",
+   "n": "Saturday XL",
+   "cat": "sol",
+   "shape": "aviador",
+   "isNew": true,
+   "vars": [
+    {
+     "c": "Naranja",
+     "label": "Naranja y azul",
+     "s": "saturday-xl-blue-orange",
+     "prev": "saturday-azul"
+    },
+    {
+     "c": "Print",
+     "s": "saturday-xl-print",
+     "prev": "saturday-print"
+    }
+   ]
+  },
+  {
+   "id": "molly",
+   "n": "Molly",
+   "cat": "sol",
+   "shape": "redonda",
+   "vars": [
+    {
+     "c": "Marrón",
+     "s": "molly-brown",
+     "prev": "molly-marron"
+    },
+    {
+     "c": "Negro",
+     "s": "molly-black",
+     "prev": "molly-negro"
+    }
+   ]
+  },
+  {
+   "id": "yanis",
+   "n": "Yanis",
+   "cat": "sol",
+   "shape": "cateye",
+   "isNew": true,
+   "vars": [
+    {
+     "c": "Print",
+     "s": "yanis-print",
+     "prev": "yanis-print"
+    },
+    {
+     "c": "Negro",
+     "s": "yanis-black",
+     "prev": "yanis-negro"
+    }
+   ]
+  },
+  {
+   "id": "gala",
+   "n": "Gala",
+   "cat": "sol",
+   "shape": "ovalada",
+   "isNew": true,
+   "vars": [
+    {
+     "c": "Carey",
+     "s": "gala-carey",
+     "prev": "gala-carey"
+    },
+    {
+     "c": "Negro",
+     "s": "gala-black",
+     "prev": "gala-negro"
+    },
+    {
+     "c": "Caramelo",
+     "s": "gala-caramelo",
+     "prev": "gala-caramelo"
+    },
+    {
+     "c": "Print",
+     "s": "gala-print",
+     "prev": "gala-print"
+    }
+   ]
+  },
+  {
+   "id": "siena",
+   "n": "Siena",
+   "cat": "sol",
+   "shape": "ovalada",
+   "vars": [
+    {
+     "c": "Marrón",
+     "s": "siena-brown",
+     "prev": "siena-marron"
+    },
+    {
+     "c": "Negro",
+     "s": "siena-black"
+    },
+    {
+     "c": "Carey",
+     "s": "siena-carey"
+    },
+    {
+     "c": "Print",
+     "s": "siena-print"
+    }
+   ]
+  },
+  {
+   "id": "charlotte",
+   "n": "Charlotte",
+   "cat": "sol",
+   "shape": "cuadrada",
+   "isNew": true,
+   "vars": [
+    {
+     "c": "Marrón",
+     "s": "charlotte-brown",
+     "prev": "charlotte-marron"
+    },
+    {
+     "c": "Negro",
+     "s": "charlotte-black",
+     "prev": "charlotte-negro"
+    }
+   ]
+  },
+  {
+   "id": "pilot",
+   "n": "Pilot",
+   "cat": "sol",
+   "shape": "cateye",
+   "vars": [
+    {
+     "c": "Negro",
+     "s": "pilot-black",
+     "prev": "pilot-negro-2"
+    }
+   ]
+  },
+  {
+   "id": "tulum",
+   "n": "Tulum",
+   "cat": "pol",
+   "shape": "redonda",
+   "vars": [
+    {
+     "c": "Azul",
+     "label": "Azul print",
+     "s": "tulum-polarizadas",
+     "prev": "tulum-pol"
+    }
+   ]
+  },
+  {
+   "id": "aviador-pol",
+   "n": "Aviador polarizado",
+   "cat": "pol",
+   "shape": "aviador",
+   "vars": [
+    {
+     "c": "Negro",
+     "s": "aviador-black-polarizado",
+     "prev": "aviador-black-polarizado"
+    },
+    {
+     "c": "Marrón",
+     "s": "aviador-brown-polarizado",
+     "prev": "aviador-brown-polarizado"
+    },
+    {
+     "c": "Espejado",
+     "s": "aviador-polarizado",
+     "prev": "aviador-polarizado"
+    }
+   ]
+  },
+  {
+   "id": "apolo",
+   "n": "Apolo",
+   "cat": "pol",
+   "vars": [
+    {
+     "c": "Negro",
+     "s": "apolo-polarized",
+     "prev": "apolo-polarized"
+    }
+   ]
+  },
+  {
+   "id": "ciclismo",
+   "n": "Ciclismo fotocromáticos",
+   "cat": "pol",
+   "vars": [
+    {
+     "c": "Negro",
+     "s": "ciclismo-fotocromaticos",
+     "prev": "ciclismo-fotocromaticos"
+    }
+   ]
+  },
+  {
+   "id": "madonna",
+   "n": "Madonna",
+   "cat": "pol",
+   "shape": "cuadrada",
+   "vars": [
+    {
+     "c": "Negro",
+     "s": "madonna",
+     "prev": "madonna"
+    }
+   ]
+  },
+  {
+   "id": "bulgari",
+   "n": "Bulgari",
+   "cat": "pol",
+   "shape": "cuadrada",
+   "vars": [
+    {
+     "c": "Negro",
+     "s": "bulgari",
+     "prev": "bulgari"
+    }
+   ]
+  },
+  {
+   "id": "boston",
+   "n": "Boston",
+   "cat": "pol",
+   "shape": "redonda",
+   "vars": [
+    {
+     "c": "Marrón",
+     "s": "boston-brown",
+     "prev": "boston-brown"
+    },
+    {
+     "c": "Negro",
+     "s": "boston-black",
+     "prev": "boston-black"
+    }
+   ]
+  },
+  {
+   "id": "clasicas",
+   "n": "Clásicas",
+   "cat": "pol",
+   "shape": "cuadrada",
+   "vars": [
+    {
+     "c": "Gris",
+     "s": "clasicas-grey",
+     "prev": "clasicas-grey"
+    }
+   ]
+  },
+  {
+   "id": "rio",
+   "n": "Río",
+   "cat": "pol",
+   "shape": "redonda",
+   "vars": [
+    {
+     "c": "Beige",
+     "s": "rio",
+     "prev": "rio"
+    }
+   ]
+  },
+  {
+   "id": "risky",
+   "n": "Risky",
+   "cat": "arm",
+   "shape": "cuadrada",
+   "vars": [
+    {
+     "c": "Negro",
+     "s": "risky",
+     "prev": "risky"
+    },
+    {
+     "c": "Verde",
+     "s": "risky-green",
+     "prev": "risky-green"
+    },
+    {
+     "c": "Azul",
+     "s": "risky-blue",
+     "prev": "risky-blue"
+    }
+   ]
+  },
+  {
+   "id": "aron",
+   "n": "Aron",
+   "cat": "arm",
+   "shape": "cuadrada",
+   "vars": [
+    {
+     "c": "Gris",
+     "s": "aron",
+     "prev": "aron"
+    }
+   ]
+  },
+  {
+   "id": "lupe",
+   "n": "Lupe",
+   "cat": "arm",
+   "shape": "cateye",
+   "vars": [
+    {
+     "c": "Print",
+     "s": "lupe",
+     "prev": "lupe"
+    }
+   ]
+  },
+  {
+   "id": "coco",
+   "n": "Coco",
+   "cat": "arm",
+   "shape": "aviador",
+   "vars": [
+    {
+     "c": "Transparente",
+     "s": "coco-clear",
+     "prev": "coco-clear"
+    },
+    {
+     "c": "Negro",
+     "s": "coco-black",
+     "prev": "coco-black"
+    },
+    {
+     "c": "Gris",
+     "s": "coco-grey",
+     "prev": "coco-grey"
+    },
+    {
+     "c": "Print",
+     "s": "coco-print",
+     "prev": "coco-print"
+    }
+   ]
+  },
+  {
+   "id": "oriana",
+   "n": "Oriana",
+   "cat": "arm",
+   "shape": "cuadrada",
+   "vars": [
+    {
+     "c": "Rosa",
+     "s": "oriana-pink",
+     "prev": "oriana-rosa"
+    },
+    {
+     "c": "Negro",
+     "s": "oriana-black",
+     "prev": "oriana-negro"
+    },
+    {
+     "c": "Print",
+     "s": "oriana-print",
+     "prev": "oriana-print"
+    }
+   ]
+  },
+  {
+   "id": "tr90",
+   "n": "TR90 clip on",
+   "cat": "clip",
+   "shape": "cuadrada",
+   "vars": [
+    {
+     "c": "Negro",
+     "s": "tr90-clip-on",
+     "prev": "tr90-clip-on"
+    }
+   ]
+  },
+  {
+   "id": "classic",
+   "n": "Classic",
+   "cat": "clip",
+   "shape": "cuadrada",
+   "vars": [
+    {
+     "c": "Rojo",
+     "s": "classic-red",
+     "prev": "classic-red"
+    },
+    {
+     "c": "Gris",
+     "s": "classic-grey",
+     "prev": "classic-grey"
+    }
+   ]
+  },
+  {
+   "id": "nova",
+   "n": "Nova",
+   "cat": "clip",
+   "shape": "cuadrada",
+   "vars": [
+    {
+     "c": "Negro",
+     "s": "nova",
+     "prev": "nova"
+    }
+   ]
+  },
+  {
+   "id": "milo",
+   "n": "Milo",
+   "cat": "clip",
+   "shape": "redonda",
+   "vars": [
+    {
+     "c": "Dorado",
+     "s": "milo",
+     "prev": "milo"
+    }
+   ]
+  },
+  {
+   "id": "ambar",
+   "n": "Ambar",
+   "cat": "clip",
+   "shape": "redonda",
+   "vars": [
+    {
+     "c": "Dorado",
+     "s": "ambar",
+     "prev": "ambar"
+    }
+   ]
+  },
+  {
+   "id": "lennon",
+   "n": "Lennon",
+   "cat": "clip",
+   "shape": "redonda",
+   "vars": [
+    {
+     "c": "Dorado",
+     "label": "Gold",
+     "s": "lennon-gold",
+     "prev": "lennon-gold"
+    },
+    {
+     "c": "Plateado",
+     "label": "Silver",
+     "s": "lennon-silver",
+     "prev": "lennon-silver"
+    },
+    {
+     "c": "Rosa",
+     "label": "Pink",
+     "s": "lennon-pink",
+     "prev": "lennon-pink"
+    }
+   ]
+  },
+  {
+   "id": "cateye6",
+   "n": "Cat eye 6 en 1",
+   "cat": "clip",
+   "shape": "cateye",
+   "vars": [
+    {
+     "c": "Negro",
+     "s": "cat-eye-6-en-1",
+     "prev": "cat-eye-6-en-1"
+    }
+   ]
+  },
+  {
+   "id": "greyjack",
+   "n": "Grey Jack",
+   "cat": "clip",
+   "shape": "cuadrada",
+   "vars": [
+    {
+     "c": "Negro",
+     "s": "grey-jack",
+     "prev": "grey-jack"
+    }
+   ]
+  },
+  {
+   "id": "cadena-gold",
+   "n": "Cadena",
+   "cat": "acc",
+   "vars": [
+    {
+     "c": "Gold",
+     "s": "cadena-gold",
+     "prev": "cadena-gold"
+    }
+   ]
+  },
+  {
+   "id": "cadena-silver",
+   "n": "Cadena",
+   "cat": "acc",
+   "vars": [
+    {
+     "c": "Silver",
+     "s": "cadena-silver",
+     "prev": "cadena-silver"
+    }
+   ]
+  },
+  {
+   "id": "cadena-rose",
+   "n": "Cadena",
+   "cat": "acc",
+   "vars": [
+    {
+     "c": "Rose",
+     "s": "cadena-rose",
+     "prev": "cadena-rose"
+    }
+   ]
+  },
+  {
+   "id": "cadena-gris",
+   "n": "Cadena",
+   "cat": "acc",
+   "vars": [
+    {
+     "c": "Gris",
+     "s": "cadena-gris",
+     "prev": "cadena-gris"
+    }
+   ]
+  },
+  {
+   "id": "cadena-beige",
+   "n": "Cadena",
+   "cat": "acc",
+   "vars": [
+    {
+     "c": "Beige",
+     "s": "cadena-beige",
+     "prev": "cadena-beige"
+    }
+   ]
+  },
+  {
+   "id": "cadena-caramel",
+   "n": "Cadena",
+   "cat": "acc",
+   "vars": [
+    {
+     "c": "Caramelo",
+     "label": "Caramel",
+     "s": "cadena-caramel",
+     "prev": "cadena-caramel"
+    }
+   ]
+  },
+  {
+   "id": "cadena-black",
+   "n": "Cadena",
+   "cat": "acc",
+   "vars": [
+    {
+     "c": "Black",
+     "s": "cadena-black",
+     "prev": "cadena-black"
+    }
+   ]
+  }
+ ]
+}
