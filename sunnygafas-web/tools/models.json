@@ -1,5 +1,5 @@
 {
- "_nota": "Curaduría del sitio: qué modelos se muestran, cómo se agrupan los colores y qué ficha oficial corresponde a cada variante (slug de sunnygafas.empretienda.com.ar). Precio, stock, fotos y descripción se leen de la tienda con tools/sync_store.py.",
+ "_nota": "Curaduría del sitio: qué modelos se muestran, cómo se agrupan los colores y qué ficha oficial corresponde a cada variante (slug de sunnygafas.empretienda.com.ar). Precio, stock, fotos y descripción se leen de la tienda con tools/sync_store.py. Campos opcionales por modelo: «parts» (clip-on: a qué pieza pertenece cada atributo), «lens» (corrige o deja en null un atributo de lente), «measures» {lens, bridge, temple} en mm, «material». Por variante: «desc» (texto editorial que reemplaza al de la tienda). Un atributo en null significa «sin confirmar» y no se muestra.",
  "featured": [
   "saturday",
   "charlotte",
@@ -85,7 +85,8 @@
     {
      "c": "Print",
      "s": "saturday-xl-print",
-     "prev": "saturday-print"
+     "prev": "saturday-print",
+     "desc": "Montura de policarbonato en print carey, con lentes celestes y filtro UV400."
     }
    ]
   },
@@ -191,7 +192,8 @@
     {
      "c": "Marrón",
      "s": "charlotte-brown",
-     "prev": "charlotte-marron"
+     "prev": "charlotte-marron",
+     "desc": "Montura metálica dorada, semi al aire, con lentes marrones y filtro UV400."
     },
     {
      "c": "Negro",
@@ -223,7 +225,8 @@
      "c": "Azul",
      "label": "Azul print",
      "s": "tulum-polarizadas",
-     "prev": "tulum-pol"
+     "prev": "tulum-pol",
+     "desc": "Montura de policarbonato nacarado, con varillas y bisagras metálicas. Lentes espejados y polarizados con filtro UV400."
     }
    ]
   },
@@ -270,9 +273,14 @@
     {
      "c": "Negro",
      "s": "ciclismo-fotocromaticos",
-     "prev": "ciclismo-fotocromaticos"
+     "prev": "ciclismo-fotocromaticos",
+     "desc": "Montura de policarbonato con lentes fotocromáticos para actividades al aire libre."
     }
-   ]
+   ],
+   "lens": {
+    "photo": true,
+    "polar": null
+   }
   },
   {
    "id": "madonna",
@@ -353,7 +361,8 @@
     {
      "c": "Negro",
      "s": "risky",
-     "prev": "risky"
+     "prev": "risky",
+     "desc": "Armazón de acetato con bisagras metálicas."
     },
     {
      "c": "Verde",
@@ -455,6 +464,12 @@
      "s": "tr90-clip-on",
      "prev": "tr90-clip-on"
     }
+   ],
+   "parts": [
+    [
+     "Armazón",
+     "TR90"
+    ]
    ]
   },
   {
@@ -466,13 +481,25 @@
     {
      "c": "Rojo",
      "s": "classic-red",
-     "prev": "classic-red"
+     "prev": "classic-red",
+     "desc": "Armazón rojo de policarbonato con clip solar imantado."
     },
     {
      "c": "Gris",
      "s": "classic-grey",
-     "prev": "classic-grey"
+     "prev": "classic-grey",
+     "desc": "Armazón gris de policarbonato con clip solar imantado."
     }
+   ],
+   "parts": [
+    [
+     "Armazón",
+     "Policarbonato"
+    ],
+    [
+     "Clip solar",
+     "Polarizado, imantado"
+    ]
    ]
   },
   {
@@ -486,6 +513,16 @@
      "s": "nova",
      "prev": "nova"
     }
+   ],
+   "parts": [
+    [
+     "Armazón",
+     "Policarbonato, varillas metálicas"
+    ],
+    [
+     "Clip solar",
+     "Policarbonato, filtro UV400"
+    ]
    ]
   },
   {
@@ -499,6 +536,16 @@
      "s": "milo",
      "prev": "milo"
     }
+   ],
+   "parts": [
+    [
+     "Armazón",
+     "Metálico"
+    ],
+    [
+     "Clip solar",
+     "Metálico, filtro UV400"
+    ]
    ]
   },
   {
@@ -512,6 +559,16 @@
      "s": "ambar",
      "prev": "ambar"
     }
+   ],
+   "parts": [
+    [
+     "Armazón",
+     "Metálico"
+    ],
+    [
+     "Clip solar",
+     "Policarbonato, filtro UV400"
+    ]
    ]
   },
   {
@@ -538,6 +595,20 @@
      "s": "lennon-pink",
      "prev": "lennon-pink"
     }
+   ],
+   "parts": [
+    [
+     "Armazón",
+     "Metálico"
+    ],
+    [
+     "Lentes del armazón",
+     "Blue cut"
+    ],
+    [
+     "Clip solar",
+     "Polarizado, imantado"
+    ]
    ]
   },
   {
@@ -551,6 +622,16 @@
      "s": "cat-eye-6-en-1",
      "prev": "cat-eye-6-en-1"
     }
+   ],
+   "parts": [
+    [
+     "Clips incluidos",
+     "5 (1 polarizado)"
+    ],
+    [
+     "Estuche",
+     "Con compartimientos, incluido"
+    ]
    ]
   },
   {
@@ -564,92 +645,125 @@
      "s": "grey-jack",
      "prev": "grey-jack"
     }
+   ],
+   "parts": [
+    [
+     "Clips incluidos",
+     "4 intercambiables (2 polarizados)"
+    ]
    ]
   },
   {
    "id": "cadena-gold",
-   "n": "Cadena",
+   "n": "Cadena dorada",
    "cat": "acc",
    "vars": [
     {
      "c": "Gold",
      "s": "cadena-gold",
-     "prev": "cadena-gold"
+     "prev": "cadena-gold",
+     "label": "Dorado"
     }
-   ]
+   ],
+   "material": "Metálica"
   },
   {
    "id": "cadena-silver",
-   "n": "Cadena",
+   "n": "Cadena plateada",
    "cat": "acc",
    "vars": [
     {
      "c": "Silver",
      "s": "cadena-silver",
-     "prev": "cadena-silver"
+     "prev": "cadena-silver",
+     "label": "Plateado"
     }
-   ]
+   ],
+   "material": "Metálica"
   },
   {
    "id": "cadena-rose",
-   "n": "Cadena",
+   "n": "Cadena rosé",
    "cat": "acc",
    "vars": [
     {
      "c": "Rose",
      "s": "cadena-rose",
-     "prev": "cadena-rose"
+     "prev": "cadena-rose",
+     "label": "Rosé"
     }
-   ]
+   ],
+   "material": "Metálica"
   },
   {
    "id": "cadena-gris",
-   "n": "Cadena",
+   "n": "Cadena gris",
    "cat": "acc",
    "vars": [
     {
      "c": "Gris",
      "s": "cadena-gris",
-     "prev": "cadena-gris"
+     "prev": "cadena-gris",
+     "label": "Gris"
     }
-   ]
+   ],
+   "material": "Metálica"
   },
   {
    "id": "cadena-beige",
-   "n": "Cadena",
+   "n": "Cadena beige",
    "cat": "acc",
    "vars": [
     {
      "c": "Beige",
      "s": "cadena-beige",
-     "prev": "cadena-beige"
+     "prev": "cadena-beige",
+     "label": "Beige",
+     "desc": "Cadena de acrílico en beige y dorado."
     }
-   ]
+   ],
+   "material": "Acrílico"
   },
   {
    "id": "cadena-caramel",
-   "n": "Cadena",
+   "n": "Cadena caramelo",
    "cat": "acc",
    "vars": [
     {
      "c": "Caramelo",
-     "label": "Caramel",
+     "label": "Caramelo",
      "s": "cadena-caramel",
      "prev": "cadena-caramel"
     }
-   ]
+   ],
+   "material": "Acrílico"
   },
   {
    "id": "cadena-black",
-   "n": "Cadena",
+   "n": "Cadena negra",
    "cat": "acc",
    "vars": [
     {
      "c": "Black",
      "s": "cadena-black",
-     "prev": "cadena-black"
+     "prev": "cadena-black",
+     "label": "Negro"
     }
-   ]
+   ],
+   "material": "Acrílico"
   }
- ]
+ ],
+ "pending": {
+  "includes_case_and_cleaner": null,
+  "_nota": "Datos comerciales sin respaldo en las fichas públicas de la tienda. null = sin confirmar: el sitio no los afirma. Cuando la marca los valide, pasar a true/false o cargar el dato.",
+  "measures": "Ningún modelo tiene lente, puente y varilla publicados.",
+  "ciclismo_polarizado": "La tienda describe cristales fotocromáticos; no confirma polarización.",
+  "classic_antirreflejo": "La tienda menciona antirreflejo sin precisar si es del armazón o del clip.",
+  "rx_budget_models_without_note": [
+   "coco",
+   "oriana"
+  ],
+  "cadena_gold_desc": "La tienda describe la cadena gold como «plata claro».",
+  "payments": "Tarjetas aceptadas, plazos de envío y política de cambios: validar antes de enumerarlos en Ayuda."
+ }
 }

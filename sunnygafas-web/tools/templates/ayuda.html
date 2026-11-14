@@ -10,7 +10,7 @@
     <div class="help">
       <header class="read__head help__head">
         <h1>Ayuda</h1>
-        <p class="lead">Cómo comprar, envíos, pagos y cambios. Si te queda una duda, escribinos.</p>
+        <p class="lead">Encontrá cómo comprar, calcular el envío o pedir un cambio. Si te queda una duda, escribinos.</p>
         <nav class="help__nav" aria-label="Temas de ayuda">
           <a href="#comprar">Cómo comprar</a>
           <a href="#envios">Envíos</a>
@@ -21,46 +21,39 @@
       </header>
 
       <article class="read help__body">
-        <section id="comprar">
+        <section id="comprar" tabindex="-1">
           <h2>Cómo comprar</h2>
-          <ol class="read__steps">
-            <li><strong>Elegí el modelo y el color</strong> en este sitio. El precio destacado es con transferencia o efectivo.</li>
-            <li>Tocá <strong>Comprar en la tienda oficial</strong>. Se abre la ficha de ese mismo color en <a href="{{STORE}}" rel="noopener">sunnygafas.empretienda.com.ar</a>.</li>
-            <li>Ahí lo <strong>agregás al carrito</strong>, calculás el envío con tu código postal y elegís cómo pagar.</li>
-          </ol>
-          <p>Si un color figura sin stock, desde su ficha podés consultarnos la reposición por WhatsApp.</p>
+          <p>Elegí un modelo y un color en el catálogo. Desde su ficha, tocá «Comprar en la tienda oficial». En Empretienda podés agregar ese color al carrito, elegir el envío y completar el pago.</p>
+          <p><a class="link" href="/catalogo.html">Ver todas las categorías <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
         </section>
 
-        <section id="envios">
+        <section id="envios" tabindex="-1">
           <h2>Envíos</h2>
-          <p>Enviamos a todo el país. El costo depende de tu código postal: lo calculás en la ficha de la tienda oficial y lo ves antes de pagar.</p>
-          <p>Si necesitás coordinar una entrega en particular, escribinos antes de comprar.</p>
+          <p>Abrí el producto en la tienda oficial y buscá «Calculá el costo de envío». Ingresá tu código postal para ver las opciones disponibles antes de pagar.</p>
+          <p><a class="btn btn-outline" href="{{WA_ENVIO}}" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Consultar por WhatsApp</a></p>
         </section>
 
-        <section id="pagos">
+        <section id="pagos" tabindex="-1">
           <h2>Medios de pago</h2>
-          <dl class="read__defs read__defs--wide">
-            <div><dt>Transferencia o efectivo</dt><dd><strong>25% off</strong> sobre el precio de lista. Es el precio destacado en cada modelo.</dd></div>
-            <div><dt>Tarjeta</dt><dd>Visa, Mastercard, American Express, Naranja, Cabal y Maestro. Hasta <strong>3 cuotas sin interés</strong> al precio de lista.</dd></div>
-          </dl>
-          <p>El medio de pago se elige al finalizar la compra en la tienda oficial.</p>
+          <p>Cada ficha de la tienda oficial muestra el precio de lista y las opciones de pago disponibles. Revisá el importe que corresponde al medio que elijas antes de completar el pedido.</p>
         </section>
 
-        <section id="cambios">
+        <section id="cambios" tabindex="-1">
           <h2>Cambios y arrepentimiento</h2>
-          <p><strong>Para un cambio</strong>, escribinos por WhatsApp con tu número de pedido y te indicamos los pasos.</p>
+          <p>Si querés pedir un cambio, escribinos con tu número de pedido para que podamos indicarte los pasos.</p>
           <p><a class="btn btn-outline" href="{{WA_CAMBIO}}" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Pedir un cambio por WhatsApp</a></p>
-          <p><strong>Para cancelar una compra</strong>, usá el botón de arrepentimiento que está al pie de la <a href="{{STORE}}" rel="noopener">tienda oficial</a>. La solicitud vale dentro de los plazos de la Resolución 424/2020 y no aplica a productos personalizados ni a los alcanzados por el art. 1116 del Código Civil y Comercial.</p>
+          <p>Para solicitar el arrepentimiento de una compra, usá el enlace «Botón de arrepentimiento» al pie de la tienda oficial.</p>
+          <p><a class="link" href="{{STORE}}" rel="noopener">Ir a la tienda oficial <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a></p>
         </section>
 
-        <section id="contacto" class="read__box">
+        <section id="contacto" class="read__box" tabindex="-1">
           <h2>Contacto</h2>
+          <p>Si tu consulta es por un modelo, incluí el nombre y el color.</p>
           <ul class="help__contact">
-            <li><a href="{{WA_HOLA}}" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span><strong>WhatsApp</strong>La forma más rápida de consultarnos</span></a></li>
-            <li><a href="{{INSTAGRAM}}" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg><span><strong>Instagram</strong>@sunnygafas</span></a></li>
-            <li><a href="mailto:{{EMAIL}}"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span><strong>Email</strong>{{EMAIL}}</span></a></li>
+            <li><a href="{{WA_HOLA}}" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span><strong>Escribinos por WhatsApp</strong></span></a></li>
+            <li><a href="mailto:{{EMAIL}}"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span><strong>Escribinos por email</strong>{{EMAIL}}</span></a></li>
+            <li><a href="{{INSTAGRAM}}" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg><span><strong>Ver @sunnygafas en Instagram</strong></span></a></li>
           </ul>
-          <a class="link" href="/gafas-de-sol.html">Volver al catálogo <svg class="icon"><use href="#i-arrow"/></svg></a>
         </section>
       </article>
     </div>

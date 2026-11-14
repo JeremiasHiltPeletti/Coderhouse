@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gafas polarizadas · Sunnygafas</title>
-<meta name="description" content="Gafas de sol polarizadas: menos reflejo en el agua y el asfalto. 25% off con transferencia o efectivo y 3 cuotas sin interés.">
+<meta name="description" content="Gafas con lentes polarizados, que reducen el reflejo de superficies como el agua y el asfalto.">
 <link rel="canonical" href="https://sunnygafas-home.netlify.app/polarizadas.html">
 <meta property="og:site_name" content="Sunnygafas">
 <meta property="og:title" content="Gafas polarizadas · Sunnygafas">
-<meta property="og:description" content="Gafas de sol polarizadas: menos reflejo en el agua y el asfalto. 25% off con transferencia o efectivo y 3 cuotas sin interés.">
+<meta property="og:description" content="Gafas con lentes polarizados, que reducen el reflejo de superficies como el agua y el asfalto.">
 <meta property="og:image" content="https://sunnygafas-home.netlify.app/assets/img/hero-ink-desk.webp">
 <meta property="og:locale" content="es_AR">
 <link rel="icon" href="/assets/img/isotipo-sunnygafas.png">
@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="/css/tokens.css">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="/css/compare.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Gafas polarizadas", "url": "https://sunnygafas-home.netlify.app/polarizadas.html", "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://sunnygafas-home.netlify.app/"}, {"@type": "ListItem", "position": 2, "name": "Gafas polarizadas", "item": "https://sunnygafas-home.netlify.app/polarizadas.html"}]}}</script>
 </head>
 <body>
@@ -64,6 +65,7 @@
     </a>
     <nav class="nav" aria-label="Principal">
       <ul>
+        <li><a href="/catalogo.html">Catálogo</a></li>
         <li><a href="/gafas-de-sol.html">Gafas de sol</a></li>
         <li><a href="/polarizadas.html" aria-current="page">Polarizadas</a></li>
         <li><a href="/armazones.html">Armazones</a></li>
@@ -86,7 +88,8 @@
       <form class="search__form" role="search" action="/catalogo.html" method="get">
         <label class="visually-hidden" for="searchInput">Buscar por modelo, forma o color</label>
         <svg class="icon"><use href="#i-search"/></svg>
-        <input id="searchInput" name="q" type="search" autocomplete="off" placeholder="Probá «Gala carey» o «aviador»" aria-describedby="searchStatus">
+        <input id="searchInput" name="q" type="search" autocomplete="off" placeholder="Ej. Gala carey" aria-describedby="searchStatus">
+        <button class="btn btn-primary search__go" type="submit">Ver resultados</button>
         <button class="icon-btn" type="button" id="searchClose" aria-label="Cerrar buscador"><svg class="icon"><use href="#i-close"/></svg></button>
       </form>
       <p class="search__status meta" id="searchStatus" aria-live="polite">Buscá por modelo, forma o color.</p>
@@ -103,17 +106,17 @@
       <button class="icon-btn" type="button" data-close-menu aria-label="Cerrar menú"><svg class="icon"><use href="#i-close"/></svg></button>
     </div>
     <ul class="drawer__nav">
-      <li><a href="/gafas-de-sol.html">Gafas de sol <svg class="icon"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/polarizadas.html" aria-current="page">Polarizadas <svg class="icon"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/armazones.html">Armazones <svg class="icon"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/clip-on.html">Clip-on 2 en 1 <svg class="icon"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/accesorios.html">Accesorios <svg class="icon"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="/catalogo.html">Catálogo <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/gafas-de-sol.html">Gafas de sol <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/polarizadas.html" aria-current="page">Polarizadas <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/armazones.html">Armazones <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/clip-on.html">Clip-on 2 en 1 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/accesorios.html">Accesorios <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
     </ul>
     <div class="drawer__extra">
-      <a class="link" href="/#forma" data-close-menu>Elegí por forma</a>
       <a class="link" href="/guia-de-calce.html">Guía de calce</a>
       <a class="link" href="/ayuda.html">Ayuda</a>
-      <a class="link" href="https://wa.me/5493454149784?text=Hola%2C%20vengo%20del%20sitio%20de%20Sunnygafas%20y%20quiero%20hacer%20una%20consulta." rel="noopener">Escribinos por WhatsApp</a>
+      <a class="link" href="https://wa.me/5493454149784?text=Hola%2C%20quiero%20hacer%20una%20consulta." rel="noopener">Escribinos por WhatsApp</a>
     </div>
   </div>
 </div>
@@ -129,7 +132,14 @@
 
     <header class="cat-head">
       <h1 id="catTitle">Gafas polarizadas</h1>
-      <p class="lead" id="catIntro">Cristales polarizados para manejar, la playa y la nieve: cortan el reflejo de las superficies planas.</p>
+      <p class="lead" id="catIntro">Los lentes polarizados reducen el reflejo de superficies como el agua y el asfalto. Explorá los modelos y revisá el tipo de lente en cada ficha.</p>
+      <!-- En una búsqueda, la consulta queda editable -->
+      <form class="cat-search" id="catSearch" role="search" action="/catalogo.html" method="get" hidden>
+        <label class="visually-hidden" for="catSearchInput">Buscar por modelo, forma o color</label>
+        <input id="catSearchInput" name="q" type="search" autocomplete="off" placeholder="Ej. Gala carey">
+        <button class="btn btn-outline" type="submit">Buscar</button>
+      </form>
+      <a class="link cat-head__store" href="https://sunnygafas.empretienda.com.ar/gafas-polarizadas" rel="noopener">Ver todas las polarizadas en la tienda oficial <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
     </header>
 
     <div class="cat-layout">
@@ -157,7 +167,7 @@
               <svg class="icon" aria-hidden="true"><use href="#i-filter"/></svg>Filtrar<span class="cat-bar__badge" id="filtersBadge" hidden></span>
             </button>
             <label class="sort">
-              <span class="sort__label">Ordenar</span>
+              <span class="sort__label">Ordenar por</span>
               <select id="sort" name="orden">
                 <option value="">Destacados</option>
                 <option value="menor">Menor precio</option>
@@ -173,19 +183,68 @@
         <ul class="product-grid cat-grid" id="catGrid"></ul>
 
         <div class="empty" id="catEmpty" hidden>
-          <h2 class="empty__title" id="emptyTitle">No hay modelos con esos filtros</h2>
-          <p id="emptyText">Sacá un filtro o mirá todo el catálogo.</p>
+          <h2 class="empty__title" id="emptyTitle">No encontramos modelos con esos filtros.</h2>
+          <p id="emptyText">Probá quitar un filtro o ver todos los modelos de esta categoría.</p>
           <div class="empty__actions">
             <button class="btn btn-primary" type="button" id="emptyClear">Borrar filtros</button>
-            <a class="link" href="/catalogo.html">Ver todo el catálogo</a>
+            <button class="btn btn-primary" type="button" id="emptySearch" hidden>Buscar de nuevo</button>
+            <a class="link" id="emptyAll" href="/catalogo.html" hidden>Ver todas las categorías <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="link" id="emptyStore" href="https://sunnygafas.empretienda.com.ar/gafas-polarizadas" rel="noopener" hidden>Ver catálogo completo en la tienda oficial <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+          </div>
+        </div>
+
+        <div class="empty" id="catError" hidden>
+          <h2 class="empty__title">No pudimos mostrar el catálogo.</h2>
+          <p>Podés volver a intentar o ver los modelos en la tienda oficial.</p>
+          <div class="empty__actions">
+            <button class="btn btn-primary" type="button" id="catRetry">Reintentar</button>
+            <a class="link" href="https://sunnygafas.empretienda.com.ar/gafas-polarizadas" rel="noopener">Ver todas las polarizadas en la tienda oficial <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
           </div>
         </div>
 
         <noscript><p class="empty">Para ver los modelos acá hace falta JavaScript. También podés verlos en la <a href="https://sunnygafas.empretienda.com.ar/gafas-polarizadas">tienda oficial</a>.</p></noscript>
 
+        <!-- Simulación del reflejo: vive en la categoría donde se decide por este tipo de lente -->
+        <section class="polar-demo on-dark" aria-labelledby="polar-title">
+          <div class="polar-demo__text">
+            <h2 id="polar-title">Cómo se ve el reflejo</h2>
+            <p>Arrastrá el control o usá las flechas del teclado. Es una simulación visual.</p>
+          </div>
+          <figure class="compare" id="compare">
+            <div class="compare__stage">
+              <div class="compare__layer compare__layer--plain">
+                <img src="/assets/img/mar-comparador.webp" srcset="/assets/img/mar-comparador-900.webp 900w, /assets/img/mar-comparador.webp 1536w" sizes="(max-width: 760px) 100vw, 60vw" alt="" width="1536" height="1024" draggable="false" loading="lazy">
+                <svg class="glare" viewBox="0 0 1536 1024" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="glareCore" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".92"/><stop offset=".45" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+                    <filter id="glareBlur" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="16"/></filter>
+                    <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity=".06"/></linearGradient>
+                  </defs>
+                  <rect x="0" y="324" width="1536" height="700" fill="url(#haze)"/>
+                  <ellipse cx="640" cy="430" rx="460" ry="120" fill="url(#glareCore)" opacity=".8"/>
+                  <ellipse cx="700" cy="590" rx="380" ry="90" fill="url(#glareCore)" opacity=".45"/>
+                  <g fill="#fff" filter="url(#glareBlur)" opacity=".45">
+                    <ellipse cx="620" cy="360" rx="220" ry="10"/><ellipse cx="690" cy="400" rx="260" ry="14"/><ellipse cx="600" cy="480" rx="230" ry="16"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="compare__layer compare__layer--polar">
+                <img src="/assets/img/mar-comparador.webp" srcset="/assets/img/mar-comparador-900.webp 900w, /assets/img/mar-comparador.webp 1536w" sizes="(max-width: 760px) 100vw, 60vw" alt="" width="1536" height="1024" draggable="false" loading="lazy">
+              </div>
+              <div class="compare__handle" aria-hidden="true"><span></span></div>
+              <label class="compare__control">
+                <span class="visually-hidden">División entre lente común y lente polarizado</span>
+                <input type="range" id="compareRange" min="0" max="100" value="45" step="1">
+              </label>
+              <span class="compare__tag compare__tag--l">Lente común</span>
+              <span class="compare__tag compare__tag--r">Lente polarizado</span>
+            </div>
+          </figure>
+        </section>
+
         <div class="cat-note">
-          <p class="meta">El precio destacado es con transferencia o efectivo: 25% off sobre el de lista. Con tarjeta, hasta 3 cuotas sin interés.</p>
-          <p class="meta">Acá mostramos una selección con fotos revisadas. <a href="https://sunnygafas.empretienda.com.ar/gafas-polarizadas" rel="noopener">El catálogo completo está en la tienda oficial</a>.</p>
+          <p class="meta">El precio destacado es con transferencia o efectivo. El precio de lista y las cuotas se confirman en la tienda oficial.</p>
+          <p class="meta">Acá mostramos una selección con fotos revisadas. Datos de la tienda al 14/11/2026.</p>
         </div>
       </div>
     </div>
@@ -193,21 +252,6 @@
 </main>
 
 <footer class="footer on-dark">
-  <div class="novedades">
-    <div class="container novedades__row">
-      <div>
-        <p class="novedades__title">Los modelos nuevos se ven primero en Instagram</p>
-        <p class="novedades__text">Ingresos, reposiciones y fotos de las gafas puestas.</p>
-      </div>
-      <ul class="novedades__thumbs" aria-hidden="true">
-        <li><img src="/assets/img/p/charlotte-brown-1.webp" alt="" loading="lazy" width="600" height="799"></li>
-        <li><img src="/assets/img/p/saturday-xl-print-2.webp" alt="" loading="lazy" width="600" height="886" style="object-position: 50% 30%"></li>
-        <li><img src="/assets/img/p/glow-black-2.webp" alt="" loading="lazy" width="600" height="800"></li>
-        <li><img src="/assets/img/p/pilot-black-1.webp" alt="" loading="lazy" width="600" height="627" style="object-position: 50% 30%"></li>
-      </ul>
-      <a class="novedades__link" href="https://instagram.com/sunnygafas" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg>Ver @sunnygafas</a>
-    </div>
-  </div>
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
@@ -220,6 +264,7 @@
       <nav aria-labelledby="ft-comprar">
         <h2 class="footer__h" id="ft-comprar">Comprar</h2>
         <ul>
+          <li><a href="/catalogo.html">Catálogo</a></li>
           <li><a href="/gafas-de-sol.html">Gafas de sol</a></li>
           <li><a href="/polarizadas.html">Polarizadas</a></li>
           <li><a href="/armazones.html">Armazones</a></li>
@@ -240,15 +285,15 @@
       <div>
         <h2 class="footer__h">Contacto</h2>
         <ul class="footer__contact">
-          <li><a href="https://wa.me/5493454149784?text=Hola%2C%20vengo%20del%20sitio%20de%20Sunnygafas%20y%20quiero%20hacer%20una%20consulta." rel="noopener"><svg class="icon"><use href="#i-wa"/></svg>WhatsApp</a></li>
-          <li><a href="https://instagram.com/sunnygafas" rel="noopener"><svg class="icon"><use href="#i-ig"/></svg>@sunnygafas</a></li>
-          <li><a href="mailto:sunny.gafas.ch@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>sunny.gafas.ch@gmail.com</a></li>
+          <li><a href="https://wa.me/5493454149784?text=Hola%2C%20quiero%20hacer%20una%20consulta." rel="noopener"><svg class="icon"><use href="#i-wa"/></svg>WhatsApp</a></li>
+          <li><a href="https://instagram.com/sunnygafas" rel="noopener"><svg class="icon"><use href="#i-ig"/></svg>Ver @sunnygafas en Instagram</a></li>
+          <li><a href="mailto:sunny.gafas.ch@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>Email</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__base">
-      <p>25% off con transferencia o efectivo · Hasta 3 cuotas sin interés con tarjeta</p>
-      <p>© 2026 Sunnygafas · La compra se completa en la <a href="https://sunnygafas.empretienda.com.ar" rel="noopener">tienda oficial</a></p>
+      <p>Las compras se completan en Empretienda. <a href="https://sunnygafas.empretienda.com.ar" rel="noopener">Ir a la tienda oficial <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a></p>
+      <p>© 2026 Sunnygafas</p>
     </div>
   </div>
 </footer>
@@ -256,5 +301,6 @@
 <script src="/js/data.js"></script>
 <script src="/js/site.js"></script>
 <script src="/js/catalog.js"></script>
+<script src="/js/compare.js"></script>
 </body>
 </html>

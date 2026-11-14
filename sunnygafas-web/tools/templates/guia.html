@@ -10,8 +10,13 @@
     <article class="read">
       <header class="read__head">
         <h1>Guía de calce</h1>
-        <p class="lead">La forma más simple de acertar es comparar con unas gafas que ya te queden cómodas.</p>
+        <p class="lead">Compará las medidas de la montura con las de unas gafas que ya te queden cómodas.</p>
       </header>
+
+      <section>
+        <h2>Dónde están los números</h2>
+        <p>Buscá tres números en el interior de una varilla. Por ejemplo, <span class="num">52 □ 18 140</span>. Están en milímetros.</p>
+      </section>
 
       <figure class="read__figure">
         <svg viewBox="0 0 640 390" role="img" aria-labelledby="gSvgT">
@@ -28,44 +33,38 @@
             <path d="M70 336 H566 M70 326 V346 M566 326 V346"/>
           </g>
           <g font-family="Hanken Grotesk, sans-serif" font-size="22" font-weight="600" fill="#1E1A16" text-anchor="middle">
-            <text x="170" y="160" font-family="Gloock, serif" font-size="52" font-weight="400" fill="#85561A">52</text>
+            <text x="170" y="160" font-family="Bodoni Moda, serif" font-size="52" font-weight="500" fill="#85561A">52</text>
             <text x="170" y="192">Lente</text>
-            <text x="320" y="32"><tspan font-family="Gloock, serif" font-size="34" font-weight="400" fill="#85561A">18</tspan> Puente</text>
-            <text x="318" y="318"><tspan font-family="Gloock, serif" font-size="34" font-weight="400" fill="#85561A">140</tspan> Varilla</text>
+            <text x="320" y="32"><tspan font-family="Bodoni Moda, serif" font-size="34" font-weight="500" fill="#85561A">18</tspan> Puente</text>
+            <text x="318" y="318"><tspan font-family="Bodoni Moda, serif" font-size="34" font-weight="500" fill="#85561A">140</tspan> Varilla</text>
           </g>
         </svg>
-        <figcaption class="meta"><span class="fit__tag">Medidas de ejemplo</span> No corresponden a un modelo en particular.</figcaption>
+        <figcaption class="meta"><span class="fit__tag">Medidas de ejemplo</span></figcaption>
       </figure>
 
       <section>
-        <h2>Dónde están los números</h2>
-        <p>Mirá la cara interna de una de las varillas de tus gafas. Vas a ver tres números, por ejemplo <span class="num">52 □ 18 140</span>. Están en milímetros.</p>
+        <h2>Qué mide cada número</h2>
+        <ul class="read__list">
+          <li><strong>Lente:</strong> ancho de un lente en su parte más ancha.</li>
+          <li><strong>Puente:</strong> distancia entre los lentes.</li>
+          <li><strong>Varilla:</strong> largo del brazo que va hacia la oreja.</li>
+        </ul>
       </section>
 
       <section>
-        <h2>Qué significa cada uno</h2>
-        <dl class="read__defs">
-          <div><dt><span class="num">52</span> Lente</dt><dd>Ancho de cada lente. Con más número, el marco es más grande.</dd></div>
-          <div><dt><span class="num">18</span> Puente</dt><dd>Espacio entre los lentes. Es lo que apoya sobre la nariz.</dd></div>
-          <div><dt><span class="num">140</span> Varilla</dt><dd>Largo de la patilla, hasta detrás de la oreja.</dd></div>
-        </dl>
-      </section>
-
-      <section>
-        <h2>Cómo comparar</h2>
-        <ol class="read__steps">
-          <li>Anotá los tres números de un par que te quede cómodo.</li>
-          <li>Pedinos las medidas del modelo que te gusta: en cada ficha está el botón <strong>Pedir las medidas</strong>.</li>
-          <li>Buscá un lente y un puente a 2 o 3 mm de los tuyos, y una varilla igual o hasta 5 mm más larga.</li>
-        </ol>
+        <h2>Compará con el modelo que te gustó</h2>
+        <p>Abrí su ficha y buscá «Medidas y calce». Si todavía no están publicadas, pedilas desde esa misma ficha.</p>
+        <div class="read__actions">
+          <a class="btn btn-outline" id="guideBack" href="/catalogo.html" hidden></a>
+          <a class="link" id="guideAll" href="/catalogo.html">Ver todas las categorías <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
       </section>
 
       <section class="read__box">
-        <h2>¿No tenés un par para medir?</h2>
-        <p>Contanos qué modelo estás mirando y te ayudamos a elegir.</p>
+        <h2>¿Necesitás ayuda con el tamaño?</h2>
+        <p>Contanos qué modelo estás mirando y, si las tenés, las medidas de un par que ya uses.</p>
         <div class="read__actions">
-          <a class="btn btn-primary" href="{{WA_MEDIDAS}}" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Escribinos por WhatsApp</a>
-          <a class="link" href="/gafas-de-sol.html">Volver a gafas de sol <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-primary" id="guideWa" href="{{WA_MEDIDAS}}" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Consultar por WhatsApp</a>
         </div>
       </section>
     </article>

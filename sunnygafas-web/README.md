@@ -43,3 +43,34 @@ node tools/test_flows.js        # recorridos de verificación en navegador (requ
 | `js/data.js` | Catálogo único (generado) |
 | `js/site.js`, `js/home.js`, `js/catalog.js`, `js/product.js` | Lógica compartida y por página |
 | `tools/` | Generador, sincronización con la tienda, fotos, plantillas y pruebas |
+
+## Cambios de la auditoría (noviembre de 2026)
+
+- **Filtros**: color y stock se cruzan sobre una misma variante; la tarjeta muestra y enlaza esa variante, y el orden por precio usa el precio visible (`js/catalog.js`).
+- **Datos de ficha**: protección UV, polarización y fotocromía son atributos independientes con tres estados. `null` significa «sin confirmar»: no se muestra ni se niega. En clip-on, `parts` indica a qué pieza pertenece cada atributo (`tools/models.json`, `tools/build.py`).
+- **Pendientes de validar por la marca**: están listados en `tools/models.json → pending` (medidas, estuche y líquido, polarización de Ciclismo, antirreflejo de Classic, presupuesto de cristales en Coco y Oriana, tarjetas, plazos y política de cambios).
+- **Comparador de reflejo**: pasó de la Home a Polarizadas (`tools/templates/_compare.html`, `css/compare.css`, `js/compare.js`).
+
+### Pruebas
+
+```bash
+node tools/test_flows.js            # recorridos generales
+```
+
+```bash
+node tools/test_audit.js --tienda   # criterios de la auditoría; --tienda sigue la compra hasta Empretienda
+```
+
+Las dos aceptan una URL base como primer argumento (por defecto `http://localhost:8090`).
+
+### Vista previa sin publicar
+
+```bash
+python3 tools/preview_deploy.py <site_id> "Título"
+```
+
+Sube un deploy en borrador a Netlify y devuelve su URL propia. Producción no cambia hasta que se publique ese deploy desde el panel.
+
+### Distintivo de Netlify
+
+Netlify lo inyecta en producción en el plan gratuito y no se puede desactivar desde el código ni desde la configuración de ese plan. El sitio no lo oculta: `js/site.js` detecta su presencia y sube la barra de compra fija para que el botón no quede debajo. Para retirarlo hace falta un plan pago o publicar en otro hosting.

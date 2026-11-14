@@ -2,31 +2,49 @@
    Sunnygafas — Catálogo: filtros, orden, estado en la URL
    La página fija la categoría con data-cat (vacío = todo el catálogo).
    Parámetros: ?forma= &color= &col= &cat= &stock=1 &orden= &q=
+   Color y stock se cruzan sobre una misma variante; la tarjeta muestra y enlaza esa variante.
    ========================================================= */
 (function () {
   const SG = window.SG;
-  const { PRODUCTS, SHAPE_GROUPS, CATEGORIES, CAT_PAGE, COLLECTIONS, COLOR_FAMILY, FAMILY_HEX, inGroup, norm, search, cardHTML, bindSwatches, $, $$ } = SG;
+  const byId = (i) => document.getElementById(i);
+  /* Catálogo no disponible: sin datos no hay grilla que mostrar; se ofrece reintentar y la tienda oficial */
+  if (!SG || !SG.PRODUCTS || !SG.cardHTML) {
+    ["catGrid", "filters", "applied"].forEach((i) => { byId(i).hidden = true; });
+    document.querySelector(".cat-bar").hidden = true;
+    byId("catError").hidden = false;
+    byId("catRetry").addEventListener("click", () => location.reload());
+    return;
+  }
+  const { PRODUCTS, SHAPE_GROUPS, CATEGORIES, COLLECTIONS, COLOR_FAMILY, FAMILY_HEX, inGroup, norm, search, cardHTML, bindSwatches, $, $$ } = SG;
   const main = $("#contenido"), cat = main.dataset.cat || null;
   const grid = $("#catGrid"), count = $("#catCount"), applied = $("#applied"), empty = $("#catEmpty"), form = $("#filterForm");
   const filters = $("#filters"), panel = $("#filtersPanel"), openBtn = $("#filtersOpen"), badge = $("#filtersBadge"), applyBtn = $("#filtersApply"), sort = $("#sort");
   const q0 = new URLSearchParams(location.search);
-  const text = (q0.get("q") || "").trim();
+  const text = (q0.get("q") || "").trim(), safe = text.replace(/[<>&]/g, "");
 
   /* ---------- Base: categoría de la página o resultados de búsqueda ---------- */
-  let base, hitVar = {};
+  /* hit[id] = { pref: variante sugerida, only: variantes que nombra la consulta (si identifica un color) } */
+  let base; const hit = {};
   if (text) {
-    const hits = search(text);
-    base = []; hits.forEach((h) => { if (!(h.p.id in hitVar)) { hitVar[h.p.id] = h.vi; base.push(h.p); } });
-    const safe = text.replace(/[<>&]/g, "");
-    $("#catTitle").textContent = "Resultados para «" + safe + "»";
+    base = [];
+    search(text).forEach((h) => {
+      if (!hit[h.p.id]) { hit[h.p.id] = { pref: h.vi, only: h.byColor ? [] : null }; base.push(h.p); }
+      if (h.byColor) hit[h.p.id].only.push(h.vi);
+    });
+    $("#catTitle").textContent = "Resultados para “" + safe + "”";
     $("#crumbCurrent").textContent = "Búsqueda";
     $("#catIntro").textContent = "Buscamos en modelos, formas y colores.";
-    document.title = "«" + safe + "» · Sunnygafas";
+    $("#catSearch").hidden = false; $("#catSearchInput").value = text;
+    document.title = "“" + safe + "” · Sunnygafas";
   } else {
     base = PRODUCTS.filter((p) => !cat || p.cat === cat);
   }
 
-  /* ---------- Grupos de filtro según lo que hay en la base ---------- */
+  /* ---------- Grupos de filtro según lo que hay en la base ----------
+     Valores de un mismo grupo: OR. Grupos distintos: AND.
+     Categoría, forma y colección se prueban sobre el modelo (test).
+     Color y stock se prueban sobre una misma variante (vtest): un modelo entra solo si
+     alguna de sus variantes cumple las dos condiciones a la vez. */
   const colSlug = (c) => norm(c);
   const famSlug = (f) => norm(f).replace(/[^a-z]+/g, "-");
   const famOf = (v) => COLOR_FAMILY[v.c] || "Color";
@@ -38,10 +56,10 @@
   const shapes = Object.keys(SHAPE_GROUPS).filter((g) => base.some((p) => inGroup(p, g)));
   if (shapes.length > 1) GROUPS.push({ key: "forma", label: "Forma", options: shapes.map((g) => ({ v: g, label: SHAPE_GROUPS[g].label, icon: "f-" + g })), test: (p, vals) => vals.some((g) => inGroup(p, g)) });
   const fams = Object.keys(FAMILY_HEX).filter((f) => base.some((p) => p.vars.some((v) => famOf(v) === f)));
-  if (fams.length > 1) GROUPS.push({ key: "color", label: "Color", options: fams.map((f) => ({ v: famSlug(f), label: f, hex: FAMILY_HEX[f] })), test: (p, vals) => p.vars.some((v) => vals.includes(famSlug(famOf(v)))) });
+  if (fams.length > 1) GROUPS.push({ key: "color", label: "Color", options: fams.map((f) => ({ v: famSlug(f), label: f, hex: FAMILY_HEX[f] })), vtest: (v, vals) => vals.includes(famSlug(famOf(v))) });
   const cols = COLLECTIONS.filter((c) => base.some((p) => p.col === c));
   if (cols.length > 1) GROUPS.push({ key: "col", label: "Colección", options: cols.map((c) => ({ v: colSlug(c), label: c })), test: (p, vals) => !!p.col && vals.includes(colSlug(p.col)) });
-  if (base.some((p) => p.vars.some((v) => !v.stock))) GROUPS.push({ key: "stock", label: "Disponibilidad", options: [{ v: "1", label: "Solo con stock" }], test: (p) => p.vars.some((v) => v.stock) });
+  if (base.some((p) => p.vars.some((v) => !v.stock))) GROUPS.push({ key: "stock", label: "Disponibilidad", options: [{ v: "1", label: "Solo con stock" }], vtest: (v) => v.stock });
 
   /* ---------- Estado inicial desde la URL ---------- */
   const state = {};
@@ -63,24 +81,31 @@
     }).join("") + "</fieldset>").join("");
 
   /* ---------- Render ---------- */
-  const minPrice = (p) => Math.min.apply(null, p.vars.map((v) => v.price));
-  function variantFor(p) {
-    // Muestra el color que coincide con el filtro o con la búsqueda; si no, el primero con stock
-    if (state.color && state.color.length) {
-      const m = p.vars.map((v, i) => ({ v, i })).filter((x) => state.color.includes(famSlug(famOf(x.v))));
-      const pick = m.find((x) => x.v.stock) || m[0];
-      if (pick) return pick.i;
-    }
-    if (p.id in hitVar) return hitVar[p.id];
-    return SG.firstInStock(p);
+  const VGROUPS = GROUPS.filter((g) => g.vtest), PGROUPS = GROUPS.filter((g) => g.test);
+  const vActive = () => VGROUPS.some((g) => state[g.key].length);
+  /* Variantes del modelo que cumplen, todas juntas, los filtros de variante y el color de la búsqueda */
+  function eligible(p) {
+    const only = hit[p.id] && hit[p.id].only;
+    return p.vars.map((v, i) => i).filter((i) => (!only || only.includes(i)) && VGROUPS.every((g) => !state[g.key].length || g.vtest(p.vars[i], state[g.key])));
   }
+  /* Variante de la tarjeta: siempre una elegible; ante empate, la disponible */
+  function variantFor(p, el) {
+    const pref = hit[p.id] ? hit[p.id].pref : -1;
+    if (el.includes(pref) && p.vars[pref].stock) return pref;
+    const inStock = el.find((i) => p.vars[i].stock);
+    return inStock != null ? inStock : (el.includes(pref) ? pref : el[0]);
+  }
+  /* Lista de { p, el, vi }: el precio y el stock que ordenan son los de la tarjeta visible */
   function current() {
-    let list = base.filter((p) => GROUPS.every((g) => !state[g.key].length || g.test(p, state[g.key])));
+    let list = base.filter((p) => PGROUPS.every((g) => !state[g.key].length || g.test(p, state[g.key])))
+      .map((p) => { const el = eligible(p); return el.length ? { p, el, vi: variantFor(p, el) } : null; }).filter(Boolean);
+    const price = (x) => x.p.vars[x.vi].price, known = (x) => price(x) != null;
+    const byPrice = (dir) => (a, b) => (known(b) - known(a)) || (known(a) ? dir * (price(a) - price(b)) : 0) || a.p.name.localeCompare(b.p.name, "es");
     const o = sort.value;
-    if (o === "menor") list = list.slice().sort((a, b) => minPrice(a) - minPrice(b));
-    else if (o === "mayor") list = list.slice().sort((a, b) => minPrice(b) - minPrice(a));
-    else if (o === "nombre") list = list.slice().sort((a, b) => a.name.localeCompare(b.name, "es"));
-    else list = list.slice().sort((a, b) => (b.vars.some((v) => v.stock) - a.vars.some((v) => v.stock)) || (b.isNew - a.isNew));
+    if (o === "menor") list.sort(byPrice(1));
+    else if (o === "mayor") list.sort(byPrice(-1));
+    else if (o === "nombre") list.sort((a, b) => a.p.name.localeCompare(b.p.name, "es"));
+    else list.sort((a, b) => (b.p.vars[b.vi].stock - a.p.vars[a.vi].stock) || (b.p.isNew - a.p.isNew));
     return list;
   }
   const nActive = () => GROUPS.reduce((n, g) => n + state[g.key].length, 0);
@@ -89,16 +114,19 @@
     if (text) out.set("q", text);
     GROUPS.forEach((g) => { if (state[g.key].length) out.set(g.key, state[g.key].join(",")); });
     if (sort.value) out.set("orden", sort.value);
-    const s = out.toString();
-    history.replaceState(null, "", location.pathname + (s ? "?" + s : ""));
+    const s = out.toString(), url = location.pathname + (s ? "?" + s : "");
+    history.replaceState(null, "", url);
+    // La ficha ofrece «Volver a resultados» solo si hay un estado que recuperar
+    try { if (s) sessionStorage.setItem("sg:list", url); else sessionStorage.removeItem("sg:list"); } catch (e) {}
   }
   function render() {
     const list = current(), n = list.length, act = nActive();
-    grid.innerHTML = list.map((p, i) => cardHTML(p, variantFor(p), { eager: i < 4 })).join("");
+    const limit = vActive() || Object.values(hit).some((h) => h.only);
+    grid.innerHTML = list.map((x, i) => cardHTML(x.p, x.vi, { eager: i < 4, only: limit ? x.el : null })).join("");
     grid.hidden = !n; empty.hidden = !!n;
     const word = n === 1 ? " modelo" : " modelos";
     count.textContent = n + word + (act ? " con " + act + (act === 1 ? " filtro" : " filtros") : "");
-    applyBtn.textContent = n ? "Ver " + n + word : "Sin resultados";
+    applyBtn.textContent = n ? "Ver " + n + word : "Ver resultados";
     badge.hidden = !act; badge.textContent = act;
     openBtn.setAttribute("aria-label", "Filtrar" + (act ? ", " + act + (act === 1 ? " filtro aplicado" : " filtros aplicados") : ""));
     applied.innerHTML = GROUPS.map((g) => state[g.key].map((v) => {
@@ -107,9 +135,13 @@
     }).join("")).join("") + (act > 1 ? '<li><button type="button" class="link applied__clear" data-clear>Borrar filtros</button></li>' : "");
     applied.hidden = !act;
     if (!n) {
-      $("#emptyTitle").textContent = text && !act ? "No encontramos «" + text.replace(/[<>&]/g, "") + "»" : "No hay modelos con esos filtros";
-      $("#emptyText").textContent = text && !act ? "Probá con una forma, como redonda o aviador, o con un color." : "Sacá un filtro para ver más modelos.";
-      $("#emptyClear").hidden = !act;
+      const noHits = text && !act;   // la búsqueda no encontró nada; con filtros activos, el vacío es de los filtros
+      $("#emptyTitle").textContent = noHits ? "No encontramos resultados para “" + safe + "”." : "No encontramos modelos con esos filtros.";
+      $("#emptyText").textContent = noHits ? "Probá otro modelo, forma o color." : "Probá quitar un filtro o ver todos los modelos de esta categoría.";
+      $("#emptyClear").hidden = noHits;
+      $("#emptySearch").hidden = !noHits;
+      $("#emptyStore").hidden = !noHits;
+      $("#emptyAll").hidden = noHits || !text;
     }
     $("#filtersClear").disabled = !act;
     syncURL();
@@ -144,6 +176,7 @@
   });
   $("#filtersClear").addEventListener("click", () => clearAll());
   $("#emptyClear").addEventListener("click", () => clearAll(getComputedStyle(openBtn).display !== "none" ? openBtn : sort));
+  $("#emptySearch").addEventListener("click", (e) => { e.stopPropagation(); SG.openSearch(text); });
   bindSwatches(grid);
 
   /* ---------- Hoja de filtros en celular ---------- */

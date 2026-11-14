@@ -33,7 +33,8 @@
       <form class="search__form" role="search" action="/catalogo.html" method="get">
         <label class="visually-hidden" for="searchInput">Buscar por modelo, forma o color</label>
         <svg class="icon"><use href="#i-search"/></svg>
-        <input id="searchInput" name="q" type="search" autocomplete="off" placeholder="Probá «Gala carey» o «aviador»" aria-describedby="searchStatus">
+        <input id="searchInput" name="q" type="search" autocomplete="off" placeholder="Ej. Gala carey" aria-describedby="searchStatus">
+        <button class="btn btn-primary search__go" type="submit">Ver resultados</button>
         <button class="icon-btn" type="button" id="searchClose" aria-label="Cerrar buscador"><svg class="icon"><use href="#i-close"/></svg></button>
       </form>
       <p class="search__status meta" id="searchStatus" aria-live="polite">Buscá por modelo, forma o color.</p>
@@ -53,7 +54,6 @@
       {{DRAWER_NAV}}
     </ul>
     <div class="drawer__extra">
-      <a class="link" href="/#forma" data-close-menu>Elegí por forma</a>
       <a class="link" href="/guia-de-calce.html">Guía de calce</a>
       <a class="link" href="/ayuda.html">Ayuda</a>
       <a class="link" href="{{WA_HOLA}}" rel="noopener">Escribinos por WhatsApp</a>

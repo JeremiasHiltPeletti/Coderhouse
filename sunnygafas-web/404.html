@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Página no encontrada · Sunnygafas</title>
-<meta name="description" content="No encontramos esa página.">
+<title>No encontramos este modelo · Sunnygafas</title>
+<meta name="description" content="No encontramos este modelo.">
 <meta name="robots" content="noindex">
 <meta property="og:site_name" content="Sunnygafas">
-<meta property="og:title" content="Página no encontrada · Sunnygafas">
-<meta property="og:description" content="No encontramos esa página.">
+<meta property="og:title" content="No encontramos este modelo · Sunnygafas">
+<meta property="og:description" content="No encontramos este modelo.">
 <meta property="og:image" content="https://sunnygafas-home.netlify.app/assets/img/hero-ink-desk.webp">
 <meta property="og:locale" content="es_AR">
 <link rel="icon" href="/assets/img/isotipo-sunnygafas.png">
@@ -63,6 +63,7 @@
     </a>
     <nav class="nav" aria-label="Principal">
       <ul>
+        <li><a href="/catalogo.html">Catálogo</a></li>
         <li><a href="/gafas-de-sol.html">Gafas de sol</a></li>
         <li><a href="/polarizadas.html">Polarizadas</a></li>
         <li><a href="/armazones.html">Armazones</a></li>
@@ -85,7 +86,8 @@
       <form class="search__form" role="search" action="/catalogo.html" method="get">
         <label class="visually-hidden" for="searchInput">Buscar por modelo, forma o color</label>
         <svg class="icon"><use href="#i-search"/></svg>
-        <input id="searchInput" name="q" type="search" autocomplete="off" placeholder="Probá «Gala carey» o «aviador»" aria-describedby="searchStatus">
+        <input id="searchInput" name="q" type="search" autocomplete="off" placeholder="Ej. Gala carey" aria-describedby="searchStatus">
+        <button class="btn btn-primary search__go" type="submit">Ver resultados</button>
         <button class="icon-btn" type="button" id="searchClose" aria-label="Cerrar buscador"><svg class="icon"><use href="#i-close"/></svg></button>
       </form>
       <p class="search__status meta" id="searchStatus" aria-live="polite">Buscá por modelo, forma o color.</p>
@@ -102,17 +104,17 @@
       <button class="icon-btn" type="button" data-close-menu aria-label="Cerrar menú"><svg class="icon"><use href="#i-close"/></svg></button>
     </div>
     <ul class="drawer__nav">
-      <li><a href="/gafas-de-sol.html">Gafas de sol <svg class="icon"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/polarizadas.html">Polarizadas <svg class="icon"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/armazones.html">Armazones <svg class="icon"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/clip-on.html">Clip-on 2 en 1 <svg class="icon"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/accesorios.html">Accesorios <svg class="icon"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="/catalogo.html">Catálogo <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/gafas-de-sol.html">Gafas de sol <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/polarizadas.html">Polarizadas <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/armazones.html">Armazones <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/clip-on.html">Clip-on 2 en 1 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/accesorios.html">Accesorios <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
     </ul>
     <div class="drawer__extra">
-      <a class="link" href="/#forma" data-close-menu>Elegí por forma</a>
       <a class="link" href="/guia-de-calce.html">Guía de calce</a>
       <a class="link" href="/ayuda.html">Ayuda</a>
-      <a class="link" href="https://wa.me/5493454149784?text=Hola%2C%20vengo%20del%20sitio%20de%20Sunnygafas%20y%20quiero%20hacer%20una%20consulta." rel="noopener">Escribinos por WhatsApp</a>
+      <a class="link" href="https://wa.me/5493454149784?text=Hola%2C%20quiero%20hacer%20una%20consulta." rel="noopener">Escribinos por WhatsApp</a>
     </div>
   </div>
 </div>
@@ -120,33 +122,17 @@
 <main id="contenido" class="page page--white">
   <div class="container">
     <div class="read notfound">
-      <h1>No encontramos esa página</h1>
-      <p class="lead">Puede que el enlace sea viejo o que el modelo ya no esté publicado.</p>
+      <h1>No encontramos este modelo.</h1>
+      <p class="lead">Buscá por nombre o seguí explorando el catálogo.</p>
       <div class="read__actions">
-        <a class="btn btn-primary" href="/gafas-de-sol.html">Ver gafas de sol</a>
-        <a class="link" href="/catalogo.html">Ver todo el catálogo <svg class="icon"><use href="#i-arrow"/></svg></a>
-        <a class="link" href="/">Ir al inicio</a>
+        <button class="btn btn-primary" type="button" data-open-search>Buscar modelos</button>
+        <a class="link" href="/catalogo.html">Ver todas las categorías <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
   </div>
 </main>
 
 <footer class="footer on-dark">
-  <div class="novedades">
-    <div class="container novedades__row">
-      <div>
-        <p class="novedades__title">Los modelos nuevos se ven primero en Instagram</p>
-        <p class="novedades__text">Ingresos, reposiciones y fotos de las gafas puestas.</p>
-      </div>
-      <ul class="novedades__thumbs" aria-hidden="true">
-        <li><img src="/assets/img/p/charlotte-brown-1.webp" alt="" loading="lazy" width="600" height="799"></li>
-        <li><img src="/assets/img/p/saturday-xl-print-2.webp" alt="" loading="lazy" width="600" height="886" style="object-position: 50% 30%"></li>
-        <li><img src="/assets/img/p/glow-black-2.webp" alt="" loading="lazy" width="600" height="800"></li>
-        <li><img src="/assets/img/p/pilot-black-1.webp" alt="" loading="lazy" width="600" height="627" style="object-position: 50% 30%"></li>
-      </ul>
-      <a class="novedades__link" href="https://instagram.com/sunnygafas" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg>Ver @sunnygafas</a>
-    </div>
-  </div>
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
@@ -159,6 +145,7 @@
       <nav aria-labelledby="ft-comprar">
         <h2 class="footer__h" id="ft-comprar">Comprar</h2>
         <ul>
+          <li><a href="/catalogo.html">Catálogo</a></li>
           <li><a href="/gafas-de-sol.html">Gafas de sol</a></li>
           <li><a href="/polarizadas.html">Polarizadas</a></li>
           <li><a href="/armazones.html">Armazones</a></li>
@@ -179,15 +166,15 @@
       <div>
         <h2 class="footer__h">Contacto</h2>
         <ul class="footer__contact">
-          <li><a href="https://wa.me/5493454149784?text=Hola%2C%20vengo%20del%20sitio%20de%20Sunnygafas%20y%20quiero%20hacer%20una%20consulta." rel="noopener"><svg class="icon"><use href="#i-wa"/></svg>WhatsApp</a></li>
-          <li><a href="https://instagram.com/sunnygafas" rel="noopener"><svg class="icon"><use href="#i-ig"/></svg>@sunnygafas</a></li>
-          <li><a href="mailto:sunny.gafas.ch@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>sunny.gafas.ch@gmail.com</a></li>
+          <li><a href="https://wa.me/5493454149784?text=Hola%2C%20quiero%20hacer%20una%20consulta." rel="noopener"><svg class="icon"><use href="#i-wa"/></svg>WhatsApp</a></li>
+          <li><a href="https://instagram.com/sunnygafas" rel="noopener"><svg class="icon"><use href="#i-ig"/></svg>Ver @sunnygafas en Instagram</a></li>
+          <li><a href="mailto:sunny.gafas.ch@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>Email</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__base">
-      <p>25% off con transferencia o efectivo · Hasta 3 cuotas sin interés con tarjeta</p>
-      <p>© 2026 Sunnygafas · La compra se completa en la <a href="https://sunnygafas.empretienda.com.ar" rel="noopener">tienda oficial</a></p>
+      <p>Las compras se completan en Empretienda. <a href="https://sunnygafas.empretienda.com.ar" rel="noopener">Ir a la tienda oficial <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a></p>
+      <p>© 2026 Sunnygafas</p>
     </div>
   </div>
 </footer>

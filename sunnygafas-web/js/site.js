@@ -13,28 +13,32 @@
 
   /* ---------- Precio: el aplicable primero, el de lista como referencia ---------- */
   SG.priceHTML = function (v) {
+    if (v.price == null) return '<span class="price-list">Ver precio y stock en la tienda oficial</span>';
     return '<span class="price-transfer">' + money(transferPrice(v.price)) + "<small>con transferencia o efectivo</small></span>" +
       '<span class="price-list">' + money(v.price) + " de lista</span>";
   };
-  const variantText = (p, v) => v.label + " · " + typeLabel(p);
+  const variantText = (p, v) => p.cat === "acc" ? typeLabel(p) : v.label + " · " + typeLabel(p);
 
   /* ---------- Tarjeta de producto ---------- */
+  /* opts.only: índices de variantes que respetan los filtros activos; las demás quedan para la ficha */
   SG.cardHTML = function (p, vi, opts) {
     vi = vi || 0; opts = opts || {};
     const v = p.vars[vi], url = productURL(p, vi);
-    const sw = p.vars.length > 1
+    const shown = p.vars.map((x, i) => ({ x, i })).filter((o) => !opts.only || opts.only.includes(o.i));
+    const sw = shown.length > 1
       ? '<div class="swatches" role="group" aria-label="Colores de ' + p.name + '">' +
-        p.vars.map((x, i) => '<button type="button" class="swatch' + (x.stock ? "" : " is-out") + '" data-i="' + i + '" aria-pressed="' + (i === vi) + '" aria-label="' + x.label + (x.stock ? "" : ", sin stock") + '" title="' + x.label + (x.stock ? "" : " (sin stock)") + '"><span style="background:' + (HEX[x.c] || "#ccc") + '"></span></button>').join("") +
+        shown.map(({ x, i }) => '<button type="button" class="swatch' + (x.stock ? "" : " is-out") + '" data-i="' + i + '" aria-pressed="' + (i === vi) + '" aria-label="Color: ' + x.label + (x.stock ? ", disponible" : ", sin stock") + '" title="' + x.label + (x.stock ? "" : " (sin stock)") + '"><span style="background:' + (HEX[x.c] || "#ccc") + '"></span></button>').join("") +
         "</div>"
       : '<div class="swatches swatches--none" aria-hidden="true"></div>';
-    return '<li class="product-card" data-id="' + p.id + '">' +
+    const more = opts.only && shown.length < p.vars.length ? '<p class="product-card__more meta">Más colores en la ficha</p>' : "";
+    return '<li class="product-card" data-id="' + p.id + '" data-vi="' + vi + '">' +
       '<a class="product-card__media" href="' + url + '" tabindex="-1" aria-hidden="true">' +
         '<img src="' + img(v.img) + '" alt="" width="720" height="612" ' + (opts.eager ? "" : 'loading="lazy"') + ">" +
         '<span class="product-card__flag"' + (v.stock ? " hidden" : "") + ">Sin stock</span></a>" +
       '<div class="product-card__body">' +
         '<a class="product-card__name" href="' + url + '">' + p.name + "</a>" +
         '<p class="product-card__variant">' + variantText(p, v) + "</p>" +
-        '<p class="product-card__price">' + SG.priceHTML(v) + "</p>" + sw +
+        '<p class="product-card__price">' + SG.priceHTML(v) + "</p>" + sw + more +
       "</div></li>";
   };
   // Cambiar la muestra actualiza foto, variante, precio, stock y el enlace a la ficha
@@ -45,6 +49,7 @@
       const card = b.closest(".product-card");
       const p = BY_ID[card.dataset.id];
       const vi = +b.dataset.i, v = p.vars[vi];
+      card.dataset.vi = vi;
       $$(".swatch", card).forEach((s) => s.setAttribute("aria-pressed", s === b));
       $(".product-card__media img", card).src = img(v.img);
       $(".product-card__variant", card).textContent = variantText(p, v);
@@ -103,6 +108,7 @@
   const panel = $("#searchPanel"), sToggle = $("#searchToggle"), sInput = $("#searchInput"), sResults = $("#searchResults"), sStatus = $("#searchStatus");
   if (panel && sToggle) {
     const hint = "Buscá por modelo, forma o color.";
+    SG.openSearch = (q) => { openSearch(true); if (q != null) { sInput.value = q; run(); sInput.select(); } };
     const openSearch = (open, restore) => {
       panel.hidden = !open; sToggle.setAttribute("aria-expanded", open);
       if (open) sInput.focus(); else if (restore !== false) sToggle.focus();
@@ -121,19 +127,26 @@
       else if (i <= 0) sInput.focus(); else links[i - 1].focus();
     });
     document.addEventListener("click", (e) => { if (!panel.hidden && !e.target.closest(".header")) openSearch(false, false); });
-    const run = () => {
+    function run() {
       const q = sInput.value.trim();
       if (!q) { sResults.innerHTML = ""; sStatus.textContent = hint; return; }
       const all = search(q), hits = all.slice(0, 8);
       sStatus.innerHTML = all.length
-        ? all.length + (all.length === 1 ? " resultado" : " resultados") + (all.length > hits.length ? ' · <a href="/catalogo.html?q=' + encodeURIComponent(q) + '">Ver todos</a>' : "")
-        : "No encontramos «" + q.replace(/[<>&]/g, "") + "». Probá con una forma, como redonda o aviador, o un color.";
+        ? all.length + (all.length === 1 ? " resultado" : " resultados") + (all.length > hits.length ?  ". Enter abre todos." : "")
+        : "No encontramos resultados para “" + q.replace(/[<>&]/g, "") + "”. Probá otro modelo, forma o color.";
       sResults.innerHTML = hits.map(({ p, vi }) => {
         const v = p.vars[vi];
         return '<li><a href="' + productURL(p, vi) + '"><img src="' + img(v.img) + '" alt="" width="720" height="612">' +
-          "<span><strong>" + p.name + '</strong><br><span class="meta">' + v.label + (p.shape ? " · " + SHAPE_NAME[p.shape] : "") + " · " + money(transferPrice(v.price)) + " con transf." + (v.stock ? "" : " · Sin stock") + "</span></span></a></li>";
+          "<span><strong>" + p.name + '</strong><br><span class="meta">' + (p.cat === "acc" ? "" : v.label + " · ") + (p.shape ? SHAPE_NAME[p.shape] + " · " : "") + (v.price == null ? "" : money(transferPrice(v.price)) + " con transferencia") + (v.stock ? "" : " · Sin stock") + "</span></span></a></li>";
       }).join("");
-    };
+    }
+    $$("[data-open-search]").forEach((b) => b.addEventListener("click", (e) => { e.stopPropagation(); SG.openSearch(); }));
     sInput.addEventListener("input", run);
   }
 })();
+
+/* Distintivo del hosting (Netlify lo inyecta en el plan gratuito, fijo abajo a la derecha).
+   No se oculta: la barra de compra fija se ubica por encima para que no tape el botón. */
+document.addEventListener("DOMContentLoaded", function () {
+  if (document.querySelector("script[data-nf-variant]")) document.documentElement.style.setProperty("--host-badge", "64px");
+});

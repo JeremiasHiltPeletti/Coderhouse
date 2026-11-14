@@ -9,10 +9,10 @@
 
   /* Grupos del selector: Redondas incluye los marcos ovalados */
   const SHAPE_GROUPS = {
-    redonda:  { label: "Redondas y ovaladas", plural: "redondos y ovalados", includes: ["redonda", "ovalada"] },
-    cuadrada: { label: "Cuadradas", plural: "cuadrados", includes: ["cuadrada"] },
-    cateye:   { label: "Cat eye",   plural: "cat eye",   includes: ["cateye"] },
-    aviador:  { label: "Aviador",   plural: "aviador",   includes: ["aviador"] }
+    redonda:  { label: "Redondas y ovaladas", plural: "redondos y ovalados", fem: "redondas y ovaladas", one: "redonda u ovalada", includes: ["redonda", "ovalada"] },
+    cuadrada: { label: "Cuadradas", plural: "cuadrados", fem: "cuadradas", one: "cuadrada", includes: ["cuadrada"] },
+    cateye:   { label: "Cat eye",   plural: "cat eye", fem: "cat eye", one: "cat eye", includes: ["cateye"] },
+    aviador:  { label: "Aviador",   plural: "aviador", fem: "aviador", one: "aviador", includes: ["aviador"] }
   };
   const SHAPE_NAME = { redonda: "Redonda", ovalada: "Ovalada", cuadrada: "Cuadrada", cateye: "Cat eye", aviador: "Aviador" };
 
@@ -31,6 +31,8 @@
   const FEATURED = /*FEATURED*/;
 
   const money = (n) => "$" + Math.round(n).toLocaleString("es-AR");
+  /* Importe exacto: conserva los centavos cuando existen ($3.733,33), como los muestra la tienda */
+  const moneyExact = (n) => { const r = Math.round(n * 100) / 100; return "$" + r.toLocaleString("es-AR", Number.isInteger(r) ? {} : { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
   const transferPrice = (n) => Math.round(n * (1 - STORE.transferOff));
   const img = (name, kind) => "/assets/img/" + (kind || "card") + "/" + name + ".webp";
   const typeLabel = (p) => p.cat === "sol" && p.col ? "Colección " + p.col : CATEGORIES[p.cat];
@@ -38,6 +40,8 @@
   const inGroup = (p, group) => !!p.shape && SHAPE_GROUPS[group].includes.includes(p.shape);
   const firstInStock = (p) => Math.max(0, p.vars.findIndex((v) => v.stock));
   const norm = (t) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  /* Nombre para mensajes y avisos: «Charlotte en Marrón»; los accesorios ya llevan el color en el nombre */
+  const fullName = (p, v) => p.cat === "acc" ? p.name : p.name + " en " + v.label;
   const wa = (text) => "https://wa.me/" + STORE.waNumber + "?text=" + encodeURIComponent(text);
 
   /* Búsqueda: devuelve producto + variante; «gala carey» → Gala, variante Carey */
@@ -52,11 +56,11 @@
         .filter((x) => terms.every((t) => x.text.includes(t)));
       if (!hits.length) return;
       const colorTerm = terms.some((t) => p.vars.some((v) => norm(v.c + " " + v.label).includes(t)) && !base.includes(t));
-      (colorTerm ? hits : [hits.find((h) => p.vars[h.i].stock) || hits[0]]).forEach((h) => out.push({ p, vi: h.i }));
+      (colorTerm ? hits : [hits.find((h) => p.vars[h.i].stock) || hits[0]]).forEach((h) => out.push({ p, vi: h.i, byColor: colorTerm }));
     });
     return out;
   }
 
   window.SG = { STORE, SHAPE_GROUPS, SHAPE_NAME, CATEGORIES, CAT_PAGE, COLLECTIONS, HEX, COLOR_FAMILY, FAMILY_HEX, PRODUCTS, BY_ID, FEATURED,
-    money, transferPrice, img, typeLabel, productURL, inGroup, firstInStock, norm, wa, search };
+    money, moneyExact, transferPrice, fullName, img, typeLabel, productURL, inGroup, firstInStock, norm, wa, search };
 })();

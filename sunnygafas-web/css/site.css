@@ -19,7 +19,7 @@
 .logo__word { font-family: var(--f-logo); font-size: 28px; line-height: 1; letter-spacing: -0.01em; }
 .logo--light { color: var(--arena-50); }
 .nav { margin-left: auto; }
-.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 0; }
 .nav a {
   display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px;
   font-size: var(--fs-ui); font-weight: 600; text-decoration: none; border-radius: var(--r-ui);
@@ -37,6 +37,7 @@
 .search__form { display: flex; align-items: center; gap: 12px; border: 1.5px solid var(--line); border-radius: var(--r-ui); background: var(--white); padding: 0 4px 0 16px; }
 .search__form:focus-within { border-color: var(--ink); }
 .search__form input { flex: 1; min-width: 0; min-height: 52px; border: 0; background: transparent; font: inherit; font-size: 17px; color: var(--ink); outline: none; }
+.search__go { flex: none; min-height: 44px; padding: 0 16px; }
 .search__status { margin-top: 12px; }
 .search__results { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px; }
 .search__results a { display: flex; align-items: center; gap: 14px; padding: 8px; border-radius: var(--r-ui); text-decoration: none; }
@@ -78,16 +79,6 @@
 /* ---------- 10 · Newsletter y pie ---------- */
 .footer { background: var(--ink); color: var(--arena-50); padding: 0 0 28px; }
 /* Franja de Instagram: fotos propias del catálogo como acceso al perfil */
-.novedades { background: var(--oro-soft); color: var(--ink); }
-.novedades__row { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr) auto; align-items: center; gap: 16px 40px; padding-top: 20px; padding-bottom: 20px; }
-.novedades__title { font-variation-settings: "opsz" var(--opsz-display); font-family: var(--f-display); font-weight: 500; font-size: 28px; line-height: 1.1; letter-spacing: -0.012em; }
-.novedades__text { color: var(--ink-muted); font-size: var(--fs-ui); margin-top: 6px; }
-.novedades__thumbs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-.novedades__thumbs li { aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden; background: var(--piedra); }
-.novedades__thumbs img { width: 100%; height: 100%; object-fit: cover; }
-.novedades__link { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; font-weight: 600; font-size: var(--fs-ui); color: var(--ink); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 5px; text-decoration-color: var(--line); white-space: nowrap; }
-.novedades__link:hover { color: var(--oro-strong); text-decoration-color: var(--oro); }
-.novedades__link .icon { width: 20px; height: 20px; }
 .footer__grid { display: grid; grid-template-columns: 5fr 2fr 2fr 2fr; gap: 32px; padding: 56px 0 48px; }
 .footer__claim { color: var(--on-ink-muted); margin-top: 16px; max-width: 22em; }
 .footer__h { font-family: var(--f-ui); font-size: var(--fs-small); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--on-ink-muted); margin-bottom: 8px; }
@@ -98,7 +89,9 @@
 .footer__base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-top: 24px; border-top: 1px solid rgba(181,170,157,.3); font-size: var(--fs-small); color: var(--on-ink-muted); }
 
 
-.footer__base a { color: var(--arena-50); text-underline-offset: 3px; }
+.footer__base a { color: var(--arena-50); text-underline-offset: 3px; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-left: 6px; }
+.footer__base .icon { width: 15px; height: 15px; }
+.footer__base p { display: flex; flex-wrap: wrap; align-items: center; }
 
 /* ---------- Estado de stock y muestras ---------- */
 .product-card__flag { position: absolute; left: 10px; top: 10px; padding: 5px 10px; border-radius: 6px; background: var(--ink); color: var(--arena-50); font-size: 12.5px; font-weight: 600; }
@@ -129,8 +122,6 @@
   .topbar__list { gap: 28px; }
   .footer__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 24px; }
   .footer__brand { grid-column: 1 / -1; }
-  .novedades__row { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
-  .novedades__link { grid-column: 1 / -1; }
 }
 @media (max-width: 760px) {
   .topbar__list { justify-content: space-between; gap: 12px; min-height: 36px; font-size: 12.5px; }
@@ -146,11 +137,16 @@
   .faq-intro { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
   .faq__q { font-size: 17px; }
   .faq__a > div { padding-right: 8px; }
-  .novedades__row { grid-template-columns: 1fr; gap: 16px; padding-top: 28px; padding-bottom: 28px; }
-  .novedades__title { font-size: 26px; }
   .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px 16px; padding: 40px 0 32px; }
   .footer__brand { grid-column: 1 / -1; }
   .footer__grid > div:last-child { grid-column: 1 / -1; }
   .footer li a { min-height: 48px; }
   .page { padding-top: 8px; }
+}
+
+/* Buscador en celular: el botón «Ver resultados» baja a su propia línea para no apretar el campo */
+@media (max-width: 520px) {
+  .search__form { flex-wrap: wrap; padding: 0 4px 4px 12px; }
+  .search__form input { flex: 1 1 60%; }
+  .search__go { order: 3; flex: 1 1 100%; margin-right: 0; }
 }

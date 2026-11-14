@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guía de calce · Sunnygafas</title>
-<meta name="description" content="Cómo leer las tres medidas de una gafa (lente, puente y varilla) y compararlas con un par que ya te queda cómodo.">
+<meta name="description" content="Cómo leer las tres medidas de una montura (lente, puente y varilla) y compararlas con unas gafas que ya te queden cómodas.">
 <link rel="canonical" href="https://sunnygafas-home.netlify.app/guia-de-calce.html">
 <meta property="og:site_name" content="Sunnygafas">
 <meta property="og:title" content="Guía de calce · Sunnygafas">
-<meta property="og:description" content="Cómo leer las tres medidas de una gafa (lente, puente y varilla) y compararlas con un par que ya te queda cómodo.">
+<meta property="og:description" content="Cómo leer las tres medidas de una montura (lente, puente y varilla) y compararlas con unas gafas que ya te queden cómodas.">
 <meta property="og:image" content="https://sunnygafas-home.netlify.app/assets/img/hero-ink-desk.webp">
 <meta property="og:locale" content="es_AR">
 <link rel="icon" href="/assets/img/isotipo-sunnygafas.png">
@@ -63,6 +63,7 @@
     </a>
     <nav class="nav" aria-label="Principal">
       <ul>
+        <li><a href="/catalogo.html">Catálogo</a></li>
         <li><a href="/gafas-de-sol.html">Gafas de sol</a></li>
         <li><a href="/polarizadas.html">Polarizadas</a></li>
         <li><a href="/armazones.html">Armazones</a></li>
@@ -85,7 +86,8 @@
       <form class="search__form" role="search" action="/catalogo.html" method="get">
         <label class="visually-hidden" for="searchInput">Buscar por modelo, forma o color</label>
         <svg class="icon"><use href="#i-search"/></svg>
-        <input id="searchInput" name="q" type="search" autocomplete="off" placeholder="Probá «Gala carey» o «aviador»" aria-describedby="searchStatus">
+        <input id="searchInput" name="q" type="search" autocomplete="off" placeholder="Ej. Gala carey" aria-describedby="searchStatus">
+        <button class="btn btn-primary search__go" type="submit">Ver resultados</button>
         <button class="icon-btn" type="button" id="searchClose" aria-label="Cerrar buscador"><svg class="icon"><use href="#i-close"/></svg></button>
       </form>
       <p class="search__status meta" id="searchStatus" aria-live="polite">Buscá por modelo, forma o color.</p>
@@ -102,17 +104,17 @@
       <button class="icon-btn" type="button" data-close-menu aria-label="Cerrar menú"><svg class="icon"><use href="#i-close"/></svg></button>
     </div>
     <ul class="drawer__nav">
-      <li><a href="/gafas-de-sol.html">Gafas de sol <svg class="icon"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/polarizadas.html">Polarizadas <svg class="icon"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/armazones.html">Armazones <svg class="icon"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/clip-on.html">Clip-on 2 en 1 <svg class="icon"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/accesorios.html">Accesorios <svg class="icon"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="/catalogo.html">Catálogo <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/gafas-de-sol.html">Gafas de sol <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/polarizadas.html">Polarizadas <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/armazones.html">Armazones <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/clip-on.html">Clip-on 2 en 1 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="/accesorios.html">Accesorios <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
     </ul>
     <div class="drawer__extra">
-      <a class="link" href="/#forma" data-close-menu>Elegí por forma</a>
       <a class="link" href="/guia-de-calce.html">Guía de calce</a>
       <a class="link" href="/ayuda.html">Ayuda</a>
-      <a class="link" href="https://wa.me/5493454149784?text=Hola%2C%20vengo%20del%20sitio%20de%20Sunnygafas%20y%20quiero%20hacer%20una%20consulta." rel="noopener">Escribinos por WhatsApp</a>
+      <a class="link" href="https://wa.me/5493454149784?text=Hola%2C%20quiero%20hacer%20una%20consulta." rel="noopener">Escribinos por WhatsApp</a>
     </div>
   </div>
 </div>
@@ -129,8 +131,13 @@
     <article class="read">
       <header class="read__head">
         <h1>Guía de calce</h1>
-        <p class="lead">La forma más simple de acertar es comparar con unas gafas que ya te queden cómodas.</p>
+        <p class="lead">Compará las medidas de la montura con las de unas gafas que ya te queden cómodas.</p>
       </header>
+
+      <section>
+        <h2>Dónde están los números</h2>
+        <p>Buscá tres números en el interior de una varilla. Por ejemplo, <span class="num">52 □ 18 140</span>. Están en milímetros.</p>
+      </section>
 
       <figure class="read__figure">
         <svg viewBox="0 0 640 390" role="img" aria-labelledby="gSvgT">
@@ -147,44 +154,38 @@
             <path d="M70 336 H566 M70 326 V346 M566 326 V346"/>
           </g>
           <g font-family="Hanken Grotesk, sans-serif" font-size="22" font-weight="600" fill="#1E1A16" text-anchor="middle">
-            <text x="170" y="160" font-family="Gloock, serif" font-size="52" font-weight="400" fill="#85561A">52</text>
+            <text x="170" y="160" font-family="Bodoni Moda, serif" font-size="52" font-weight="500" fill="#85561A">52</text>
             <text x="170" y="192">Lente</text>
-            <text x="320" y="32"><tspan font-family="Gloock, serif" font-size="34" font-weight="400" fill="#85561A">18</tspan> Puente</text>
-            <text x="318" y="318"><tspan font-family="Gloock, serif" font-size="34" font-weight="400" fill="#85561A">140</tspan> Varilla</text>
+            <text x="320" y="32"><tspan font-family="Bodoni Moda, serif" font-size="34" font-weight="500" fill="#85561A">18</tspan> Puente</text>
+            <text x="318" y="318"><tspan font-family="Bodoni Moda, serif" font-size="34" font-weight="500" fill="#85561A">140</tspan> Varilla</text>
           </g>
         </svg>
-        <figcaption class="meta"><span class="fit__tag">Medidas de ejemplo</span> No corresponden a un modelo en particular.</figcaption>
+        <figcaption class="meta"><span class="fit__tag">Medidas de ejemplo</span></figcaption>
       </figure>
 
       <section>
-        <h2>Dónde están los números</h2>
-        <p>Mirá la cara interna de una de las varillas de tus gafas. Vas a ver tres números, por ejemplo <span class="num">52 □ 18 140</span>. Están en milímetros.</p>
+        <h2>Qué mide cada número</h2>
+        <ul class="read__list">
+          <li><strong>Lente:</strong> ancho de un lente en su parte más ancha.</li>
+          <li><strong>Puente:</strong> distancia entre los lentes.</li>
+          <li><strong>Varilla:</strong> largo del brazo que va hacia la oreja.</li>
+        </ul>
       </section>
 
       <section>
-        <h2>Qué significa cada uno</h2>
-        <dl class="read__defs">
-          <div><dt><span class="num">52</span> Lente</dt><dd>Ancho de cada lente. Con más número, el marco es más grande.</dd></div>
-          <div><dt><span class="num">18</span> Puente</dt><dd>Espacio entre los lentes. Es lo que apoya sobre la nariz.</dd></div>
-          <div><dt><span class="num">140</span> Varilla</dt><dd>Largo de la patilla, hasta detrás de la oreja.</dd></div>
-        </dl>
-      </section>
-
-      <section>
-        <h2>Cómo comparar</h2>
-        <ol class="read__steps">
-          <li>Anotá los tres números de un par que te quede cómodo.</li>
-          <li>Pedinos las medidas del modelo que te gusta: en cada ficha está el botón <strong>Pedir las medidas</strong>.</li>
-          <li>Buscá un lente y un puente a 2 o 3 mm de los tuyos, y una varilla igual o hasta 5 mm más larga.</li>
-        </ol>
+        <h2>Compará con el modelo que te gustó</h2>
+        <p>Abrí su ficha y buscá «Medidas y calce». Si todavía no están publicadas, pedilas desde esa misma ficha.</p>
+        <div class="read__actions">
+          <a class="btn btn-outline" id="guideBack" href="/catalogo.html" hidden></a>
+          <a class="link" id="guideAll" href="/catalogo.html">Ver todas las categorías <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
       </section>
 
       <section class="read__box">
-        <h2>¿No tenés un par para medir?</h2>
-        <p>Contanos qué modelo estás mirando y te ayudamos a elegir.</p>
+        <h2>¿Necesitás ayuda con el tamaño?</h2>
+        <p>Contanos qué modelo estás mirando y, si las tenés, las medidas de un par que ya uses.</p>
         <div class="read__actions">
-          <a class="btn btn-primary" href="https://wa.me/5493454149784?text=Hola%2C%20quiero%20que%20me%20ayuden%20a%20elegir%20el%20tama%C3%B1o.%20Estoy%20mirando%20el%20modelo%3A%20" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Escribinos por WhatsApp</a>
-          <a class="link" href="/gafas-de-sol.html">Volver a gafas de sol <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-primary" id="guideWa" href="https://wa.me/5493454149784?text=Hola%2C%20quiero%20ayuda%20con%20el%20tama%C3%B1o.%20Estoy%20mirando%20el%20modelo%3A%20" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Consultar por WhatsApp</a>
         </div>
       </section>
     </article>
@@ -192,21 +193,6 @@
 </main>
 
 <footer class="footer on-dark">
-  <div class="novedades">
-    <div class="container novedades__row">
-      <div>
-        <p class="novedades__title">Los modelos nuevos se ven primero en Instagram</p>
-        <p class="novedades__text">Ingresos, reposiciones y fotos de las gafas puestas.</p>
-      </div>
-      <ul class="novedades__thumbs" aria-hidden="true">
-        <li><img src="/assets/img/p/charlotte-brown-1.webp" alt="" loading="lazy" width="600" height="799"></li>
-        <li><img src="/assets/img/p/saturday-xl-print-2.webp" alt="" loading="lazy" width="600" height="886" style="object-position: 50% 30%"></li>
-        <li><img src="/assets/img/p/glow-black-2.webp" alt="" loading="lazy" width="600" height="800"></li>
-        <li><img src="/assets/img/p/pilot-black-1.webp" alt="" loading="lazy" width="600" height="627" style="object-position: 50% 30%"></li>
-      </ul>
-      <a class="novedades__link" href="https://instagram.com/sunnygafas" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg>Ver @sunnygafas</a>
-    </div>
-  </div>
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
@@ -219,6 +205,7 @@
       <nav aria-labelledby="ft-comprar">
         <h2 class="footer__h" id="ft-comprar">Comprar</h2>
         <ul>
+          <li><a href="/catalogo.html">Catálogo</a></li>
           <li><a href="/gafas-de-sol.html">Gafas de sol</a></li>
           <li><a href="/polarizadas.html">Polarizadas</a></li>
           <li><a href="/armazones.html">Armazones</a></li>
@@ -239,20 +226,21 @@
       <div>
         <h2 class="footer__h">Contacto</h2>
         <ul class="footer__contact">
-          <li><a href="https://wa.me/5493454149784?text=Hola%2C%20vengo%20del%20sitio%20de%20Sunnygafas%20y%20quiero%20hacer%20una%20consulta." rel="noopener"><svg class="icon"><use href="#i-wa"/></svg>WhatsApp</a></li>
-          <li><a href="https://instagram.com/sunnygafas" rel="noopener"><svg class="icon"><use href="#i-ig"/></svg>@sunnygafas</a></li>
-          <li><a href="mailto:sunny.gafas.ch@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>sunny.gafas.ch@gmail.com</a></li>
+          <li><a href="https://wa.me/5493454149784?text=Hola%2C%20quiero%20hacer%20una%20consulta." rel="noopener"><svg class="icon"><use href="#i-wa"/></svg>WhatsApp</a></li>
+          <li><a href="https://instagram.com/sunnygafas" rel="noopener"><svg class="icon"><use href="#i-ig"/></svg>Ver @sunnygafas en Instagram</a></li>
+          <li><a href="mailto:sunny.gafas.ch@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>Email</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__base">
-      <p>25% off con transferencia o efectivo · Hasta 3 cuotas sin interés con tarjeta</p>
-      <p>© 2026 Sunnygafas · La compra se completa en la <a href="https://sunnygafas.empretienda.com.ar" rel="noopener">tienda oficial</a></p>
+      <p>Las compras se completan en Empretienda. <a href="https://sunnygafas.empretienda.com.ar" rel="noopener">Ir a la tienda oficial <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a></p>
+      <p>© 2026 Sunnygafas</p>
     </div>
   </div>
 </footer>
 
 <script src="/js/data.js"></script>
 <script src="/js/site.js"></script>
+<script src="/js/guide.js"></script>
 </body>
 </html>

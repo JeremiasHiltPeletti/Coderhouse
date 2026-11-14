@@ -22,7 +22,7 @@ const ok = (name, cond, extra) => { results.push([cond ? 'OK ' : 'FALLA', name, 
   ok('Home: el título «Elegí por forma» queda visible bajo la cabecera fija', r.top >= r.hb && r.top < 400, JSON.stringify(r));
   // enlace del hero a la variante retratada
   const heroHref = await p.getAttribute('.hero__sign a', 'href');
-  ok('Hero: el enlace de la foto apunta a Saturday XL · Print', heroHref === '/producto/saturday.html?color=print', heroHref);
+  ok('Hero: el enlace de la foto apunta a Saturday XL · Print', /^\/producto\/saturday(\.html)?\?color=print$/.test(heroHref), heroHref);
   for (const shape of ['redonda', 'cateye', 'aviador', 'cuadrada']) {
     await p.click(`.shape-btn[data-shape="${shape}"]`); await p.waitForTimeout(350);
     r = await p.evaluate((shape) => {
@@ -38,12 +38,12 @@ const ok = (name, cond, extra) => { results.push([cond ? 'OK ' : 'FALLA', name, 
                photosOfVariant: imgs.every((im) => im.getAttribute('src').includes('/' + v.img + '-')), loaded: imgs.every((im) => im.complete && im.naturalWidth > 0),
                all: document.getElementById('shapeAll').getAttribute('href'), pressed: document.querySelectorAll('.shape-btn[aria-pressed="true"]').length };
     }, shape);
-    ok(`Forma ${shape}: dos fotos de la misma variante, nombre y enlaces coinciden`, r.n >= 1 && r.sameDest && r.inShape && r.labelOK && r.photosOfVariant && r.loaded && r.all === '/catalogo.html?forma=' + shape && r.pressed === 1, `${r.label} · ${r.n} fotos`);
+    ok(`Forma ${shape}: dos fotos de la misma variante, nombre y enlaces coinciden`, r.n >= 1 && r.sameDest && r.inShape && r.labelOK && r.photosOfVariant && r.loaded && /^\/gafas-de-sol(\.html)?\?forma=/.test(r.all) && r.all.endsWith('forma=' + shape) && r.pressed === 1, `${r.label} · ${r.n} fotos`);
   }
   const allHref = await p.getAttribute('#shapeAll', 'href');
-  await Promise.all([p.waitForURL('**/catalogo.html**'), p.click('#shapeAll')]); await p.waitForLoadState('networkidle');
-  r = await p.evaluate(() => ({ count: document.getElementById('catCount').textContent, ok: [...document.querySelectorAll('#catGrid .product-card')].every((c) => window.SG.inGroup(window.SG.BY_ID[c.dataset.id], 'cuadrada')) }));
-  ok('«Ver modelos cuadrados» abre el catálogo filtrado', allHref === '/catalogo.html?forma=cuadrada' && r.ok, r.count);
+  await Promise.all([p.waitForURL('**/gafas-de-sol**'), p.click('#shapeAll')]); await p.waitForLoadState('networkidle');
+  r = await p.evaluate(() => ({ count: document.getElementById('catCount').textContent, ok: [...document.querySelectorAll('#catGrid .product-card')].every((c) => { const x = window.SG.BY_ID[c.dataset.id]; return x.cat === 'sol' && window.SG.inGroup(x, 'cuadrada'); }) }));
+  ok('«Ver gafas de sol cuadradas» abre Gafas de sol con el filtro de forma', /forma=cuadrada$/.test(allHref) && r.ok, r.count);
   await p.goBack({ waitUntil: 'networkidle' });
   await p.click('.shape-btn[data-shape="cuadrada"]'); await p.waitForTimeout(200);
   const puestaHref = await p.getAttribute('#shapePhotos a', 'href');
@@ -66,11 +66,11 @@ const ok = (name, cond, extra) => { results.push([cond ? 'OK ' : 'FALLA', name, 
   });
   r = await read();
   ok('Ficha Gala · Carey: foto, precio y destino de compra coinciden', r.variant === 'Carey' && r.imgOK && r.priceOK && r.buyOK, `${r.transfer} / ${r.list} → ${r.buy}`);
-  await p.click('#pdpSwatches .swatch[aria-label="Caramelo"]'); await p.waitForTimeout(150);
+  await p.click('#pdpSwatches .swatch[aria-label^="Color: Caramelo"]'); await p.waitForTimeout(150);
   r = await read();
-  ok('Cambiar a Caramelo: foto, color, precio, URL y destino se actualizan', r.variant === 'Caramelo' && r.imgOK && r.priceOK && r.buyOK && r.buy.endsWith('gala-caramelo') && r.url.endsWith('?color=caramelo') && r.wa.includes('Gala · Caramelo'), `${r.img} → ${r.buy}`);
+  ok('Cambiar a Caramelo: foto, color, precio, URL y destino se actualizan', r.variant === 'Caramelo' && r.imgOK && r.priceOK && r.buyOK && r.buy.endsWith('gala-caramelo') && r.url.endsWith('?color=caramelo') && r.wa.includes('Gala en Caramelo'), `${r.img} → ${r.buy}`);
   // foco conservado en la muestra y recarga con la misma variante
-  ok('La muestra elegida conserva el foco', await p.evaluate(() => document.activeElement.getAttribute('aria-label') === 'Caramelo'));
+  ok('La muestra elegida conserva el foco', await p.evaluate(() => document.activeElement.getAttribute('aria-label').startsWith('Color: Caramelo')));
   await p.reload({ waitUntil: 'networkidle' }); r = await read();
   ok('Recargar la URL conserva la variante', r.variant === 'Caramelo');
   await p.goto(BASE + '/', { waitUntil: 'networkidle' });
@@ -84,8 +84,8 @@ const ok = (name, cond, extra) => { results.push([cond ? 'OK ' : 'FALLA', name, 
   ok('Escape cierra el buscador y devuelve el foco', await p.evaluate(() => document.getElementById('searchPanel').hidden && document.activeElement.id === 'searchToggle'));
   // variante sin stock
   await p.goto(BASE + '/producto/yanis.html?color=negro', { waitUntil: 'networkidle' });
-  r = await p.evaluate(() => ({ stock: !document.getElementById('pdpStock').hidden, buyHidden: document.getElementById('pdpBuy').hidden, wa: document.getElementById('pdpWaText').textContent, next: document.getElementById('pdpNext').textContent }));
-  ok('Variante sin stock: estado real, sin botón de compra y con alternativa', r.stock && r.buyHidden && /reposición/.test(r.wa) && /Print/.test(r.next), r.next);
+  r = await p.evaluate(() => ({ stock: !document.getElementById('pdpStock').hidden, buyHidden: document.getElementById('pdpBuy').hidden, wa: document.getElementById('pdpWaText').textContent, next: document.getElementById('pdpAvail').textContent, bar: document.getElementById('buybarBtn').textContent }));
+  ok('Variante sin stock: estado real, sin botón de compra y con alternativa', r.stock && r.buyHidden && /reposición/.test(r.wa) && /Disponible en Print/.test(r.next) && r.bar === 'Consultar reposición', r.next);
   await ctx.close();
 
   /* 3 · Catálogo móvil: aplicar, quitar y estado en cero */
@@ -110,14 +110,15 @@ const ok = (name, cond, extra) => { results.push([cond ? 'OK ' : 'FALLA', name, 
   r = await p.evaluate(() => { const bar = document.querySelector('.cat-bar'); scrollTo(0, 1200); return new Promise((res) => setTimeout(() => { const rc = bar.getBoundingClientRect(); res({ top: rc.top, visible: rc.top >= 0 && rc.bottom < 300 }); }, 200)); });
   ok('Filtrar y Ordenar siguen a mano al desplazar', r.visible, 'top ' + Math.round(r.top));
   await p.selectOption('#sort', 'menor'); await p.waitForTimeout(100);
-  r = await p.evaluate(() => { const ids = [...document.querySelectorAll('#catGrid .product-card')].map((c) => window.SG.BY_ID[c.dataset.id].vars[0].price); return ids.every((x, i) => !i || x >= ids[i - 1]); });
+  r = await p.evaluate(() => { const ids = [...document.querySelectorAll('#catGrid .product-card')].map((c) => window.SG.BY_ID[c.dataset.id].vars[+c.dataset.vi].price); return ids.every((x, i) => !i || x >= ids[i - 1]); });
   ok('Ordenar por menor precio', r);
   // menú móvil
   await p.goto(BASE + '/', { waitUntil: 'networkidle' });
   await p.click('#menuToggle'); await p.waitForTimeout(300); await p.keyboard.press('Escape');
   ok('Menú móvil: Escape cierra y devuelve el foco', await p.evaluate(() => document.getElementById('mobileMenu').hidden && document.activeElement.id === 'menuToggle'));
 
-  /* 4 · Comparador: tacto, mouse y teclado */
+  /* 4 · Comparador (ahora en Polarizadas): tacto, mouse y teclado */
+  await p.goto(BASE + '/polarizadas.html', { waitUntil: 'networkidle' });
   await p.evaluate(() => document.getElementById('compare').scrollIntoView({ block: 'center', behavior: 'instant' })); await p.waitForTimeout(300);
   const box = await (await p.$('.compare__stage')).boundingBox();
   const cdp = await ctx.newCDPSession(p);
@@ -139,7 +140,7 @@ const ok = (name, cond, extra) => { results.push([cond ? 'OK ' : 'FALLA', name, 
   await ctx.close();
 
   ctx = await b.newContext({ viewport: { width: 1440, height: 900 } }); p = await ctx.newPage(); watch(p);
-  await p.goto(BASE + '/', { waitUntil: 'networkidle' });
+  await p.goto(BASE + '/polarizadas.html', { waitUntil: 'networkidle' });
   await p.evaluate(() => document.getElementById('compare').scrollIntoView({ block: 'center', behavior: 'instant' })); await p.waitForTimeout(300);
   const bx = await (await p.$('.compare__stage')).boundingBox();
   await p.mouse.move(bx.x + bx.width * 0.3, bx.y + bx.height * 0.5); await p.mouse.down(); await p.mouse.move(bx.x + bx.width * 0.7, bx.y + bx.height * 0.5, { steps: 6 }); await p.mouse.up();
@@ -172,19 +173,19 @@ const ok = (name, cond, extra) => { results.push([cond ? 'OK ' : 'FALLA', name, 
   }
 
   /* 6 · Desbordes y tamaño de controles */
-  for (const w of [1440, 768, 390]) {
+  for (const w of [1440, 768, 390, 360]) {
     const c2 = await b.newContext({ viewport: { width: w, height: 900 } }); const q = await c2.newPage(); watch(q);
     let over = [], small = [];
-    for (const u of ['/', '/gafas-de-sol.html', '/producto/gala.html', '/producto/lennon.html', '/guia-de-calce.html', '/ayuda.html']) {
+    for (const u of ['/', '/gafas-de-sol.html', '/polarizadas.html', '/catalogo.html?q=zzz', '/producto/gala.html', '/producto/lennon.html', '/producto/risky.html', '/producto/cadena-beige.html', '/guia-de-calce.html?modelo=gala&color=carey', '/ayuda.html', '/404.html']) {
       await q.goto(BASE + u, { waitUntil: 'networkidle' });
       const m = await q.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth,
         small: [...document.querySelectorAll('a, button, select, input')].filter((e) => { const r = e.getBoundingClientRect(); if (!r.width || !r.height || e.closest('[hidden]') || getComputedStyle(e).visibility === 'hidden' || e.type === 'checkbox' || e.type === 'range') return false;
           const inline = e.tagName === 'A' && getComputedStyle(e).display === 'inline'; return !inline && (r.height < 43.5 || r.width < 43.5) && !e.classList.contains('skip-link'); }).map((e) => (e.className || e.tagName) + ' ' + Math.round(e.getBoundingClientRect().width) + 'x' + Math.round(e.getBoundingClientRect().height)).slice(0, 6) }));
       if (m.sw > m.cw) over.push(u + ' ' + m.sw);
-      if (w === 390 && m.small.length) small.push(u + ': ' + m.small.join(', '));
+      if (w <= 390 && m.small.length) small.push(u + ': ' + m.small.join(', '));
     }
     ok(`Sin desborde horizontal a ${w} px`, !over.length, over.join(', '));
-    if (w === 390) ok('Controles táctiles de 44 px o más a 390 px', !small.length, small.join(' | '));
+    if (w <= 390) ok(`Controles táctiles de 44 px o más a ${w} px`, !small.length, small.join(' | '));
     await c2.close();
   }
 

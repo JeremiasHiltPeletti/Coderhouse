@@ -10,6 +10,13 @@
     <header class="cat-head">
       <h1 id="catTitle">{{H1}}</h1>
       <p class="lead" id="catIntro">{{INTRO}}</p>
+      <!-- En una búsqueda, la consulta queda editable -->
+      <form class="cat-search" id="catSearch" role="search" action="/catalogo.html" method="get" hidden>
+        <label class="visually-hidden" for="catSearchInput">Buscar por modelo, forma o color</label>
+        <input id="catSearchInput" name="q" type="search" autocomplete="off" placeholder="Ej. Gala carey">
+        <button class="btn btn-outline" type="submit">Buscar</button>
+      </form>
+      <a class="link cat-head__store" href="{{STORE_CAT}}" rel="noopener">{{STORE_LABEL}} <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
     </header>
 
     <div class="cat-layout">
@@ -37,7 +44,7 @@
               <svg class="icon" aria-hidden="true"><use href="#i-filter"/></svg>Filtrar<span class="cat-bar__badge" id="filtersBadge" hidden></span>
             </button>
             <label class="sort">
-              <span class="sort__label">Ordenar</span>
+              <span class="sort__label">Ordenar por</span>
               <select id="sort" name="orden">
                 <option value="">Destacados</option>
                 <option value="menor">Menor precio</option>
@@ -53,19 +60,30 @@
         <ul class="product-grid cat-grid" id="catGrid"></ul>
 
         <div class="empty" id="catEmpty" hidden>
-          <h2 class="empty__title" id="emptyTitle">No hay modelos con esos filtros</h2>
-          <p id="emptyText">Sacá un filtro o mirá todo el catálogo.</p>
+          <h2 class="empty__title" id="emptyTitle">No encontramos modelos con esos filtros.</h2>
+          <p id="emptyText">Probá quitar un filtro o ver todos los modelos de esta categoría.</p>
           <div class="empty__actions">
             <button class="btn btn-primary" type="button" id="emptyClear">Borrar filtros</button>
-            <a class="link" href="/catalogo.html">Ver todo el catálogo</a>
+            <button class="btn btn-primary" type="button" id="emptySearch" hidden>Buscar de nuevo</button>
+            <a class="link" id="emptyAll" href="/catalogo.html" hidden>Ver todas las categorías <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="link" id="emptyStore" href="{{STORE_CAT}}" rel="noopener" hidden>Ver catálogo completo en la tienda oficial <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+          </div>
+        </div>
+
+        <div class="empty" id="catError" hidden>
+          <h2 class="empty__title">No pudimos mostrar el catálogo.</h2>
+          <p>Podés volver a intentar o ver los modelos en la tienda oficial.</p>
+          <div class="empty__actions">
+            <button class="btn btn-primary" type="button" id="catRetry">Reintentar</button>
+            <a class="link" href="{{STORE_CAT}}" rel="noopener">{{STORE_LABEL}} <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
           </div>
         </div>
 
         <noscript><p class="empty">Para ver los modelos acá hace falta JavaScript. También podés verlos en la <a href="{{STORE_CAT}}">tienda oficial</a>.</p></noscript>
-
+{{EXTRA}}
         <div class="cat-note">
-          <p class="meta">El precio destacado es con transferencia o efectivo: 25% off sobre el de lista. Con tarjeta, hasta 3 cuotas sin interés.</p>
-          <p class="meta">Acá mostramos una selección con fotos revisadas. <a href="{{STORE_CAT}}" rel="noopener">El catálogo completo está en la tienda oficial</a>.</p>
+          <p class="meta">El precio destacado es con transferencia o efectivo. El precio de lista y las cuotas se confirman en la tienda oficial.</p>
+          <p class="meta">Acá mostramos una selección con fotos revisadas. Datos de la tienda al {{SYNCED}}.</p>
         </div>
       </div>
     </div>

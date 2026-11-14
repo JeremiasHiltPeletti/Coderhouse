@@ -1,0 +1,38 @@
+
+        <!-- Simulación del reflejo: vive en la categoría donde se decide por este tipo de lente -->
+        <section class="polar-demo on-dark" aria-labelledby="polar-title">
+          <div class="polar-demo__text">
+            <h2 id="polar-title">Cómo se ve el reflejo</h2>
+            <p>Arrastrá el control o usá las flechas del teclado. Es una simulación visual.</p>
+          </div>
+          <figure class="compare" id="compare">
+            <div class="compare__stage">
+              <div class="compare__layer compare__layer--plain">
+                <img src="/assets/img/mar-comparador.webp" srcset="/assets/img/mar-comparador-900.webp 900w, /assets/img/mar-comparador.webp 1536w" sizes="(max-width: 760px) 100vw, 60vw" alt="" width="1536" height="1024" draggable="false" loading="lazy">
+                <svg class="glare" viewBox="0 0 1536 1024" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="glareCore" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".92"/><stop offset=".45" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+                    <filter id="glareBlur" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="16"/></filter>
+                    <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity=".06"/></linearGradient>
+                  </defs>
+                  <rect x="0" y="324" width="1536" height="700" fill="url(#haze)"/>
+                  <ellipse cx="640" cy="430" rx="460" ry="120" fill="url(#glareCore)" opacity=".8"/>
+                  <ellipse cx="700" cy="590" rx="380" ry="90" fill="url(#glareCore)" opacity=".45"/>
+                  <g fill="#fff" filter="url(#glareBlur)" opacity=".45">
+                    <ellipse cx="620" cy="360" rx="220" ry="10"/><ellipse cx="690" cy="400" rx="260" ry="14"/><ellipse cx="600" cy="480" rx="230" ry="16"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="compare__layer compare__layer--polar">
+                <img src="/assets/img/mar-comparador.webp" srcset="/assets/img/mar-comparador-900.webp 900w, /assets/img/mar-comparador.webp 1536w" sizes="(max-width: 760px) 100vw, 60vw" alt="" width="1536" height="1024" draggable="false" loading="lazy">
+              </div>
+              <div class="compare__handle" aria-hidden="true"><span></span></div>
+              <label class="compare__control">
+                <span class="visually-hidden">División entre lente común y lente polarizado</span>
+                <input type="range" id="compareRange" min="0" max="100" value="45" step="1">
+              </label>
+              <span class="compare__tag compare__tag--l">Lente común</span>
+              <span class="compare__tag compare__tag--r">Lente polarizado</span>
+            </div>
+          </figure>
+        </section>

@@ -1,0 +1,42 @@
+/* =========================================================
+   Sunnygafas — Comparador de reflejo (categoría Polarizadas)
+   El petróleo se reserva para esta demostración.
+   ========================================================= */
+.polar-demo { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); background: var(--mar); color: var(--white); border-radius: var(--r-ui); overflow: hidden; }
+.polar-demo__text { display: grid; gap: 12px; align-content: center; padding: 32px; }
+.polar-demo h2 { color: var(--white); font-size: 34px; line-height: 1.05; }
+.polar-demo p { color: var(--mar-soft); }
+.compare { margin: 0; min-width: 0; display: grid; }
+.compare__stage { position: relative; min-height: 360px; overflow: hidden; --pos: 45%; background: #0F2F33; cursor: ew-resize; }
+.compare__layer { position: absolute; inset: 0; }
+.compare__layer img, .compare__layer .glare { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; user-select: none; -webkit-user-drag: none; }
+.compare__layer--polar { clip-path: inset(0 0 0 var(--pos)); }
+.compare__handle { position: absolute; z-index: 1; top: 0; bottom: 0; left: var(--pos); width: 0; }
+.compare__handle::before { content: ""; position: absolute; top: 0; bottom: 0; left: -1px; width: 2px; background: var(--arena-50); }
+.compare__handle span { position: absolute; top: 50%; left: -26px; width: 52px; height: 52px; margin-top: -26px; border-radius: 999px; background: var(--arena-50); box-shadow: var(--shadow-float); }
+.compare__handle span::before, .compare__handle span::after { content: ""; position: absolute; top: 50%; width: 8px; height: 8px; border-top: 2px solid var(--ink); border-left: 2px solid var(--ink); margin-top: -4px; }
+.compare__handle span::before { left: 13px; transform: rotate(-45deg); }
+.compare__handle span::after { right: 13px; transform: rotate(135deg); }
+.compare__tag { position: absolute; z-index: 2; top: 20px; font-size: var(--fs-meta); font-weight: 600; padding: 7px 14px; border-radius: 6px; background: var(--ink); color: var(--white); }
+.compare__tag--l { left: 20px; }
+.compare__tag--r { right: 20px; }
+/* El range queda como control accesible (teclado y lectores); la manija es su representación visible */
+.compare__control input { position: absolute; width: 1px; height: 1px; margin: 0; padding: 0; opacity: 0; overflow: hidden; clip: rect(0 0 0 0); pointer-events: none; }
+.compare:has(input:focus-visible) .compare__handle span { outline: 3px solid var(--oro-soft); outline-offset: 3px; }
+.compare:has(input:focus-visible) .compare__handle::before { background: var(--oro-soft); width: 4px; left: -2px; }
+
+
+@media (max-width: 1080px) {
+  .polar-demo { grid-template-columns: 1fr; }
+  .polar-demo__text { padding: 24px 24px 20px; }
+  .compare__stage { min-height: 0; aspect-ratio: 16 / 9; }
+}
+@media (max-width: 760px) {
+  .polar-demo { margin: 36px calc(var(--gutter) * -1) 0; border-radius: 0; }
+  .polar-demo__text { padding: 24px var(--gutter) 18px; }
+  .polar-demo h2 { font-size: 28px; }
+  .compare__stage { aspect-ratio: 4 / 3; }
+  .compare__tag { top: 12px; font-size: 13px; padding: 5px 10px; }
+  .compare__tag--l { left: 12px; }
+  .compare__tag--r { right: 12px; }
+}

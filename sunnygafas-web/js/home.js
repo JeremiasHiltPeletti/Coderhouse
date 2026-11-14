@@ -1,12 +1,12 @@
 /* =========================================================
-   Sunnygafas — Home: recién llegadas, forma en dos vistas y comparador
+   Sunnygafas — Home: destacadas y forma en dos vistas
    Datos: js/data.js · Tarjeta, menú y buscador: js/site.js
    ========================================================= */
 (function () {
   const SG = window.SG;
   const { PRODUCTS, BY_ID, FEATURED, SHAPE_GROUPS, productURL, inGroup, firstInStock, cardHTML, bindSwatches, $, $$ } = SG;
 
-  /* ---------- Recién llegadas ---------- */
+  /* ---------- Gafas de sol destacadas ---------- */
   const newGrid = $("#newGrid");
   newGrid.innerHTML = FEATURED.map((id) => cardHTML(BY_ID[id], firstInStock(BY_ID[id]))).join("");
   bindSwatches(newGrid);
@@ -32,7 +32,7 @@
   function renderShape(group, announce) {
     const pick = SHAPE_PICK[group], p = BY_ID[pick.id];
     const vi = Math.max(0, p.vars.findIndex((v) => v.slug === pick.color)), v = p.vars[vi], url = productURL(p, vi);
-    const n = PRODUCTS.filter((x) => inGroup(x, group) && x.vars.some((y) => y.stock)).length;
+    const n = PRODUCTS.filter((x) => x.cat === "sol" && inGroup(x, group) && x.vars.some((y) => y.stock)).length;
     shapePhotos.classList.toggle("shape__photos--one", pick.shots.length === 1);
     shapePhotos.innerHTML = pick.shots.map((f) =>
       '<a class="shape__photo' + (f.studio ? " shape__photo--studio" : "") + '" href="' + url + '"><img src="/assets/img/p/' + f.src + '.webp" alt="' + f.alt + '" loading="lazy"' + (f.pos ? ' style="object-position:' + f.pos + '"' : "") + ">" +
@@ -40,37 +40,14 @@
     shapeModel.textContent = p.name + " · " + v.label;
     shapeModel.href = url;
     shapePrice.innerHTML = "<strong>" + SG.money(SG.transferPrice(v.price)) + "</strong> con transferencia o efectivo · " + SG.money(v.price) + " de lista";
-    shapeAll.href = "/catalogo.html?forma=" + group;
-    shapeAll.firstChild.textContent = "Ver modelos " + SHAPE_GROUPS[group].plural + " ";
-    if (announce) shapeStatus.textContent = SHAPE_GROUPS[group].label + ": " + p.name + " " + v.label + ", " + pick.shots.length + " fotos. " + n + " modelos con esta forma.";
+    // La exploración por forma se mantiene dentro de gafas de sol
+    shapeAll.href = "/gafas-de-sol.html?forma=" + group;
+    shapeAll.firstChild.textContent = "Ver gafas de sol " + SHAPE_GROUPS[group].fem + " ";
+    if (announce) shapeStatus.textContent = SHAPE_GROUPS[group].label + ": " + p.name + " " + v.label + ", " + pick.shots.length + " fotos. " + n + (n === 1 ? " modelo de gafas de sol" : " modelos de gafas de sol") + " con esta forma.";
   }
   $$(".shape-btn").forEach((btn) => btn.addEventListener("click", () => {
     $$(".shape-btn").forEach((b) => b.setAttribute("aria-pressed", b === btn));
     renderShape(btn.dataset.shape, true);
   }));
   renderShape("cuadrada", false);
-
-  /* ---------- Comparador: misma foto en ambas capas; la común suma un reflejo simulado ---------- */
-  const stage = $(".compare__stage"), range = $("#compareRange");
-  function setPos(v) {
-    v = Math.max(0, Math.min(100, Math.round(v)));
-    range.value = v;
-    stage.style.setProperty("--pos", v + "%");
-    range.setAttribute("aria-valuetext", (100 - v) + "% de la vista con lente polarizada");
-  }
-  range.addEventListener("input", () => setPos(+range.value));
-  let dragging = false, startX = 0;
-  const fromPointer = (e) => { const r = stage.getBoundingClientRect(); setPos(((e.clientX - r.left) / r.width) * 100); };
-  // touch-action: pan-y deja el desplazamiento vertical al navegador; el gesto horizontal mueve la división
-  stage.addEventListener("pointerdown", (e) => {
-    dragging = true; startX = e.clientX;
-    if (e.pointerType === "mouse") { stage.setPointerCapture(e.pointerId); fromPointer(e); range.focus({ preventScroll: true }); }
-  });
-  stage.addEventListener("pointermove", (e) => { if (dragging && (e.pointerType === "mouse" || Math.abs(e.clientX - startX) > 4)) fromPointer(e); });
-  ["pointerup", "pointercancel", "pointerleave"].forEach((t) => stage.addEventListener(t, (e) => {
-    if (dragging && e.type === "pointerup" && e.pointerType !== "mouse" && Math.abs(e.clientX - startX) <= 4) fromPointer(e);
-    if (e.type !== "pointerleave" || e.pointerType !== "mouse") dragging = false;
-  }));
-  stage.style.touchAction = "pan-y";
-  setPos(+range.value);
 })();

@@ -1,14 +1,14 @@
 <main id="contenido">
 
-  <!-- 1 · Hero de campaña sobre tinta -->
+  <!-- 1 · Hero: qué vende Sunnygafas y por dónde empezar -->
   <section class="hero on-dark" aria-labelledby="hero-title">
     <div class="hero__text">
       <div class="hero__inner">
         <h1 id="hero-title">Gafas de sol para <span class="hero__l2">todos los días</span></h1>
-        <p class="hero__lead">Marcos con protección UV400 y aval óptico. Elegí por forma, compará colores y recibilas en todo el país.</p>
+        <p class="hero__lead">Explorá gafas de sol, polarizadas y armazones. Mirá cómo quedan puestos y elegí el modelo y el color.</p>
         <div class="hero__ctas">
           <a class="btn btn-light" href="/gafas-de-sol.html">Ver gafas de sol</a>
-          <a class="link link--light" href="#forma">Elegí por forma <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a class="link link--light" href="#forma">Explorar por forma <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </div>
@@ -17,72 +17,62 @@
         <source media="(max-width: 760px)" srcset="/assets/img/hero-ink-mob.webp" width="920" height="760">
         <img src="/assets/img/hero-ink-desk.webp" width="1200" height="966" alt="Mujer con las gafas Saturday XL en color print, retrato de frente" fetchpriority="high">
       </picture>
-      <figcaption class="hero__sign"><a href="/producto/saturday.html?color=print">Saturday XL · Print <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></figcaption>
+      <figcaption class="hero__sign"><a href="/producto/saturday.html?color=print">Ver Saturday XL en Print <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></figcaption>
     </figure>
   </section>
 
-  <!-- 2 · Recién llegadas -->
-  <section class="section section--products" aria-labelledby="nuevas-title">
-    <div class="container">
-      <div class="section__head">
-        <h2 id="nuevas-title">Recién llegadas</h2>
-        <a class="link hide-sm" href="/gafas-de-sol.html">Ver catálogo <svg class="icon"><use href="#i-arrow"/></svg></a>
-      </div>
-      <ul class="product-grid" id="newGrid"></ul>
-      <a class="link only-sm catalog-link" href="/gafas-de-sol.html">Ver catálogo <svg class="icon"><use href="#i-arrow"/></svg></a>
-      <div class="products-foot">
-        <nav class="collections" aria-label="Colecciones de gafas de sol">
-          <span class="meta">Colecciones</span>
-          <a href="/gafas-de-sol.html?col=basica">Básica</a>
-          <a href="/gafas-de-sol.html?col=esencial">Esencial</a>
-          <a href="/gafas-de-sol.html?col=superior">Superior</a>
-          <a href="/gafas-de-sol.html?col=elite">Élite</a>
-        </nav>
-        <p class="grid-legend meta">El precio destacado es con transferencia o efectivo: 25% off sobre el de lista. Con tarjeta, hasta 3 cuotas sin interés.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3 · Categorías: tríptico fotográfico -->
+  <!-- 2 · Categorías: a qué familia entro -->
   <section class="section section--cats" aria-labelledby="cat-title">
     <div class="container">
-      <h2 id="cat-title" class="section__title">Comprá por categoría</h2>
+      <h2 id="cat-title" class="section__title">Encontrá tu tipo de gafas</h2>
       <ul class="tri">
         <li class="tri__main">
           <a class="tri__item" href="/gafas-de-sol.html">
             <span class="tri__photo"><img src="/assets/img/p/glow-black-4.webp" alt="" loading="lazy" width="600" height="800" style="object-position: 50% 62%"></span>
             <span class="tri__name">Gafas de sol</span>
-            <span class="tri__meta">Colecciones Básica, Esencial, Superior y Élite</span>
+            <span class="tri__meta">Explorá formas, colores y colecciones</span>
           </a>
         </li>
         <li>
           <a class="tri__item" href="/polarizadas.html">
             <span class="tri__photo"><img src="/assets/img/p/tulum-polarizadas-3.webp" alt="" loading="lazy" width="600" height="800" style="object-position: 50% 42%"></span>
             <span class="tri__name">Polarizadas</span>
-            <span class="tri__meta">Menos reflejo en agua y asfalto</span>
+            <span class="tri__meta">Para reducir el reflejo del agua y el asfalto</span>
           </a>
         </li>
         <li>
           <a class="tri__item" href="/armazones.html">
             <span class="tri__photo"><img src="/assets/img/p/coco-clear-1.webp" alt="" loading="lazy" width="563" height="1000" style="object-position: 50% 46%"></span>
             <span class="tri__name">Armazones</span>
-            <span class="tri__meta">Para tus lentes recetados</span>
+            <span class="tri__meta">Para tus lentes con graduación</span>
           </a>
         </li>
       </ul>
-      <p class="cats__more">
-        <span class="meta">También:</span>
-        <a class="link" href="/clip-on.html">Clip-on 2 en 1</a>
-        <a class="link" href="/accesorios.html">Accesorios</a>
-      </p>
+      <ul class="cats__more">
+        <li><a class="cats__link" href="/clip-on.html"><span class="cats__name">Clip-on 2 en 1</span><span class="tri__meta">Un armazón con clip de sol</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a class="cats__link" href="/accesorios.html"><span class="cats__name">Accesorios</span><span class="tri__meta">Cadenas para tus gafas</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      </ul>
     </div>
   </section>
 
-  <!-- 4 · Elegí por forma: un modelo representativo en dos vistas -->
+  <!-- 3 · Selección comprable -->
+  <section class="section section--products" aria-labelledby="destacadas-title">
+    <div class="container">
+      <div class="section__head">
+        <h2 id="destacadas-title">Gafas de sol destacadas</h2>
+        <a class="link hide-sm" href="/gafas-de-sol.html">Ver todas las gafas de sol <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <ul class="product-grid" id="newGrid"></ul>
+      <a class="link only-sm catalog-link" href="/gafas-de-sol.html">Ver todas las gafas de sol <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </section>
+
+  <!-- 4 · Elegí por forma: la forma puesta y de cerca, con salida a la lista de gafas de sol -->
   <section class="section shape-section" id="forma" aria-labelledby="forma-title">
     <div class="container shape">
       <div class="shape__side">
         <h2 id="forma-title">Elegí por forma</h2>
+        <p class="shape__lead">Mirá la forma de la montura puesta y de cerca.</p>
         <div class="shapes" role="group" aria-label="Forma del marco">
           <button class="shape-btn" type="button" data-shape="redonda" aria-pressed="false"><svg class="shape__icon" aria-hidden="true"><use href="#f-redonda"/></svg>Redondas y ovaladas</button>
           <button class="shape-btn" type="button" data-shape="cuadrada" aria-pressed="true"><svg class="shape__icon" aria-hidden="true"><use href="#f-cuadrada"/></svg>Cuadradas</button>
@@ -98,131 +88,30 @@
             <a class="shape__name" id="shapeModel" href="/gafas-de-sol.html"></a>
             <p class="shape__price num" id="shapePrice"></p>
           </div>
-          <a class="link" id="shapeAll" href="/catalogo.html?forma=cuadrada">Ver modelos cuadrados <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a class="link" id="shapeAll" href="/gafas-de-sol.html?forma=cuadrada">Ver gafas de sol cuadradas <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5 · Polarizadas: banda de ancho completo -->
-  <section class="polar on-dark" aria-labelledby="polar-title">
-    <div class="polar__text">
-      <div class="polar__inner">
-        <h2 id="polar-title">El reflejo, fuera</h2>
-        <p class="polar__lead">El lente polarizado filtra la luz que rebota en superficies planas, como el agua y el asfalto. Mové la manija y compará.</p>
-        <a class="btn btn-light" href="/polarizadas.html">Ver polarizadas</a>
-        <p class="polar__note"><strong>Simulación visual del reflejo</strong> sobre la misma foto. Arrastrá la manija o usá las flechas del teclado.</p>
-      </div>
-    </div>
-    <figure class="compare" id="compare">
-      <div class="compare__stage">
-        <div class="compare__layer compare__layer--plain">
-          <img src="/assets/img/mar-comparador.webp" srcset="/assets/img/mar-comparador-900.webp 900w, /assets/img/mar-comparador.webp 1536w" sizes="(max-width: 760px) 100vw, 62vw" alt="" width="1536" height="1024" draggable="false" loading="lazy">
-          <svg class="glare" viewBox="0 0 1536 1024" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <defs>
-              <radialGradient id="glareCore" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".92"/><stop offset=".45" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-              <filter id="glareBlur" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="16"/></filter>
-              <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity=".06"/></linearGradient>
-            </defs>
-            <rect x="0" y="324" width="1536" height="700" fill="url(#haze)"/>
-            <ellipse cx="640" cy="430" rx="460" ry="120" fill="url(#glareCore)" opacity=".8"/>
-            <ellipse cx="700" cy="590" rx="380" ry="90" fill="url(#glareCore)" opacity=".45"/>
-            <g fill="#fff" filter="url(#glareBlur)" opacity=".45">
-              <ellipse cx="620" cy="360" rx="220" ry="10"/><ellipse cx="690" cy="400" rx="260" ry="14"/><ellipse cx="600" cy="480" rx="230" ry="16"/>
-            </g>
-          </svg>
-        </div>
-        <div class="compare__layer compare__layer--polar">
-          <img src="/assets/img/mar-comparador.webp" srcset="/assets/img/mar-comparador-900.webp 900w, /assets/img/mar-comparador.webp 1536w" sizes="(max-width: 760px) 100vw, 62vw" alt="" width="1536" height="1024" draggable="false" loading="lazy">
-        </div>
-        <div class="compare__handle" aria-hidden="true"><span></span></div>
-        <label class="compare__control">
-          <span class="visually-hidden">División entre lente común y polarizada</span>
-          <input type="range" id="compareRange" min="0" max="100" value="45" step="1">
-        </label>
-        <span class="compare__tag compare__tag--l">Común</span>
-        <span class="compare__tag compare__tag--r">Polarizada</span>
-      </div>
-    </figure>
-  </section>
-
-  <!-- 6 · Guía de calce + contenido del pedido -->
-  <section class="duo" aria-label="Guía de calce y contenido del pedido">
-    <div class="container duo__grid">
-      <div class="duo__col fit">
-        <h2 id="fit-title">Guía de calce</h2>
-        <div class="fit__row">
-          <svg class="fit__svg" viewBox="0 0 640 390" role="img" aria-labelledby="fitSvgT">
-            <title id="fitSvgT">Esquema de una gafa con tres medidas de ejemplo: lente 52 mm, puente 18 mm y varilla 140 mm.</title>
-            <g fill="none" stroke="#1E1A16" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
-              <rect x="70" y="80" width="200" height="140" rx="34"/>
-              <rect x="370" y="80" width="200" height="140" rx="34"/>
-              <path d="M270 122 Q320 94 370 122"/>
-            </g>
-            <path d="M70 360 H520 Q556 360 566 386" fill="none" stroke="#1E1A16" stroke-width="6" stroke-linecap="round"/>
-            <g stroke="#85561A" stroke-width="2.5" fill="none" stroke-linecap="round">
-              <path d="M70 246 H270 M70 236 V256 M270 236 V256"/>
-              <path d="M270 54 H370 M270 44 V64 M370 44 V64"/>
-              <path d="M70 336 H566 M70 326 V346 M566 326 V346"/>
-            </g>
-            <g font-family="Hanken Grotesk, sans-serif" font-size="24" font-weight="600" fill="#1E1A16" text-anchor="middle">
-              <text x="170" y="158" font-family="Bodoni Moda, serif" font-size="54" font-weight="500" fill="#85561A">52</text>
-              <text x="170" y="192">Lente</text>
-              <text x="320" y="32"><tspan font-family="Bodoni Moda, serif" font-size="36" font-weight="500" fill="#85561A">18</tspan> Puente</text>
-              <text x="318" y="318"><tspan font-family="Bodoni Moda, serif" font-size="36" font-weight="500" fill="#85561A">140</tspan> Varilla</text>
-            </g>
-          </svg>
-          <div class="fit__copy">
-            <p>Tres números, en milímetros. Compará lente, puente y varilla con un par que ya te queda cómodo.</p>
-            <p class="meta"><span class="fit__tag">Medidas de ejemplo</span></p>
-            <a class="link" href="/guia-de-calce.html">Ver la guía de calce <svg class="icon"><use href="#i-arrow"/></svg></a>
-          </div>
-        </div>
-      </div>
-      <div class="duo__col incl">
-        <h2 id="incl-title">Con tus gafas llegan</h2>
-        <div class="incl__row">
-          <figure class="incl__art">
-            <img src="/assets/img/estuche-y-limpiador.webp" srcset="/assets/img/estuche-y-limpiador-768.webp 768w, /assets/img/estuche-y-limpiador.webp 1200w" sizes="(max-width: 760px) 92vw, 300px" width="1200" height="800" loading="lazy" alt="Gafas carey dentro de un estuche marrón abierto, junto a un frasco de líquido limpiador">
-            <figcaption class="photo-note">Imagen ilustrativa</figcaption>
-          </figure>
-          <div class="incl__copy">
-            <ul class="incl__list">
-              <li><svg class="icon"><use href="#i-check"/></svg><span><strong>Estuche</strong> de regalo</span></li>
-              <li><svg class="icon"><use href="#i-check"/></svg><span><strong>Líquido limpiador</strong> de regalo</span></li>
-            </ul>
-            <p class="meta">Con la compra de gafas. Todos los modelos están avalados por un óptico.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7 · Preguntas frecuentes -->
-  <section class="section faq-section" aria-labelledby="faq-title">
-    <div class="container faq-grid">
-      <div class="faq-intro">
-        <h2 id="faq-title">Preguntas frecuentes</h2>
-        <a class="link" href="/ayuda.html">Ir a Ayuda <svg class="icon"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="faq" id="faq">
-        <div class="faq__item">
-          <h3 class="faq__q"><button type="button" aria-expanded="false" aria-controls="faq1" id="faq1b">¿Cómo compro?<svg class="icon"><use href="#i-plus"/></svg></button></h3>
-          <div class="faq__a" id="faq1" role="region" aria-labelledby="faq1b" hidden><div><p>Elegís el modelo y el color acá. El botón <strong>Comprar en la tienda oficial</strong> abre la ficha de ese mismo color en nuestra tienda, donde lo agregás al carrito, elegís el envío y pagás.</p></div></div>
-        </div>
-        <div class="faq__item">
-          <h3 class="faq__q"><button type="button" aria-expanded="false" aria-controls="faq2" id="faq2b">¿Cómo calculo el envío?<svg class="icon"><use href="#i-plus"/></svg></button></h3>
-          <div class="faq__a" id="faq2" role="region" aria-labelledby="faq2b" hidden><div><p>En la ficha de la tienda hay un calculador: ponés tu código postal y ves el costo antes de pagar. Enviamos a todo el país.</p></div></div>
-        </div>
-        <div class="faq__item">
-          <h3 class="faq__q"><button type="button" aria-expanded="false" aria-controls="faq3" id="faq3b">¿Qué medios de pago aceptan?<svg class="icon"><use href="#i-plus"/></svg></button></h3>
-          <div class="faq__a" id="faq3" role="region" aria-labelledby="faq3b" hidden><div><p>Transferencia o efectivo con 25% off sobre el precio de lista. Con tarjeta (Visa, Mastercard, American Express, Naranja, Cabal y Maestro), hasta 3 cuotas sin interés.</p></div></div>
-        </div>
-        <div class="faq__item">
-          <h3 class="faq__q"><button type="button" aria-expanded="false" aria-controls="faq4" id="faq4b">¿Cómo hago un cambio?<svg class="icon"><use href="#i-plus"/></svg></button></h3>
-          <div class="faq__a" id="faq4" role="region" aria-labelledby="faq4b" hidden><div><p>Escribinos por <a href="{{WA_CAMBIO}}" rel="noopener">WhatsApp</a> con tu número de pedido y te indicamos los pasos. Para cancelar una compra, usá el botón de arrepentimiento al pie de la <a href="{{STORE}}" rel="noopener">tienda oficial</a>.</p></div></div>
-        </div>
-      </div>
+  <!-- 5 · Antes de comprar: calce, dónde se compra y envío -->
+  <section class="section before" aria-labelledby="antes-title">
+    <div class="container">
+      <h2 id="antes-title" class="section__title">Antes de comprar</h2>
+      <ul class="before__list">
+        <li>
+          <p>Compará las medidas con un par que ya te quede cómodo.</p>
+          <a class="link" href="/guia-de-calce.html">Ver guía de calce <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </li>
+        <li>
+          <p>Elegí el color acá y completá el pedido en nuestra tienda oficial.</p>
+          <a class="link" href="/ayuda.html#comprar">Ver cómo comprar <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </li>
+        <li>
+          <p>Podés consultar el envío con tu código postal desde la ficha de la tienda.</p>
+          <a class="link" href="/ayuda.html#envios">Ver cómo calcular el envío <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </li>
+      </ul>
     </div>
   </section>
 
