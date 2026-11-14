@@ -1,0 +1,828 @@
+<title>Sunnygafas · Etapa 2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/sunny.css">
+<style>
+/* Presentación: cada pantalla en desktop (1440 escalado al ancho disponible) y debajo mobile 390 con sus estados. */
+:root{--desk:#E7E3DC;--desk-ink:#1E1A16;--desk-muted:#6B5F53;--desk-rule:#D6CFC4;--card:#FFFFFF;color-scheme:light}
+body{background:var(--desk);color:var(--desk-ink);font:400 16px/24px "Hanken Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 80px}
+.doc{max-width:1240px;margin:0 auto}
+.doc h1,.doc h2,.doc h3{font-family:"Gloock",Georgia,serif;font-weight:400;margin:0;text-wrap:balance}
+.doc-head{padding-block:48px 24px;display:grid;gap:20px}
+.doc-brand{display:flex;align-items:center;gap:12px}
+.doc-brand img{height:32px;width:auto}
+.doc-brand span{font-family:"Gloock",Georgia,serif;font-size:22px}
+.doc-head h1{font-size:clamp(36px,5vw,56px);line-height:1.05}
+.doc-lede{font-size:18px;line-height:28px;color:var(--desk-muted);max-width:68ch}
+.toc{display:flex;flex-wrap:wrap;gap:8px}
+.toc a{height:40px;padding:0 16px;border-radius:999px;background:var(--card);display:inline-flex;align-items:center;text-decoration:none;font-weight:600;font-size:14px;color:var(--desk-ink)}
+.toc a:hover{background:#F7F5F1}
+.finding{background:var(--card);border-radius:12px;padding:24px;display:grid;gap:12px;margin-top:8px}
+.finding h2{font-size:24px;line-height:30px}
+.finding p,.finding li{font-size:15px;line-height:23px;color:var(--desk-muted)}
+.finding ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.finding strong{color:var(--desk-ink)}
+.finding table{border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;width:100%}
+.finding td,.finding th{padding:8px 10px;border-bottom:1px solid #EEE8DF;text-align:left}
+.finding th{font-size:13px;color:var(--desk-muted)}
+.tw{overflow-x:auto}
+
+.screen{margin-top:72px}
+.screen>header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}
+.screen>header h2{font-size:36px;line-height:40px}
+.screen>header p{color:var(--desk-muted);max-width:70ch}
+.mode{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--desk-muted)}
+.cap{font-size:14px;color:var(--desk-muted);margin:24px 0 10px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.cap b{color:var(--desk-ink)}
+.zoombtn{background:none;border:0;font:600 14px/1 "Hanken Grotesk",sans-serif;color:var(--desk-ink);text-decoration:underline;cursor:pointer;min-height:32px}
+.dframe{border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(30,26,22,.08),0 24px 60px -28px rgba(30,26,22,.35);background:var(--card)}
+.dframe.real{overflow-x:auto}
+.dframe>.scr{width:1440px}
+.mrow{display:grid;grid-template-columns:390px minmax(0,1fr);gap:40px;align-items:start}
+.mframe{width:390px;max-width:100%;border-radius:28px;overflow:hidden;box-shadow:0 1px 2px rgba(30,26,22,.08),0 24px 60px -24px rgba(30,26,22,.35);background:var(--card)}
+.mframe.clip{overflow:clip}
+.states{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;align-content:start}
+.sframe{background:var(--card);border-radius:20px;overflow:hidden;box-shadow:0 1px 2px rgba(30,26,22,.08),0 16px 40px -24px rgba(30,26,22,.3);display:flex;flex-direction:column}
+.sframe>.scr{flex:1}
+.scap{padding:12px 16px;font-size:13px;line-height:18px;color:var(--desk-muted);border-top:1px solid #EEE8DF}
+.scap b{color:var(--desk-ink)}
+.notes{display:grid;gap:0;margin-top:8px}
+.notes div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:16px;padding:12px 0;border-top:1px solid var(--desk-rule);font-size:14px;line-height:21px;color:var(--desk-muted)}
+.notes b{color:var(--desk-ink)}
+.notes code,.finding code{font-size:12.5px;background:#DDD7CE;padding:1px 5px;border-radius:4px;color:var(--desk-ink)}
+
+.qc{margin-top:88px;display:grid;gap:16px}
+.qc>h2{font-size:36px;line-height:40px}
+.qc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+.qc-card{background:var(--card);border-radius:12px;padding:24px;display:grid;gap:12px;align-content:start;min-width:0}
+.qc-card h3{font-size:22px;line-height:28px}
+.qc-card p,.qc-card li{font-size:15px;line-height:23px;color:var(--desk-muted)}
+.qc-card ul,.qc-card ol{margin:0;padding-left:20px;display:grid;gap:6px}
+.qc-card strong{color:var(--desk-ink)}
+.qc-card table{width:100%;border-collapse:collapse;font-size:14px;line-height:20px}
+.qc-card th,.qc-card td{text-align:left;padding:9px 8px;border-bottom:1px solid #EEE8DF;vertical-align:top;color:var(--desk-muted)}
+.qc-card thead th{font-size:13px;font-weight:700}
+.qc-card td:first-child{color:var(--desk-ink);font-weight:600}
+.score{display:inline-grid;place-items:center;min-width:30px;height:24px;border-radius:999px;font-weight:800;font-size:13px;background:#D9EBE8;color:#1D5A60}
+.score.s3{background:#F2F0EC;color:#1E1A16}
+.pass{color:#2E6F3A;font-weight:700}.warn{color:#85561A;font-weight:700}
+.wide{grid-column:1/-1}
+@media (max-width:860px){.mrow{grid-template-columns:minmax(0,1fr)}.mframe{width:100%;max-width:390px}.notes div{grid-template-columns:minmax(0,1fr);gap:4px}}
+.ask{columns:2 320px;gap:32px}.ask li{break-inside:avoid;margin-bottom:6px}
+
+/* ---------- Pantallas: piezas propias de la etapa 2 ---------- */
+/* Home */
+.prob{display:grid;gap:0}
+.prob .fit{margin-block:16px 20px;font-size:15px;line-height:22px;display:grid;gap:6px;min-height:68px}
+.probgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12px}
+.probgrid>:nth-child(n+3){display:none}
+.tiers{display:grid;border-top:1px solid var(--ink-rule);margin-top:8px}
+.tier{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--ink-rule);align-items:center}
+.tier p{font-size:14px;line-height:20px}
+.tier .tp{font-variant-numeric:tabular-nums;color:var(--arena-50);font-weight:700;font-size:15px}
+.tier a{color:var(--arena-50);font-size:14px;font-weight:600;min-height:32px;display:inline-flex;align-items:center}
+.cmp{background:var(--white);color:var(--ink);border-radius:12px;padding:8px 12px 12px 16px}
+.cmp table{width:100%;border-collapse:collapse;font-size:14px;line-height:20px}
+.cmp th{font:600 14px/20px var(--f-ui);text-align:left;padding:12px 6px;vertical-align:bottom}
+.cmp thead th{border-bottom:1px solid var(--line-soft)}
+.cmp thead th:not(:first-child){color:var(--mar);font-size:15px}
+.cmp thead th:first-child{padding-left:0}
+.cmp td{padding:12px 6px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.cmp tbody th{font-weight:600;width:30%;vertical-align:top;padding-left:0}
+.cmp tr:last-child td,.cmp tr:last-child th{border-bottom:0}
+.yn{display:flex;gap:6px;align-items:flex-start}.yn .ico{width:18px;height:18px;margin-top:1px}
+.yn.y .ico{color:var(--mar)}.yn.n .ico{color:var(--ink-muted)}
+.revoff{border:1.5px dashed var(--line);border-radius:12px;padding:24px;display:grid;gap:10px;background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(140,125,108,.06) 10px 20px)}
+.revoff .flag{justify-self:start;background:var(--ink);color:var(--arena-50);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.revoff p{font-size:14px;line-height:21px;color:var(--ink-muted)}
+.sec-head{display:grid;gap:8px;margin-bottom:24px}
+.sec-head.row{grid-template-columns:1fr auto;align-items:end}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:62%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-16px;padding:0 16px 8px;scrollbar-width:none}
+.rail>*{scroll-snap-align:start}
+@container scr (min-width:1000px){
+  .prob{grid-template-columns:4fr 8fr;gap:64px;align-items:start}
+  .prob .chips{flex-direction:column;align-items:flex-start;margin:0;padding:0;overflow:visible}
+  .probgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+  .probgrid>:nth-child(3){display:grid}
+  .rail{grid-auto-flow:row;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;overflow:visible;margin:0;padding:0}
+  .rail-hint{display:none}
+  .tiers{grid-template-columns:repeat(4,1fr);border-top:0;gap:0}
+  .tier{grid-template-columns:1fr;padding:32px 32px 8px 0;border-bottom:0;border-right:1px solid var(--ink-rule);align-content:start;gap:20px}
+  .tier+.tier{padding-left:32px}
+  .tier:last-child{border-right:0}
+  .colhead{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end}
+  .polgrid{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:center}
+  .polgrid .btn{width:auto}
+  .cmp{padding:16px 28px 20px}
+  .cmp table{font-size:15px}
+  .nlgrid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end}
+  .nlform{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+  .nlform .btn{margin-top:26px}
+  .revoff{grid-template-columns:auto 1fr;column-gap:32px;align-items:start}
+  .revoff .flag{grid-row:span 3}
+}
+
+/* Listado */
+.plp-head{display:grid;gap:12px;padding-bottom:20px}
+.plp-head p{color:var(--ink-muted);max-width:60ch}
+.subcats{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding:4px 16px}
+.subcats a{flex:none;height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line-soft);display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:14px;font-weight:600;background:var(--white)}
+.subcats a small{font-weight:400;color:var(--ink-muted);font-variant-numeric:tabular-nums}
+.toolbar{position:sticky;top:60px;z-index:20;background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-block:12px;border-bottom:1px solid var(--line-soft);margin-inline:-16px;padding-inline:16px}
+.toolbar .btn{height:44px;padding:0 14px;font-size:15px}
+.toolbar .field select{height:44px;font-size:15px}
+.toolbar .count-d{display:none}
+.active{display:flex;flex-wrap:wrap;gap:8px;padding-top:12px;align-items:center}
+.active:empty{display:none}
+.achip{height:36px;padding:0 8px 0 14px;border-radius:999px;background:var(--piedra);border:0;display:inline-flex;align-items:center;gap:4px;font-size:14px;font-weight:600}
+.achip .ico{width:16px;height:16px}
+.clear{font-size:14px;font-weight:600;text-decoration:underline;background:none;border:0;min-height:36px;padding:0 4px}
+.plp-body{display:grid;gap:24px;padding-top:20px}
+.plp-side{display:none}
+.res-count{font-size:14px;color:var(--ink-muted);margin-bottom:12px}
+.more{display:grid;justify-items:center;gap:12px;padding-block:40px 8px}
+.more p{font-size:14px;color:var(--ink-muted)}
+.bar{width:200px;height:4px;border-radius:2px;background:var(--line-soft);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ink)}
+.fpanel{display:grid;gap:0}
+.fgroup{border-bottom:1px solid var(--line-soft);padding-block:16px}
+.fgroup h3{font:700 15px/20px var(--f-ui);letter-spacing:0;margin-bottom:6px;display:flex;justify-content:space-between}
+.fsw{display:grid;grid-template-columns:repeat(4,1fr);gap:8px 4px}
+.fsw label{display:grid;justify-items:center;gap:4px;font-size:12px;line-height:16px;color:var(--ink-muted);cursor:pointer;padding:4px 0}
+.fsw input{position:absolute;opacity:0;pointer-events:none}
+.fsw i{width:32px;height:32px;border-radius:50%;border:1px solid rgba(30,26,22,.18);display:block}
+.fsw input:checked+i{box-shadow:0 0 0 2px var(--white),0 0 0 4px var(--ink)}
+.fsw input:focus-visible+i{outline:2px solid var(--ink);outline-offset:4px}
+.fsw input:checked~span{color:var(--ink);font-weight:700}
+.empty{display:grid;gap:12px;justify-items:start;padding:32px 0 16px;grid-column:1/-1}
+.empty svg{width:96px;color:var(--line)}
+.seo{border-top:1px solid var(--line-soft);margin-top:48px;padding-top:32px;display:grid;gap:12px;max-width:68ch}
+.seo p{color:var(--ink-muted);font-size:15px;line-height:24px}
+.seo .rest[hidden]{display:none}
+.seo .rest{display:grid;gap:12px}
+@container scr (min-width:1000px){
+  .plp-head{grid-template-columns:1fr;padding-top:8px}
+  .subcats{margin:0;padding:4px 0;flex-wrap:wrap}
+  .toolbar{position:static;grid-template-columns:1fr 240px;margin:0;padding-inline:0;align-items:center}
+  .toolbar .btn-filter{display:none}
+  .toolbar .count-d{display:block;font-size:15px;color:var(--ink-muted)}
+  .plp-body{grid-template-columns:264px minmax(0,1fr);gap:48px;padding-top:24px}
+  .plp-side{display:block;position:sticky;top:96px;align-self:start}
+  .res-count{display:none}
+  .grid.plp{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+.drawer{display:flex;flex-direction:column;min-height:640px;background:var(--white)}
+.drawer-top{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 4px 0 16px;border-bottom:1px solid var(--line-soft)}
+.drawer-body{padding:0 16px;flex:1}
+.drawer-foot{position:sticky;bottom:0;display:grid;grid-template-columns:auto 1fr;gap:8px;padding:12px 16px;border-top:1px solid var(--line-soft);background:var(--white)}
+
+/* Ficha */
+.pdp-grid{display:grid;gap:24px}
+.gal{display:grid;gap:12px;margin-inline:-16px;min-width:0}
+.gal-main{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;background:var(--piedra)}
+.gal-main figure{margin:0;scroll-snap-align:start;aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--piedra)}
+.gal-main img{width:100%;height:100%;object-fit:contain;padding:10%;mix-blend-mode:multiply;transition:transform .2s var(--ease)}
+.gal-main img.full{object-fit:cover;padding:0;mix-blend-mode:normal}
+.gal-main figure.worn{display:grid;place-items:center;background:var(--arena-100)}
+.gal-main figure.worn div{display:grid;gap:8px;justify-items:center;text-align:center;padding:24px;color:var(--ink-muted);font-size:14px;line-height:20px}
+.gal-main figure.worn svg{width:120px;color:var(--line)}
+.gal-tools{position:absolute;inset:auto 12px 12px auto;display:flex;gap:8px;z-index:3}
+.gal-count{position:absolute;left:12px;bottom:12px;z-index:3;background:rgba(255,255,255,.92);height:32px;padding:0 12px;border-radius:999px;font-size:13px;font-weight:600;display:flex;align-items:center;font-variant-numeric:tabular-nums}
+.gal-tools .icobtn{background:rgba(255,255,255,.92)}
+.thumbs{display:none}
+.dots{display:flex;justify-content:center;gap:6px}
+.dots i{width:6px;height:6px;border-radius:50%;background:var(--line-soft)}
+.dots i.on{background:var(--ink);width:18px;border-radius:3px}
+.buy{display:grid;gap:20px;align-content:start;min-width:0}
+.buy .title{display:grid;gap:8px}
+.buy .title h1 span{color:var(--ink-muted)}
+.bigprice .p-transfer{font-size:15px}
+.bigprice .p-transfer b{display:inline;font-size:30px;line-height:36px;margin-right:6px}
+.bigprice .p-list{font-size:15px}
+.optlabel{font-size:15px;margin-bottom:6px}
+.optlabel b{font-weight:700}
+.sw.big i{width:32px;height:32px}
+.sw.big button{width:44px;height:44px}
+.sw .oos i{position:relative;opacity:.55}
+.sw .oos i::after{content:"";position:absolute;left:50%;top:-4px;bottom:-4px;width:1.5px;background:var(--ink);transform:rotate(45deg)}
+.ctas{display:grid;gap:8px}
+.reassure{display:grid;gap:8px;font-size:14px;line-height:20px;color:var(--ink-muted)}
+.reassure p{display:flex;gap:10px;align-items:flex-start}
+.reassure .ico{width:18px;height:18px;color:var(--mar);margin-top:1px}
+.shipbox{border:1px solid var(--line-soft);border-radius:12px;padding:16px;display:grid;gap:12px}
+.shipbox h2{font:700 15px/20px var(--f-ui);letter-spacing:0;display:flex;gap:8px;align-items:center}
+.shipres{display:grid;gap:0;border-top:1px solid var(--line-soft)}
+.shipres div{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--line-soft);font-size:14px;line-height:20px}
+.shipres div:last-child{border-bottom:0}
+.shipres b{font-weight:600}
+.shipres small{grid-column:1;color:var(--ink-muted);font-size:13px}
+.shipres span{font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.box{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.box div{display:grid;gap:8px;justify-items:center;text-align:center;font-size:14px;line-height:20px;padding:16px 8px;background:var(--piedra);border-radius:12px}
+.box .ico{width:28px;height:28px;color:var(--mar)}
+.desc{display:grid;gap:12px;font-size:16px;line-height:26px;max-width:62ch}
+.desc ul{margin:0;padding-left:20px;display:grid;gap:4px;color:var(--ink-muted)}
+.specs{background:var(--mar-soft);border-radius:12px;padding:8px 16px}
+.specs table{width:100%;border-collapse:collapse;font-size:15px;line-height:22px;font-variant-numeric:tabular-nums}
+.specs th,.specs td{text-align:left;padding:12px 0;border-bottom:1px solid rgba(29,90,96,.18);vertical-align:top}
+.specs tr:last-child th,.specs tr:last-child td{border-bottom:0}
+.specs th{font-weight:400;color:var(--mar);width:52%}
+.specs td{font-weight:700;color:var(--ink)}
+.specs td.tbd{color:var(--mar);font-weight:600}
+.fitguide{display:grid;gap:20px}
+.fitguide svg.measure{width:100%;max-width:520px;color:var(--ink)}
+.measure text{font:600 12px var(--f-ui);fill:var(--mar)}
+.fitguide ol{margin:0;padding-left:20px;display:grid;gap:8px;color:var(--ink-muted);max-width:60ch}
+.fitguide ol b{color:var(--ink)}
+.blk{padding-top:40px;display:grid;gap:16px}
+.stickybar{position:sticky;bottom:0;z-index:30;background:var(--white);border-top:1px solid var(--line-soft);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;box-shadow:0 -8px 20px -16px rgba(30,26,22,.35)}
+.stickybar .p-transfer b{display:block;font-size:18px;line-height:22px}
+.stickybar .p-transfer{font-size:12px;line-height:16px}
+@container scr (min-width:1000px){
+  .pdp-grid{grid-template-columns:7fr 5fr;gap:64px;align-items:start}
+  .gal{margin:0;grid-template-columns:88px 1fr;gap:16px;align-items:start}
+  .gal-main{grid-auto-flow:row;overflow:visible;border-radius:12px;background:none;grid-column:2}
+  .gal-main figure{display:none;border-radius:12px;cursor:zoom-in}
+  .gal-main figure.on{display:block}
+  .gal-main figure.worn{display:none}
+  .gal-main figure.worn.on{display:grid}
+  .thumbs{display:grid;gap:12px;grid-column:1;grid-row:1}
+  .thumbs button{aspect-ratio:4/5;border-radius:8px;border:1px solid transparent;background:var(--piedra);padding:0;overflow:hidden}
+  .thumbs button[aria-current="true"]{border:2px solid var(--ink)}
+  .thumbs img{width:100%;height:100%;object-fit:contain;padding:8%;mix-blend-mode:multiply}
+  .thumbs .worn-th{display:grid;place-items:center;font-size:11px;color:var(--ink-muted);background:var(--arena-100);height:100%}
+  .dots{display:none}
+  .buy{position:sticky;top:104px;gap:24px}
+  .stickybar{display:none}
+  .info2{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:start}
+  .blk{padding-top:72px}
+  .fitguide{grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .grid.look{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5Z"/><path d="m3 8 9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5S5 13 5 15a7 7 0 0 0 7 7z"/></symbol>
+  <symbol id="i-case" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="5"/><path d="M7 12h10"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12s-8-7-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="g-glasses" viewBox="0 0 120 48"><path d="M8 18h104" stroke-width="1.5"/><rect x="10" y="16" width="40" height="24" rx="11"/><rect x="70" y="16" width="40" height="24" rx="11"/><path d="M50 22c4-4 16-4 20 0"/></symbol>
+  <symbol id="f-redonda" viewBox="0 0 52 28"><circle cx="13" cy="14" r="10"/><circle cx="39" cy="14" r="10"/><path d="M23 12c2-2 4-2 6 0"/></symbol>
+  <symbol id="f-ovalada" viewBox="0 0 52 28"><ellipse cx="13" cy="14" rx="11" ry="7.5"/><ellipse cx="39" cy="14" rx="11" ry="7.5"/><path d="M24 12c1.5-1.5 2.5-1.5 4 0"/></symbol>
+  <symbol id="f-cuadrada" viewBox="0 0 52 28"><rect x="3" y="5" width="20" height="17" rx="2"/><rect x="29" y="5" width="20" height="17" rx="2"/><path d="M23 10c2-2 4-2 6 0"/></symbol>
+  <symbol id="f-cateye" viewBox="0 0 52 28"><path d="M2 7c8-2 16-1 21 2-1 8-5 13-11 13S2 16 2 7Z"/><path d="M50 7c-8-2-16-1-21 2 1 8 5 13 11 13s10-6 10-15Z"/><path d="M23 10c2-1.5 4-1.5 6 0"/></symbol>
+  <symbol id="f-aviador" viewBox="0 0 52 28"><path d="M3 6h20c0 9-3 16-10 16S3 15 3 6Z"/><path d="M29 6h20c0 9-3 16-10 16S29 15 29 6Z"/><path d="M23 7h6M18 3h16"/></symbol>
+</svg>
+
+<div class="doc">
+<header class="doc-head">
+  <div class="doc-brand"><img src="assets/isotipo-sunnygafas.png" alt="" width="40" height="32"><span>Sunnygafas</span></div>
+  <h1>Etapa 2: home desktop, listado y ficha</h1>
+  <p class="doc-lede">Las tres pantallas comparten el mismo marcado y cambian de layout por ancho de contenedor, igual que los breakpoints de Elementor. Cada desktop se ve escalado al ancho de esta página; "Ver a 1440 reales" lo muestra al tamaño exacto. Listado y ficha usan productos, precios y fotos reales de la tienda actual.</p>
+  <nav class="toc" aria-label="Pantallas"><a href="#hallazgo">Hallazgo del catálogo</a><a href="#s-home">Home desktop</a><a href="#s-mega">Mega menú</a><a href="#s-plp">Listado</a><a href="#s-pdp">Ficha</a><a href="#s-qc">Control de calidad</a></nav>
+</header>
+
+<section class="finding" id="hallazgo" aria-labelledby="hz-h">
+  <h2 id="hz-h">Lo que encontré en la tienda actual y cambia el diseño</h2>
+  <p>Revisé sunnygafas.empretienda.com.ar. El home muestra 12 productos, pero las categorías tienen <strong>más de 90 modelos</strong>, con precios distintos por colección. El precio de $27.000 corresponde solo a Básica y a parte de los armazones.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Línea</th><th>Lista</th><th>Con transferencia</th><th>3 cuotas</th></tr></thead>
+    <tbody>
+      <tr><td>Colección Básica</td><td>$27.000</td><td>$20.250</td><td>$9.000</td></tr>
+      <tr><td>Colección Esencial</td><td>$40.000</td><td>$30.000</td><td>$13.333,33</td></tr>
+      <tr><td>Colección Superior</td><td>$54.000</td><td>$40.500</td><td>$18.000</td></tr>
+      <tr><td>Colección Élite</td><td>$67.000</td><td>$50.250</td><td>$22.333,33</td></tr>
+      <tr><td>Polarizadas</td><td>$80.000 y $87.000</td><td>$60.000 y $65.250</td><td>$26.666,67 y $29.000</td></tr>
+      <tr><td>Clip-on 2 en 1</td><td>$80.000 a $130.000</td><td>$60.000 a $97.500</td><td>—</td></tr>
+      <tr><td>Armazones</td><td>$27.000, $40.000 y $50.000</td><td>—</td><td>—</td></tr>
+      <tr><td>Cadenas</td><td>$6.000 (gris, rose, gold, silver) y $11.200 (beige, caramel, black)</td><td>$4.500 y $8.400</td><td>—</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li><strong>"De Básica a Élite" ya tiene un criterio real:</strong> el precio. Lo puse en el home desktop y actualicé la banda del home mobile de la etapa 1.</li>
+    <li><strong>Hay descripciones con materiales reales</strong> en varios productos (Roxy: "policarbonato gris traslúcido"; Pilot: "policarbonato negro con detalles plata"). Glow no tiene descripción, así que sus materiales siguen en placeholder.</li>
+    <li><strong>Las fotos no siguen un estándar:</strong> algunas son de estudio sobre blanco, otras sobre una mesa o puestas. Para el listado elegí la foto de estudio de cada modelo y dejé las puestas para el hover.</li>
+    <li><strong>La categoría Sale no existe hoy</strong> (devuelve 404). La saco del menú hasta que haya productos.</li>
+    <li><strong>Las formas las asigné yo mirando las fotos</strong> (Roxy cat eye, Dallas cuadrada, etc.). Hay que confirmarlas.</li>
+  </ul>
+</section>
+
+<!-- ================= HOME DESKTOP ================= -->
+<section class="screen" id="s-home" aria-labelledby="sh-h">
+  <header><div><p class="mode">Persuade · página de marca</p><h2 id="sh-h">Home desktop</h2></div><p>La misma estructura del home mobile aprobado, a 1440. Cambia la composición: el probador pasa a dos columnas, las colecciones a cuatro columnas con sus precios reales y la comparativa queda al lado de su argumento.</p></header>
+  <div class="cap"><span><b>1440px</b> · escalado</span><button class="zoombtn" data-real="f-home">Ver a 1440 reales</button></div>
+  <div class="dframe" id="f-home"><div class="scr brand" id="home-d"></div></div>
+  <div class="notes">
+    <div><b>Header</b><span>Barra de anuncios fija con los tres beneficios a la vista (en desktop no rota, así no se mueve nada). Header de 80px con navegación, buscador visible, cuenta y carrito. <code>Theme Builder › Header</code> + <code>Nav Menu</code> con mega menú (Elementor Pro "Mega Menu").</span></div>
+    <div><b>Hero</b><span>Foto 1440 × 680 en WebP, prioridad alta. Degradé de ink solo del lado del texto para sostener el contraste sobre cualquier foto.</span></div>
+    <div><b>Probador</b><span>Texto y chips a la izquierda, tres productos reales a la derecha. Ahora cada forma tiene modelos reales: Redondas (Glow, Molly, Tulum), Cuadradas (Dallas, Charlotte, Mery), Cat eye (Roxy, Yanis, Pilot) y Aviador (Braga, Saturday XL).</span></div>
+    <div><b>Colecciones</b><span>Los rayos marcan el nivel y el precio de lista es el dato que lo prueba. Los demás criterios siguen a confirmar.</span></div>
+  </div>
+</section>
+
+<!-- ================= MEGA MENÚ ================= -->
+<section class="screen" id="s-mega" aria-labelledby="sm-h">
+  <header><div><p class="mode">Componente nuevo</p><h2 id="sm-h">Mega menú de Gafas de sol</h2></div><p>Abre con hover o con Enter, cierra con Esc y al salir. Tres columnas de navegación y un producto destacado elegido a mano. Escala a cientos de productos porque navega por colección y por forma, no por producto.</p></header>
+  <div class="cap"><span><b>1440px</b> · recorte del header abierto</span></div>
+  <div class="dframe"><div class="scr brand" id="mega-d" style="min-height:430px"></div></div>
+</section>
+
+<!-- ================= LISTADO ================= -->
+<section class="screen" id="s-plp" aria-labelledby="sp-h">
+  <header><div><p class="mode">Operate · pantalla de compra</p><h2 id="sp-h">Listado: Gafas de sol</h2></div><p>Lienzo blanco y fotos sobre piedra. Los filtros funcionan en las dos versiones: probá tocar colores, formas o colecciones. El desktop arranca con el filtro "Negro" activo para mostrar los chips y la foto que cambia a la variante filtrada.</p></header>
+  <div class="cap"><span><b>1440px</b> · escalado · filtro Negro activo</span><button class="zoombtn" data-real="f-plp">Ver a 1440 reales</button></div>
+  <div class="dframe" id="f-plp"><div class="scr" id="plp-d"></div></div>
+  <div class="cap"><span><b>390px</b> · sin filtros · los filtros se editan en el panel de la derecha</span></div>
+  <div class="mrow">
+    <div class="mframe"><div class="scr" id="plp-m"></div></div>
+    <div class="states">
+      <div class="sframe"><div class="scr" id="drawer-m"></div><p class="scap"><b>Filtros en mobile.</b> Drawer desde abajo a pantalla completa, conectado al listado de la izquierda. El botón dice cuántos resultados vas a ver antes de cerrar.</p></div>
+      <div class="sframe"><div class="scr"><div class="in" style="padding-block:16px"><div class="active"><button class="achip">Polarizada<svg class="ico"><use href="#i-x"/></svg></button><button class="achip">Cat eye<svg class="ico"><use href="#i-x"/></svg></button><button class="clear">Borrar todo</button></div><div class="empty"><svg viewBox="0 0 120 48" fill="none" stroke="currentColor" stroke-width="1.25"><use href="#g-glasses"/></svg><h3 class="h3">No hay polarizadas cat eye</h3><p class="muted">Sacá un filtro para ver más modelos, o escribinos y te contamos si entran.</p><button class="btn btn-secondary">Sacar "Cat eye"</button><a class="link" href="#">Consultar por WhatsApp</a></div></div></div><p class="scap"><b>Sin resultados.</b> Nombra la combinación que no existe y ofrece sacar el último filtro, que es la salida más corta.</p></div>
+      <div class="sframe"><div class="scr"><div class="in" style="padding-block:16px"><p class="res-count" style="display:block">Cargando modelos…</p><div class="grid" aria-busy="true"><div class="card skel"><div class="card-photo"></div><i class="l" style="width:70%"></i><i class="l" style="width:50%"></i></div><div class="card skel"><div class="card-photo"></div><i class="l" style="width:60%"></i><i class="l" style="width:45%"></i></div></div></div></div><p class="scap"><b>Cargando.</b> Esqueletos con la proporción exacta de la card, así la grilla no salta al llegar las fotos. Pulso suave que se apaga con movimiento reducido.</p></div>
+    </div>
+  </div>
+  <div class="notes">
+    <div><b>Filtros</b><span>Forma, color, polarizada, colección y precio, todos atributos globales de WooCommerce. Plugin de filtros AJAX (tipo FiboFilters o WOOF) con URLs indexables solo en combinaciones de un atributo.</span></div>
+    <div><b>Swatches en card</b><span>Plugin de swatches de variaciones que también funcione en el loop. Tocar un color cambia la foto sin salir del listado; "+3" indica los colores sin foto todavía.</span></div>
+    <div><b>Grilla</b><span><code>Loop Grid</code> con un Loop Item propio: foto 4:5, segunda foto en hover, nombre · color, swatches y precio en tres líneas. 2 columnas en mobile, 3 con sidebar en desktop (4 en home y sin sidebar).</span></div>
+    <div><b>Paginación</b><span>"Ver 12 más" con barra de progreso y URL paginada debajo (<code>/page/2/</code>) para que Google rastree todo.</span></div>
+  </div>
+</section>
+
+<!-- ================= FICHA ================= -->
+<section class="screen" id="s-pdp" aria-labelledby="sd-h">
+  <header><div><p class="mode">Operate · la pantalla más importante</p><h2 id="sd-h">Ficha: Glow · Negro</h2></div><p>Galería con zoom, tres precios, cotizador de envío, qué trae la caja, especificaciones fijas, guía de medidas, acordeones y "Completá el look" con cadenas reales. En mobile, la compra queda fija abajo.</p></header>
+  <div class="cap"><span><b>1440px</b> · escalado · pasá el mouse sobre la foto para el zoom</span><button class="zoombtn" data-real="f-pdp">Ver a 1440 reales</button></div>
+  <div class="dframe" id="f-pdp"><div class="scr" id="pdp-d"></div></div>
+  <div class="cap"><span><b>390px</b> · barra de compra fija al final del recorrido</span></div>
+  <div class="mrow">
+    <div class="mframe clip"><div class="scr" id="pdp-m"></div></div>
+    <div class="states">
+      <div class="sframe"><div class="scr"><div class="in" style="padding-block:16px;display:grid;gap:16px">
+        <div class="shipbox"><h2><svg class="ico s"><use href="#i-truck"/></svg>Calculá el envío</h2>
+          <div class="inline"><div class="field"><label for="cp1">Código postal</label><input id="cp1" inputmode="numeric" value="5000"></div><button class="btn btn-secondary">Calcular</button></div>
+          <div class="shipres" aria-live="polite">
+            <div><b>Correo Argentino a domicilio</b><span>$[costo]</span><small>Llega en [x a y] días hábiles</small></div>
+            <div><b>Correo Argentino a sucursal</b><span>$[costo]</span><small>Retirás en la sucursal que elijas</small></div>
+            <div><b>Envío personalizado</b><span>A acordar</span><small>Lo coordinamos por WhatsApp</small></div>
+          </div>
+        </div>
+      </div></div><p class="scap"><b>Cotizador con resultado.</b> Tres opciones con precio y plazo, sin salir de la ficha. Plugin de cotización de Correo Argentino para WooCommerce (MiCorreo API).</p></div>
+      <div class="sframe"><div class="scr"><div class="in" style="padding-block:16px;display:grid;gap:16px">
+        <div class="field err"><label for="cp2">Código postal</label><input id="cp2" inputmode="numeric" value="50" aria-invalid="true" aria-describedby="cp2h"><p class="help" id="cp2h"><svg class="ico s"><use href="#i-alert"/></svg>Faltan números: el código postal tiene 4 (por ejemplo, 5000).</p></div>
+        <a class="link" href="#">No sé mi código postal</a>
+      </div></div><p class="scap"><b>Cotizador con error.</b> Dice qué falta y da un ejemplo. "No sé mi código postal" abre el buscador oficial de Correo Argentino.</p></div>
+      <div class="sframe"><div class="scr"><div class="in" style="padding-block:16px;display:grid;gap:12px">
+        <p class="optlabel">Color: <b>Carey</b></p>
+        <div class="sw big" role="radiogroup" aria-label="Color"><button role="radio" aria-checked="true" aria-pressed="true" aria-label="Carey"><i style="background:linear-gradient(135deg,#5A3618 0 30%,#B98552 30% 55%,#3A2414 55%)"></i></button><button role="radio" aria-checked="false" aria-label="Negro"><i style="background:#1E1A16"></i></button><button role="radio" aria-checked="false" aria-label="Caramelo"><i style="background:#B8763A"></i></button><button class="oos" role="radio" aria-checked="false" aria-disabled="true" aria-label="Print, sin stock"><i style="background:linear-gradient(135deg,#2C2C2C 0 25%,#D9D2C3 25% 50%,#2C2C2C 50% 75%,#D9D2C3 75%)"></i></button></div>
+        <p class="help">Print: sin stock. <a href="#" style="color:var(--ink);font-weight:600">Avisame cuando vuelva</a></p>
+        <div class="ctas"><button class="btn btn-primary btn-block" disabled style="opacity:1;background:var(--oro-strong);color:#fff;cursor:progress">Agregando…</button><button class="btn btn-block" style="background:var(--success);color:#fff"><svg class="ico s"><use href="#i-check"/></svg>Agregado. Ver carrito</button></div>
+      </div></div><p class="scap"><b>Swatches y botón.</b> Ejemplo con Gala (Superior), que tiene cuatro colores; el de Print está marcado sin stock solo para mostrar el estado. El botón pasa por "Agregando…" y confirma con texto, y abre el side cart (etapa 3).</p></div>
+    </div>
+  </div>
+  <div class="notes">
+    <div><b>Galería</b><span>Galería de producto de Elementor con miniaturas verticales en desktop y carrusel con contador en mobile. Zoom por hover en desktop y pantalla completa con pellizco en mobile (lightbox nativo de WooCommerce, PhotoSwipe).</span></div>
+    <div><b>Precio</b><span>Shortcode o widget de precio personalizado: transferencia en <code>mar</code> (lista × 0,75), lista + cuotas y precio sin impuestos nacionales.</span></div>
+    <div><b>Especificaciones</b><span>Atributos de producto mostrados en una tabla fija con el mismo orden en todas las fichas. Si falta un dato, se ve "[a confirmar]" en el borrador y no se publica la ficha hasta completarlo.</span></div>
+    <div><b>Barra fija mobile</b><span>Aparece cuando el botón principal sale de pantalla (Sticky de Elementor Pro + clase que se activa al hacer scroll). Lleva el precio con transferencia para no perderlo de vista.</span></div>
+  </div>
+</section>
+
+<!-- ================= CONTROL DE CALIDAD ================= -->
+<section class="qc" id="s-qc" aria-labelledby="qc-h">
+  <h2 id="qc-h">Control de calidad</h2>
+  <div class="qc-grid">
+    <div class="qc-card wide">
+      <h3>1 · Heurísticas de Nielsen</h3>
+      <div class="tw"><table>
+        <thead><tr><th>Heurística</th><th>Home D</th><th>Listado</th><th>Ficha</th><th>Problema principal que queda</th></tr></thead>
+        <tbody>
+          <tr><td>Visibilidad del estado</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Conteo de resultados en vivo, chips activos y botón con estado de carga y confirmación.</td></tr>
+          <tr><td>Relación con el mundo real</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>La guía usa los números que ya trae cualquier armazón en la varilla (52□18-140).</td></tr>
+          <tr><td>Control y libertad</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score s3">3</span></td><td>En mobile, el carrusel de fotos no tiene flechas; se resuelve con swipe y miniaturas a pantalla completa.</td></tr>
+          <tr><td>Consistencia</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Card y precio idénticos en home, listado y "Completá el look".</td></tr>
+          <tr><td>Prevención de errores</td><td><span class="score">4</span></td><td><span class="score s3">3</span></td><td><span class="score">4</span></td><td>Listado: se pueden combinar filtros sin resultados. El conteo por opción ayuda, pero no lo impide.</td></tr>
+          <tr><td>Reconocer antes que recordar</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Formas con silueta en filtros y chips; nombre del color siempre visible.</td></tr>
+          <tr><td>Flexibilidad</td><td><span class="score s3">3</span></td><td><span class="score">4</span></td><td><span class="score s3">3</span></td><td>No hay "comparar modelos". No lo agrego: con medidas en todas las fichas, la tabla fija ya permite comparar abriendo dos.</td></tr>
+          <tr><td>Estética y minimalismo</td><td><span class="score s3">3</span></td><td><span class="score s3">3</span></td><td><span class="score s3">3</span></td><td>Las fotos actuales tienen fondos y encuadres distintos. Con un estándar de foto (blanco, 3/4, mismo encuadre) suben a 4.</td></tr>
+          <tr><td>Recuperarse de errores</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>Estado vacío con "sacar el último filtro"; error de código postal con ejemplo.</td></tr>
+          <tr><td>Ayuda</td><td><span class="score">4</span></td><td><span class="score">4</span></td><td><span class="score">4</span></td><td>WhatsApp en la ficha, debajo del botón principal, y flotante en el resto.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="qc-card">
+      <h3>2 · Especificidad</h3>
+      <ul>
+        <li><strong>Ficha:</strong> la guía de medidas dibuja el armazón con las cuatro cotas y explica cómo leer los números de la varilla de tus anteojos. Eso responde la duda real de quien compra sin probarse.</li>
+        <li><strong>Listado:</strong> las colecciones aparecen como subcategorías con su precio de lista. Cuatro precios fijos son un rasgo de Sunnygafas.</li>
+        <li><strong>Home:</strong> la escala de rayos ahora mide algo verificable, el precio de lista.</li>
+        <li><strong>Lo genérico que queda:</strong> el acordeón de cuidado. Se vuelve propio cuando la marca confirme cómo usar el líquido que regala.</li>
+      </ul>
+    </div>
+    <div class="qc-card">
+      <h3>3 · Dosis de color</h3>
+      <ul>
+        <li><strong>Home desktop:</strong> banda ink (colecciones) y banda mar (polarizadas) presentes. Viewports de 1440 × 900: el dorado de contenido aparece solo en los rayos; el resto lo pone el header.</li>
+        <li><strong>Listado y ficha:</strong> lienzo white, fotos sobre piedra, sin crema. El único dorado es el del logo. Mar en precios con transferencia, tabla de especificaciones e íconos de confianza.</li>
+        <li><strong>Badge Colección (ink)</strong> solo en la ficha, donde distingue algo. En las cards del listado no va porque ya filtran por colección.</li>
+        <li><span class="pass">Sin oro sobre mar ni oro como texto sobre claro.</span></li>
+      </ul>
+    </div>
+    <div class="qc-card">
+      <h3>4 · Largo y redundancia</h3>
+      <ul>
+        <li><strong>Saqué</strong> "UV400" de la descripción de Glow: ya está en confianza, en la tabla y en "Qué trae la caja".</li>
+        <li><strong>Junté</strong> envíos en un solo lugar de la ficha (el cotizador). El acordeón de envíos solo explica plazos y seguimiento.</li>
+        <li><strong>Saqué</strong> Sale del menú y del home desktop: hoy no existe.</li>
+        <li><strong>Reseñas:</strong> bloque reservado en la ficha, oculto hasta tener reseñas reales; no deja hueco.</li>
+      </ul>
+    </div>
+    <div class="qc-card">
+      <h3>5 · Accesibilidad</h3>
+      <ul>
+        <li>Contrastes: los mismos pares de la etapa 1, todos AA. Nuevo: <code>mar</code> sobre <code>mar-soft</code> en la tabla, 6.33:1.</li>
+        <li>Filtros con <code>input</code> reales (checkbox y switch), etiquetados, con conteo en el texto y foco visible en los swatches.</li>
+        <li>Swatches como <code>radiogroup</code>; sin stock con <code>aria-disabled</code>, tachado y texto. Nunca solo color.</li>
+        <li>Galería: cada foto con alt (modelo, color y vista); el contador "1 / 4" es texto.</li>
+        <li>Barra fija mobile de 64px, que no tapa el último contenido (el footer tiene padding extra).</li>
+        <li>Link "Ir al contenido" en el header (visible al recibir foco).</li>
+      </ul>
+    </div>
+    <div class="qc-card">
+      <h3>6 · Copy</h3>
+      <ul>
+        <li>Botones: "Agregar al carrito", "Consultar por WhatsApp", "Calcular", "Ver 12 más", "Sacar 'Cat eye'".</li>
+        <li>Sin antipatrones ni exclamaciones. Un único superlativo implícito revisado: ninguno.</li>
+        <li>Descripción de Glow escrita con lo que se ve en la foto (aro dorado, lente negro, forma ovalada chica); materiales en placeholder.</li>
+        <li>Arrepentimiento: 10 días corridos (Ley 24.240, art. 34). Plazo de cambios en placeholder.</li>
+      </ul>
+    </div>
+    <div class="qc-card wide">
+      <h3>7 · Datos a pedir (actualizada)</h3>
+      <ol class="ask">
+        <li>Nombre, apellido y matrícula del óptico.</li>
+        <li>Medidas de cada modelo (ancho total, lente, puente, varilla) y materiales de Glow y de los que no tienen descripción.</li>
+        <li>Confirmar la forma asignada a cada modelo.</li>
+        <li>Además del precio, qué cambia entre Básica, Esencial, Superior y Élite.</li>
+        <li>Plazo y condiciones de cambio.</li>
+        <li>Costos y plazos de envío de Correo Argentino (o credenciales de MiCorreo para el cotizador).</li>
+        <li>Fotos con un mismo estándar: fondo blanco, vista 3/4 y frente, y una foto puesta por modelo.</li>
+        <li>Stock real por variación, para el estado "sin stock".</li>
+        <li>Si Sale va a existir y con qué productos.</li>
+        <li>Material de cada cadena (las de $11.200 parecen de acrílico; la beige lo dice).</li>
+        <li>Número de WhatsApp, razón social, CUIT, domicilio y condición fiscal.</li>
+        <li>Logo en SVG.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+'use strict';
+var IMG='assets/productos/';
+// Fotos que no están sobre blanco: se muestran a sangre (cover) para no dejar un recuadro gris dentro de piedra.
+var FULL=['aviador-pol-negro','braga-verde-2','charlotte-marron-2','charlotte-marron','charlotte-negro','dallas-negro','glow-negro-2','glow-negro-3','glow-negro-4','mery-azul-2','mery-azul','mery-violeta','molly-marron-2','molly-marron','molly-negro','pilot-negro-2','pilot-negro','roxy-gris-2','saturday-print-2','saturday-print','yanis-negro','yanis-print-2'];
+function fc(img){return FULL.indexOf(img)>-1?' full':'';}
+function fmt(n){return '$'+n.toLocaleString('es-AR',{minimumFractionDigits:(n%1?2:0),maximumFractionDigits:2});}
+function r2(n){return Math.round(n*100)/100;}
+function ico(id,cls){return '<svg class="ico'+(cls?' '+cls:'')+'"><use href="#'+id+'"/></svg>';}
+var TORT='linear-gradient(135deg,#5A3618 0 30%,#B98552 30% 55%,#3A2414 55%)';
+var COL={'Básica':27000,'Esencial':40000,'Superior':54000,'Élite':67000};
+var COLOR_HEX={Negro:'#1E1A16','Marrón':'#7A4A24',Carey:TORT,Print:TORT,Gris:'#A9A6A2',Verde:'#9DBB9E',Amarillo:'#E2B03A',Naranja:'#E58A2B',Azul:'#5D86A8',Caramelo:'#B8763A'};
+
+// Catálogo real de la tienda actual (nombres, colecciones y precios). Forma asignada por foto: a confirmar.
+var P=[
+ {id:'glow',n:'Glow',col:'Básica',shape:'redonda',vars:[{c:'Negro',img:'glow-negro',alt2:'glow-negro-2'}]},
+ {id:'braga',n:'Braga',col:'Básica',shape:'aviador',vars:[{c:'Verde',img:'braga-verde',alt2:'braga-verde-2'},{c:'Amarillo',img:'braga-amarillo'}]},
+ {id:'roxy',n:'Roxy',col:'Básica',shape:'cateye',vars:[{c:'Gris',img:'roxy-gris',alt2:'roxy-gris-2'}]},
+ {id:'dallas',n:'Dallas',col:'Básica',shape:'cuadrada',vars:[{c:'Marrón',img:'dallas-marron',alt2:'dallas-marron-2'},{c:'Negro',img:'dallas-negro'}]},
+ {id:'saturday',n:'Saturday XL',col:'Básica',shape:'aviador',vars:[{c:'Naranja',img:'saturday-azul',label:'Naranja y azul'},{c:'Print',img:'saturday-print'}],isNew:true},
+ {id:'molly',n:'Molly',col:'Esencial',shape:'redonda',vars:[{c:'Marrón',img:'molly-marron',alt2:'molly-marron-2'},{c:'Negro',img:'molly-negro'}]},
+ {id:'yanis',n:'Yanis',col:'Esencial',shape:'cateye',vars:[{c:'Print',img:'yanis-print',alt2:'yanis-print-2'},{c:'Negro',img:'yanis-negro'}]},
+ {id:'gala',n:'Gala',col:'Superior',shape:'ovalada',vars:[{c:'Carey',img:'gala-carey',alt2:'gala-carey-2'},{c:'Negro',img:'gala-negro'},{c:'Caramelo',img:'gala-caramelo'},{c:'Print',img:'gala-print'}]},
+ {id:'siena',n:'Siena',col:'Superior',shape:'ovalada',vars:[{c:'Marrón',img:'siena-marron',alt2:'siena-marron-2'}],extra:3,extraColors:['Negro','Carey','Print']},
+ {id:'charlotte',n:'Charlotte',col:'Élite',shape:'cuadrada',vars:[{c:'Marrón',img:'charlotte-marron',alt2:'charlotte-marron-2'},{c:'Negro',img:'charlotte-negro'}]},
+ {id:'pilot',n:'Pilot',col:'Élite',shape:'cateye',vars:[{c:'Negro',img:'pilot-negro-2',alt2:'pilot-negro'}]},
+ {id:'tulum',n:'Tulum',col:null,pol:true,list:80000,shape:'redonda',vars:[{c:'Azul',img:'tulum-pol',label:'Azul print'}]}
+];
+P.forEach(function(p){p.list=p.list||COL[p.col];});
+var BY={};P.forEach(function(p){BY[p.id]=p;});
+var SHAPES={redonda:'Redondas',ovalada:'Ovaladas',cuadrada:'Cuadradas',cateye:'Cat eye',aviador:'Aviador'};
+var SHAPE_ICO={redonda:'f-redonda',ovalada:'f-ovalada',cuadrada:'f-cuadrada',cateye:'f-cateye',aviador:'f-aviador'};
+
+function priceHTML(list,cls){
+  var t=r2(list*0.75), q=r2(list/3), tax=Math.round(list/1.21);
+  return '<div class="price '+(cls||'')+'"><p class="p-transfer"><b>'+fmt(t)+'</b>con transferencia</p><p class="p-list">'+fmt(list)+' o 3 × '+fmt(q)+' sin interés</p><p class="p-tax">Precio sin imp. nacionales: '+fmt(tax)+'</p></div>';
+}
+function cardHTML(p,opts){
+  opts=opts||{};
+  var vi=0; if(opts.color){p.vars.forEach(function(v,i){if(v.c===opts.color&&vi===0)vi=i;});}
+  var v=p.vars[vi];
+  var badges='';
+  if(p.isNew&&opts.showNew)badges+='<span class="badge b-new">Nuevo</span>';
+  if(p.pol)badges+='<span class="badge b-pol">Polarizada</span>';
+  var sw=p.vars.map(function(x,i){return '<button type="button" aria-pressed="'+(i===vi)+'" aria-label="'+(x.label||x.c)+'" data-i="'+i+'"><i style="background:'+COLOR_HEX[x.c]+'"></i></button>';}).join('');
+  if(p.extra)sw+='<small>+'+p.extra+'</small>';
+  return '<div class="card" data-id="'+p.id+'"><a class="card-photo" href="#" tabindex="-1" aria-hidden="true">'+(badges?'<span class="badges">'+badges+'</span>':'')+
+    '<img class="main'+fc(v.img)+'" src="'+IMG+v.img+'.webp" alt="" loading="lazy">'+(v.alt2&&vi===0?'<img class="alt" src="'+IMG+v.alt2+'.webp" alt="" loading="lazy">':'')+'</a>'+
+    '<p class="card-name"><a href="#">'+p.n+' <span>· '+(v.label||v.c)+'</span></a></p>'+
+    '<div class="sw" role="group" aria-label="Colores de '+p.n+'">'+sw+'</div>'+priceHTML(p.list)+'</div>';
+}
+// Cambio de color en la card
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.card .sw button'); if(!b)return;
+  var card=b.closest('.card'), p=BY[card.dataset.id]; if(!p)return;
+  var v=p.vars[+b.dataset.i];
+  card.querySelectorAll('.sw button').forEach(function(x){x.setAttribute('aria-pressed',x===b);});
+  var mi=card.querySelector('img.main');mi.src=IMG+v.img+'.webp';mi.className='main'+fc(v.img);
+  var alt=card.querySelector('img.alt'); if(alt)alt.remove();
+  card.querySelector('.card-name span').textContent='· '+(v.label||v.c);
+});
+
+function raysSVG(n,w,h){
+  var cx=w/2,cy=h-2,r0=h*.32,r1=h*.92,out='<svg class="rays" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" aria-hidden="true"><path d="M2 '+cy+'H'+(w-2)+'" stroke="currentColor" stroke-width="1.25"/>';
+  for(var i=0;i<n;i++){var a=Math.PI*(.12+.76*(n===1?.5:i/(n-1))),len=(i%2?r1*.78:r1);
+    out+='<line x1="'+(cx-Math.cos(a)*r0).toFixed(1)+'" y1="'+(cy-Math.sin(a)*r0).toFixed(1)+'" x2="'+(cx-Math.cos(a)*len).toFixed(1)+'" y2="'+(cy-Math.sin(a)*len).toFixed(1)+'" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>';}
+  return out+'</svg>';
+}
+
+function headerHTML(opts){
+  opts=opts||{};
+  return '<a class="skip" href="#">Ir al contenido</a>'+
+  '<div class="announce" role="region" aria-label="Beneficios"><span class="m-only">25% de descuento con transferencia</span><span class="d-only">25% de descuento con transferencia</span><span class="d-only sep">·</span><span class="d-only">3 cuotas sin interés</span><span class="d-only sep">·</span><span class="d-only">Despachamos todos los días hábiles</span></div>'+
+  '<header class="hdr"><div class="hdr-row">'+
+   '<div class="side l"><button class="icobtn" aria-label="Abrir menú">'+ico('i-menu')+'</button><button class="icobtn" aria-label="Buscar">'+ico('i-search')+'</button></div>'+
+   '<a class="logo" href="#" aria-label="Sunnygafas, inicio"><img src="assets/isotipo-sunnygafas.png" alt="" width="40" height="32"><span>Sunnygafas</span></a>'+
+   '<nav class="nav" aria-label="Principal"><a href="#" aria-expanded="'+(!!opts.mega)+'" aria-haspopup="true">Gafas de sol'+ico('i-down','s')+'</a><a href="#">Polarizadas</a><a href="#">Armazones</a><a href="#">Clip-on 2 en 1</a><a href="#">Accesorios</a></nav>'+
+   '<div class="side r"><label class="search">'+ico('i-search')+'<span>Buscar modelo o color</span></label><button class="icobtn" aria-label="Mi cuenta">'+ico('i-user')+'</button><button class="icobtn" aria-label="Carrito, 2 productos">'+ico('i-bag')+'<span class="count">2</span></button></div>'+
+  '</div>'+(opts.mega?megaHTML():'')+'</header>';
+}
+function megaHTML(){
+  var g=BY.glow;
+  return '<div class="mega"><div class="mega-in">'+
+   '<div><h4>Colecciones</h4><ul>'+Object.keys(COL).map(function(c){return '<li><a href="#">'+c+'<small>'+fmt(COL[c])+'</small></a></li>';}).join('')+'<li><a href="#"><b>Ver todas las gafas de sol</b></a></li></ul></div>'+
+   '<div><h4>Por forma</h4><ul>'+Object.keys(SHAPES).map(function(s){return '<li><a href="#"><span style="display:flex;gap:10px;align-items:center">'+ico(SHAPE_ICO[s])+SHAPES[s]+'</span></a></li>';}).join('')+'</ul></div>'+
+   '<div><h4>También</h4><ul><li><a href="#">Polarizadas<small>desde $80.000</small></a></li><li><a href="#">Clip-on 2 en 1<small>desde $80.000</small></a></li><li><a href="#">Guía de medidas</a></li><li><a href="#">¿Polarizadas o comunes?</a></li></ul></div>'+
+   '<a class="mega-feat" href="#"><div class="ph" style="position:relative"><img src="'+IMG+'glow-negro.webp" alt=""></div><div style="display:grid;gap:6px"><p style="font-weight:600">Glow · Negro</p><p class="small muted">Colección Básica</p>'+priceHTML(g.list)+'</div></a>'+
+  '</div></div>';
+}
+function footerHTML(){
+  return '<section class="sec prefoot" aria-label="Newsletter"><div class="in nlgrid"><div style="display:grid;gap:8px"><h2 class="h2">Te avisamos cuando entran modelos</h2><p class="muted">[Incentivo a definir]. Un email por tanda nueva, nada más.</p></div>'+
+   '<form class="nlform" onsubmit="event.preventDefault()"><div class="field"><label>Email</label><input type="email" placeholder="tunombre@gmail.com" autocomplete="email"><p class="help">Te podés dar de baja desde cualquier email.</p></div><button class="btn btn-primary" type="submit">Suscribirme</button></form></div></section>'+
+  '<footer class="foot"><div class="in"><div class="foot-top"><div><a class="logo" href="#"><img src="assets/isotipo-sunnygafas.png" alt="" width="40" height="32"><span>Sunnygafas</span></a><p class="foot-intro">Gafas de sol, polarizadas, armazones y cadenas. Venta online desde [ciudad], sin local a la calle.</p>'+
+   '<div class="contact"><a class="btn btn-wa" href="#">'+ico('i-chat')+'Escribinos por WhatsApp</a><a href="#">'+ico('i-chat')+'[+54 9 xx xxxx-xxxx]</a><a href="#">'+ico('i-ig')+'@sunnygafas</a><a href="#">'+ico('i-mail')+'sunny.gafas.ch@gmail.com</a></div></div>'+
+   '<div class="fcols">'+
+    '<details open><summary>Comprar'+ico('i-down')+'</summary><ul><li><a href="#">Gafas de sol</a></li><li><a href="#">Polarizadas</a></li><li><a href="#">Armazones</a></li><li><a href="#">Clip-on 2 en 1</a></li><li><a href="#">Accesorios</a></li></ul></details>'+
+    '<details><summary>Ayuda'+ico('i-down')+'</summary><ul><li><a href="#">Envíos</a></li><li><a href="#">Pagos</a></li><li><a href="#">Cambios y devoluciones</a></li><li><a href="#">Cuidado de tus gafas</a></li><li><a href="#">Guía de medidas</a></li><li><a href="#">Preguntas frecuentes</a></li></ul></details>'+
+    '<details><summary>Sunnygafas'+ico('i-down')+'</summary><ul><li><a href="#">Quiénes somos</a></li><li><a href="#">Venta mayorista</a></li><li><a href="#">Blog</a></li><li><a href="#">Contacto</a></li><li><a href="#">Mi cuenta</a></li></ul></details>'+
+   '</div></div>'+
+   '<div class="foot-mid"><div><h4>Envíos</h4><p class="foot-ship">Correo Argentino a todo el país. Envío personalizado: a acordar por WhatsApp.</p></div><div><h4>Medios de pago</h4><div class="pay"><span>Visa</span><span>Mastercard</span><span>American Express</span><span>Naranja</span><span>Cabal</span><span>Maestro</span><span>Mercado Pago</span><span>Transferencia</span></div></div></div>'+
+   '<div class="legal"><a class="btn-regret" href="#">Botón de arrepentimiento</a><div class="links"><a href="#">Términos y condiciones</a><a href="#">Privacidad</a><a href="#">Cambios y devoluciones</a><a href="#">Defensa del Consumidor</a></div><p>[Razón social] · CUIT [xx-xxxxxxxx-x] · © 2026 Sunnygafas</p></div>'+
+  '</div></footer>';
+}
+
+/* ---------- Home desktop ---------- */
+var probSets={redonda:['glow','molly','tulum'],cuadrada:['dallas','charlotte','siena'],cateye:['roxy','yanis','pilot'],aviador:['braga','saturday','glow']};
+probSets.cuadrada=['dallas','charlotte','gala'];
+var probTxt={redonda:'Suavizan las caras con ángulos marcados: mandíbula cuadrada o frente ancha.',cuadrada:'Dan estructura a las caras redondas u ovaladas.',cateye:'Levantan la mirada. Suman en caras con mentón angosto o forma de corazón.',aviador:'Acompañan casi todas las caras; resaltan en las ovaladas y cuadradas.'};
+probSets.aviador=['braga','saturday','molly'];
+function homeD(){
+  var chips=['redonda','cuadrada','cateye','aviador'].map(function(s,i){return '<button class="chip" aria-pressed="'+(i===0)+'" data-shape="'+s+'">'+ico(SHAPE_ICO[s])+SHAPES[s]+'</button>';}).join('');
+  var tiers=Object.keys(COL).map(function(c,i){return '<div class="tier">'+raysSVG(3+i*2,72,40)+'<div style="display:grid;gap:6px"><h3 class="h3">'+c+'</h3><p class="tp">'+fmt(COL[c])+' de lista</p><p class="muted">'+fmt(COL[c]*.75)+' con transferencia</p><p class="muted">[Qué la define: marco, lente, terminación]</p><a href="#">Ver '+c+'</a></div></div>';}).join('');
+  return headerHTML()+
+  '<main>'+
+  '<section class="hero"><div class="ph ph-hero" role="img" aria-label="Placeholder: mujer con gafas de sol en la ruta, luz de tarde"><div class="ph-tag"><span>Foto lifestyle 1440 × 680 · mujer con gafas de sol en la ruta, luz de tarde, medio cuerpo a la derecha</span></div></div>'+
+   '<div class="hero-copy"><h1 class="h-disp">Gafas de sol avaladas por óptico</h1><p>UV400 en todos los modelos. Estuche y líquido limpiador en cada compra.</p><a class="btn btn-primary" href="#">Ver gafas de sol</a></div></section>'+
+  '<p class="payline"><strong>25% menos con transferencia o efectivo</strong> · 3 cuotas sin interés con tarjeta</p>'+
+  '<section class="sec"><div class="in prob"><div><div class="sec-head"><h2 class="h2">El probador</h2><p class="muted">Elegí una forma y mirá qué modelos la tienen.</p></div><div class="chips" role="group" aria-label="Forma del marco">'+chips+'</div>'+
+   '<div class="fit" aria-live="polite"><p class="fitText">'+probTxt.redonda+'</p><span class="tbv">Texto a validar con el óptico</span></div><a class="link probLink" href="#">Ver todas las redondas '+ico('i-arrow','s')+'</a></div>'+
+   '<div class="probgrid"></div></div></section>'+
+  '<section aria-label="Por qué comprar en Sunnygafas"><div class="in"><div class="trust">'+
+   '<div><span class="circ">'+ico('i-sun')+'</span><h3>Protección UV400</h3><p>Filtran los rayos UVA y UVB hasta 400 nm.</p></div>'+
+   '<div><span class="circ">'+ico('i-eye')+'</span><h3>Avaladas por óptico</h3><p>[Nombre y apellido], M.N. [n.º]</p></div>'+
+   '<div><span class="circ">'+ico('i-gift')+'</span><h3>Estuche de regalo</h3><p>Con líquido limpiador, en cada compra.</p></div>'+
+   '<div><span class="circ">'+ico('i-truck')+'</span><h3>Despacho diario</h3><p>Todos los días hábiles, a todo el país.</p></div></div></div></section>'+
+  '<section class="sec"><div class="in"><div class="sec-head"><h2 class="h2">Comprá por categoría</h2></div><div class="cats">'+
+   '<a class="cat wide" href="#"><div class="ph ph-sol" role="img" aria-label="Placeholder: pareja en la playa"><div class="ph-tag"><span>4:5 · pareja en la playa al atardecer</span></div></div><div class="cat-label"><div><h3 class="h3">Gafas de sol</h3><p class="small" style="color:#F3EBDF">Desde $27.000</p></div>'+ico('i-arrow')+'</div></a>'+
+   '<a class="cat" href="#"><div class="ph ph-pol" role="img" aria-label="Placeholder: manejando con gafas polarizadas"><div class="ph-tag"><span>4:5 · manejando, reflejo en el parabrisas</span></div></div><div class="cat-label"><div><h3 class="h3">Polarizadas</h3><p class="small" style="color:#F3EBDF">Desde $80.000</p></div>'+ico('i-arrow')+'</div></a>'+
+   '<a class="cat" href="#"><div class="ph ph-arm" role="img" aria-label="Placeholder: leyendo con armazón"><div class="ph-tag"><span>4:5 · interior, luz de ventana, leyendo</span></div></div><div class="cat-label"><div><h3 class="h3">Armazones</h3><p class="small" style="color:#F3EBDF">Desde $27.000</p></div>'+ico('i-arrow')+'</div></a></div>'+
+   '<div class="rows"><a class="rowlink" href="#"><span class="th"><svg viewBox="0 0 120 48" width="40" fill="none" stroke="#8C7D6C" stroke-width="2.5"><use href="#g-glasses"/></svg></span><span><b>Clip-on 2 en 1</b><small>Armazón con lente de sol que se suma encima. Desde $80.000</small></span>'+ico('i-chev')+'</a>'+
+   '<a class="rowlink" href="#"><span class="th"><img src="'+IMG+'cadena-gold.webp" alt=""></span><span><b>Accesorios</b><small>Cadenas para anteojos desde $6.000</small></span>'+ico('i-chev')+'</a>'+
+   '<a class="rowlink" href="#"><span class="th"><img src="'+IMG+'oriana-print.webp" alt=""></span><span><b>Armazones para receta</b><small>Oriana, Risky, Lupe, Coco y más</small></span>'+ico('i-chev')+'</a></div></div></section>'+
+  '<section class="sec" style="padding-top:0"><div class="in"><div class="sec-head row"><h2 class="h2">Recién llegadas</h2><a class="link" href="#">Ver todo</a></div><div class="rail">'+
+   ['saturday','charlotte','gala','yanis'].map(function(id){return cardHTML(BY[id],{showNew:true});}).join('')+'</div><p class="rail-hint small muted" style="margin-top:8px">Deslizá para ver más</p></div></section>'+
+  '<section class="sec band-ink"><div class="in"><div class="colhead"><div class="sec-head" style="margin:0"><h2 class="h2">De Básica a Élite</h2></div><p class="muted">Cuatro colecciones con cuatro precios fijos. Cuantos más rayos, más sube la terminación.</p></div><div class="tiers">'+tiers+'</div><p style="margin-top:24px"><span class="tbv">Criterios además del precio: a confirmar con la marca</span></p></div></section>'+
+  '<section class="sec band-mar"><div class="in polgrid"><div style="display:grid;gap:16px;align-content:start"><h2 class="h2">¿Polarizadas o comunes?</h2><p class="muted lead">Las dos filtran UV400. Cambia lo que pasa con el reflejo.</p><a class="btn btn-secondary" href="#" style="justify-self:start">Ver gafas polarizadas</a><span class="tbv">Tabla a validar con el óptico</span></div>'+
+   '<div class="cmp"><table><caption class="sr">Comparación entre gafas polarizadas y comunes</caption><thead><tr><th scope="col"><span class="sr">Aspecto</span></th><th scope="col">Polarizadas</th><th scope="col">Comunes</th></tr></thead><tbody>'+
+   '<tr><th scope="row">UV400</th><td><span class="yn y">'+ico('i-check')+'Sí</span></td><td><span class="yn y">'+ico('i-check')+'Sí</span></td></tr>'+
+   '<tr><th scope="row">Reflejo en agua, asfalto y nieve</th><td><span class="yn y">'+ico('i-check')+'Lo cortan</span></td><td><span class="yn n">'+ico('i-x')+'Lo oscurecen, no lo cortan</span></td></tr>'+
+   '<tr><th scope="row">Pantallas del celu y del auto</th><td><span class="yn n">'+ico('i-x')+'Algunas se ven con manchas</span></td><td><span class="yn y">'+ico('i-check')+'Se ven normal</span></td></tr>'+
+   '<tr><th scope="row">Van mejor para</th><td>Manejar, playa, pesca</td><td>Ciudad y uso diario</td></tr>'+
+   '<tr><th scope="row">Precio de lista</th><td>$80.000 y $87.000</td><td>$27.000 a $67.000</td></tr></tbody></table></div></div></section>'+
+  '<section class="sec"><div class="in"><div class="revoff"><span class="flag">No se publica todavía</span><h2 class="h2">Lo que dicen quienes compraron</h2><p>Bloque reservado. Se activa con reseñas verificadas de compras reales. Hasta entonces se oculta y no deja hueco.</p></div></div></section>'+
+  '</main>'+footerHTML()+
+  '<div class="fab"><a href="#" aria-label="Escribinos por WhatsApp">'+ico('i-chat')+'</a></div>';
+}
+function bindProbador(root){
+  var grid=root.querySelector('.probgrid'), ft=root.querySelector('.fitText'), pl=root.querySelector('.probLink');
+  function show(s){grid.innerHTML=probSets[s].map(function(id){return cardHTML(BY[id]);}).join('');ft.textContent=probTxt[s];pl.firstChild.nodeValue='Ver todas las '+SHAPES[s].toLowerCase()+' ';}
+  root.querySelectorAll('[data-shape]').forEach(function(b){b.addEventListener('click',function(){root.querySelectorAll('[data-shape]').forEach(function(x){x.setAttribute('aria-pressed',x===b);});show(b.dataset.shape);});});
+  show('redonda');
+}
+
+/* ---------- Listado ---------- */
+var COLORS=['Negro','Marrón','Carey','Print','Gris','Verde','Amarillo','Naranja','Azul','Caramelo'];
+var PRICES=[{k:'p1',l:'Hasta $30.000',t:function(p){return p.list<=30000;}},{k:'p2',l:'$30.000 a $60.000',t:function(p){return p.list>30000&&p.list<=60000;}},{k:'p3',l:'Más de $60.000',t:function(p){return p.list>60000;}}];
+function hasColor(p,c){return p.vars.some(function(v){return v.c===c;})||(p.extraColors||[]).indexOf(c)>-1;}
+function filterFn(st){
+  return function(p){
+    if(st.shape.length&&st.shape.indexOf(p.shape)<0)return false;
+    if(st.color.length&&!st.color.some(function(c){return hasColor(p,c);}))return false;
+    if(st.col.length&&st.col.indexOf(p.col)<0)return false;
+    if(st.pol&&!p.pol)return false;
+    if(st.price.length&&!PRICES.filter(function(x){return st.price.indexOf(x.k)>-1;}).some(function(x){return x.t(p);}))return false;
+    return true;
+  };
+}
+function fpanelHTML(uid,st){
+  function cnt(fn){return P.filter(fn).length;}
+  return '<div class="fpanel">'+
+   '<div class="fgroup"><h3>Forma</h3>'+Object.keys(SHAPES).map(function(s){return '<label class="check"><input type="checkbox" data-f="shape" value="'+s+'"'+(st.shape.indexOf(s)>-1?' checked':'')+'>'+ico(SHAPE_ICO[s])+SHAPES[s]+'<small>'+cnt(function(p){return p.shape===s;})+'</small></label>';}).join('')+'</div>'+
+   '<div class="fgroup"><h3>Color</h3><div class="fsw">'+COLORS.filter(function(c){return c!=='Print';}).map(function(c){return '<label><input type="checkbox" data-f="color" value="'+c+'"'+(st.color.indexOf(c)>-1?' checked':'')+'><i style="background:'+COLOR_HEX[c]+'"></i><span>'+c+'</span></label>';}).join('')+'</div></div>'+
+   '<div class="fgroup"><label class="toggle"><span><b style="font-weight:700">Solo polarizadas</b><br><span class="small muted">Cortan el reflejo del agua y el asfalto</span></span><input type="checkbox" role="switch" data-f="pol"'+(st.pol?' checked':'')+'></label></div>'+
+   '<div class="fgroup"><h3>Colección</h3>'+Object.keys(COL).map(function(c){return '<label class="check"><input type="checkbox" data-f="col" value="'+c+'"'+(st.col.indexOf(c)>-1?' checked':'')+'>'+c+'<small>'+fmt(COL[c])+'</small></label>';}).join('')+'</div>'+
+   '<div class="fgroup" style="border-bottom:0"><h3>Precio de lista</h3>'+PRICES.map(function(x){return '<label class="check"><input type="checkbox" data-f="price" value="'+x.k+'"'+(st.price.indexOf(x.k)>-1?' checked':'')+'>'+x.l+'<small>'+cnt(x.t)+'</small></label>';}).join('')+'</div>'+
+  '</div>';
+}
+function plpHTML(){
+  var subs=[['Básica',27000],['Esencial',40000],['Superior',54000],['Élite',67000]].map(function(s){return '<a href="#">'+s[0]+' <small>'+fmt(s[1])+'</small></a>';}).join('')+'<a href="#">Polarizadas <small>desde $80.000</small></a>';
+  return headerHTML()+
+  '<main class="in"><nav class="crumbs" aria-label="Migas de pan"><a href="#">Inicio</a>'+ico('i-chev')+'<span aria-current="page">Gafas de sol</span></nav>'+
+  '<div class="plp-head"><h1 class="h1">Gafas de sol</h1><p>Todas con filtro UV400 y estuche de regalo. Cuatro colecciones con precio fijo, de $27.000 a $67.000, y polarizadas desde $80.000.</p><div class="subcats" aria-label="Colecciones">'+subs+'</div></div>'+
+  '<div class="toolbar"><button class="btn btn-secondary btn-filter" type="button">'+ico('i-sliders','s')+'Filtrar<span class="fcount"></span></button><p class="count-d"></p><div class="field"><label class="sr">Ordenar por</label><select><option>Recomendados</option><option>Más nuevos</option><option>Menor precio</option><option>Mayor precio</option></select></div></div>'+
+  '<div class="active"></div>'+
+  '<div class="plp-body"><aside class="plp-side" aria-label="Filtros"></aside><div><p class="res-count"></p><div class="grid plp"></div>'+
+   '<div class="more"><p class="morep"></p><div class="bar"><i></i></div><button class="btn btn-secondary">Ver 12 más</button></div></div></div>'+
+  '<section class="seo" aria-labelledby="seo-h"><h2 class="h3" id="seo-h">Cómo elegir tus gafas de sol</h2><p>Todas nuestras gafas tienen filtro UV400: bloquean la radiación UVA y UVB hasta 400 nanómetros. El color del lente no cambia esa protección; un lente claro con UV400 protege igual que uno oscuro.</p>'+
+   '<div class="rest" hidden><p>La forma depende de tu cara. Las redondas y ovaladas suavizan rasgos marcados y las cuadradas dan estructura a caras redondas. Para el tamaño, compará con unos anteojos que ya tengas usando la guía de medidas.</p><p>Si manejás o vas seguido a la playa, mirá las polarizadas: cortan el reflejo del agua y del asfalto. Pagando con transferencia o efectivo tenés 25% de descuento, y con tarjeta hasta 3 cuotas sin interés.</p></div>'+
+   '<button class="link seo-more" type="button" aria-expanded="false">Leer más</button></section>'+
+  '</main>'+footerHTML()+
+  '<div class="fab"><a href="#" aria-label="Escribinos por WhatsApp">'+ico('i-chat')+'</a></div>';
+}
+function makeListing(root,st,panelHost){
+  root.innerHTML=plpHTML();
+  var side=panelHost||root.querySelector('.plp-side');
+  var grid=root.querySelector('.grid.plp'), act=root.querySelector('.active');
+  function labelOf(f,v){return f==='shape'?SHAPES[v]:f==='price'?PRICES.filter(function(x){return x.k===v;})[0].l:f==='col'?'Colección '+v:v;}
+  function render(){
+    var list=P.filter(filterFn(st)), n=list.length, nf=st.shape.length+st.color.length+st.col.length+st.price.length+(st.pol?1:0);
+    var colorPick=st.color.length===1?st.color[0]:null;
+    grid.innerHTML=n?list.map(function(p){return cardHTML(p,{color:colorPick,showNew:true});}).join(''):
+      '<div class="empty"><svg viewBox="0 0 120 48" fill="none" stroke="currentColor" stroke-width="1.25"><use href="#g-glasses"/></svg><h3 class="h3">No hay modelos con estos filtros</h3><p class="muted">Sacá un filtro para ver más, o escribinos y te contamos si entran.</p><button class="btn btn-secondary clear-all" type="button">Borrar filtros</button></div>';
+    var chips=[];
+    ['shape','color','col','price'].forEach(function(f){st[f].forEach(function(v){chips.push('<button class="achip" data-f="'+f+'" data-v="'+v+'" aria-label="Sacar filtro '+labelOf(f,v)+'">'+labelOf(f,v)+ico('i-x')+'</button>');});});
+    if(st.pol)chips.push('<button class="achip" data-f="pol" aria-label="Sacar filtro Polarizadas">Polarizadas'+ico('i-x')+'</button>');
+    act.innerHTML=chips.length?chips.join('')+'<button class="clear clear-all" type="button">Borrar todo</button>':'';
+    var txt=n+(n===1?' modelo':' modelos')+(nf?'':' de [n] en total');
+    root.querySelector('.res-count').textContent=txt;
+    root.querySelector('.count-d').textContent=txt;
+    root.querySelector('.fcount').textContent=nf?' ('+nf+')':'';
+    root.querySelector('.morep').textContent='Viste '+n+' de '+(nf?n:'[n]')+' modelos';
+    root.querySelector('.bar i').style.width=nf?'100%':'25%';
+    root.querySelector('.more button').hidden=!!nf;root.querySelector('.more').hidden=!n;
+    side.innerHTML=fpanelHTML('x',st);
+    if(panelHost){var fb=panelHost.closest('.drawer');if(fb)fb.querySelector('.see').textContent='Ver '+n+(n===1?' modelo':' modelos');}
+  }
+  function onChange(e){
+    var t=e.target; if(!t.dataset.f)return;
+    var f=t.dataset.f;
+    if(f==='pol'){st.pol=t.checked;}
+    else{var a=st[f],i=a.indexOf(t.value); if(t.checked&&i<0)a.push(t.value); if(!t.checked&&i>-1)a.splice(i,1);}
+    render();
+  }
+  side.addEventListener('change',onChange);
+  root.addEventListener('click',function(e){
+    var c=e.target.closest('.achip'); if(c){var f=c.dataset.f; if(f==='pol')st.pol=false; else st[f].splice(st[f].indexOf(c.dataset.v),1); render(); return;}
+    if(e.target.closest('.clear-all')){st.shape=[];st.color=[];st.col=[];st.price=[];st.pol=false;render();return;}
+    var m=e.target.closest('.seo-more'); if(m){var r=root.querySelector('.seo .rest'),o=m.getAttribute('aria-expanded')==='true';r.hidden=o;m.setAttribute('aria-expanded',!o);m.textContent=o?'Leer más':'Leer menos';}
+  });
+  render();
+  return render;
+}
+
+/* ---------- Ficha ---------- */
+function pdpHTML(){
+  var g=BY.glow;
+  var shots=[['glow-negro','Glow · Negro, vista 3/4'],['glow-negro-2','Glow · Negro, vista superior sobre la mesa'],['glow-negro-4','Glow · Negro, detalle de la varilla y el aro']];
+  var figs=shots.map(function(s,i){return '<figure class="'+(i===0?'on':'')+'"><img class="'+fc(s[0])+'" src="'+IMG+s[0]+'.webp" alt="'+s[1]+'"'+(i?' loading="lazy"':'')+'></figure>';}).join('')+
+    '<figure class="worn"><div><svg viewBox="0 0 120 48" fill="none" stroke="currentColor" stroke-width="1.25"><use href="#g-glasses"/></svg><b style="color:var(--ink)">Foto puesta</b><span>Pedir a la marca: Glow puesto, de frente y de perfil, luz natural.</span></div></figure>';
+  var thumbs=shots.map(function(s,i){return '<button type="button" aria-label="Ver foto '+(i+1)+'" aria-current="'+(i===0)+'" data-i="'+i+'"><img src="'+IMG+s[0]+'.webp" alt=""></button>';}).join('')+'<button type="button" aria-label="Ver foto puesta" data-i="3"><span class="worn-th">Puesta</span></button>';
+  var look=[{n:'Cadena',c:'Gold',img:'cadena-gold',l:6000},{n:'Cadena',c:'Silver',img:'cadena-silver',l:6000},{n:'Cadena',c:'Beige',img:'cadena-beige',l:11200},{n:'Cadena',c:'Black',img:'cadena-black',l:11200}].map(function(x){
+    return '<div class="card"><a class="card-photo" href="#" tabindex="-1" aria-hidden="true"><img class="main" src="'+IMG+x.img+'.webp" alt="" loading="lazy" style="object-fit:cover;padding:0"></a><p class="card-name"><a href="#">'+x.n+' <span>· '+x.c+'</span></a></p>'+priceHTML(x.l)+'</div>';}).join('');
+  return headerHTML()+
+  '<main class="in"><nav class="crumbs" aria-label="Migas de pan"><a href="#">Inicio</a>'+ico('i-chev')+'<a href="#">Gafas de sol</a>'+ico('i-chev')+'<a href="#">Básica</a>'+ico('i-chev')+'<span aria-current="page">Glow</span></nav>'+
+  '<div class="pdp-grid">'+
+   '<div class="gal"><div class="gal-main" tabindex="0" aria-label="Fotos de Glow · Negro">'+figs+'</div>'+
+    '<div class="thumbs">'+thumbs+'</div>'+
+    '<div class="gal-count-wrap" style="position:relative;display:none"></div>'+
+    '<div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div></div>'+
+   '<div class="buy">'+
+    '<div class="title"><span><span class="badge b-col">Colección Básica</span></span><h1 class="h1">Glow <span>· Negro</span></h1></div>'+
+    priceHTML(g.list,'bigprice')+
+    '<a class="link" href="#medios" style="min-height:32px;font-size:15px">Ver medios de pago</a>'+
+    '<div><p class="optlabel">Color: <b>Negro</b></p><div class="sw big" role="radiogroup" aria-label="Color"><button role="radio" aria-checked="true" aria-pressed="true" aria-label="Negro"><i style="background:#1E1A16"></i></button></div></div>'+
+    '<div class="ctas"><button class="btn btn-primary btn-block main-cta" type="button">Agregar al carrito</button><a class="btn btn-wa btn-block" href="#">'+ico('i-chat')+'Consultar por WhatsApp</a></div>'+
+    '<div class="reassure"><p>'+ico('i-truck')+'<span>Despachamos todos los días hábiles a todo el país.</span></p><p>'+ico('i-refresh')+'<span>Cambios hasta [plazo] días después de recibirlas. <a href="#" style="color:var(--ink)">Ver política</a></span></p><p>'+ico('i-eye')+'<span>Avaladas por [nombre del óptico], M.N. [n.º]</span></p></div>'+
+    '<div class="shipbox"><h2>'+ico('i-truck','s')+'Calculá el envío</h2><div class="inline"><div class="field"><label for="cp-x">Código postal</label><input id="cp-x" inputmode="numeric" placeholder="Ej: 5000"></div><button class="btn btn-secondary" type="button">Calcular</button></div><a class="link" href="#" style="min-height:32px;font-size:14px">No sé mi código postal</a></div>'+
+   '</div>'+
+  '</div>'+
+  '<div class="info2">'+
+   '<div>'+
+    '<section class="blk" aria-labelledby="desc-h"><h2 class="h2" id="desc-h">Sobre Glow</h2><div class="desc"><p>Ovaladas y chicas, con aro dorado fino y lente negro. Tienen ese aire de los noventa que va con jean y remera o con un vestido de verano. Por su tamaño, quedan mejor en caras chicas o medianas y en rasgos marcados.</p><ul><li>Lente negro con filtro UV400.</li><li>Aro dorado y varillas negras: [material del marco a confirmar].</li><li>Colección Básica: $27.000 de lista.</li></ul></div></section>'+
+    '<section class="blk" aria-labelledby="box-h"><h2 class="h3" id="box-h">Qué trae la caja</h2><div class="box"><div>'+ico('i-sun')+'Gafas Glow · Negro</div><div>'+ico('i-case')+'Estuche</div><div>'+ico('i-drop')+'Líquido limpiador</div></div></section>'+
+   '</div>'+
+   '<section class="blk" aria-labelledby="spec-h"><h2 class="h3" id="spec-h">Especificaciones</h2><div class="specs"><table><caption class="sr">Especificaciones de Glow · Negro</caption><tbody>'+
+    '<tr><th scope="row">Ancho total</th><td class="tbd">[xxx] mm</td></tr><tr><th scope="row">Ancho de lente</th><td class="tbd">[xx] mm</td></tr><tr><th scope="row">Puente</th><td class="tbd">[xx] mm</td></tr><tr><th scope="row">Largo de varilla</th><td class="tbd">[xxx] mm</td></tr>'+
+    '<tr><th scope="row">Material del marco</th><td class="tbd">[a confirmar]</td></tr><tr><th scope="row">Tipo de lente</th><td class="tbd">[a confirmar]</td></tr><tr><th scope="row">Protección</th><td>UV400</td></tr><tr><th scope="row">Polarizada</th><td>No</td></tr></tbody></table></div></section>'+
+  '</div>'+
+  '<section class="blk" aria-labelledby="fit-h"><div class="fitguide"><div style="display:grid;gap:12px"><h2 class="h2" id="fit-h">¿Me va a quedar bien?</h2><p class="muted">Compará con unos anteojos que ya uses y te queden cómodos.</p><ol><li>Buscá en la varilla tres números, por ejemplo <b>52□18-140</b>: ancho de lente, puente y largo de varilla, en milímetros.</li><li>Comparalos con los de Glow en la tabla. Con 2 o 3 mm de diferencia, el calce va a ser parecido.</li><li>Si no encontrás los números, medí el ancho total de punta a punta y comparalo con el de Glow.</li></ol><p><a class="link" href="#">Ver la guía de medidas completa</a></p></div>'+
+   '<svg class="measure" viewBox="0 0 520 260" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Dibujo de un armazón con sus cuatro medidas: ancho total, ancho de lente, puente y largo de varilla">'+
+    '<ellipse cx="150" cy="120" rx="90" ry="58"/><ellipse cx="370" cy="120" rx="90" ry="58"/><path d="M240 108c10-14 30-14 40 0"/><path d="M60 104H40M460 104h20"/>'+
+    '<g stroke="#1D5A60" stroke-width="1"><path d="M40 40H480M40 34v12M480 34v12"/><path d="M60 205H240M60 199v12M240 199v12"/><path d="M240 175H280M240 169v12M280 169v12"/></g>'+
+    '<text x="260" y="30" text-anchor="middle">Ancho total</text><text x="150" y="226" text-anchor="middle">Lente</text><text x="260" y="196" text-anchor="middle">Puente</text>'+
+    '<g stroke="#1D5A60" stroke-width="1"><path d="M40 250H200M40 244v12M200 244v12"/></g><path d="M40 238h150c8 0 14-4 18-10" stroke-dasharray="3 4" stroke-width="1"/><text x="230" y="254">Varilla (vista lateral)</text>'+
+   '</svg></div></section>'+
+  '<section class="blk" id="medios" aria-labelledby="acc-h"><h2 class="h3" id="acc-h">Envíos, cambios y cuidado</h2><div class="acc">'+
+   '<details open><summary>Envíos'+ico('i-plus')+'</summary><div class="body"><p>Despachamos todos los días hábiles por Correo Argentino, a domicilio o a sucursal. Cuando sale tu pedido te llega el código de seguimiento por email.</p><p>¿Necesitás otra forma? Coordinamos un <strong>envío personalizado</strong> por WhatsApp.</p></div></details>'+
+   '<details><summary>Medios de pago'+ico('i-plus')+'</summary><div class="body"><p><strong>Transferencia o efectivo:</strong> 25% de descuento, se ve aplicado en el checkout.</p><p><strong>Tarjetas</strong> Visa, Mastercard, American Express, Naranja, Cabal y Maestro, en hasta 3 cuotas sin interés por Mercado Pago.</p></div></details>'+
+   '<details><summary>Cambios y devoluciones'+ico('i-plus')+'</summary><div class="body"><p>Tenés [plazo] días desde que las recibís para cambiarlas, sin uso y con su estuche. Escribinos por WhatsApp y te decimos cómo enviarlas.</p><p>Si te arrepentís de la compra, tenés 10 días corridos para cancelarla con el <strong>botón de arrepentimiento</strong> del pie de página.</p></div></details>'+
+   '<details><summary>Cuidado'+ico('i-plus')+'</summary><div class="body"><p>Limpialas con el líquido de regalo y un paño de microfibra; la remera y el papel rayan el lente. Guardalas en el estuche y no las dejes al sol dentro del auto: el calor deforma el marco.</p></div></details>'+
+  '</div></section>'+
+  '<section class="blk" aria-label="Reseñas (no se publica)"><div class="revoff"><span class="flag">No se publica todavía</span><h2 class="h3">Reseñas de Glow</h2><p>Se activa con reseñas verificadas de compras reales, con foto. Hasta entonces el bloque no aparece.</p></div></section>'+
+  '<section class="blk" aria-labelledby="look-h" style="padding-bottom:64px"><div class="sec-head row" style="margin:0"><h2 class="h2" id="look-h">Completá el look</h2><a class="link" href="#">Ver cadenas</a></div><p class="muted" style="margin-top:-8px">Cadenas para colgar las gafas cuando no las usás.</p><div class="grid look">'+look+'</div></section>'+
+  '</main>'+
+  '<div class="stickybar" role="region" aria-label="Compra rápida">'+'<p class="p-transfer"><b>$20.250</b>con transferencia</p><button class="btn btn-primary btn-block" type="button">Agregar al carrito</button></div>'+
+  footerHTML();
+}
+function bindPdp(root){
+  var figs=root.querySelectorAll('.gal-main figure'), th=root.querySelectorAll('.thumbs button'), main=root.querySelector('.gal-main');
+  th.forEach(function(b){b.addEventListener('click',function(){var i=+b.dataset.i;figs.forEach(function(f,j){f.classList.toggle('on',i===j);});th.forEach(function(x){x.setAttribute('aria-current',x===b);});});});
+  // Zoom por hover en desktop
+  figs.forEach(function(f){var img=f.querySelector('img');if(!img)return;
+    f.addEventListener('mousemove',function(e){if(root.offsetWidth<1000)return;var r=f.getBoundingClientRect();img.style.transformOrigin=((e.clientX-r.left)/r.width*100)+'% '+((e.clientY-r.top)/r.height*100)+'%';img.style.transform='scale(2)';});
+    f.addEventListener('mouseleave',function(){img.style.transform='';});});
+  // Contador en mobile
+  var cnt=document.createElement('span');cnt.className='gal-count';cnt.textContent='1 / 4';
+  var tools=document.createElement('div');tools.className='gal-tools';tools.innerHTML='<button class="icobtn" aria-label="Ver foto en pantalla completa">'+ico('i-zoom')+'</button>';
+  var wrap=document.createElement('div');wrap.style.position='relative';main.parentNode.insertBefore(wrap,main);wrap.appendChild(main);wrap.appendChild(cnt);wrap.appendChild(tools);
+  wrap.style.gridColumn=getComputedStyle(main).gridColumn;
+  var dots=root.querySelectorAll('.dots i');
+  main.addEventListener('scroll',function(){var i=Math.round(main.scrollLeft/main.clientWidth);cnt.textContent=(i+1)+' / 4';dots.forEach(function(d,j){d.classList.toggle('on',i===j);});});
+  if(root.offsetWidth>=1000){wrap.style.gridColumn='2';cnt.style.display='none';}
+}
+
+/* ---------- Montaje ---------- */
+var hd=document.getElementById('home-d'); hd.innerHTML=homeD(); bindProbador(hd);
+document.getElementById('mega-d').innerHTML=headerHTML({mega:true});
+makeListing(document.getElementById('plp-d'),{shape:[],color:['Negro'],col:[],price:[],pol:false});
+var dm=document.getElementById('drawer-m');
+dm.innerHTML='<div class="drawer"><div class="drawer-top"><h2 class="h3">Filtrar</h2><button class="icobtn" aria-label="Cerrar filtros">'+ico('i-x')+'</button></div><div class="drawer-body"></div><div class="drawer-foot"><button class="btn btn-secondary clear-m" type="button">Borrar</button><button class="btn btn-primary see" type="button">Ver modelos</button></div></div>';
+var mst={shape:[],color:[],col:[],price:[],pol:false};
+var rerender=makeListing(document.getElementById('plp-m'),mst,dm.querySelector('.drawer-body'));
+dm.querySelector('.clear-m').addEventListener('click',function(){mst.shape=[];mst.color=[];mst.col=[];mst.price=[];mst.pol=false;rerender();});
+['pdp-d','pdp-m'].forEach(function(id){var el=document.getElementById(id);el.innerHTML=pdpHTML();});
+
+/* Escalado de frames desktop */
+var frames=[].slice.call(document.querySelectorAll('.dframe'));
+function fit(){document.querySelectorAll('.dframe .fcols details').forEach(function(d){d.open=true;});frames.forEach(function(f){var s=f.firstElementChild;if(f.classList.contains('real')){s.style.zoom=1;return;}var z=Math.min(1,f.clientWidth/1440);s.style.zoom=z;});}
+fit(); window.addEventListener('resize',fit);
+document.querySelectorAll('[data-real]').forEach(function(b){b.addEventListener('click',function(){var f=document.getElementById(b.dataset.real);var on=f.classList.toggle('real');b.textContent=on?'Volver a la vista escalada':'Ver a 1440 reales';fit();});});
+['pdp-d','pdp-m'].forEach(function(id){bindPdp(document.getElementById(id));});
+})();
+</script>
