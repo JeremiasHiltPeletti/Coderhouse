@@ -81,9 +81,9 @@
   .hdr .side.l{display:none}
   .logo{justify-content:flex-start}.logo img{height:40px}.logo span{font-size:26px}
   .nav{display:flex;gap:4px;justify-content:center}
-  .nav a{height:44px;padding:0 14px;display:flex;align-items:center;gap:4px;border-radius:12px;text-decoration:none;font-weight:600;font-size:15px}
-  .nav a:hover,.nav a[aria-expanded="true"]{background:var(--piedra)}
-  .nav a.sale{color:var(--ink)}
+  .nav>a,.nav>div>a{height:44px;padding:0 14px;display:flex;align-items:center;gap:4px;border-radius:12px;text-decoration:none;font-weight:600;font-size:15px}
+  .nav>a:hover,.nav>div>a:hover,.nav a[aria-expanded="true"]{background:var(--piedra)}
+
   .hdr .search{display:flex;align-items:center;gap:8px;height:44px;width:220px;padding:0 12px;border:1px solid var(--line);border-radius:12px;color:var(--ink-muted);font-size:15px;background:var(--white)}
   .hdr .search .ico{width:20px;height:20px}
   .hdr .side.r{gap:4px;align-items:center}
